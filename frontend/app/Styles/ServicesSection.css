@@ -1,0 +1,128 @@
+.philosophy-button {
+   margin-top: 15px;
+  border: 1px solid #ffffff;
+  padding: 4px 10px;
+  background: transparent;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 7px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.philosophy-button--light {
+  color: #fffdf7;
+}
+
+.services-section {
+  background: #3a170d;
+  color: #fffdf7;
+  min-height: 680px;
+}
+
+.services-section__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 84px 84px 80px;
+  display: grid;
+  grid-template-columns: minmax(350px, 1fr) 430px;
+  gap: 112px;
+  align-items: start;
+}
+
+.services-section__content h2 {
+  font-family: var(--font-freight), serif;
+  font-size: 25px;
+  font-weight: 200;
+  line-height: 1;
+  margin-top: 20px;
+}
+
+.services-section__content > p {
+  max-width: 320px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 100;
+  line-height: 1.4;
+  letter-spacing: 0.84px;
+  color: #ffffff;
+  margin: 26px 0 24px;
+}
+
+.services-section__list {
+  margin-top: 96px;
+  width: 100%;
+  max-width: 595px;
+}
+
+.services-section__row {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 253, 247, 0.6);
+  padding: 14px 0 13px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: lighter;
+  letter-spacing: 1.5px;
+  line-height: 1;
+}
+
+.services-section__row:last-child {
+  border-bottom: 1px solid rgba(255, 253, 247, 0.6);
+}
+
+.services-section__image {
+  position: relative;
+  width: 430px;
+  height: 520px;
+  overflow: hidden;
+}
+
+.services-section__image img {
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .services-section__inner {
+    padding-left: 40px;
+    padding-right: 40px;
+    grid-template-columns: 1fr 360px;
+    gap: 56px;
+  }
+
+  .services-section__image {
+    width: 360px;
+    height: 460px;
+  }
+}
+
+@media (max-width: 760px) {
+  .services-section__inner {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding: 52px 24px;
+  }
+
+  .services-section__image {
+    width: min(100%, 430px);
+    height: 118vw;
+    max-height: 520px;
+    justify-self: center;
+  }
+
+  .services-section__list {
+    margin-top: 56px;
+  }
+}
+
+@media (max-width: 520px) {
+  .services-section__content h2 {
+    font-size: 30px;
+  }
+
+  .services-section__content > p {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pinyon: "Pinyon Script", cursive;
+
+  --color-bg: #ffffff;
+  --color-text: #fffdf7;
+  --color-deep: #350008;
+  --color-ivory: #fffdf7;
+  --color-gold: #b8975a;
+  --color-border: rgba(255, 253, 247, 0.2);
+}
+
+:root {
+  --font-pinyon: "Pinyon Script", cursive;
+
+  --color-bg: #ffffff;
+  --color-text: #fffdf7;
+  --color-deep: #350008;
+  --color-ivory: #fffdf7;
+  --color-gold: #b8975a;
+  --color-border: rgba(255, 253, 247, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #FFFDF7;
+  color: #350008;
+  font-family: var(--font-sf-pro);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
