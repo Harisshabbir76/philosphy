@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import woman from "../Images/woman.png";
 import newspaper from "../Images/newspaper.webp";
 import "../Styles/IntroApproach.css";

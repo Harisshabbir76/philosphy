@@ -71,6 +71,7 @@
   min-height: 520px;
   padding: 0 24px 78px;
   margin-top: -130px;
+  margin-bottom: -95px;
 }
 
 .getting-started__store {
@@ -95,12 +96,12 @@
 }
 
 .getting-started__lower h3 {
-  margin-top: 35px;
+  margin-top: 27px;
   font-family: var(--font-freight), serif;
   font-size: 20px;
   font-weight: 300;
   line-height: 1;
-  color: #FFFCF5;
+  color: #FFFCF5
 }
 
 .getting-started__lower p {
@@ -112,6 +113,8 @@
   line-height: 1.48;
   letter-spacing: 1px;
   color: #FFFCF5;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .getting-started__lower a {

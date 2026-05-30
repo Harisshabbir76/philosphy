@@ -6,11 +6,12 @@
 }
 
 .footer-main {
-  min-height: 440px;
+  min-height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 62px 24px 74px;
+  margin-bottom: -40px;
 }
 
 .footer-cta {
@@ -23,7 +24,7 @@
   width: 77px;
   height: auto;
   margin-bottom: 30px;
-  margin-top: -50px;
+  margin-top: -20px;
 }
 
 .footer-cta h2 {
@@ -35,18 +36,19 @@
 }
 
 .footer-cta p {
-  max-width: 550px;
+  max-width: 480px;
   margin: 44px auto 34px;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
   font-weight: 100;
   line-height: 1.35;
-  letter-spacing: 1.48px;
+  letter-spacing: 1px;
   color:#1F150F;
+  margin-top: 34px;
 }
 
 .footer-consultation-link {
-  margin-top: 26px;
+  margin-top: 0px;
   border: 0.5px solid #000000;
   padding: 4px 10px;
   background: transparent;

@@ -1,0 +1,47 @@
+.story-philosophy {
+  min-height: 340px;
+  background: #fffdf7;
+  color: #382b25;
+  text-align: center;
+  padding: 39px 24px 36px;
+}
+
+.story-philosophy__copy {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.story-philosophy__copy h2 {
+  font-family: var(--font-freight), serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.story-philosophy__copy p {
+  margin-top: 22px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 100;
+  line-height: 1.42;
+  letter-spacing: 1.4px;
+}
+
+.story-philosophy__image {
+  position: relative;
+  width: 150px;
+  height: 230px;
+  margin: 28px auto 0;
+  overflow: hidden;
+}
+
+.story-philosophy__image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 560px) {
+  .story-philosophy {
+    min-height: 0;
+  }
+}
