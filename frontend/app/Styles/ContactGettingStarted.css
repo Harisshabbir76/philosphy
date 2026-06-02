@@ -1,0 +1,142 @@
+.contact-started {
+  background: #fffdf7;
+  color: #fffdf7;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.contact-started__intro {
+  min-height: 311px;
+  padding: 0 24px 47px;
+  background: #2b170f;
+  position: relative;
+}
+
+.contact-started__store {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.contact-started__store img {
+  object-fit: cover;
+  margin-top: -30px;
+}
+
+.contact-started__intro h2 {
+  padding-top: 140px;
+  font-family: var(--font-freight), serif;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.wanna-learn{
+  margin-bottom: -100px;
+}
+
+.contact-started__intro p {
+  max-width: 450px;
+  margin: 35px auto 31px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 200;
+  line-height: 1.45;
+  letter-spacing: 1px;
+}
+
+.contact-started__intro a {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 200;
+  line-height: 1;
+  color: #fffdf7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: 1px;
+}
+
+.contact-started__steps {
+  min-height: 365px;
+  padding: 40px 24px 58px;
+  background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url("../Images/banner 2.png") center top / cover no-repeat;
+}
+
+.contact-started__kicker {
+  margin-bottom: 38px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-started__cards {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.contact-started__card {
+  width: 200px;
+  min-height: 216px;
+  padding: 25px 17px 20px;
+  background: #fffdf7;
+  color: #1F150F;
+}
+
+.contact-started__card span {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.contact-started__card h3 {
+  margin-top: 22px;
+  font-family: var(--font-freight), serif;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.08;
+}
+
+.contact-started__card p {
+  margin-top: 24px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1.33;
+}
+
+@media (max-width: 760px) {
+  .contact-started {
+    padding-top: 80px;
+  }
+
+  .contact-started__store {
+    width: min(100%, 360px);
+    height: 52vw;
+    min-height: 170px;
+  }
+
+  .contact-started__intro h2 {
+    padding-top: 120px;
+  }
+
+  .contact-started__cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-started__card {
+    width: min(230px, 100%);
+  }
+}

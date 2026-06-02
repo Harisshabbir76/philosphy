@@ -1,0 +1,89 @@
+.bridal-concierge {
+  background: #FFFCF5;
+  color: #1F150F;
+  padding: 60px 24px 58px;
+}
+
+.bridal-concierge__inner {
+  width: min(810px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bridal-concierge__eyebrow,
+.bridal-concierge h3,
+.bridal-concierge p {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #1f150f;
+}
+
+.bridal-concierge__eyebrow {
+  margin-bottom: 34px;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.bridal-concierge h2 {
+  margin-bottom: 32px;
+  font-family: var(--font-freight), serif;
+  font-size: 25px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  line-height: 1;
+  color: #1F150F;
+}
+
+.bridal-concierge h3 {
+  margin-bottom: 46px;
+  font-family: var(--font-freight), serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+  color: #291C13;
+}
+
+.bridal-concierge p {
+  margin: 0 auto 14px;
+  font-weight: 100;
+  line-height: 1.45;
+  color: #291C13;
+}
+
+.bridal-concierge__price {
+  margin-top: 6px;
+}
+
+.bridal-concierge__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 16px;
+  margin-top: 28px;
+  padding: 10px 20px;
+  background: #1F150F;
+  color: #ffffff;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  line-height: 1;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .bridal-concierge {
+    padding: 48px 20px;
+  }
+
+  .bridal-concierge h2 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .bridal-concierge h3 {
+    margin-bottom: 30px;
+  }
+}

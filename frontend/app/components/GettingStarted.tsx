@@ -1,5 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import store from "../Images/store.png";
+import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
+import { usePageComponentContent } from "../lib/pageContent";
 import "../Styles/GettingStarted.css";
 
 const steps = [
@@ -17,34 +20,81 @@ const steps = [
   },
 ];
 
-export default function GettingStarted() {
+const defaults = {
+  imageUrl: "",
+  kicker: "HOW TO GET STARTED",
+  steps,
+  title: "WANNA LEARN MORE ABOUT FASHION?",
+  subtitle: "Workshops coming soon!",
+  text:
+    "Stay tuned for intimate styling sessions, creative fashion workshops, and inspiring experiences designed for women who appreciate timeless elegance, personal style, and the art behind fashion.",
+  buttonText: "STAY UPDATED",
+};
+
+type Step = {
+  title: string;
+  text: string;
+};
+
+export default function GettingStarted({ editable = false }: { editable?: boolean }) {
+  const { content, saveContent, isSaving, error } = usePageComponentContent("home", "gettingStarted", defaults);
+
   return (
+    <AdminEditableSection
+      content={content}
+      editable={editable}
+      error={error}
+      isSaving={isSaving}
+      title="Getting started"
+      onSave={saveContent}
+    >
+      {({ content: editorContent, isEditing, updateContent }) => {
+        const stepItems = (Array.isArray(editorContent.steps) ? editorContent.steps : steps) as Step[];
+        const updateStep = (index: number, nextStep: Partial<Step>) => {
+          updateContent((current) => {
+            const currentSteps = (Array.isArray(current.steps) ? current.steps : steps) as Step[];
+            return {
+              ...current,
+              steps: currentSteps.map((step, stepIndex) => (stepIndex === index ? { ...step, ...nextStep } : step)),
+            };
+          });
+        };
+
+        return (
     <section className="getting-started">
       <div className="getting-started__hero">
-        <p className="section-kicker">HOW TO GET STARTED</p>
+        <EditableText as="p" className="section-kicker" isEditing={isEditing} value={String(editorContent.kicker)} onChange={(kicker) => updateContent({ kicker })} />
         <div className="getting-started__cards">
-          {steps.map((step, index) => (
+          {stepItems.map((step, index) => (
             <article className="getting-started__card" key={step.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <h2>{step.title}</h2>
-              <p>{step.text}</p>
+              <EditableText as="h2" isEditing={isEditing} value={step.title} onChange={(title) => updateStep(index, { title })} />
+              <EditableText as="p" isEditing={isEditing} value={step.text} onChange={(text) => updateStep(index, { text })} />
             </article>
           ))}
         </div>
       </div>
       <div className="getting-started__lower">
         <div className="getting-started__store">
-          <Image src={store} alt="Fashion atelier interior" fill sizes="520px" />
+          <EditableImage
+            src={String(editorContent.imageUrl) || store}
+            alt="Fashion atelier interior"
+            fill
+            sizes="520px"
+            isEditing={isEditing}
+            onChange={(imageUrl) => updateContent({ imageUrl })}
+          />
         </div>
-        <h2>WANNA LEARN MORE ABOUT FASHION?</h2>
-        <h3>Workshops coming soon!</h3>
-        <p>
-          Stay tuned for intimate styling sessions, creative fashion workshops, and inspiring
-          experiences designed for women who appreciate timeless elegance, personal style, and
-          the art behind fashion.
-        </p>
-        <a href="/contact-us">STAY UPDATED</a>
+        <EditableText as="h2" isEditing={isEditing} value={String(editorContent.title)} onChange={(title) => updateContent({ title })} />
+        <EditableText as="h3" isEditing={isEditing} value={String(editorContent.subtitle)} onChange={(subtitle) => updateContent({ subtitle })} />
+        <EditableText as="p" isEditing={isEditing} value={String(editorContent.text)} onChange={(text) => updateContent({ text })} />
+        <a href="/contact-us">
+          <EditableText isEditing={isEditing} value={String(editorContent.buttonText)} onChange={(buttonText) => updateContent({ buttonText })} />
+        </a>
       </div>
     </section>
+        );
+      }}
+    </AdminEditableSection>
   );
 }

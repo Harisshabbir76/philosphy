@@ -10,14 +10,17 @@
   background: #24150f;
 }
 
-.story-hero::before {
-  content: "";
+.story-hero__image {
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("../Images/storyhero.png") center center / cover no-repeat;
+}
+
+.story-hero__image img {
+  object-fit: cover;
+  object-position: center center;
 }
 
 .story-hero__overlay {

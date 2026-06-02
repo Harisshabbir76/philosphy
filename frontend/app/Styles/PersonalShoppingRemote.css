@@ -1,0 +1,132 @@
+.ps-remote {
+  background: #fffdf7;
+  color: #1F150F;
+  padding: 48px 24px 60px;
+  border-bottom: 2px solid #2f251f;
+}
+
+.ps-remote__inner {
+  width: min(700px, 100%);
+  margin: 0 auto;
+}
+
+.ps-remote__intro {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ps-remote h2,
+.ps-remote p,
+.ps-remote li,
+.ps-remote__tabs span {
+  font-family: var(--font-sf-pro), sans-serif;
+  letter-spacing: 1px;
+  color: #1F150F;
+}
+
+.ps-remote h2 {
+  margin-bottom: 28px;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.ps-remote__tabs {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.ps-remote__tabs span {
+  font-weight: 100;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.ps-remote p,
+.ps-remote li {
+  font-weight: 100;
+  line-height: 1.5;
+  font-size: 9px;
+}
+
+.ps-remote__image {
+  position: relative;
+  width: 104px;
+  height: 182px;
+  margin: 42px auto 40px;
+  overflow: hidden;
+}
+
+.ps-remote__image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.ps-remote__details {
+  width: min(450px, 100%);
+  margin: 0 auto;
+}
+
+.ps-remote__details p {
+  margin-bottom: 16px;
+  font-size: 9px;
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.ps-remote__details ul {
+  margin-bottom: 16px;
+  padding-left: 7px;
+  list-style-position: inside;
+  font-size: 9px;
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+
+.ps-remote__bullet-list {
+  margin: 8px 0 16px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.ps-remote__bullet-list li {
+  margin-bottom: 4px;
+}
+
+.ps-remote__bullet-list li::marker {
+  font-size: 0.75em;
+}
+
+.ps-remote__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 16px;
+  margin-top: 2px;
+  padding: 10px 20px;
+  background: #1F150F;
+  color: #FFFFFF;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  line-height: 1;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .ps-remote {
+    padding: 42px 20px;
+  }
+
+  .ps-remote__tabs {
+    gap: 24px;
+  }
+}

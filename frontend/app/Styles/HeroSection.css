@@ -11,14 +11,17 @@
   overflow: hidden;
 }
 
-.hero-section::before {
-  content: "";
+.hero-section__image {
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("../Images/Banner.png") center center / cover no-repeat;
+}
+
+.hero-section__image img {
+  object-fit: cover;
+  object-position: center center;
 }
 
 .hero-overlay {

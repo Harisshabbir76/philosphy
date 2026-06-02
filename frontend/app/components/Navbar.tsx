@@ -93,7 +93,7 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <Link href="/contact-us" className="nav-tab nav-tab--book">
+                <Link href="/booking" className="nav-tab nav-tab--book">
                   Book Now
                 </Link>
               </div>
@@ -144,7 +144,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/contact-us"
+              href="/booking"
               className="mobile-sidebar__link"
               onClick={() => setIsMobileMenuOpen(false)}
             >

@@ -9,7 +9,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   const isDashboardRoute = useMemo(() => {
-    return pathname === "/heirloom/admin/panel/dashboard" || pathname?.startsWith("/heirloom/admin/panel/dashboard/");
+    return pathname === "/philosphy/admin/panel" || pathname?.startsWith("/philosphy/admin/panel/");
   }, [pathname]);
 
   return (

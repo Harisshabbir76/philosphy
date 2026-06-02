@@ -1,0 +1,161 @@
+.bridal-complete {
+  background: #361C13;
+  color: #fffdf7;
+  padding: 56px 32px 48px;
+  border-bottom: 2px solid #2f251f;
+}
+
+.bridal-complete__inner {
+  width: min(1298px, 100%);
+  margin: 0 auto;
+}
+
+.bridal-complete__intro {
+  width: min(700px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bridal-complete__eyebrow,
+.bridal-complete h2,
+.bridal-complete h3,
+.bridal-complete p,
+.bridal-complete li {
+  color: #fffdf7;
+  letter-spacing: 1px;
+}
+
+.bridal-complete__eyebrow,
+.bridal-complete h3,
+.bridal-complete p,
+.bridal-complete li {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+}
+
+.bridal-complete__eyebrow {
+  margin-bottom: 22px;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.bridal-complete h2 {
+  margin-bottom: 24px;
+  font-family: var(--font-freight), serif;
+  font-size: 25px;
+  font-weight: 200;
+  line-height: 1;
+}
+
+.bridal-complete h3 {
+  margin-bottom: 4px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.bridal-complete p,
+.bridal-complete li {
+  font-weight: 100;
+  line-height: 1.38;
+}
+
+.bridal-complete__intro p {
+  margin-bottom: 14px;
+}
+
+.bridal-complete__image {
+  position: relative;
+  width: 100%;
+  height: 290px;
+  margin: 34px auto 48px;
+  overflow: hidden;
+}
+
+.bridal-complete__image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.bridal-complete__details {
+  width: min(670px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 30px;
+}
+
+.bridal-complete__column {
+  min-width: 0;
+}
+
+.bridal-complete__column--right {
+  text-align: right;
+}
+
+.bridal-complete__divider {
+  width: 1px;
+  min-height: 216px;
+  background: rgba(255, 253, 247, 0.28);
+}
+
+.bridal-complete ul {
+  margin-bottom: 14px;
+  list-style: none;
+}
+
+.bridal-complete__column p {
+  margin-bottom: 12px;
+}
+
+.bridal-complete__price {
+  margin-top: 16px;
+}
+
+.bridal-complete__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 16px;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 253, 247, 0.72);
+  color: #fffdf7;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 100;
+  line-height: 1;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .bridal-complete {
+    padding: 46px 20px;
+  }
+
+  .bridal-complete h2 {
+    font-size: 22px;
+    line-height: 1.12;
+  }
+
+  .bridal-complete__image {
+    height: 190px;
+    margin: 30px auto 38px;
+  }
+
+  .bridal-complete__details {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .bridal-complete__column--right {
+    text-align: left;
+  }
+
+  .bridal-complete__divider {
+    width: 100%;
+    min-height: 1px;
+    height: 1px;
+  }
+}

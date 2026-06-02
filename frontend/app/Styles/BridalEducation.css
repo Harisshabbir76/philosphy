@@ -1,0 +1,98 @@
+.bridal-education {
+  background: #fffdf7;
+  color: #1f150f;
+  padding: 0 24px 42px;
+  border-bottom: 2px solid #2f251f;
+}
+
+.bridal-education__panel {
+  position: relative;
+  z-index: 2;
+  width: min(622px, 100%);
+  margin: -152px auto 0;
+  padding: 54px 50px 50px;
+  background: #ffffff;
+}
+
+.bridal-education__panel h2,
+.bridal-education__panel h3,
+.bridal-education__panel p,
+.bridal-education__panel li {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #1F150F;
+}
+
+.bridal-education__panel h2 {
+  margin-bottom: 26px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.bridal-education__panel h3 {
+  margin-top: 22px;
+  margin-bottom: 4px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.bridal-education__panel p,
+.bridal-education__panel li {
+  font-weight: 100;
+  line-height: 1.42;
+}
+
+.bridal-education__panel p {
+  margin-bottom: 17px;
+}
+
+.bridal-education__panel ul {
+  margin-bottom: 17px;
+  padding-left: 7px;
+  list-style-position: inside;
+}
+
+.bridal-education__panel li {
+  margin-bottom: 2px;
+}
+
+.bridal-education__panel hr {
+  height: 1px;
+  margin: 36px 0 28px;
+  border: 0;
+  background: rgba(31, 21, 15, 0.42);
+}
+
+.bridal-education__price {
+  margin-top: 24px;
+}
+
+.bridal-education__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 16px;
+  margin-top: 2px;
+  padding: 10px 20px;
+  background: #1F150F;
+  color: #ffffff;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  line-height: 1;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .bridal-education {
+    padding: 0 20px 40px;
+  }
+
+  .bridal-education__panel {
+    margin-top: -82px;
+    padding: 38px 26px 42px;
+  }
+}
