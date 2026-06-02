@@ -51,7 +51,7 @@ const defaults = {
           Other Emirates &amp; Cities: 650 AED per hour<br />
           Minimum booking: 3 hours
         </p>
-        <a href="/contact-us" class="wardrobe-analysis__button">BOOK YOUR CONSULTATION NOW</a>`,
+        <a href="/booking" class="wardrobe-analysis__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
     {
       title: "STYLING & OUTFIT CURATION",

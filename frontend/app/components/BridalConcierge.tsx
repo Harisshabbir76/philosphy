@@ -12,7 +12,7 @@ const defaults = {
     <p>Enhance your bridal experience with our Bridal Concierge Add-On, a personalized support service designed to ensure every detail comes together flawlessly on your special day.</p>
     <p>On the wedding day, we are there to oversee the final touches, ensure everything looks polished and cohesive, assist with styling adjustments, and provide seamless support throughout the occasion so you can feel confident, relaxed, and fully present in every moment.</p>
     <p class="bridal-concierge__price">Price: 1200 AED</p>
-    <a href="/contact-us" class="bridal-concierge__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="bridal-concierge__button">BOOK YOUR CONSULTATION NOW</a>`,
 };
 
 export default function BridalConcierge({ editable = false }: { editable?: boolean }) {

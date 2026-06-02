@@ -39,7 +39,7 @@ const defaults = {
     <p>(Provides a general indication, but is less detailed than a full color season analysis)</p>
     <p>The goal of the session is to simplify shopping, help you choose pieces that genuinely suit you, and create ready-to-wear looks tailored to your lifestyle.</p>
     <p class="ps-in-person__price">PRICE:<br />1200 AED per shopping day<br />(Full day session from 10:00 AM - 7:00 PM)</p>
-    <a href="/contact-us" class="ps-in-person__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="ps-in-person__button">BOOK YOUR CONSULTATION NOW</a>`,
 };
 
 export default function PersonalShoppingInPerson({ editable = false }: { editable?: boolean }) {

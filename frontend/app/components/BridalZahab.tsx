@@ -12,7 +12,7 @@ const defaults = {
     <p>Your elegance is built on structure, not guesswork.</p>
     <p>A professional personal shopping experience designed for brides who want to build their complete trousseau in a refined, intentional, and fully structured way. The service focuses on selecting every piece with purpose, ensuring the entire zahab feels cohesive, elegant, and aligned with the bride&apos;s personal style and lifestyle.</p>
     <p>Before any shopping begins, the experience is built around understanding the bride through seasonal color analysis, body shape analysis, and facial feature assessment to ensure every styling decision feels harmonious and flattering.</p>
-    <a href="/contact-us" class="bridal-zahab__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="bridal-zahab__button">BOOK YOUR CONSULTATION NOW</a>`,
   packageItems: [
     "SERVICE PROCESS",
     "BASIC FOUNDATION PACKAGE",

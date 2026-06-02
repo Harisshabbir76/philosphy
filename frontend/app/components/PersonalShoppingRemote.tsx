@@ -30,7 +30,7 @@ const defaults = {
         <li>6-10 Looks: 3850 AED</li>
       </ul>
     </div>
-    <a href="/contact-us" class="ps-remote__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="ps-remote__button">BOOK YOUR CONSULTATION NOW</a>`,
 };
 
 export default function PersonalShoppingRemote({ editable = false }: { editable?: boolean }) {

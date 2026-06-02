@@ -40,7 +40,7 @@ const defaults = {
     <p>During the shopping sessions, the bride is guided to apply everything she has learned in real time while selecting her wedding dress.</p>
     <p>The goal of this service is to fully empower the bride to understand her personal style and build a wardrobe that reflects her identity in every detail of her life.</p>
     <p class="bridal-education__price">Price:<br />3500 AED</p>
-    <a href="/contact-us" class="bridal-education__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="bridal-education__button">BOOK YOUR CONSULTATION NOW</a>`,
 };
 
 export default function BridalEducation({ editable = false }: { editable?: boolean }) {

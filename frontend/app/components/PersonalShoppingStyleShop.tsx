@@ -12,7 +12,7 @@ const defaults = {
     <p>Your elegance is built on structure, not guesswork.</p>
     <p>A professional personal shopping experience designed for brides who want to build their trousseau in a refined, intentional, and fully structured way. The service begins with a complete understanding of the bride&apos;s personal image through seasonal color analysis, body shape analysis, and facial feature assessment before any shopping takes place.</p>
     <p>The goal is to carefully curate every piece in a cohesive way that reflects the bride&apos;s personal style, lifestyle, and overall aesthetic direction.</p>
-    <a href="/contact-us" class="ps-style-shop__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="ps-style-shop__button">BOOK YOUR CONSULTATION NOW</a>`,
   packageItems: [
     "SERVICE PROCESS",
     "BASIC FOUNDATION PACKAGE",

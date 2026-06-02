@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import "../contact-us/contact-us.css"; // Reuse styling for simplicity
+import { API_BASE_URL } from "../lib/api";
+
+
+
 
 const servicesList = [
   "Color Analysis",
@@ -39,7 +42,8 @@ export default function BookingPage() {
         headers["Authorization"] = `Bearer ${user.token}`;
       }
 
-      const res = await fetch("http://localhost:5000/api/booking/create-checkout-session", {
+      const res = await fetch(`${API_BASE_URL}/api/booking/create-checkout-session`, {
+
         method: "POST",
         headers,
         body: JSON.stringify({ fullName, email, phone, service, date, time }),
@@ -52,8 +56,9 @@ export default function BookingPage() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to create session";
+      setError(message);
       setLoading(false);
     }
   };

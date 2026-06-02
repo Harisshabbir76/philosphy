@@ -53,7 +53,7 @@ const defaults = {
     </ul>
     <p>Additional styling services are also available for post-wedding events, after-party looks, or up to 3 additional curated outfits if completed ahead of schedule.</p>
     <p class="bridal-complete__price">Price<br />4000 AED</p>
-    <a href="/contact-us" class="bridal-complete__button">BOOK YOUR CONSULTATION NOW</a>`,
+    <a href="/booking" class="bridal-complete__button">BOOK YOUR CONSULTATION NOW</a>`,
 };
 
 export default function BridalCompleteLook({ editable = false }: { editable?: boolean }) {

@@ -44,7 +44,7 @@ export default function ServicesSection({ editable = false }: { editable?: boole
         <div className="services-section__content">
           <EditableText as="h2" isEditing={isEditing} value={String(editorContent.title)} onChange={(title) => updateContent({ title })} />
           <EditableText as="p" isEditing={isEditing} value={String(editorContent.text)} onChange={(text) => updateContent({ text })} />
-          <Link href="/contact-us" className="philosophy-button philosophy-button--light">
+          <Link href="/booking" className="philosophy-button philosophy-button--light">
             <EditableText isEditing={isEditing} value={String(editorContent.buttonText)} onChange={(buttonText) => updateContent({ buttonText })} />
           </Link>
 

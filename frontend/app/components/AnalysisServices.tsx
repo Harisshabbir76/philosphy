@@ -50,7 +50,8 @@ const defaults = {
         </ul>
 
         <p class="analysis-service__price">PRICE: 1880 AED</p>
-        <a href="/contact-us" class="analysis-service__button">BOOK YOUR CONSULTATION NOW</a>`,
+        <Link href='/booking' class="analysis-service__button">BOOK YOUR CONSULTATION NOW</Link>
+      `,
     },
     {
       title: "BODY, FACE & STYLE ANALYSIS",

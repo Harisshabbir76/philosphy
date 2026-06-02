@@ -5,6 +5,7 @@ import newspaper from "../Images/newspaper.webp";
 import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
 import { usePageComponentContent } from "../lib/pageContent";
 import "../Styles/IntroApproach.css";
+import Link from "next/link";
 
 const defaults = {
   womanImageUrl: "",
@@ -37,9 +38,9 @@ export default function IntroApproach({ editable = false }: { editable?: boolean
         <div className="intro-approach__copy">
           <EditableText as="h2" isEditing={isEditing} value={String(editorContent.title)} onChange={(title) => updateContent({ title })} />
           <EditableText as="p" isEditing={isEditing} value={String(editorContent.text)} onChange={(text) => updateContent({ text })} />
-          <button className="button">
+          <Link href='/booking'><button className="button">
             <EditableText isEditing={isEditing} value={String(editorContent.buttonText)} onChange={(buttonText) => updateContent({ buttonText })} />
-          </button>
+          </button></Link>
           
         </div>
         <div className="intro-approach__images">
