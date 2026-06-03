@@ -143,7 +143,7 @@ export default function LegalPage() {
         <h1 className="legal-page__title">OUR POLICIES</h1>
         <div className="legal-page__content">
           {policies.map((policy, index) => (
-            <details className="legal-accordion" name="legal-policies" open={index === 0} key={policy.title}>
+            <details className="legal-accordion" name="legal-policies"  key={policy.title}>
               <summary>
                 <span>{policy.title}</span>
                 <span className="legal-accordion__mark" aria-hidden="true" />
