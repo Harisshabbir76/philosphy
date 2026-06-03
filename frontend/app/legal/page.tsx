@@ -5,7 +5,7 @@ const policies = [
     title: "SHIPPING & DELIVERY",
     html: (
       <>
-        <p>AT HEIRLOOM BY SK, WE ENSURE THAT EVERY ORDER IS HANDLED WITH CARE AND DELIVERED TO YOU SAFELY.</p>
+        <p>AT PHILOSOPHY, WE ENSURE THAT EVERY ORDER IS HANDLED WITH CARE AND DELIVERED TO YOU SAFELY.</p>
         
         <h3>PROCESSING TIME</h3>
         <p>ALL ORDERS ARE PROCESSED WITHIN 1-3 BUSINESS DAYS (EXCLUDING WEEKENDS AND PUBLIC HOLIDAYS). ONCE YOUR ORDER IS CONFIRMED, YOU WILL RECEIVE A CONFIRMATION EMAIL.</p>
@@ -33,7 +33,7 @@ const policies = [
     title: "RETURNS & EXCHANGES POLICY",
     html: (
       <>
-        <p>At Heirloom, we take pride in the quality and craftsmanship of our jewelry boxes and accessories. Please read our policy carefully before making a purchase.</p>
+        <p>At philosophy, we take pride in the quality and craftsmanship of our jewelry boxes and accessories. Please read our policy carefully before making a purchase.</p>
         
         <h3>Returns</h3>
         <p>We accept returns within 7 days of receiving your order, provided that:</p>
@@ -42,7 +42,7 @@ const policies = [
           <li>The original packaging is intact</li>
           <li>Proof of purchase is provided</li>
         </ul>
-        <p>To request a return, please contact us at heirloomskev@gmail.com with your order number and reason for return.</p>
+        <p>To request a return, please contact us at philosophy@gmail.com with your order number and reason for return.</p>
         
         <h3>Exchanges</h3>
         <p>Exchanges are accepted for damaged or defective items only. If your item arrives damaged, please contact us within 48 hours of delivery with clear photos of the product and packaging.</p>
@@ -67,7 +67,7 @@ const policies = [
     title: "PRIVACY POLICY",
     html: (
       <>
-        <p>At Heirloom, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.</p>
+        <p>At philosophy, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.</p>
         
         <h3>Information We Collect</h3>
         <p>We may collect the following information when you use our website:</p>
@@ -98,7 +98,7 @@ const policies = [
         <p>We may share necessary information with trusted third-party partners such as delivery providers and payment processors strictly for order fulfillment purposes.</p>
         
         <h3>Your Rights</h3>
-        <p>You may request access, correction, or deletion of your personal information at any time by contacting us at heirloomskev@gmail.com.</p>
+        <p>You may request access, correction, or deletion of your personal information at any time by contacting us at philosophyskev@gmail.com.</p>
       </>
     )
   },
@@ -124,10 +124,10 @@ const policies = [
         <p>Delivery timelines are estimates and may vary due to external factors. We are not responsible for delays caused by courier services or customs clearance.</p>
         
         <h3>Intellectual Property</h3>
-        <p>All content on this website including logos, images, designs, and text is the property of Heirloom and may not be copied or used without written permission.</p>
+        <p>All content on this website including logos, images, designs, and text is the property of philosophy and may not be copied or used without written permission.</p>
         
         <h3>Limitation of Liability</h3>
-        <p>Heirloom shall not be held liable for any indirect, incidental, or consequential damages arising from the use of our website or products.</p>
+        <p>philosophy shall not be held liable for any indirect, incidental, or consequential damages arising from the use of our website or products.</p>
         
         <h3>Governing Law</h3>
         <p>These Terms & Conditions shall be governed by the laws of the United Arab Emirates.</p>
