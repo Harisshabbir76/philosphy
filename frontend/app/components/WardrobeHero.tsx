@@ -30,6 +30,7 @@ export default function WardrobeHero({ editable = false }: { editable?: boolean 
           alt=""
           fill
           sizes="100vw"
+          priority={true}
           isEditing={isEditing}
           onChange={(imageUrl) => updateContent({ imageUrl })}
         />

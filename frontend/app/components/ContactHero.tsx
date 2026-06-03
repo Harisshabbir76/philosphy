@@ -1,10 +1,21 @@
+import Image from "next/image";
+import contactBanner from "../Images/contact-banner.png";
 import ContactForm from "./ContactForm";
 import "../Styles/ContactHero.css";
 
 export default function ContactHero() {
   return (
     <section className="contact-hero">
-      <div className="contact-hero__banner">
+      {/* ✨ Container now has a hard position relative and custom layout structure */}
+      <div className="contact-hero__banner" style={{ position: "relative" }}>
+        <Image
+          src={contactBanner}
+          alt="Contact us background banner"
+          fill
+          priority={true} // ✨ Instructs the browser to preload this image instantly
+          sizes="100vw"
+          className="object-cover" // Seamlessly handles center / cover behavior safely
+        />
         <div className="contact-hero__shade" />
         <h1>CONTACT US</h1>
       </div>

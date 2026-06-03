@@ -35,6 +35,7 @@ const HeroSection: React.FC<{ editable?: boolean }> = ({ editable = false }) => 
               alt=""
               fill
               sizes="100vw"
+              priority={true}
               isEditing={isEditing}
               onChange={(imageUrl) => updateContent({ imageUrl })}
             />

@@ -6,19 +6,22 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #2f251f url("../Images/faq-hero.png") center center / cover no-repeat;
+  /* 🪓 REMOVED: background: #2f251f url("../Images/faq-hero.png") center center / cover no-repeat; */
+  background-color: #2f251f; /* Fast fallback background color */
   color: #fffdf7;
 }
 
 .faq-hero__shade {
   position: absolute;
-  inset: 70px 0 0;
+  /* ✨ Changed inset to match full bounds over the HTML image */
+  inset: 0; 
   background: rgba(32, 22, 16, 0.2);
+  z-index: 1; /* Sits over the image */
 }
 
 .faq-hero h1 {
   position: relative;
-  z-index: 1;
+  z-index: 2; /* ✨ High index layer keeps typography text on top of everything */
   margin-top: 3px;
   font-family: var(--font-freight), serif;
   font-size: 25px;
@@ -32,7 +35,7 @@
 @media (max-width: 768px) {
   .faq-hero {
     min-height: 285px;
-    background-position: center;
+    /* 🪓 REMOVED: background-position: center; -> Handled by object-cover automatically */
   }
 
   .faq-hero h1 {

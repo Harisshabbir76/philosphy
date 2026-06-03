@@ -127,13 +127,23 @@ type EditableImageProps = {
   alt: string;
   className?: string;
   fill?: boolean;
+  priority?: boolean; // ✨ Added priority typing
   isEditing: boolean;
   onChange: (value: string) => void;
   sizes?: string;
   src: string | StaticImageData;
 };
 
-export function EditableImage({ alt, className, fill, isEditing, onChange, sizes, src }: EditableImageProps) {
+export function EditableImage({ 
+  alt, 
+  className, 
+  fill, 
+  priority = false, // ✨ Default to false if not explicitly passed
+  isEditing, 
+  onChange, 
+  sizes, 
+  src 
+}: EditableImageProps) {
   const image = src;
 
   const readFile = (file: File) => {
@@ -154,6 +164,7 @@ export function EditableImage({ alt, className, fill, isEditing, onChange, sizes
         src={image}
         alt={alt}
         fill={fill}
+        priority={priority} // ✨ Crucial change: Passes priority safely down to Next.js engine
         unoptimized={typeof image === "string" && image.startsWith("data:")}
         sizes={sizes}
       />

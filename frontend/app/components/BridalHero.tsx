@@ -24,23 +24,25 @@ export default function BridalHero({ editable = false }: { editable?: boolean })
       onSave={saveContent}
     >
       {({ content: editorContent, isEditing, updateContent }) => (
-      <section className="bridal-hero" aria-label="Bridal services">
-        <EditableImage
-          src={String(editorContent.imageUrl) || bridalHero}
-          alt=""
-          fill
-          sizes="100vw"
-          isEditing={isEditing}
-          onChange={(imageUrl) => updateContent({ imageUrl })}
-        />
-        <div className="bridal-hero__shade" />
-        <EditableText
-          as="h1"
-          isEditing={isEditing}
-          value={String(editorContent.title)}
-          onChange={(title) => updateContent({ title })}
-        />
-      </section>
+        <section className="bridal-hero" aria-label="Bridal services" style={{ position: "relative" }}>
+          <EditableImage
+            src={String(editorContent.imageUrl) || bridalHero}
+            alt="Premium artisanal bridal styling session layout overview"
+            fill
+            priority={true} // ✨ Now works perfectly because the underlying component accepts it!
+            sizes="100vw"
+            isEditing={isEditing}
+            onChange={(imageUrl) => updateContent({ imageUrl })}
+            className="object-cover"
+          />
+          <div className="bridal-hero__shade" />
+          <EditableText
+            as="h1"
+            isEditing={isEditing}
+            value={String(editorContent.title)}
+            onChange={(title) => updateContent({ title })}
+          />
+        </section>
       )}
     </AdminEditableSection>
   );

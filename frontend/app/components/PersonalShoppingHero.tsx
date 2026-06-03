@@ -30,6 +30,7 @@ export default function PersonalShoppingHero({ editable = false }: { editable?: 
           alt=""
           fill
           sizes="100vw"
+          priority={true}
           isEditing={isEditing}
           onChange={(imageUrl) => updateContent({ imageUrl })}
         />
