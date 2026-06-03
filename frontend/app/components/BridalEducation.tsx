@@ -13,7 +13,7 @@ const defaults = {
     <p>Through practical guidance and styling education, brides learn how to create cohesive everyday outfits and occasion looks with ease and confidence.</p>
     <h3>Inclusions:</h3>
     <p>Personal styling files are delivered covering all aspects of the bride&apos;s lifestyle, including:</p>
-    <ul>
+    <ul class="bridal-education__bullet-list">
       <li>Complete wedding day look</li>
       <li>Travel outfits</li>
       <li>Hijab and abaya styling</li>
@@ -24,7 +24,7 @@ const defaults = {
     </ul>
     <p>Each file is thoughtfully structured to help the bride understand her personal style and apply it effortlessly in real life.</p>
     <p>The wedding styling file includes complete head-to-toe guidance, including:</p>
-    <ul>
+    <ul class="bridal-education__bullet-list">
       <li>Wedding dress</li>
       <li>Veil</li>
       <li>Shoes</li>

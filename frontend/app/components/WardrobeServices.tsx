@@ -19,21 +19,25 @@ const defaults = {
         </p>
 
         <h3>Before the session:</h3>
-        <ul><li>Scheduled home visit to your wardrobe</li></ul>
+        <ul class="wardrobe-analysis__bullet-list"><li>Scheduled home visit to your wardrobe</li></ul>
 
         <h3>During the session:</h3>
-        <ul>
+        <ul class="wardrobe-analysis__bullet-list">
           <li>Full wardrobe review and refinement process</li>
           <li>Guidance on understanding your existing cuts and styles</li>
           <li>Identification of what suits you and what does not based on:</li>
+        </ul>
+        <ul class="wardrobe-analysis__dash-list">
           <li>Cuts</li>
           <li>Colors</li>
+        </ul>
+        <ul class="wardrobe-analysis__bullet-list">
           <li>Body measurements taken</li>
           <li>Quick color test (general indication, not a full color analysis)</li>
         </ul>
 
         <h3>After &amp; within the session:</h3>
-        <ul>
+        <ul class="wardrobe-analysis__bullet-list">
           <li>Review of suitable pieces that may need alterations</li>
           <li>Suggestions on how to repair and adjust clothing for better use</li>
           <li>Creation of new outfit combinations from existing pieces</li>

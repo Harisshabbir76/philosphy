@@ -47,10 +47,18 @@
   margin-bottom: 17px;
 }
 
-.bridal-education__panel ul {
-  margin-bottom: 17px;
-  padding-left: 7px;
-  list-style-position: inside;
+.bridal-education__panel ul:not(.bridal-education__dash-list) {
+  margin: 8px 0 17px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.bridal-education__panel ul:not(.bridal-education__dash-list) li {
+  margin-bottom: 4px;
+}
+
+.bridal-education__panel ul:not(.bridal-education__dash-list) li::marker {
+  font-size: 0.75em;
 }
 
 .bridal-education__panel li {
@@ -95,4 +103,36 @@
     margin-top: -82px;
     padding: 38px 26px 42px;
   }
+}
+
+.bridal-education__bullet-list {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.bridal-education__bullet-list li {
+  margin-bottom: 4px;
+}
+
+.bridal-education__bullet-list li::marker {
+  font-size: 0.75em;
+}
+
+.bridal-education__dash-list {
+  margin: 0 0 12px 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.bridal-education__dash-list li {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.bridal-education__dash-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
 }

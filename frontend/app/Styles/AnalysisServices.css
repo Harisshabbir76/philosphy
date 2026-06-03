@@ -112,9 +112,18 @@
   color: #1F150F;
 }
 
-.analysis-service__content ul {
-  padding-left: 7px;
-  list-style-position: inside;
+.analysis-service__content ul:not(.analysis-service__dash-list) {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.analysis-service__content ul:not(.analysis-service__dash-list) li {
+  margin-bottom: 4px;
+}
+
+.analysis-service__content ul:not(.analysis-service__dash-list) li::marker {
+  font-size: 0.75em;
 }
 
 .analysis-service__price {

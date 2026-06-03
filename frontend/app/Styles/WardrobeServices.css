@@ -112,9 +112,18 @@
   color: #1F150F;
 }
 
-.wardrobe-analysis__content ul {
-  padding-left: 7px;
-  list-style-position: inside;
+.wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) li {
+  margin-bottom: 4px;
+}
+
+.wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) li::marker {
+  font-size: 0.75em;
 }
 
 .wardrobe-analysis__price {
@@ -178,4 +187,36 @@
   .wardrobe-analysis__button {
     font-size: 9px;
   }
+}
+
+.wardrobe-analysis__bullet-list {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.wardrobe-analysis__bullet-list li {
+  margin-bottom: 4px;
+}
+
+.wardrobe-analysis__bullet-list li::marker {
+  font-size: 0.75em;
+}
+
+.wardrobe-analysis__dash-list {
+  margin: 0 0 12px 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.wardrobe-analysis__dash-list li {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.wardrobe-analysis__dash-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
 }

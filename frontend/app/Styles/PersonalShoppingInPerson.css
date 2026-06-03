@@ -48,9 +48,18 @@
   line-height: 1.25;
 }
 
-.ps-in-person__copy ul {
-  padding-left: 7px;
-  list-style-position: inside;
+.ps-in-person__copy ul:not(.ps-in-person__dash-list) {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.ps-in-person__copy ul:not(.ps-in-person__dash-list) li {
+  margin-bottom: 4px;
+}
+
+.ps-in-person__copy ul:not(.ps-in-person__dash-list) li::marker {
+  font-size: 0.75em;
 }
 
 .ps-in-person__price {
@@ -118,4 +127,36 @@
     width: min(100%, 350px);
     margin: 0 auto;
   }
+}
+
+.ps-in-person__bullet-list {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.ps-in-person__bullet-list li {
+  margin-bottom: 4px;
+}
+
+.ps-in-person__bullet-list li::marker {
+  font-size: 0.75em;
+}
+
+.ps-in-person__dash-list {
+  margin: 0 0 12px 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.ps-in-person__dash-list li {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.ps-in-person__dash-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
 }

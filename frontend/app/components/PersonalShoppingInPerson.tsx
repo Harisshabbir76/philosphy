@@ -13,26 +13,34 @@ const defaults = {
   html: `
     <p>A personalized in-person shopping experience designed to make shopping more intentional, efficient, and aligned with your lifestyle. From selecting the right stores to curating complete outfits, every choice is guided by your body, personal style, and overall image goals-helping you build a wardrobe that truly works for you.</p>
     <h3>Before the session:</h3>
-    <ul>
+    <ul class="ps-in-person__bullet-list">
       <li>Appointment booked in advance</li>
       <li>Online consultation to understand:</li>
+    </ul>
+    <ul class="ps-in-person__dash-list">
       <li>Your needs</li>
       <li>Your expectations</li>
       <li>Your shopping goals</li>
+    </ul>
+    <ul class="ps-in-person__bullet-list">
       <li>Selection of suitable shopping destinations and stores</li>
     </ul>
     <h3>On the shopping day:</h3>
-    <ul>
+    <ul class="ps-in-person__bullet-list">
       <li>In-person shopping session at the mall</li>
       <li>Body measurements taken (for first-time clients)</li>
     </ul>
     <h3>During the session:</h3>
-    <ul>
+    <ul class="ps-in-person__bullet-list">
       <li>Personalized outfit selection and styling</li>
       <li>Guidance based on:</li>
+    </ul>
+    <ul class="ps-in-person__dash-list">
       <li>Body shape</li>
       <li>Measurements</li>
       <li>Personal style</li>
+    </ul>
+    <ul class="ps-in-person__bullet-list">
       <li>Color-focused shopping if your color season is already known</li>
       <li>Optional quick color test if needed</li>
     </ul>
