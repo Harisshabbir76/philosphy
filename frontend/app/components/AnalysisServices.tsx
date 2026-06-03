@@ -12,45 +12,51 @@ const defaults = {
       title: "COLOR SEASON ANALYSIS",
       html: `
         <p>
-          A personalized in-home experience designed to identify the colors that naturally
-          enhance your features. Through a guided session, we analyze how different tones
-          interact with your skin, hair, and overall presence to define your undertone and
-          color season--giving you clarity and confidence in your styling choices.
-        </p>
+  A personalized in-home experience designed to identify the colors that naturally
+  enhance your features. Through a guided session, we analyze how different tones
+  interact with your skin, hair, and overall presence to define your undertone and
+  color season--giving you clarity and confidence in your styling choices.
+</p>
 
-        <h3>Before the session:</h3>
-        <ul>
-          <li>Schedule appointment (date &amp; time agreed in advance)</li>
-          <li>Home visit (external location can be arranged if needed, venue cost covered by client)</li>
-        </ul>
+<h3>Before the session:</h3>
+<ul class="analysis-service__bullet-list">
+  <li>Schedule appointment (date &amp; time agreed in advance)</li>
+  <li>Home visit (external location can be arranged if needed, venue cost covered by client)</li>
+</ul>
 
-        <h3>During the session:</h3>
-        <ul>
-          <li>Full color analysis using professional tools (mirror, drape, lighting, color kit)</li>
-          <li>Observation of how colors interact with your natural features</li>
-          <li>Comparison of shades and their effect on your skin</li>
-          <li>Exploration of suitable hair color options</li>
-          <li>Identification of:</li>
-          <li>Undertone</li>
-          <li>Most harmonious color palette</li>
-          <li>Your color season</li>
-        </ul>
+<h3>During the session:</h3>
+<ul class="analysis-service__bullet-list">
+  <li>Full color analysis using professional tools (mirror, drape, lighting, color kit)</li>
+  <li>Observation of how colors interact with your natural features</li>
+  <li>Comparison of shades and their effect on your skin</li>
+  <li>Exploration of suitable hair color options</li>
+  <li>Identification of:</li>
+</ul>
 
-        <h3>After the session:</h3>
-        <ul>
-          <li>Personal color fan with your best shades (provided immediately)</li>
-          <li>Detailed PDF report (within 10-15 working days), including:</li>
-          <li>Understanding your color season</li>
-          <li>How to dress based on your season and contrast</li>
-          <li>Color coordination principles</li>
-          <li>Suitable fabric colors</li>
-          <li>Guidance for traditional wear (e.g. mukhawar), if relevant</li>
-          <li>Jewelry selection and color pairing</li>
-          <li>Recommended hair color options</li>
-        </ul>
+<ul class="analysis-service__dash-list">
+  <li>Undertone</li>
+  <li>Most harmonious color palette</li>
+  <li>Your color season</li>
+</ul>
 
-        <p class="analysis-service__price">PRICE: 1880 AED</p>
-        <Link href='/booking' class="analysis-service__button">BOOK YOUR CONSULTATION NOW</Link>
+<h3>After the session:</h3>
+<ul class="analysis-service__bullet-list">
+  <li>Personal color fan with your best shades (provided immediately)</li>
+  <li>Detailed PDF report (within 10-15 working days), including:</li>
+</ul>
+
+<ul class="analysis-service__dash-list">
+  <li>Understanding your color season</li>
+  <li>How to dress based on your season and contrast</li>
+  <li>Color coordination principles</li>
+  <li>Suitable fabric colors</li>
+  <li>Guidance for traditional wear (e.g. mukhawar), if relevant</li>
+  <li>Jewelry selection and color pairing</li>
+  <li>Recommended hair color options</li>
+</ul>
+
+<p class="analysis-service__price">PRICE: 1880 AED</p>
+<Link href='/booking' class="analysis-service__button">BOOK YOUR CONSULTATION NOW</Link>
       `,
     },
     {

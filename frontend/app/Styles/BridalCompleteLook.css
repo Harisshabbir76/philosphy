@@ -30,13 +30,14 @@
 .bridal-complete p,
 .bridal-complete li {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .bridal-complete__eyebrow {
   margin-bottom: 22px;
   font-weight: 100;
   line-height: 1;
+  letter-spacing: 1.5px;
 }
 
 .bridal-complete h2 {
@@ -123,7 +124,7 @@
   color: #fffdf7;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: 100;
   line-height: 1;
   text-decoration: none;

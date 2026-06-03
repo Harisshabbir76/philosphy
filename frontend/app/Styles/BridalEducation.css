@@ -19,7 +19,7 @@
 .bridal-education__panel p,
 .bridal-education__panel li {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   color: #1F150F;
 }
@@ -80,7 +80,7 @@
   color: #ffffff;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: 200;
   line-height: 1;
   text-decoration: none;

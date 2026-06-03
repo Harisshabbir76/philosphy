@@ -12,10 +12,10 @@
   background: #ffffff;
   color: #1F150F;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   line-height: 1;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
   outline: none;
 }
 
@@ -48,11 +48,11 @@
   margin-top: 13px;
   margin-bottom: 10px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   line-height: 1;
   color: #1F150F;
-  left: -175px;
+  left: -170px;
   position: relative;
 }
 
@@ -77,7 +77,7 @@
   font-size: 9px;
   font-weight: 200;
   line-height: 1;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   cursor: pointer;
 }
 

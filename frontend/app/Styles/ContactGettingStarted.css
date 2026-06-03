@@ -40,24 +40,24 @@
 }
 
 .contact-started__intro p {
-  max-width: 450px;
+  max-width: 520px;
   margin: 35px auto 31px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   line-height: 1.45;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
 }
 
 .contact-started__intro a {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   line-height: 1;
   color: #fffdf7;
   text-decoration: underline;
   text-underline-offset: 3px;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
 }
 
 .contact-started__steps {
@@ -70,11 +70,10 @@
 .contact-started__kicker {
   margin-bottom: 38px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   line-height: 1;
-  letter-spacing: 1px;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
 }
 
@@ -86,7 +85,7 @@
 
 .contact-started__card {
   width: 200px;
-  min-height: 216px;
+  min-height: 260px;
   padding: 25px 17px 20px;
   background: #fffdf7;
   color: #1F150F;
@@ -94,7 +93,7 @@
 
 .contact-started__card span {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   font-weight: 300;
 }
@@ -110,7 +109,7 @@
 .contact-started__card p {
   margin-top: 24px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   letter-spacing: 1px;
   line-height: 1.33;

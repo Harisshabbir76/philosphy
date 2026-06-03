@@ -31,10 +31,10 @@
 .story-foundation__copy p:not(.story-foundation__kicker) {
   margin-top: 30px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 100;
   line-height: 1.42;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
 }
 
 .story-foundation__image {

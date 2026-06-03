@@ -38,7 +38,7 @@
 }
 
 .getting-started__card {
-  width: 205px;
+  width: 220px;
   min-height: 250px;
   background: #fffdf7;
   color: #342922;
@@ -62,7 +62,8 @@
 .getting-started__card p {
   margin-top: 28px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
+  letter-spacing: 1px;
   font-weight: lighter;
   line-height: 1.28;
 }
@@ -108,8 +109,8 @@
   max-width: 450px;
   margin: 51px auto 43px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
-  font-weight: 200;
+  font-size: 10px;
+  font-weight: 100;
   line-height: 1.48;
   letter-spacing: 1px;
   color: #FFFCF5;

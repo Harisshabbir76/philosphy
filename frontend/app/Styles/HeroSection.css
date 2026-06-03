@@ -50,7 +50,7 @@
   max-width: 780px;
   margin: 0 auto;
   font-family: var(--font-freight), serif;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 100;
   line-height: 1;
   color: #fffdf7;
@@ -60,7 +60,7 @@
 .hero-script {
   margin-top: 24px;
   font-family: var(--font-pinyon), cursive;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1;
   color: #fffdf7;
@@ -70,7 +70,7 @@
   max-width: 460px;
   margin: 74px auto 0;
   font-family: var(--font-sf-pro-normal), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 200;
   line-height: 1.4;
   letter-spacing: 0.5px;

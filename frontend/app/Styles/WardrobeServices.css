@@ -44,7 +44,7 @@
 
 .wardrobe-analysis__item summary span:first-child {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 100;
   line-height: 1;
   letter-spacing: 1px;
@@ -90,7 +90,7 @@
 .wardrobe-analysis__content p,
 .wardrobe-analysis__content li {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   font-weight: 100;
   line-height: 1.35;
@@ -105,7 +105,7 @@
   margin-top: 15px;
   margin-bottom: 3px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   font-weight: 700;
   line-height: 1.25;
@@ -133,7 +133,7 @@
   color: #FFFFFF;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: 200;
   line-height: 1;
   text-decoration: none;

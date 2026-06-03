@@ -44,7 +44,7 @@
 
 .analysis-service summary span:first-child {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 100;
   line-height: 1;
   letter-spacing: 1px;
@@ -90,7 +90,7 @@
 .analysis-service__content p,
 .analysis-service__content li {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   font-weight: 100;
   line-height: 1.35;
@@ -105,7 +105,7 @@
   margin-top: 15px;
   margin-bottom: 3px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
   font-weight: 700;
   line-height: 1.25;
@@ -129,12 +129,12 @@
   min-width: 120px;
   height: 16px;
   margin-top: 12px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background: #1F150F;
   color: #FFFFFF;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
-  letter-spacing: 1px;
+  letter-spacing: 1.3px;
   font-weight: 200;
   line-height: 1;
   text-decoration: none;
@@ -179,4 +179,37 @@
   .analysis-service__button {
     font-size: 9px;
   }
+}
+
+
+.analysis-service__bullet-list {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.analysis-service__bullet-list li {
+  margin-bottom: 4px;
+}
+
+.analysis-service__bullet-list li::marker {
+  font-size: 0.75em;
+}
+
+.analysis-service__dash-list {
+  margin: 0 0 12px 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.analysis-service__dash-list li {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.analysis-service__dash-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
 }
