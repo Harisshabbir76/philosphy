@@ -45,7 +45,6 @@ export default function WhyChooseUs({ editable = false }: { editable?: boolean }
           alt="Elegant interior with seated woman"
           fill
           sizes="(max-width: 480px) 90vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 70vw"
-          quality={85}
           isEditing={isEditing}
           onChange={(imageUrl) => updateContent({ imageUrl })}
         />
