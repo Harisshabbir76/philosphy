@@ -44,7 +44,8 @@ export default function WhyChooseUs({ editable = false }: { editable?: boolean }
           src={String(editorContent.imageUrl) || bannerSmall}
           alt="Elegant interior with seated woman"
           fill
-          sizes="100vw"
+          sizes="(max-width: 480px) 90vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 70vw"
+          quality={85}
           isEditing={isEditing}
           onChange={(imageUrl) => updateContent({ imageUrl })}
         />

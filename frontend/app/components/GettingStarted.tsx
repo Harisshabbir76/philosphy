@@ -80,7 +80,7 @@ export default function GettingStarted({ editable = false }: { editable?: boolea
             src={String(editorContent.imageUrl) || store}
             alt="Fashion atelier interior"
             fill
-            sizes="520px"
+            sizes="(max-width: 760px) 100vw, 520px"
             isEditing={isEditing}
             onChange={(imageUrl) => updateContent({ imageUrl })}
           />

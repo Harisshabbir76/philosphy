@@ -62,7 +62,7 @@ export default function ServicesSection({ editable = false }: { editable?: boole
             src={String(editorContent.imageUrl) || servicesWoman}
             alt="Woman overlooking a lake"
             fill
-            sizes="430px"
+            sizes="(max-width: 760px) 100vw, (max-width: 1024px) 360px, 430px"
             isEditing={isEditing}
             onChange={(imageUrl) => updateContent({ imageUrl })}
           />
@@ -73,4 +73,4 @@ export default function ServicesSection({ editable = false }: { editable?: boole
       }}
     </AdminEditableSection>
   );
-}
+} 

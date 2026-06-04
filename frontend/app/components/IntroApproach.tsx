@@ -49,7 +49,7 @@ export default function IntroApproach({ editable = false }: { editable?: boolean
               src={String(editorContent.womanImageUrl) || woman}
               alt="Woman walking through Paris"
               fill
-              sizes="180px"
+              sizes="(max-width: 760px) 35vw, 180px"
               isEditing={isEditing}
               onChange={(womanImageUrl) => updateContent({ womanImageUrl })}
             />
@@ -59,7 +59,7 @@ export default function IntroApproach({ editable = false }: { editable?: boolean
               src={String(editorContent.newspaperImageUrl) || newspaper}
               alt="Fashion books on a wooden table"
               fill
-              sizes="260px"
+              sizes="(max-width: 760px) 44vw, 250px"
               isEditing={isEditing}
               onChange={(newspaperImageUrl) => updateContent({ newspaperImageUrl })}
             />

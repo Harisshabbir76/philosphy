@@ -191,7 +191,7 @@
   }
   
   .hero-content {
-    margin-top: 330px;
+    margin-top: 380px;
     padding: 0 28px;
   }
   
@@ -226,7 +226,7 @@
   }
   
   .hero-content {
-    margin-top: 340px;
+    margin-top: 390px;
     padding: 0 24px;
   }
   
@@ -263,7 +263,7 @@
   }
   
   .hero-content {
-    margin-top: 340px;
+    margin-top: 380px;
     padding: 0 20px;
   }
   
@@ -300,7 +300,7 @@
   }
   
   .hero-content {
-    margin-top: 330px;
+    margin-top: 220px;
     padding: 0 16px;
   }
   
@@ -338,7 +338,7 @@
   }
   
   .hero-content {
-    margin-top: 340px;
+    margin-top: 360px;
     padding: 0 12px;
   }
   
@@ -370,9 +370,9 @@
 }
 
 /* Height-based adjustments for better vertical fit */
-@media (max-height: 700px) {
+@media (max-height: 700px) and (min-width: 375px) {
   .hero-content {
-    margin-top: 100px;
+    margin-top: 180px;
   }
   
   .hero-paragraph {
@@ -384,9 +384,9 @@
   }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 600px) and (min-width: 375px) {
   .hero-content {
-    margin-top: 80px;
+    margin-top: 120px;
   }
   
   .hero-heading {

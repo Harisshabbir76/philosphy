@@ -11,17 +11,16 @@
   padding: 0 24px;
 }
 
+/* Heading styles - maintain hierarchy */
 .why-choose__text h2 {
   font-family: var(--font-freight), serif;
-  font-size: 25px;
   color: #1F150F;
   font-weight: 300;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .why-choose__text h3 {
   font-family: var(--font-freight), serif;
-  font-size: 25px;
   font-weight: 300;
   color: #1F150F;
   line-height: 1;
@@ -29,7 +28,6 @@
 
 .why-choose__text > p {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 12px;
   font-weight: lighter;
   color: #1F150F;
   letter-spacing: 1px;
@@ -40,15 +38,12 @@
   font-family: var(--font-sf-pro), sans-serif;
   max-width: 680px;
   text-align: center;
-  font-size: 10px;
   font-weight: lighter;
   color: #1F150F;
   letter-spacing: 1.6px;
   margin-top: 30px;
   line-height: 1.35;
 }
-
- 
 
 .why-choose__text h2 + p {
   margin-top: 28px;
@@ -74,30 +69,12 @@
   margin-top: -32px;
 }
 
+/* Improve image quality */
 .why-choose__image img {
   object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
-
-@media (max-width: 760px) {
-  .why-choose__image {
-    width: calc(100% - 32px);
-    height: 220px;
-  }
-}
-
-@media (max-width: 520px) {
-  .why-choose__text h2,
-  .why-choose__text h3 {
-    font-size: 30px;
-  }
-
-  .why-choose__text > p {
-    font-size: 13px;
-  }
-}
-
-
-/* Add this to your existing CSS file */
 
 .why-choose__divider {
   width: 100vw;
@@ -110,15 +87,399 @@
   transform: translateX(-50%);
 }
 
-/* Optional: For better responsive spacing */
-@media (max-width: 760px) {
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Large Desktop (1400px and above) */
+@media (min-width: 1400px) {
+  .why-choose {
+    padding: 80px 0 50px;
+  }
+  
+  .why-choose__text {
+    max-width: 900px;
+    margin-bottom: 70px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 36px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 14px;
+    margin-top: 32px;
+    letter-spacing: 1.2px;
+  }
+  
+  .why-choose__mark {
+    width: 65px;
+    margin: 55px auto 48px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 32px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 12px;
+    max-width: 780px;
+    margin-top: 35px;
+    letter-spacing: 1.8px;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 100px);
+    height: 380px;
+    margin-top: -40px;
+  }
+  
+  .why-choose__divider {
+    margin: 40px 0 0;
+  }
+}
+
+/* Standard Desktop (1024px - 1399px) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .why-choose__text h2 {
+    font-size: 30px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 12px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 28px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 10px;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 80px);
+  }
+}
+
+/* Small Desktop / Large Tablet (900px - 1023px) */
+@media (min-width: 900px) and (max-width: 1023px) {
+  .why-choose {
+    padding: 60px 0 40px;
+  }
+  
+  .why-choose__text {
+    max-width: 700px;
+    margin-bottom: 50px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 28px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 11px;
+    margin-top: 26px;
+  }
+  
+  .why-choose__mark {
+    width: 50px;
+    margin: 45px auto 40px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 26px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 9.5px;
+    margin-top: 28px;
+    letter-spacing: 1.5px;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 60px);
+    height: 290px;
+  }
+  
+  .why-choose__divider {
+    margin: 30px 0 0;
+  }
+}
+
+/* Tablet (600px - 899px) */
+@media (min-width: 600px) and (max-width: 899px) {
+  .why-choose {
+    padding: 55px 0 35px;
+  }
+  
+  .why-choose__text {
+    max-width: 650px;
+    margin-bottom: 48px;
+    padding: 0 20px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 26px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 11px;
+    margin-top: 24px;
+  }
+  
+  .why-choose__mark {
+    width: 50px;
+    margin: 42px auto 38px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 24px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 9px;
+    margin-top: 26px;
+    letter-spacing: 1.4px;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 50px);
+    height: 260px;
+  }
+  
+  .why-choose__divider {
+    margin: 30px 0 0;
+  }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+  .why-choose {
+    padding: 48px 0 32px;
+  }
+  
+  .why-choose__text {
+    max-width: 100%;
+    margin-bottom: 45px;
+    padding: 0 20px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 24px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 10px;
+    margin-top: 22px;
+    letter-spacing: 0.9px;
+  }
+  
+  .why-choose__mark {
+    width: 46px;
+    margin: 38px auto 35px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 22px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 8.5px;
+    margin-top: 24px;
+    letter-spacing: 1.3px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 40px);
+    height: 230px;
+    margin-top: -25px;
+  }
+  
   .why-choose__divider {
     margin: 28px 0 0;
   }
 }
 
-@media (max-width: 520px) {
+/* Mobile Portrait (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  .why-choose {
+    padding: 42px 0 28px;
+  }
+  
+  .why-choose__text {
+    margin-bottom: 40px;
+    padding: 0 16px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 22px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 9px;
+    margin-top: 20px;
+    letter-spacing: 0.8px;
+  }
+  
+  .why-choose__mark {
+    width: 42px;
+    margin: 34px auto 32px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 20px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 8px;
+    margin-top: 22px;
+    letter-spacing: 1.2px;
+    max-width: 95%;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 32px);
+    height: 200px;
+    margin-top: -20px;
+  }
+  
+  .why-choose__divider {
+    margin: 26px 0 0;
+  }
+}
+
+/* Small Mobile (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+  .why-choose {
+    padding: 38px 0 25px;
+  }
+  
+  .why-choose__text {
+    margin-bottom: 38px;
+    padding: 0 14px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 20px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 8.5px;
+    margin-top: 18px;
+    letter-spacing: 0.7px;
+  }
+  
+  .why-choose__mark {
+    width: 40px;
+    margin: 30px auto 28px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 18px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 7.5px;
+    margin-top: 20px;
+    letter-spacing: 1.1px;
+    max-width: 100%;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 28px);
+    height: 180px;
+    margin-top: -18px;
+  }
+  
   .why-choose__divider {
     margin: 24px 0 0;
   }
+}
+
+/* Extra Small (below 320px) */
+@media (max-width: 319px) {
+  .why-choose {
+    padding: 34px 0 22px;
+  }
+  
+  .why-choose__text {
+    margin-bottom: 35px;
+    padding: 0 12px;
+  }
+  
+  .why-choose__text h2 {
+    font-size: 18px;
+  }
+  
+  .why-choose__text > p {
+    font-size: 8px;
+    margin-top: 16px;
+    letter-spacing: 0.6px;
+  }
+  
+  .why-choose__mark {
+    width: 36px;
+    margin: 28px auto 25px;
+  }
+  
+  .why-choose__text h3 {
+    font-size: 17px;
+  }
+  
+  .why-choose__text h4 {
+    font-size: 7px;
+    margin-top: 18px;
+    letter-spacing: 1px;
+  }
+  
+  .why-choose__image {
+    width: calc(100% - 24px);
+    height: 160px;
+    margin-top: -15px;
+  }
+  
+  .why-choose__divider {
+    margin: 22px 0 0;
+  }
+}
+
+/* Height-based adjustments for better vertical fit */
+@media (max-height: 700px) {
+  .why-choose {
+    padding: 45px 0 25px;
+  }
+  
+  .why-choose__mark {
+    margin: 30px auto 28px;
+  }
+  
+  .why-choose__text h4 {
+    margin-top: 20px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .why-choose__mark {
+    opacity: 0.58;
+  }
+}
+
+/* High DPI / Retina displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .why-choose__image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Smooth transitions */
+.why-choose__text h2,
+.why-choose__text h3,
+.why-choose__text > p,
+.why-choose__text h4,
+.why-choose__mark {
+  transition: all 0.2s ease;
 }
