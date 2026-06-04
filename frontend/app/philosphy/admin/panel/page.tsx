@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { FaEye, FaWhatsapp, FaTimes } from "react-icons/fa";
 
 type Booking = {
   _id: string;
@@ -27,10 +28,35 @@ const formatDate = (value?: string) => {
   }).format(new Date(value));
 };
 
+const formatTime = (time24: string) => {
+  if (!time24) return "";
+  const [hourStr, minute] = time24.split(":");
+  let hour = parseInt(hourStr, 10);
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12 || 12;
+  return `${hour}:${minute} ${ampm}`;
+};
+
 export default function AdminPanelPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+
+  const handleWhatsApp = (booking: Booking) => {
+    const message = `Hello ${booking.fullName}, this is a message from Philosophy.\n\nWe are reaching out to confirm your booking for ${booking.service} on ${formatDate(booking.date)} at ${formatTime(booking.time)}.\n\nThank you for choosing us!`;
+    let cleanPhone = booking.phone.replace(/[^0-9+]/g, '');
+    
+    if (cleanPhone.startsWith('0')) {
+      cleanPhone = '92' + cleanPhone.substring(1);
+    } else if (!cleanPhone.startsWith('+') && !cleanPhone.startsWith('92')) {
+      cleanPhone = '92' + cleanPhone;
+    }
+    cleanPhone = cleanPhone.replace('+', '');
+
+    const url = `https://api.whatsapp.com/send/?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   useEffect(() => {
     const loadBookings = async () => {
@@ -87,7 +113,6 @@ export default function AdminPanelPage() {
           </div>
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
             <Stat label="Total" value={bookings.length} />
-            <Stat label="Paid" value={paidBookings} />
           </div>
         </header>
 
@@ -99,7 +124,7 @@ export default function AdminPanelPage() {
             <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "900px" }}>
               <thead>
                 <tr style={{ background: "#350008", color: "#fffdf7", textAlign: "left" }}>
-                  {["Client", "Email", "Phone", "Service", "Date", "Time", "Payment"].map((heading) => (
+                  {["Client", "Email", "Phone", "Service", "Date", "Time", "Actions"].map((heading) => (
                     <th key={heading} style={{ padding: "14px", fontSize: "0.78rem", letterSpacing: "0.08em" }}>
                       {heading}
                     </th>
@@ -121,13 +146,58 @@ export default function AdminPanelPage() {
                       <td style={{ padding: "14px" }}>{booking.phone}</td>
                       <td style={{ padding: "14px" }}>{booking.service}</td>
                       <td style={{ padding: "14px" }}>{formatDate(booking.date)}</td>
-                      <td style={{ padding: "14px" }}>{booking.time}</td>
-                      <td style={{ padding: "14px", textTransform: "capitalize" }}>{booking.paymentStatus}</td>
+                      <td style={{ padding: "14px" }}>{formatTime(booking.time)}</td>
+                      <td style={{ padding: "14px" }}>
+                        <button onClick={() => setSelectedBooking(booking)} style={{ background: "transparent", border: "none", cursor: "pointer", color: "#350008" }} title="View Details">
+                          <FaEye size={20} />
+                        </button>
+                      </td>
                     </tr>
                   ))
                 )}
               </tbody>
             </table>
+          </div>
+        )}
+
+        {selectedBooking && (
+          <div className="admin-modal-overlay">
+            <div className="admin-modal-content">
+              <button onClick={() => setSelectedBooking(null)} className="admin-modal-close">
+                <FaTimes />
+              </button>
+              
+              <p className="admin-modal-subtitle">Reservation Details</p>
+              <h2 className="admin-modal-title">{selectedBooking.fullName}</h2>
+              
+              <div className="admin-modal-details">
+                <div className="admin-modal-row">
+                  <span className="admin-modal-label">Email</span>
+                  <span className="admin-modal-value">{selectedBooking.email}</span>
+                </div>
+                <div className="admin-modal-row">
+                  <span className="admin-modal-label">Phone</span>
+                  <span className="admin-modal-value">{selectedBooking.phone}</span>
+                </div>
+                <div className="admin-modal-row">
+                  <span className="admin-modal-label">Service</span>
+                  <span className="admin-modal-value">{selectedBooking.service}</span>
+                </div>
+                <div className="admin-modal-row">
+                  <span className="admin-modal-label">Date</span>
+                  <span className="admin-modal-value">{formatDate(selectedBooking.date)}</span>
+                </div>
+                <div className="admin-modal-row">
+                  <span className="admin-modal-label">Time</span>
+                  <span className="admin-modal-value">{formatTime(selectedBooking.time)}</span>
+                </div>
+              </div>
+
+              <button onClick={() => handleWhatsApp(selectedBooking)} className="admin-modal-whatsapp-btn">
+                <FaWhatsapp size={20} className="admin-modal-whatsapp-icon" /> 
+                Confirm via WhatsApp
+              </button>
+            </div>
           </div>
         )}
       </section>

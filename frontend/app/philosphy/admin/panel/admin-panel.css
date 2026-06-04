@@ -101,3 +101,126 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Booking Details Modal */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(31, 21, 15, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.admin-modal-content {
+  background: var(--color-ivory, #fffdf7);
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  border: 1px solid var(--color-gold, #b8975a);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.admin-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--color-deep, #350008);
+  transition: opacity 0.3s;
+}
+
+.admin-modal-close:hover {
+  opacity: 0.7;
+}
+
+.admin-modal-subtitle {
+  color: var(--color-gold, #b8975a);
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 5px;
+}
+
+.admin-modal-title {
+  font-family: var(--font-freight), serif;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: var(--color-deep, #350008);
+  font-weight: 200;
+}
+
+.admin-modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+.admin-modal-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 150px;
+  align-items: baseline;
+  border-bottom: 1px solid #eadfd6;
+  padding-bottom: 12px;
+}
+
+.admin-modal-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.admin-modal-label {
+  color: #888;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.admin-modal-value {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 400;
+  color: var(--color-deep, #350008);
+}
+
+.admin-modal-whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--color-deep, #350008);
+  color: var(--color-ivory, #fffdf7);
+  border: none;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.admin-modal-whatsapp-btn:hover {
+  opacity: 0.9;
+}
+
+.admin-modal-whatsapp-icon {
+  color: #25D366;
+}

@@ -62,9 +62,28 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right Side - Nav Links (desktop) or Hamburger (mobile) */}
-          <div className="nav-right">
-            {isMobile ? (
+          {/* Right Side - Desktop Navigation */}
+          {!isMobile && (
+            <div className="nav-right">
+              <div className="nav-links-right">
+                {navLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="nav-tab">
+                    {link.label}
+                  </Link>
+                ))}
+                <Link href="/booking" className="nav-tab nav-tab--book">
+                  Book Now
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Mobile Right Side - Book Now Button + Hamburger */}
+          {isMobile && (
+            <div className="mobile-actions">
+              <Link href="/booking" className="mobile-book-btn">
+                Book Now
+              </Link>
               <button
                 className="hamburger-btn"
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -86,23 +105,12 @@ export default function Navbar() {
                   <line x1="3" y1="18" x2="21" y2="18" />
                 </svg>
               </button>
-            ) : (
-              <div className="nav-links-right">
-                {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="nav-tab">
-                    {link.label}
-                  </Link>
-                ))}
-                <Link href="/booking" className="nav-tab nav-tab--book">
-                  Book Now
-                </Link>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </nav>
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Sidebar - Opens from Right */}
       <div
         className={`mobile-sidebar ${isMobileMenuOpen ? "mobile-sidebar--open" : ""}`}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -143,13 +151,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/booking"
-              className="mobile-sidebar__link"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Book Now
-            </Link>
+            {/* Book Now is intentionally NOT included here - it's in the header */}
           </div>
         </div>
       </div>

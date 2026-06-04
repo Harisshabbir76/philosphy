@@ -4,3 +4,94 @@
   width: 100%;
 }
 
+.booking-success-wrapper {
+  min-height: 80vh;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ivory, #fffdf7);
+}
+
+.booking-success-card {
+  max-width: 500px;
+  width: 100%;
+  padding: 50px 40px;
+  background-color: var(--color-bg, #ffffff);
+  border: 1px solid #eadfd6;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(53, 0, 8, 0.05);
+}
+
+.booking-success-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-family: var(--font-freight), serif;
+  color: var(--color-deep, #350008);
+  font-weight: 200;
+}
+
+.booking-success-subtitle {
+  margin-bottom: 30px;
+  color: var(--color-gold, #b8975a);
+  font-size: 0.8rem;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+}
+
+.booking-success-details {
+  text-align: left;
+  padding: 30px;
+  border-top: 1px solid #eadfd6;
+  border-bottom: 1px solid #eadfd6;
+  margin-bottom: 30px;
+}
+
+.booking-detail-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: baseline;
+  gap: 70px;
+  margin-bottom: 15px;
+}
+
+.booking-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.booking-detail-label {
+  font-size: 0.7rem;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #888;
+}
+
+.booking-detail-value {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 400;
+  color: var(--color-deep, #350008);
+  text-align: left;
+}
+
+.booking-success-btn {
+  padding: 16px 40px;
+  background-color: var(--color-deep, #350008);
+  color: var(--color-ivory, #fffdf7);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  width: 100%;
+  transition: opacity 0.3s;
+}
+
+.booking-success-btn:hover {
+  opacity: 0.9;
+}

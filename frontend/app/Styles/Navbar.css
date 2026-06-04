@@ -11,7 +11,6 @@
   color: #2f251f;
 }
 
-
 .navbar-container {
   width: 100%;
   max-width: 1450px;
@@ -65,6 +64,26 @@
   text-underline-offset: 3px;
 }
 
+/* Mobile Actions Container - Book Now button + Hamburger */
+.mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobile-book-btn {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 11px;
+  font-weight: 150;
+  line-height: 1;
+  color: #2f251f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
 .hamburger-btn {
   display: flex;
   align-items: center;
@@ -75,8 +94,10 @@
   background: transparent;
   color: #2f251f;
   cursor: pointer;
+  padding: 0;
 }
 
+/* Mobile Sidebar - Right Side Drawer */
 .mobile-sidebar {
   position: fixed;
   inset: 0;
@@ -95,12 +116,12 @@
 .mobile-sidebar__content {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: min(310px, 84vw);
   height: 100%;
   padding: 24px;
   background: #fffdf7;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: transform 0.25s ease;
 }
 
@@ -115,6 +136,7 @@
   background: transparent;
   color: #2f251f;
   cursor: pointer;
+  padding: 0;
 }
 
 .mobile-sidebar__nav {
@@ -133,6 +155,7 @@
   text-transform: uppercase;
 }
 
+/* Responsive Breakpoints */
 @media (max-width: 1180px) {
   .navbar-container {
     padding: 0 48px;
@@ -140,6 +163,26 @@
 
   .nav-links-right {
     gap: 24px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-right {
+    display: none;
+  }
+  
+  .mobile-actions {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-actions {
+    display: none;
+  }
+  
+  .hamburger-btn {
+    display: none;
   }
 }
 
@@ -155,10 +198,85 @@
   .nav-logo-img {
     width: 112px;
   }
+  
+  .mobile-book-btn {
+    font-size: 10px;
+  }
+  
+  .mobile-actions {
+    gap: 12px;
+  }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+  
+  .nav-logo-img {
+    width: 95px;
+  }
+  
+  .mobile-book-btn {
+    font-size: 9px;
+  }
+  
+  .mobile-actions {
+    gap: 10px;
+  }
+  
   .hamburger-btn {
-    display: none;
+    width: 34px;
+    height: 34px;
+  }
+  
+  .mobile-sidebar__content {
+    padding: 20px;
+    width: min(280px, 84vw);
+  }
+  
+  .mobile-sidebar__nav {
+    gap: 18px;
+    margin-top: 28px;
+  }
+  
+  .mobile-sidebar__link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-book-btn {
+    font-size: 8px;
+  }
+  
+  .mobile-actions {
+    gap: 8px;
+  }
+  
+  .hamburger-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .mobile-sidebar__content {
+    padding: 16px;
+    width: min(260px, 84vw);
+  }
+  
+  .mobile-sidebar__nav {
+    gap: 16px;
+    margin-top: 24px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .nav-tab,
+  .mobile-book-btn,
+  .hamburger-btn,
+  .mobile-sidebar__link,
+  .mobile-sidebar__close {
+    cursor: default;
   }
 }
