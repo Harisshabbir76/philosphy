@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import "./admin-panel.css";
 
 const links = [
@@ -17,26 +19,117 @@ const links = [
 
 export default function AdminPanelShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 860;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   return (
-    <div className="admin-panel-shell">
-      <aside className="admin-panel-sidebar">
-        <div className="admin-panel-sidebar__brand">
-          <p>Philosophy</p>
-          <span>Admin Dashboard</span>
+    <>
+      {/* Mobile Header with Hamburger */}
+      {isMobile && (
+        <div className="admin-mobile-header">
+          <div className="admin-mobile-brand">
+            <p>Philosophy</p>
+            <span>Admin Dashboard</span>
+          </div>
+          <button
+            className="admin-hamburger-btn"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Menu"
+          >
+            <FiMenu size={24} />
+          </button>
         </div>
-        <nav className="admin-panel-sidebar__nav" aria-label="Admin navigation">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link className={isActive ? "is-active" : ""} href={link.href} key={link.href}>
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </aside>
-      <div className="admin-panel-content">{children}</div>
-    </div>
+      )}
+
+      <div className="admin-panel-shell">
+        {/* Desktop Sidebar */}
+        {!isMobile && (
+          <aside className="admin-panel-sidebar">
+            <div className="admin-panel-sidebar__brand">
+              <p>Philosophy</p>
+              <span>Admin Dashboard</span>
+            </div>
+            <nav className="admin-panel-sidebar__nav" aria-label="Admin navigation">
+              {links.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link className={isActive ? "is-active" : ""} href={link.href} key={link.href}>
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </aside>
+        )}
+
+        {/* Mobile Sidebar (Drawer) */}
+        {isMobile && (
+          <>
+            <div
+              className={`admin-mobile-overlay ${isMobileMenuOpen ? "open" : ""}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <aside className={`admin-mobile-sidebar ${isMobileMenuOpen ? "open" : ""}`}>
+              <div className="admin-mobile-sidebar-header">
+                <div className="admin-mobile-sidebar-brand">
+                  <p>Philosophy</p>
+                  <span>Admin Dashboard</span>
+                </div>
+                <button
+                  className="admin-mobile-close-btn"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <FiX size={24} />
+                </button>
+              </div>
+              <nav className="admin-mobile-sidebar__nav" aria-label="Admin navigation">
+                {links.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      className={isActive ? "is-active" : ""}
+                      href={link.href}
+                      key={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+            </aside>
+          </>
+        )}
+
+        <div className="admin-panel-content">{children}</div>
+      </div>
+    </>
   );
 }

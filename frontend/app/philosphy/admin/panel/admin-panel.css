@@ -1,3 +1,4 @@
+/* Admin Panel Shell Styles */
 .admin-panel-shell {
   min-height: 100vh;
   display: grid;
@@ -6,6 +7,7 @@
   color: #1f150f;
 }
 
+/* Desktop Sidebar */
 .admin-panel-sidebar {
   position: sticky;
   top: 0;
@@ -13,6 +15,7 @@
   padding: 28px 22px;
   background: #1f150f;
   color: #fffdf7;
+  overflow-y: auto;
 }
 
 .admin-panel-sidebar__brand {
@@ -49,6 +52,7 @@
   letter-spacing: 1px;
   text-decoration: none;
   border: 1px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .admin-panel-sidebar__nav a.is-active,
@@ -61,6 +65,161 @@
   min-width: 0;
 }
 
+/* Mobile Header */
+.admin-mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #1f150f;
+  color: #fffdf7;
+  border-bottom: 1px solid rgba(255, 253, 247, 0.1);
+}
+
+.admin-mobile-brand p {
+  font-family: var(--font-freight), serif;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.admin-mobile-brand span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 8px;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.admin-hamburger-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fffdf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.admin-hamburger-btn:hover {
+  background: rgba(255, 253, 247, 0.1);
+}
+
+/* Mobile Sidebar (Drawer) */
+.admin-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.admin-mobile-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.admin-mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: #1f150f;
+  color: #fffdf7;
+  z-index: 201;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.admin-mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+.admin-mobile-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 253, 247, 0.1);
+}
+
+.admin-mobile-sidebar-brand p {
+  font-family: var(--font-freight), serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.admin-mobile-sidebar-brand span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.admin-mobile-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fffdf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.admin-mobile-close-btn:hover {
+  background: rgba(255, 253, 247, 0.1);
+}
+
+.admin-mobile-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+}
+
+.admin-mobile-sidebar__nav a {
+  padding: 14px 16px;
+  color: #fffdf7;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.admin-mobile-sidebar__nav a.is-active,
+.admin-mobile-sidebar__nav a:hover {
+  border-color: rgba(255, 253, 247, 0.52);
+  background: rgba(255, 253, 247, 0.08);
+}
+
+/* Page Preview Styles */
 .admin-page-preview {
   min-height: 100vh;
 }
@@ -87,21 +246,6 @@
   line-height: 1;
 }
 
-@media (max-width: 860px) {
-  .admin-panel-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .admin-panel-sidebar {
-    position: static;
-    height: auto;
-  }
-
-  .admin-panel-sidebar__nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 /* Booking Details Modal */
 .admin-modal-overlay {
   position: fixed;
@@ -115,16 +259,19 @@
   justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(4px);
+  padding: 20px;
 }
 
 .admin-modal-content {
-  background: var(--color-ivory, #fffdf7);
+  background: #fffdf7;
   padding: 40px;
   max-width: 500px;
-  width: 90%;
+  width: 100%;
   position: relative;
-  border: 1px solid var(--color-gold, #b8975a);
+  border: 1px solid #b8975a;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .admin-modal-close {
@@ -135,16 +282,22 @@
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: var(--color-deep, #350008);
+  color: #1f150f;
   transition: opacity 0.3s;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .admin-modal-close:hover {
   opacity: 0.7;
+  background: #f5f0ea;
 }
 
 .admin-modal-subtitle {
-  color: var(--color-gold, #b8975a);
+  color: #b8975a;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 0.7rem;
   font-weight: 100;
@@ -157,8 +310,9 @@
   font-family: var(--font-freight), serif;
   font-size: 2.2rem;
   margin-bottom: 30px;
-  color: var(--color-deep, #350008);
+  color: #1f150f;
   font-weight: 200;
+  line-height: 1.2;
 }
 
 .admin-modal-details {
@@ -166,16 +320,16 @@
   flex-direction: column;
   gap: 16px;
   margin-bottom: 40px;
-  font-size: 0.95rem;
 }
 
 .admin-modal-row {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 150px;
+  display: flex;
+  justify-content: space-between;
   align-items: baseline;
   border-bottom: 1px solid #eadfd6;
   padding-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .admin-modal-row:last-child {
@@ -190,12 +344,15 @@
   font-weight: 100;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  min-width: 80px;
 }
 
 .admin-modal-value {
   font-family: var(--font-sf-pro), sans-serif;
   font-weight: 400;
-  color: var(--color-deep, #350008);
+  color: #1f150f;
+  text-align: right;
+  word-break: break-word;
 }
 
 .admin-modal-whatsapp-btn {
@@ -205,8 +362,8 @@
   gap: 12px;
   width: 100%;
   padding: 16px;
-  background-color: var(--color-deep, #350008);
-  color: var(--color-ivory, #fffdf7);
+  background-color: #1f150f;
+  color: #fffdf7;
   border: none;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 0.75rem;
@@ -215,12 +372,328 @@
   letter-spacing: 2.5px;
   cursor: pointer;
   transition: all 0.3s;
+  border-radius: 4px;
 }
 
 .admin-modal-whatsapp-btn:hover {
-  opacity: 0.9;
+  background-color: #2b1f18;
+  transform: translateY(-1px);
 }
 
 .admin-modal-whatsapp-icon {
   color: #25D366;
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Desktop (860px - 1024px) - Sidebar visible */
+@media (min-width: 860px) and (max-width: 1024px) {
+  .admin-panel-shell {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+  
+  .admin-panel-sidebar {
+    padding: 24px 18px;
+  }
+  
+  .admin-panel-sidebar__brand p {
+    font-size: 26px;
+  }
+  
+  .admin-panel-sidebar__nav a {
+    padding: 10px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Tablet (768px - 859px) */
+@media (min-width: 768px) and (max-width: 859px) {
+  .admin-panel-shell {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+  
+  .admin-panel-sidebar {
+    padding: 20px 16px;
+  }
+  
+  .admin-panel-sidebar__brand p {
+    font-size: 24px;
+  }
+  
+  .admin-panel-sidebar__brand span {
+    font-size: 9px;
+  }
+  
+  .admin-panel-sidebar__nav a {
+    padding: 10px 8px;
+    font-size: 10px;
+  }
+  
+  .admin-page-preview__header {
+    padding: 20px 24px;
+  }
+  
+  .admin-page-preview__header h1 {
+    font-size: 30px;
+  }
+}
+
+/* Mobile (below 768px) - Sidebar hidden, hamburger visible */
+@media (max-width: 767px) {
+  .admin-panel-shell {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-panel-sidebar {
+    display: none;
+  }
+  
+  .admin-page-preview__header {
+    padding: 20px;
+  }
+  
+  .admin-page-preview__header h1 {
+    font-size: 28px;
+  }
+  
+  .admin-page-preview__header p {
+    font-size: 9px;
+  }
+  
+  /* Modal adjustments for mobile */
+  .admin-modal-content {
+    padding: 30px 25px;
+    max-width: 95%;
+  }
+  
+  .admin-modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .admin-modal-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .admin-modal-label {
+    min-width: auto;
+  }
+  
+  .admin-modal-value {
+    text-align: left;
+  }
+  
+  .admin-modal-whatsapp-btn {
+    padding: 12px;
+    font-size: 0.7rem;
+    gap: 8px;
+  }
+}
+
+/* Small Mobile (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .admin-mobile-sidebar {
+    width: 280px;
+  }
+  
+  .admin-mobile-sidebar__nav a {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media (min-width: 320px) and (max-width: 479px) {
+  .admin-mobile-header {
+    padding: 12px 16px;
+  }
+  
+  .admin-mobile-brand p {
+    font-size: 18px;
+  }
+  
+  .admin-mobile-brand span {
+    font-size: 7px;
+  }
+  
+  .admin-mobile-sidebar {
+    width: 260px;
+  }
+  
+  .admin-mobile-sidebar-header {
+    padding: 16px;
+  }
+  
+  .admin-mobile-sidebar-brand p {
+    font-size: 20px;
+  }
+  
+  .admin-mobile-sidebar-brand span {
+    font-size: 8px;
+  }
+  
+  .admin-mobile-sidebar__nav {
+    padding: 16px;
+  }
+  
+  .admin-mobile-sidebar__nav a {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+  
+  .admin-page-preview__header {
+    padding: 16px;
+  }
+  
+  .admin-page-preview__header h1 {
+    font-size: 24px;
+  }
+  
+  .admin-page-preview__header p {
+    font-size: 8px;
+  }
+  
+  .admin-modal-content {
+    padding: 25px 20px;
+  }
+  
+  .admin-modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .admin-modal-subtitle {
+    font-size: 0.6rem;
+  }
+  
+  .admin-modal-details {
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  
+  .admin-modal-row {
+    padding-bottom: 10px;
+  }
+  
+  .admin-modal-label {
+    font-size: 0.65rem;
+  }
+  
+  .admin-modal-value {
+    font-size: 0.85rem;
+  }
+  
+  .admin-modal-whatsapp-btn {
+    padding: 10px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Extra Small (below 320px) */
+@media (max-width: 319px) {
+  .admin-mobile-header {
+    padding: 10px 14px;
+  }
+  
+  .admin-mobile-brand p {
+    font-size: 16px;
+  }
+  
+  .admin-mobile-brand span {
+    font-size: 6px;
+  }
+  
+  .admin-mobile-sidebar {
+    width: 240px;
+  }
+  
+  .admin-mobile-sidebar-header {
+    padding: 14px;
+  }
+  
+  .admin-mobile-sidebar-brand p {
+    font-size: 18px;
+  }
+  
+  .admin-mobile-sidebar__nav a {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  
+  .admin-page-preview__header h1 {
+    font-size: 20px;
+  }
+  
+  .admin-modal-content {
+    padding: 20px 16px;
+  }
+  
+  .admin-modal-title {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  
+  .admin-modal-whatsapp-btn {
+    padding: 8px;
+    font-size: 0.6rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .admin-panel-sidebar__nav a:hover,
+  .admin-mobile-sidebar__nav a:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+  
+  .admin-panel-sidebar__nav a:active,
+  .admin-mobile-sidebar__nav a:active {
+    background: rgba(255, 253, 247, 0.08);
+    border-color: rgba(255, 253, 247, 0.52);
+  }
+  
+  .admin-hamburger-btn:hover {
+    background: transparent;
+  }
+  
+  .admin-hamburger-btn:active {
+    background: rgba(255, 253, 247, 0.1);
+  }
+}
+
+/* Scrollbar styling for sidebar */
+.admin-panel-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.admin-panel-sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 253, 247, 0.1);
+}
+
+.admin-panel-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 253, 247, 0.3);
+  border-radius: 4px;
+}
+
+.admin-mobile-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.admin-mobile-sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 253, 247, 0.1);
+}
+
+.admin-mobile-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 253, 247, 0.3);
+  border-radius: 4px;
+}
+
+/* Smooth transitions */
+.admin-panel-sidebar__nav a,
+.admin-mobile-sidebar__nav a,
+.admin-hamburger-btn,
+.admin-mobile-close-btn,
+.admin-modal-whatsapp-btn {
+  transition: all 0.2s ease;
 }

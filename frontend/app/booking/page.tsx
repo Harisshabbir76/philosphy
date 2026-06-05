@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import "../contact-us/contact-us.css"; // Reuse styling for simplicity
+import "../Styles/BookingPage.css";
 import { API_BASE_URL } from "../lib/api";
-
-
-
 
 const formatTime = (time24: string) => {
   if (!time24) return "";
@@ -44,7 +41,6 @@ export default function BookingPage() {
     setLoading(true);
 
     try {
-      // Get the logged in user token if any (optional for booking if guest allowed)
       const userStr = localStorage.getItem("user");
       const user = userStr ? JSON.parse(userStr) : null;
       const headers: HeadersInit = { "Content-Type": "application/json" };
@@ -54,7 +50,6 @@ export default function BookingPage() {
       }
 
       const res = await fetch(`${API_BASE_URL}/api/booking/create`, {
-
         method: "POST",
         headers,
         body: JSON.stringify({ fullName, email, phone, service, date, time }),
@@ -65,6 +60,7 @@ export default function BookingPage() {
 
       setBookingDetails(data);
       setIsSuccess(true);
+      setLoading(false);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Failed to create booking";
       setError(message);
@@ -74,14 +70,14 @@ export default function BookingPage() {
 
   if (isSuccess) {
     return (
-      <div className="contact-page-container booking-success-wrapper">
+      <div className="booking-success-wrapper">
         <div className="booking-success-card">
           <h1 className="booking-success-title">Thank You</h1>
           <p className="booking-success-subtitle">Booking Confirmed</p>
           <div className="booking-success-details">
             <div className="booking-detail-row">
               <span className="booking-detail-label">Client</span>
-              <span className="booking-detail-value">{bookingDetails?.fullName}</span>
+              <span className="booking-detail-value">{bookingDetails?.fullName || fullName}</span>
             </div>
             <div className="booking-detail-row">
               <span className="booking-detail-label">Email</span>
@@ -93,7 +89,7 @@ export default function BookingPage() {
             </div>
             <div className="booking-detail-row">
               <span className="booking-detail-label">Service</span>
-              <span className="booking-detail-value">{bookingDetails?.service}</span>
+              <span className="booking-detail-value">{bookingDetails?.service || service}</span>
             </div>
             <div className="booking-detail-row">
               <span className="booking-detail-label">Date</span>
@@ -113,47 +109,91 @@ export default function BookingPage() {
   }
 
   return (
-    <div className="contact-page-container">
-      <div style={{ maxWidth: "600px", margin: "100px auto", padding: "40px", backgroundColor: "#fff", border: "1px solid #eadfd6" }}>
-        <h1 style={{ fontSize: "2rem", marginBottom: "10px", textAlign: "center", fontFamily: "Georgia, serif" }}>Book an Appointment</h1>
-        <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "14px", color: "#666" }}>
-          Select a service, date, and time.
-        </p>
+    <div className="booking-page">
+      <div className="booking-container">
+        <div className="booking-header">
+          <h1>Book an Appointment</h1>
+          <p>Select a service, date, and time.</p>
+        </div>
 
-        {error && <div style={{ color: "red", marginBottom: "15px", textAlign: "center" }}>{error}</div>}
+        {error && <div className="booking-error">{error}</div>}
         
-        <form onSubmit={handleBooking} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-          <div>
-            <label style={{ display: "block", marginBottom: "5px" }}>Full Name</label>
-            <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} required style={{ width: "100%", padding: "10px", border: "1px solid #ccc" }} />
+        <form onSubmit={handleBooking} className="booking-form">
+          <div className="form-group">
+            <label htmlFor="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+              placeholder="Enter your full name"
+            />
           </div>
-          <div>
-            <label style={{ display: "block", marginBottom: "5px" }}>Email</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ width: "100%", padding: "10px", border: "1px solid #ccc" }} />
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="your@email.com"
+            />
           </div>
-          <div>
-            <label style={{ display: "block", marginBottom: "5px" }}>Phone Number</label>
-            <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required style={{ width: "100%", padding: "10px", border: "1px solid #ccc" }} />
+
+          <div className="form-group">
+            <label htmlFor="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              placeholder="+1234567890"
+            />
           </div>
-          <div>
-            <label style={{ display: "block", marginBottom: "5px" }}>Service</label>
-            <select value={service} onChange={(e) => setService(e.target.value)} required style={{ width: "100%", padding: "10px", border: "1px solid #ccc", background: "#fff" }}>
+
+          <div className="form-group">
+            <label htmlFor="service">Service</label>
+            <select
+              id="service"
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+              required
+            >
               {servicesList.map((srv) => (
                 <option key={srv} value={srv}>{srv}</option>
               ))}
             </select>
           </div>
-          <div style={{ display: "flex", gap: "15px" }}>
-            <div style={{ flex: 1 }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>Date</label>
-              <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required min={new Date().toISOString().split('T')[0]} style={{ width: "100%", padding: "10px", border: "1px solid #ccc" }} />
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="date">Date</label>
+              <input
+                type="date"
+                id="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
+                min={new Date().toISOString().split('T')[0]}
+              />
             </div>
-            <div style={{ flex: 1 }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>Time</label>
-              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required style={{ width: "100%", padding: "10px", border: "1px solid #ccc" }} />
+            <div className="form-group">
+              <label htmlFor="time">Time</label>
+              <input
+                type="time"
+                id="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                required
+              />
             </div>
           </div>
-          <button type="submit" disabled={loading} style={{ padding: "14px", backgroundColor: "#2b170f", color: "#fff", border: "none", cursor: loading ? "not-allowed" : "pointer", marginTop: "10px", fontSize: "16px" }}>
+
+          <button type="submit" disabled={loading} className="booking-submit-btn">
             {loading ? "Processing..." : "Book Now"}
           </button>
         </form>
