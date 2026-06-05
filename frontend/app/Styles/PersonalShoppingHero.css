@@ -26,20 +26,171 @@
   z-index: 1;
   margin-top: 5px;
   font-family: var(--font-freight), serif;
-  font-size: 35px;
-  letter-spacing: 1px;
   font-weight: 200;
   line-height: 1;
   color: #FFFFFF;
+  text-align: center;
+  padding: 0 24px;
 }
 
-@media (max-width: 768px) {
-  .personal-shopping-hero {
-    min-height: 285px;
-  }
+/* ========== RESPONSIVE BREAKPOINTS ========== */
 
-  .personal-shopping-hero h1 {
-    font-size: 23px;
-    text-align: center;
+/* Large Desktop (1400px and above) */
+@media (min-width: 1400px) {
+  .personal-shopping-hero {
+    min-height: 750px;
   }
+  
+  .personal-shopping-hero h1 {
+    font-size: 58px;
+    letter-spacing: 2px;
+    margin-top: 10px;
+  }
+}
+
+/* Standard Desktop (1024px - 1399px) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .personal-shopping-hero {
+    min-height: 650px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 48px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Small Desktop / Large Tablet (900px - 1023px) */
+@media (min-width: 900px) and (max-width: 1023px) {
+  .personal-shopping-hero {
+    min-height: 580px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 42px;
+    letter-spacing: 1.2px;
+  }
+}
+
+/* Tablet (600px - 899px) */
+@media (min-width: 600px) and (max-width: 899px) {
+  .personal-shopping-hero {
+    min-height: 500px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 36px;
+    letter-spacing: 1px;
+    padding: 0 20px;
+  }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+  .personal-shopping-hero {
+    min-height: 420px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 30px;
+    letter-spacing: 0.8px;
+    padding: 0 20px;
+  }
+}
+
+/* Mobile Portrait (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  .personal-shopping-hero {
+    min-height: 380px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 20px;
+    letter-spacing: 0.6px;
+    padding: 0 16px;
+  }
+}
+
+/* Small Mobile (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+  .personal-shopping-hero {
+    min-height: 340px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    padding: 0 14px;
+  }
+}
+
+/* Extra Small (below 320px) */
+@media (max-width: 319px) {
+  .personal-shopping-hero {
+    min-height: 300px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    padding: 0 12px;
+  }
+}
+
+/* Height-based adjustments for better vertical fit */
+@media (max-height: 700px) and (min-width: 375px) {
+  .personal-shopping-hero {
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: clamp(20px, 5vh, 48px);
+    margin-top: 0;
+  }
+}
+
+@media (max-height: 600px) and (min-width: 375px) {
+  .personal-shopping-hero {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: clamp(18px, 4vh, 42px);
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .personal-shopping-hero {
+    min-height: auto;
+    padding-bottom: 30px;
+    padding-top: 70px;
+  }
+  
+  .personal-shopping-hero h1 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+}
+
+/* High DPI / Retina displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .personal-shopping-hero img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .personal-shopping-hero h1 {
+    cursor: default;
+  }
+}
+
+/* Smooth transitions for responsive changes */
+.personal-shopping-hero h1 {
+  transition: font-size 0.2s ease-out;
 }

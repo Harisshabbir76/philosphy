@@ -344,12 +344,12 @@
   
   .getting-started__card h2 {
     font-size: 20px;
-    margin-top: 25px;
+    margin-top: 16px;
   }
   
   .getting-started__card p {
     font-size: 9px;
-    margin-top: 25px;
+    margin-top: 15px;
   }
   
   .getting-started__lower {
@@ -429,12 +429,12 @@
   
   .getting-started__card h2 {
     font-size: 18px;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   
   .getting-started__card p {
     font-size: 8px;
-    margin-top: 18px;
+    margin-top: 12px;
     letter-spacing: 0.7px;
   }
   
@@ -518,12 +518,12 @@
   
   .getting-started__card h2 {
     font-size: 16px;
-    margin-top: 18px;
+    margin-top: 14px;
   }
   
   .getting-started__card p {
     font-size: 7.5px;
-    margin-top: 16px;
+    margin-top: 12px;
     letter-spacing: 0.6px;
   }
   
@@ -604,13 +604,13 @@
   }
   
   .getting-started__card h2 {
-    font-size: 18px;
-    margin-top: 18px;
+    font-size: 12px;
+    margin-top: 10px;
   }
   
   .getting-started__card p {
     font-size: 7.5px;
-    margin-top: 18px;
+    margin-top: 7px;
     letter-spacing: 0.6px;
   }
   

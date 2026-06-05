@@ -30,12 +30,11 @@
 .contact-started__intro h2 {
   padding-top: 140px;
   font-family: var(--font-freight), serif;
-  font-size: 25px;
   font-weight: 300;
   line-height: 1;
 }
 
-.wanna-learn{
+.wanna-learn {
   margin-bottom: -100px;
 }
 
@@ -43,7 +42,6 @@
   max-width: 520px;
   margin: 35px auto 31px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
   font-weight: 200;
   line-height: 1.45;
   letter-spacing: 1.3px;
@@ -51,13 +49,17 @@
 
 .contact-started__intro a {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
   font-weight: 200;
   line-height: 1;
   color: #fffdf7;
   text-decoration: underline;
   text-underline-offset: 3px;
   letter-spacing: 1.3px;
+  transition: opacity 0.3s ease;
+}
+
+.contact-started__intro a:hover {
+  opacity: 0.7;
 }
 
 .contact-started__steps {
@@ -70,7 +72,6 @@
 .contact-started__kicker {
   margin-bottom: 38px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
   font-weight: 200;
   line-height: 1;
   letter-spacing: 1.3px;
@@ -81,6 +82,7 @@
   display: flex;
   justify-content: center;
   gap: 22px;
+  flex-wrap: wrap;
 }
 
 .contact-started__card {
@@ -89,11 +91,15 @@
   padding: 25px 17px 20px;
   background: #fffdf7;
   color: #1F150F;
+  transition: transform 0.3s ease;
+}
+
+.contact-started__card:hover {
+  transform: translateY(-5px);
 }
 
 .contact-started__card span {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
   letter-spacing: 1px;
   font-weight: 300;
 }
@@ -101,7 +107,6 @@
 .contact-started__card h3 {
   margin-top: 22px;
   font-family: var(--font-freight), serif;
-  font-size: 19px;
   font-weight: 300;
   line-height: 1.08;
 }
@@ -109,33 +114,430 @@
 .contact-started__card p {
   margin-top: 24px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
   font-weight: 200;
   letter-spacing: 1px;
   line-height: 1.33;
 }
 
-@media (max-width: 760px) {
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Large Desktop (1400px and above) */
+@media (min-width: 1400px) {
+  .contact-started {
+    padding-top: 120px;
+  }
+  
+  .contact-started__intro {
+    min-height: 380px;
+    padding: 0 24px 30px;
+  }
+  
+  .contact-started__store {
+    width: 420px;
+    height: 300px;
+  }
+  
+  .contact-started__intro h2 {
+    font-size: 38px;
+    padding-top: 170px;
+  }
+  
+  .contact-started__intro p {
+    font-size: 12px;
+    max-width: 600px;
+    margin: 40px auto 35px;
+    letter-spacing: 1.5px;
+  }
+  
+  .contact-started__intro a {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+  
+  .contact-started__steps {
+    min-height: 420px;
+    padding: 50px 24px 70px;
+  }
+  
+  .contact-started__kicker {
+    font-size: 12px;
+    margin-bottom: 45px;
+    letter-spacing: 1.5px;
+  }
+  
+  .contact-started__cards {
+    gap: 30px;
+  }
+  
+  .contact-started__card {
+    width: 240px;
+    min-height: 300px;
+    padding: 30px 22px 25px;
+  }
+  
+  .contact-started__card span {
+    font-size: 12px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 24px;
+    margin-top: 26px;
+  }
+  
+  .contact-started__card p {
+    font-size: 11px;
+    margin-top: 28px;
+    letter-spacing: 1.2px;
+  }
+}
+
+/* Standard Desktop (1024px - 1399px) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .contact-started__intro h2 {
+    font-size: 32px;
+  }
+  
+  .contact-started__intro p {
+    font-size: 11px;
+  }
+  
+  .contact-started__intro a {
+    font-size: 11px;
+  }
+  
+  .contact-started__kicker {
+    font-size: 11px;
+  }
+  
+  .contact-started__card span {
+    font-size: 10px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 20px;
+  }
+  
+  .contact-started__card p {
+    font-size: 10px;
+  }
+}
+
+/* Small Desktop / Large Tablet (900px - 1023px) */
+@media (min-width: 900px) and (max-width: 1023px) {
+  .contact-started {
+    padding-top: 90px;
+  }
+
+  .contact-started__intro {
+    padding-bottom: 20px;
+  }
+  
+  .contact-started__intro h2 {
+    font-size: 28px;
+    padding-top: 130px;
+  }
+  
+  .contact-started__intro p {
+    font-size: 10px;
+  }
+  
+  .contact-started__intro a {
+    font-size: 10px;
+  }
+  
+  .contact-started__kicker {
+    font-size: 10px;
+  }
+  
+  .contact-started__cards {
+    gap: 18px;
+  }
+  
+  .contact-started__card {
+    width: 180px;
+    min-height: 240px;
+    padding: 22px 15px 18px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 18px;
+  }
+  
+  .contact-started__card p {
+    font-size: 9px;
+  }
+}
+
+/* Tablet (600px - 899px) */
+@media (min-width: 600px) and (max-width: 899px) {
   .contact-started {
     padding-top: 80px;
   }
-
+  
   .contact-started__store {
     width: min(100%, 360px);
-    height: 52vw;
+    height: 24vw;
     min-height: 170px;
   }
-
+  .contact-started__intro {
+    padding-bottom: 20px;
+  }
+  
   .contact-started__intro h2 {
+    font-size: 28px;
     padding-top: 120px;
   }
 
+  .contact-started__intro p {
+    font-size: 10px;
+    margin: 30px auto 26px;
+  }
+  
+  .contact-started__steps {
+    min-height: auto;
+    padding: 40px 24px 50px;
+  }
+  
+  .contact-started__cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .contact-started__card {
+    width: calc(33.33% - 14px);
+    min-width: 180px;
+    max-width: 220px;
+    min-height: 250px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 18px;
+  }
+  
+  .contact-started__card p {
+    font-size: 9px;
+  }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+  .contact-started {
+    padding-top: 70px;
+  }
+
+  .contact-started__store {
+    width: min(100%, 320px);
+    height: 180px;
+  }
+  
+  
+  .contact-started__intro h2 {
+    font-size: 20px;
+    padding-top: 110px;
+  }
+  
+  .contact-started__intro p {
+    font-size: 8px;
+    margin: 25px auto 22px;
+    letter-spacing: 1px;
+    max-width: 400px;
+  }
+  
+  .contact-started__intro a {
+    font-size: 9px;
+    letter-spacing: 1.1px;
+  }
+  
+  .contact-started__steps {
+    padding: 35px 20px 45px;
+  }
+  
+  .contact-started__kicker {
+    font-size: 9px;
+    margin-bottom: 32px;
+  }
+  
+  .contact-started__cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  
+  .contact-started__card {
+    width: calc(50% - 9px);
+    min-width: 160px;
+    max-width: 200px;
+    padding: 20px 14px 16px;
+  }
+  
+  .contact-started__card span {
+    font-size: 9px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 17px;
+    margin-top: 18px;
+  }
+  
+  .contact-started__card p {
+    font-size: 8.5px;
+    margin-top: 18px;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* Mobile Portrait (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  .contact-started {
+    padding-top: 60px;
+  }
+  
+  .contact-started__store {
+    width: min(100%, 280px);
+    height: 160px;
+  }
+
+  
+  .contact-started__intro h2 {
+    font-size: 18px;
+    padding-top: 110px;
+  }
+  
+  .contact-started__intro p {
+    font-size: 8px;
+    margin: 22px auto 20px;
+    letter-spacing: 1px;
+    max-width: 350px;
+  }
+  
+  .contact-started__intro a {
+    font-size: 8.5px;
+    letter-spacing: 1px;
+  }
+  
+  .contact-started__steps {
+    padding: 30px 16px 40px;
+  }
+  
+  .contact-started__kicker {
+    font-size: 8.5px;
+    margin-bottom: 28px;
+    letter-spacing: 1.1px;
+  }
+  
   .contact-started__cards {
     flex-direction: column;
     align-items: center;
+    gap: 16px;
   }
-
+  
   .contact-started__card {
-    width: min(230px, 100%);
+    width: min(260px, 100%);
+    min-height: auto;
+    padding: 20px 16px;
   }
+  
+  .contact-started__card span {
+    font-size: 9px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 18px;
+    margin-top: 16px;
+  }
+  
+  .contact-started__card p {
+    font-size: 8.5px;
+    margin-top: 16px;
+  }
+}
+
+/* Small Mobile (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+  .contact-started {
+    padding-top: 55px;
+  }
+  
+  .contact-started__store {
+    width: min(100%, 250px);
+    height: 145px;
+  }
+  
+  .contact-started__intro h2 {
+    font-size: 17px;
+    padding-top: 110px;
+  }
+  
+  .contact-started__intro p {
+    font-size: 8px;
+    margin: 20px auto 18px;
+    letter-spacing: 0.9px;
+    max-width: 300px;
+  }
+  
+  .contact-started__intro a {
+    font-size: 8px;
+    letter-spacing: 0.9px;
+  }
+  
+  .contact-started__steps {
+    padding: 28px 14px 36px;
+  }
+  
+  .contact-started__kicker {
+    font-size: 8px;
+    margin-bottom: 25px;
+  }
+  
+  .contact-started__cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .contact-started__card {
+    width: min(240px, 100%);
+    min-height: auto;
+    padding: 18px 14px;
+  }
+  
+  .contact-started__card span {
+    font-size: 8.5px;
+  }
+  
+  .contact-started__card h3 {
+    font-size: 17px;
+    margin-top: 14px;
+  }
+  
+  .contact-started__card p {
+    font-size: 8px;
+    margin-top: 14px;
+  }
+}
+
+/* Touch device hover fix */
+@media (hover: none) and (pointer: coarse) {
+  .contact-started__card:hover {
+    transform: none;
+  }
+  
+  .contact-started__intro a:hover {
+    opacity: 1;
+  }
+  
+  .contact-started__card:active {
+    transform: translateY(-2px);
+  }
+  
+  .contact-started__intro a:active {
+    opacity: 0.7;
+  }
+}
+
+/* Smooth transitions */
+.contact-started__card,
+.contact-started__intro a {
+  transition: all 0.2s ease;
 }
