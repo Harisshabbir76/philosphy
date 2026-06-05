@@ -3,6 +3,7 @@
 import { useState } from "react";
 import "../Styles/BookingPage.css";
 import { API_BASE_URL } from "../lib/api";
+import Modal from "../components/Modal";
 
 const formatTime = (time24: string) => {
   if (!time24) return "";
@@ -30,14 +31,15 @@ export default function BookingPage() {
   const [service, setService] = useState(servicesList[0]);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<any>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
     setLoading(true);
 
     try {
@@ -62,8 +64,9 @@ export default function BookingPage() {
       setIsSuccess(true);
       setLoading(false);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to create booking";
-      setError(message);
+      setModalTitle("Booking Failed");
+      setModalMessage("Booking failed. Please try again later.");
+      setModalOpen(true);
       setLoading(false);
     }
   };
@@ -115,8 +118,6 @@ export default function BookingPage() {
           <h1>Book an Appointment</h1>
           <p>Select a service, date, and time.</p>
         </div>
-
-        {error && <div className="booking-error">{error}</div>}
         
         <form onSubmit={handleBooking} className="booking-form">
           <div className="form-group">
@@ -198,6 +199,14 @@ export default function BookingPage() {
           </button>
         </form>
       </div>
+
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={modalTitle}
+        message={modalMessage}
+        type="error"
+      />
     </div>
   );
 }

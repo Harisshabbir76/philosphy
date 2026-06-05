@@ -15,6 +15,29 @@ function escapeHtml(value) {
     .replace(/'/g, "&#039;");
 }
 
+function formatTime(time24) {
+  if (!time24) return "Not provided";
+  const parts = time24.split(":");
+  if (parts.length < 2) return time24;
+  let hour = parseInt(parts[0], 10);
+  const minute = parts[1];
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12 || 12;
+  return `${hour}:${minute} ${ampm}`;
+}
+
+function formatDate(dateVal) {
+  if (!dateVal) return "Not provided";
+  const d = new Date(dateVal);
+  if (isNaN(d.getTime())) return String(dateVal);
+  return d.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 function buildTransporter() {
   const adminEmail = process.env.EMAIL_USER || process.env.ADMIN_EMAIL || process.env.admin_email;
   const adminPassword = process.env.EMAIL_PASS || process.env.ADMIN_PASSWORD || process.env.password;
@@ -54,8 +77,8 @@ function buildEmailHtml(data) {
     ["Email Address", data.email],
     ["Phone Number", data.phone],
     ["Service of Interest", data.serviceInterest],
-    ["Preferred Date", data.preferredDate || "Not provided"],
-    ["Preferred Time", data.preferredTime || "Not provided"],
+    ["Preferred Date", data.formattedDate || "Not provided"],
+    ["Preferred Time", data.formattedTime || "Not provided"],
   ];
 
   const detailRows = details
@@ -102,6 +125,8 @@ exports.submitContact = async (request, response) => {
     stylingNeeds: clean(request.body.stylingNeeds),
     preferredDate: clean(request.body.preferredDate),
     preferredTime: clean(request.body.preferredTime),
+    formattedDate: formatDate(clean(request.body.preferredDate)),
+    formattedTime: formatTime(clean(request.body.preferredTime)),
   };
 
   const missingField = requiredFields.find((field) => !data[field]);
@@ -126,8 +151,8 @@ exports.submitContact = async (request, response) => {
         `Email Address: ${data.email}`,
         `Phone Number: ${data.phone}`,
         `Service of Interest: ${data.serviceInterest}`,
-        `Preferred Date: ${data.preferredDate || "Not provided"}`,
-        `Preferred Time: ${data.preferredTime || "Not provided"}`,
+        `Preferred Date: ${data.formattedDate || "Not provided"}`,
+        `Preferred Time: ${data.formattedTime || "Not provided"}`,
         "",
         "Styling Needs:",
         data.stylingNeeds,

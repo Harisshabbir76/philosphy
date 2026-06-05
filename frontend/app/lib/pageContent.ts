@@ -63,8 +63,7 @@ export function usePageComponentContent<T extends EditableContentData>(
 
       setContent({ ...defaults, ...(data as Partial<T>) });
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Unable to save content";
-      setError(message);
+      setError("Failed to save. Please try again later.");
       throw err;
     } finally {
       setIsSaving(false);

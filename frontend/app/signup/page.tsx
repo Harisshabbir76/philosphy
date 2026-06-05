@@ -32,7 +32,7 @@ export default function SignupPage() {
         router.push("/");
       }
     } catch (err: any) {
-      setError(err.message);
+      setError("Signup failed. Please try again.");
     }
   };
 
