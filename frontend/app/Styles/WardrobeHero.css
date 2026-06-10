@@ -32,7 +32,11 @@
   line-height: 1;
   color: #FFFFFF;
 }
-
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
 @media (max-width: 768px) {
   .wardrobe-hero {
     min-height: 285px;

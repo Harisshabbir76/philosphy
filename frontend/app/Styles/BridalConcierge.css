@@ -75,6 +75,12 @@
   text-decoration: none;
 }
 
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
+
 @media (max-width: 760px) {
   .bridal-concierge {
     padding: 48px 20px;

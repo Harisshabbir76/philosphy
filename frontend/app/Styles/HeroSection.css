@@ -101,7 +101,11 @@
   background: #fffdf7;
   color: rgba(26, 17, 12, 0.56);
 }
-
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
 /* Responsive Font Sizes - Desktop First Approach */
 
 /* Large Desktop (1400px and above) */

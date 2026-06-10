@@ -74,7 +74,11 @@
   letter-spacing: 1.3px;
   color: #1F150F;
 }
-
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
 @media (max-width: 768px) {
   .faq-answers {
     padding: 30px 18px;

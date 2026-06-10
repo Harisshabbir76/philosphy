@@ -22,7 +22,11 @@
   line-height: 34px;
   white-space: nowrap;
 }
-
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
 @keyframes philosophy-marquee {
   from {
     transform: translateX(0);

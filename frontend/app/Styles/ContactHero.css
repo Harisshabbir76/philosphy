@@ -62,7 +62,11 @@
   letter-spacing: 1px;
   color: #1F150F;
 }
-
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
 /* Large Desktop (1400px and above) */

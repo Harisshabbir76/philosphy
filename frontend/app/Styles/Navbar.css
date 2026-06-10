@@ -160,7 +160,11 @@ html[dir="rtl"] .nav-tab {
   text-decoration: none;
   text-transform: uppercase;
 }
-
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important; }
 /* Responsive Breakpoints */
 @media (max-width: 1180px) {
   .navbar-container {
