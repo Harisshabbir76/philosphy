@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Pinyon_Script } from "next/font/google";
 import "./globals.css";
 import LayoutShell from "./components/LayoutShell";
+import { CMSProvider } from "./lib/CMSProvider";
 
 const freightDisp = localFont({
   src: "../fonts/FreightDispPro/FreightDispProLight-Regular.ttf",
@@ -77,7 +78,9 @@ export default function RootLayout({
       </head>
 
       <body>
-        <LayoutShell>{children}</LayoutShell>
+        <CMSProvider>
+          <LayoutShell>{children}</LayoutShell>
+        </CMSProvider>
       </body>
     </html>
   );

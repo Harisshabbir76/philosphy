@@ -17,6 +17,7 @@
 .bridal-education__panel h2,
 .bridal-education__panel h3,
 .bridal-education__panel p,
+.bridal-education__panel div,
 .bridal-education__panel li {
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
@@ -38,12 +39,14 @@
 }
 
 .bridal-education__panel p,
+.bridal-education__panel div,
 .bridal-education__panel li {
   font-weight: 100;
   line-height: 1.42;
 }
 
-.bridal-education__panel p {
+.bridal-education__panel p,
+.bridal-education__panel div {
   margin-bottom: 17px;
 }
 

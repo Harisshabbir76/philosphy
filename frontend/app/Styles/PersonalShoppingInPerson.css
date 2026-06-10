@@ -17,6 +17,7 @@
 .ps-in-person__copy h2,
 .ps-in-person__copy h3,
 .ps-in-person__copy p,
+.ps-in-person__copy div,
 .ps-in-person__copy li {
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
@@ -31,12 +32,14 @@
 }
 
 .ps-in-person__copy p,
+.ps-in-person__copy div,
 .ps-in-person__copy li {
   font-weight: 100;
   line-height: 1.35;
 }
 
-.ps-in-person__copy p {
+.ps-in-person__copy p,
+.ps-in-person__copy div {
   max-width: 390px;
   margin-bottom: 16px;
 }

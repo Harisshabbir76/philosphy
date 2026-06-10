@@ -16,8 +16,10 @@
 
 .bridal-zahab__copy h2,
 .bridal-zahab__copy p,
+.bridal-zahab__copy div,
 .bridal-zahab__item summary span:first-child,
-.bridal-zahab__content p {
+.bridal-zahab__content p,
+.bridal-zahab__content div {
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
   letter-spacing: 1.5px;
@@ -31,7 +33,9 @@
 }
 
 .bridal-zahab__copy p,
-.bridal-zahab__content p {
+.bridal-zahab__copy div,
+.bridal-zahab__content p,
+.bridal-zahab__content div {
   max-width: 470px;
   margin-bottom: 16px;
   font-weight: 100;

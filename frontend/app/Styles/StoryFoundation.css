@@ -7,8 +7,10 @@
 }
 
 .story-foundation__copy {
-  max-width: 690px;
+  max-width: 740px;
   margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .story-foundation__kicker {
@@ -28,13 +30,17 @@
   line-height: 1;
 }
 
-.story-foundation__copy p:not(.story-foundation__kicker) {
+.story-foundation__body {
   margin-top: 30px;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
   font-weight: 100;
   line-height: 1.42;
-  letter-spacing: 1.3px;
+  letter-spacing: 1px;
+}
+
+.story-foundation__body--second {
+  margin-top: 18px;
 }
 
 .story-foundation__image {

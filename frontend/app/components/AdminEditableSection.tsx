@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useState, type ReactNode } from "react";
+import { useRef, useEffect, useState, type ReactNode, type CSSProperties } from "react";
 import "../Styles/AdminEditableSection.css";
 
 export type AdminInlineEditor<T extends Record<string, unknown>> = {
@@ -42,7 +42,7 @@ export default function AdminEditableSection<T extends Record<string, unknown>>(
       await onSave(draft);
       setIsEditing(false);
     } catch {
-      // The API hook exposes the real error message; keep edit mode open so changes are not lost.
+      // keep edit mode open so changes are not lost
     }
   };
 
@@ -83,6 +83,8 @@ export default function AdminEditableSection<T extends Record<string, unknown>>(
   );
 }
 
+// ─── EditableText ─────────────────────────────────────────────────────────────
+
 type EditableTextProps = {
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
   className?: string;
@@ -104,6 +106,8 @@ export function EditableText({ as: Tag = "span", className, isEditing, onChange,
   );
 }
 
+// ─── EditableHtml ─────────────────────────────────────────────────────────────
+
 type EditableHtmlProps = {
   className?: string;
   isEditing: boolean;
@@ -112,39 +116,94 @@ type EditableHtmlProps = {
 };
 
 export function EditableHtml({ className, isEditing, onChange, value }: EditableHtmlProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current && isEditing) {
+      ref.current.innerHTML = value;
+      // Make Enter create <p> elements instead of <div> so component CSS
+      // selectors (which target `p`) apply to newly typed paragraphs.
+      document.execCommand("defaultParagraphSeparator", false, "p");
+    }
+  }, [isEditing]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!isEditing) {
+    return (
+      <div
+        className={`editable-html-content${className ? ` ${className}` : ""}`}
+        dangerouslySetInnerHTML={{ __html: value }}
+      />
+    );
+  }
+
+  const syncContent = () => {
+    if (ref.current) onChange(ref.current.innerHTML);
+  };
+
   return (
-    <div
-      className={className}
-      contentEditable={isEditing}
-      dangerouslySetInnerHTML={{ __html: value }}
-      suppressContentEditableWarning
-      onBlur={(event) => onChange(event.currentTarget.innerHTML)}
-    />
+    <div className="editable-html-wrap">
+      {/* ── Editable area ── */}
+      <div
+        ref={ref}
+        className={`editable-html-content${className ? ` ${className}` : ""}`}
+        contentEditable
+        suppressContentEditableWarning
+        onInput={syncContent}
+        onBlur={syncContent}
+      />
+    </div>
   );
 }
+
+// ─── EditableImage ─────────────────────────────────────────────────────────────
+
+export type ImageStyleData = {
+  width?: string;
+  height?: string;
+  marginTop?: string;
+  marginRight?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  objectPosition?: string;
+};
 
 type EditableImageProps = {
   alt: string;
   className?: string;
   fill?: boolean;
-  priority?: boolean; // ✨ Added priority typing
+  priority?: boolean;
   isEditing: boolean;
   onChange: (value: string) => void;
+  imageStyle?: ImageStyleData;
   sizes?: string;
   src: string | StaticImageData;
 };
 
-export function EditableImage({ 
-  alt, 
-  className, 
-  fill, 
-  priority = false, // ✨ Default to false if not explicitly passed
-  isEditing, 
-  onChange, 
-  sizes, 
-  src 
+export function EditableImage({
+  alt,
+  className,
+  fill,
+  priority = false,
+  isEditing,
+  onChange,
+  imageStyle,
+  sizes,
+  src,
 }: EditableImageProps) {
-  const image = src;
+  const labelRef = useRef<HTMLLabelElement>(null);
+
+  // Apply saved styles to parent container element (works without touching parent JSX)
+  useEffect(() => {
+    if (!imageStyle) return;
+    const parent = labelRef.current?.parentElement;
+    if (!parent) return;
+    if (imageStyle.width) parent.style.width = imageStyle.width;
+    if (imageStyle.height) parent.style.height = imageStyle.height;
+    if (imageStyle.marginTop !== undefined) parent.style.marginTop = imageStyle.marginTop;
+    if (imageStyle.marginRight !== undefined) parent.style.marginRight = imageStyle.marginRight;
+    if (imageStyle.marginBottom !== undefined) parent.style.marginBottom = imageStyle.marginBottom;
+    if (imageStyle.marginLeft !== undefined) parent.style.marginLeft = imageStyle.marginLeft;
+  }, [imageStyle]);
 
   const readFile = (file: File) => {
     const reader = new FileReader();
@@ -154,34 +213,44 @@ export function EditableImage({
     reader.readAsDataURL(file);
   };
 
+  const imageObj = src;
+  const imgStyle: CSSProperties = {};
+  if (imageStyle?.objectPosition) {
+    imgStyle.objectPosition = imageStyle.objectPosition;
+  }
+
   return (
-    <label
-      className={isEditing ? "admin-editable-image admin-editable-image--editing" : "admin-editable-image"}
-      style={fill ? { position: "absolute", inset: 0 } : undefined}
-    >
-      <Image
-        className={className}
-        src={image}
-        alt={alt}
-        fill={fill}
-        priority={priority} // ✨ Crucial change: Passes priority safely down to Next.js engine
-        unoptimized={typeof image === "string" && image.startsWith("data:")}
-        sizes={sizes}
-      />
-      {isEditing && (
-        <>
-          <span className="admin-editable-image__hint">Replace image</span>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(event) => {
-              const file = event.currentTarget.files?.[0];
-              if (file) readFile(file);
-              event.currentTarget.value = "";
-            }}
-          />
-        </>
-      )}
-    </label>
+    <>
+      <label
+        ref={labelRef}
+        className={isEditing ? "admin-editable-image admin-editable-image--editing" : "admin-editable-image"}
+        style={fill ? { position: "absolute", inset: 0 } : undefined}
+      >
+        <Image
+          className={className}
+          src={imageObj}
+          alt={alt}
+          fill={fill}
+          priority={priority}
+          unoptimized={typeof imageObj === "string" && imageObj.startsWith("data:")}
+          sizes={sizes}
+          style={Object.keys(imgStyle).length ? imgStyle : undefined}
+        />
+        {isEditing && (
+          <>
+            <span className="admin-editable-image__hint">Replace image</span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(event) => {
+                const file = event.currentTarget.files?.[0];
+                if (file) readFile(file);
+                event.currentTarget.value = "";
+              }}
+            />
+          </>
+        )}
+      </label>
+    </>
   );
 }

@@ -59,6 +59,12 @@
   white-space: nowrap;
 }
 
+/* Arabic: enlarge the right-side nav links by 2px for better legibility. */
+html[dir="rtl"] .nav-links-right,
+html[dir="rtl"] .nav-tab {
+  font-size: 12px;
+}
+
 .nav-tab--book {
   text-decoration: underline;
   text-underline-offset: 3px;

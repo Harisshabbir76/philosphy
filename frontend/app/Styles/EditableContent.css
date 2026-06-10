@@ -1,0 +1,111 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   EditableContent — universal CMS block.
+
+   Renders the saved HTML directly inside the chosen tag (no layout-breaking
+   wrappers). The element keeps its component CSS class, so the foundation
+   styling still applies; custom CMS styles layer on as inline overrides.
+
+   Editing affordances (outline + "Edit" label) only appear when the provider
+   has editingEnabled = true (i.e. inside the admin dashboard).
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.cms-ec {
+  /* transparent by default — does not alter the host component's box */
+}
+
+/* For plain / single-line slots (titles, eyebrows): the inner block element
+   produced by TipTap inherits everything from this element, so the slot looks
+   identical to the original tag and custom overrides win. */
+.cms-ec--plain > * {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+/* Lists in editable content — Tailwind's preflight removes list markers, so
+   restore them here for any list the editor produces (unless a component's own
+   CSS already styles its lists, which still wins via higher specificity). */
+/* Only restore markers on UNCLASSED lists (plain TipTap output). Lists with a
+   component class — e.g. ps-in-person__dash-list — keep their own styling. */
+.cms-ec ul:not([class]) {
+  list-style: disc;
+  /* Marker INSIDE the content box so it always travels with the text and any
+     margin/padding — works correctly in both LTR and RTL. */
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 6px 0;
+}
+
+.cms-ec ol:not([class]) {
+  list-style: decimal;
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 6px 0;
+}
+
+.cms-ec ul:not([class]) > li,
+.cms-ec ol:not([class]) > li {
+  margin: 2px 0;
+}
+
+/* Keep the marker on the same line as its text (the <p> TipTap puts inside the
+   list item becomes inline) so an inside marker sits right beside the words. */
+.cms-ec ul:not([class]) > li > p,
+.cms-ec ol:not([class]) > li > p {
+  display: inline;
+}
+
+/* TipTap wraps each list item's text in a <p>. Component rules like
+   `.x__content p { margin-bottom: 16px }` (2 classes) outrank a normal
+   `.cms-ec li p` selector, so use !important here to keep list items tight
+   and the marker right beside its text. */
+.cms-ec li > p {
+  margin: 0 !important;
+}
+
+/* Marker colour follows the list item's own color, so setting color on the
+   selected line (Bullet / List color in the sidebar) tints the bullet. */
+.cms-ec li::marker {
+  color: inherit;
+}
+
+/* ── Admin-only editing affordances ── */
+.cms-ec--editable {
+  position: relative;
+  cursor: pointer;
+  transition: outline-color 0.15s ease;
+  outline: 2px dashed transparent;
+  outline-offset: 3px;
+}
+
+.cms-ec--editable:hover {
+  outline-color: #2563eb;
+}
+
+.cms-ec--editable:hover::after {
+  content: "\270F  Edit";
+  position: absolute;
+  top: -24px;
+  right: 0;
+  z-index: 60;
+  padding: 2px 8px;
+  background: #1f2937;
+  color: #fff;
+  font-family: var(--font-sf-pro), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.cms-ec--active {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 3px;
+}

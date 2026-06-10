@@ -5,6 +5,8 @@ import chooseUs from "../Images/choose-us.svg";
 import bannerSmall from "../Images/banner small.png";
 import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
 import { usePageComponentContent } from "../lib/pageContent";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 import "../Styles/WhyChooseUs.css";
 
 const defaults = {
@@ -18,6 +20,8 @@ const defaults = {
 
 export default function WhyChooseUs({ editable = false }: { editable?: boolean }) {
   const { content, saveContent, isSaving, error } = usePageComponentContent("home", "whyChooseUs", defaults);
+  const { language } = useLanguage();
+  const t = translations[language].whyChooseUs;
 
   return (
     <AdminEditableSection
@@ -28,17 +32,19 @@ export default function WhyChooseUs({ editable = false }: { editable?: boolean }
       title="Why choose us"
       onSave={saveContent}
     >
-      {({ content: editorContent, isEditing, updateContent }) => (
+      {({ content: editorContent, isEditing, updateContent }) => {
+       const isAr = language === "ar" && !isEditing;
+       return (
     <section className="why-choose">
       <div className="why-choose__text">
-        <EditableText as="h2" isEditing={isEditing} value={String(editorContent.title)} onChange={(title) => updateContent({ title })} />
-        <EditableText as="p" isEditing={isEditing} value={String(editorContent.subtitle)} onChange={(subtitle) => updateContent({ subtitle })} />
+        <EditableText as="h2" isEditing={isEditing} value={isAr ? t.title : String(editorContent.title)} onChange={(title) => updateContent({ title })} />
+        <EditableText as="p" isEditing={isEditing} value={isAr ? t.subtitle : String(editorContent.subtitle)} onChange={(subtitle) => updateContent({ subtitle })} />
         <Image src={chooseUs} alt="" className="why-choose__mark" />
-        <EditableText as="h3" isEditing={isEditing} value={String(editorContent.heading)} onChange={(heading) => updateContent({ heading })} />
-        <EditableText as="h4" isEditing={isEditing} value={String(editorContent.text)} onChange={(text) => updateContent({ text })} />
+        <EditableText as="h3" isEditing={isEditing} value={isAr ? t.heading : String(editorContent.heading)} onChange={(heading) => updateContent({ heading })} />
+        <EditableText as="h4" isEditing={isEditing} value={isAr ? t.text : String(editorContent.text)} onChange={(text) => updateContent({ text })} />
         <div className="why-choose__divider"></div>
       </div>
-      
+
       <div className="why-choose__image">
         <EditableImage
           src={String(editorContent.imageUrl) || bannerSmall}
@@ -50,7 +56,8 @@ export default function WhyChooseUs({ editable = false }: { editable?: boolean }
         />
       </div>
     </section>
-      )}
+       );
+      }}
     </AdminEditableSection>
   );
 }

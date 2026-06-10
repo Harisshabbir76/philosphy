@@ -7,13 +7,13 @@ import StyleMarquee from "./components/StyleMarquee";
 
 export default function Home() {
   return (
-    <>
+    <main className="home-page">
       <HeroSection />
       <IntroApproach />
       <ServicesSection />
       <WhyChooseUs />
       <GettingStarted />
       <StyleMarquee />
-    </>
+    </main>
   );
 }

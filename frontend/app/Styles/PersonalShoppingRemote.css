@@ -18,6 +18,7 @@
 
 .ps-remote h2,
 .ps-remote p,
+.ps-remote div,
 .ps-remote li,
 .ps-remote__tabs span {
   font-family: var(--font-sf-pro), sans-serif;
@@ -46,6 +47,7 @@
 }
 
 .ps-remote p,
+.ps-remote div,
 .ps-remote li {
   font-weight: 100;
   line-height: 1.5;
@@ -70,7 +72,8 @@
   margin: 0 auto;
 }
 
-.ps-remote__details p {
+.ps-remote__details p,
+.ps-remote__details div {
   margin-bottom: 16px;
   font-size: 9px;
   font-weight: 100;

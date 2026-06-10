@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import "./admin-panel.css";
+import "../../../Styles/CMSSidebar.css";
+import { CMSProvider } from "../../../lib/CMSProvider";
+import { RightSidebar } from "../../../components/CMS/RightSidebar";
 
 const links = [
   { href: "/philosphy/admin/panel", label: "Booking" },
@@ -15,6 +18,7 @@ const links = [
   { href: "/philosphy/admin/panel/wardrobe", label: "Wardrobe" },
   { href: "/philosphy/admin/panel/personal-shopping", label: "Personal Shopping" },
   { href: "/philosphy/admin/panel/bridal", label: "Bridal" },
+  { href: "/philosphy/admin/panel/cms-demo", label: "CMS Demo" },
 ];
 
 export default function AdminPanelShell({ children }: { children: ReactNode }) {
@@ -49,7 +53,7 @@ export default function AdminPanelShell({ children }: { children: ReactNode }) {
   }, [isMobileMenuOpen]);
 
   return (
-    <>
+    <CMSProvider editingEnabled>
       {/* Mobile Header with Hamburger */}
       {isMobile && (
         <div className="admin-mobile-header">
@@ -130,6 +134,9 @@ export default function AdminPanelShell({ children }: { children: ReactNode }) {
 
         <div className="admin-panel-content">{children}</div>
       </div>
-    </>
+
+      {/* CMS Right Sidebar — appears when an element is being edited */}
+      <RightSidebar />
+    </CMSProvider>
   );
 }

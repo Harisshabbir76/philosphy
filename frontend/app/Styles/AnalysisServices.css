@@ -7,16 +7,17 @@
 }
 
 .analysis-services__inner {
-  width: min(675px, 100%);
+  width: min(700px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 338px 240px;
-  gap: 80px;
+  grid-template-columns: 1fr 240px;
+  gap: 60px;
   align-items: start;
 }
 
 .analysis-services__copy {
   padding-top: 32px;
+  max-width: 100%;
 }
 
 .analysis-service {
@@ -28,7 +29,8 @@
 }
 
 .analysis-service summary {
-  min-height: 26px;
+  min-height: 20px;
+  margin-top: 5px;
   padding: 0 12px 0 0;
   display: flex;
   align-items: center;
@@ -45,7 +47,7 @@
 .analysis-service summary span:first-child {
   font-family: var(--font-sf-pro), sans-serif;
   font-weight: 100;
-  line-height: 1;
+  line-height: 0;
   letter-spacing: 1px;
   color: #1F150F;
 }
@@ -86,8 +88,22 @@
   padding: 15px 0 18px;
 }
 
+/* Handle bold/strong as section heading (browser-generated from contenteditable) */
+.analysis-service__content b,
+.analysis-service__content strong {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.25;
+  color: #1F150F;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
 /* Base font styles */
 .analysis-service__content p,
+.analysis-service__content div,
 .analysis-service__content li {
   font-family: var(--font-sf-pro), sans-serif;
   letter-spacing: 1px;
@@ -97,17 +113,29 @@
 }
 
 .analysis-service__content p {
-  max-width: 400px;
+  max-width: 90%;
 }
 
-.analysis-service__content h3 {
-  margin-top: 15px;
+/* Reset ALL heading margins to prevent browser UA large spacing */
+.analysis-service__content h1,
+.analysis-service__content h2,
+.analysis-service__content h3,
+.analysis-service__content h4,
+.analysis-service__content h5,
+.analysis-service__content h6 {
+  margin-top: 6px;
   margin-bottom: 3px;
   font-family: var(--font-sf-pro), sans-serif;
   letter-spacing: 1px;
   font-weight: 700;
   line-height: 1.25;
   color: #1F150F;
+}
+
+.analysis-service__content p,
+.analysis-service__content div {
+  margin-top: 0;
+  margin-bottom: 3px;
 }
 
 .analysis-service__content ul:not(.analysis-service__dash-list) {
@@ -117,7 +145,7 @@
 }
 
 .analysis-service__content ul:not(.analysis-service__dash-list) li {
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 
 .analysis-service__content ul:not(.analysis-service__dash-list) li::marker {
@@ -125,7 +153,7 @@
 }
 
 .analysis-service__price {
-  margin-top: 14px;
+  margin-top: 10px;
   text-transform: uppercase;
 }
 
@@ -157,6 +185,7 @@
   width: 240px;
   height: 438px;
   overflow: hidden;
+  margin-top: 18px;
 }
 
 .analysis-services__image img {
@@ -205,9 +234,9 @@
   }
   
   .analysis-services__inner {
-    width: min(800px, 100%);
-    gap: 100px;
-    grid-template-columns: 420px 280px;
+    width: min(1000px, 100%);
+    gap: 80px;
+    grid-template-columns: 1fr 280px;
   }
   
   .analysis-services__copy {
@@ -220,13 +249,10 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 12px;
     letter-spacing: 1.2px;
-  }
-  
-  .analysis-service__content p {
-    max-width: 480px;
   }
   
   .analysis-service__content h3 {
@@ -254,11 +280,17 @@
 
 /* Standard Desktop (1024px - 1399px) */
 @media (min-width: 1024px) and (max-width: 1399px) {
+  .analysis-services__inner {
+    width: min(850px, 100%);
+    gap: 50px;
+  }
+  
   .analysis-service summary span:first-child {
     font-size: 11px;
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 10px;
   }
@@ -283,7 +315,8 @@
   }
   
   .analysis-services__inner {
-    gap: 50px;
+    width: min(750px, 100%);
+    gap: 40px;
     grid-template-columns: 1fr 220px;
   }
   
@@ -292,6 +325,7 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 9px;
   }
@@ -335,6 +369,7 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 10px;
   }
@@ -388,6 +423,7 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 9px;
     letter-spacing: 0.8px;
@@ -447,6 +483,7 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 8px;
     letter-spacing: 0.7px;
@@ -517,6 +554,7 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 7.5px;
     letter-spacing: 0.6px;
@@ -588,6 +626,7 @@
   }
   
   .analysis-service__content p,
+.analysis-service__content div,
   .analysis-service__content li {
     font-size: 7px;
     letter-spacing: 0.5px;
@@ -665,6 +704,7 @@
 .analysis-service__button,
 .analysis-service summary span:first-child,
 .analysis-service__content p,
+.analysis-service__content div,
 .analysis-service__content li {
   transition: all 0.2s ease;
 }

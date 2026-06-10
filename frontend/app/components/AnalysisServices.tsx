@@ -1,63 +1,20 @@
 "use client";
 
 import analysisWoman from "../Images/Analysis-woman.jpg";
-import AdminEditableSection, { EditableHtml, EditableImage, EditableText } from "./AdminEditableSection";
+import AdminEditableSection, { EditableImage, type ImageStyleData } from "./AdminEditableSection";
+import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 import "../Styles/AnalysisServices.css";
 
 const defaults = {
   imageUrl: "",
+  imageStyle: {} as ImageStyleData,
   items: [
     {
       title: "COLOR SEASON ANALYSIS",
-      html: `
-        <p>
-  A personalized in-home experience designed to identify the colors that naturally
-  enhance your features. Through a guided session, we analyze how different tones
-  interact with your skin, hair, and overall presence to define your undertone and
-  color season--giving you clarity and confidence in your styling choices.
-</p>
-
-<h3>Before the session:</h3>
-<ul class="analysis-service__bullet-list">
-  <li>Schedule appointment (date &amp; time agreed in advance)</li>
-  <li>Home visit (external location can be arranged if needed, venue cost covered by client)</li>
-</ul>
-
-<h3>During the session:</h3>
-<ul class="analysis-service__bullet-list">
-  <li>Full color analysis using professional tools (mirror, drape, lighting, color kit)</li>
-  <li>Observation of how colors interact with your natural features</li>
-  <li>Comparison of shades and their effect on your skin</li>
-  <li>Exploration of suitable hair color options</li>
-  <li>Identification of:</li>
-</ul>
-
-<ul class="analysis-service__dash-list">
-  <li>Undertone</li>
-  <li>Most harmonious color palette</li>
-  <li>Your color season</li>
-</ul>
-
-<h3>After the session:</h3>
-<ul class="analysis-service__bullet-list">
-  <li>Personal color fan with your best shades (provided immediately)</li>
-  <li>Detailed PDF report (within 10-15 working days), including:</li>
-</ul>
-
-<ul class="analysis-service__dash-list">
-  <li>Understanding your color season</li>
-  <li>How to dress based on your season and contrast</li>
-  <li>Color coordination principles</li>
-  <li>Suitable fabric colors</li>
-  <li>Guidance for traditional wear (e.g. mukhawar), if relevant</li>
-  <li>Jewelry selection and color pairing</li>
-  <li>Recommended hair color options</li>
-</ul>
-
-<p class="analysis-service__price">PRICE: 1880 AED</p>
-<Link href='/booking' class="analysis-service__button">BOOK YOUR CONSULTATION NOW</Link>
-      `,
+      html: `<p>A personalized in-home experience designed to identify the colors that naturally enhance your features.</p><p class="analysis-service__price">PRICE: 1880 AED</p><a href='/booking' class="analysis-service__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
     {
       title: "BODY, FACE & STYLE ANALYSIS",
@@ -70,6 +27,23 @@ const defaults = {
   ],
 };
 
+const defaultsAr = {
+  items: [
+    {
+      title: "تحليل فصل الألوان",
+      html: `<p>تجربة منزلية شخصية مصمّمة لتحديد الألوان التي تُبرز ملامحك بشكل طبيعي.</p><p class="analysis-service__price">السعر: 1880 درهم</p><a href='/booking' class="analysis-service__button">احجزي استشارتك الآن</a>`,
+    },
+    {
+      title: "تحليل الجسم والوجه والأسلوب",
+      html: `<p>دراسة مدروسة لتناسبات جسمك وملامحك واتجاه أسلوبك لمساعدتك على اختيار الصور الظلية والتفاصيل والإطلالات بسهولة.</p>`,
+    },
+    {
+      title: "تحليل الصورة الشخصية (خدمة مدمجة)",
+      html: `<p>تجربة تحليل كاملة تجمع بين توجيه الألوان والجسم والوجه والأسلوب الشخصي للحصول على اتجاه أكثر رقياً لصورتك.</p>`,
+    },
+  ],
+};
+
 type ServiceItem = {
   title: string;
   html: string;
@@ -77,47 +51,30 @@ type ServiceItem = {
 
 export default function AnalysisServices({ editable = false }: { editable?: boolean }) {
   const { content, saveContent, isSaving, error } = usePageComponentContent("analysis", "services", defaults);
+  const { language } = useLanguage();
+  const t = translations[language].analysisServices;
 
   return (
-    <AdminEditableSection
-      content={content}
-      editable={editable}
-      error={error}
-      isSaving={isSaving}
-      title="Analysis services"
-      onSave={saveContent}
-    >
+    <AdminEditableSection content={content} editable={editable} error={error} isSaving={isSaving} title="Analysis services" onSave={saveContent}>
       {({ content: editorContent, isEditing, updateContent }) => {
-        const items = (Array.isArray(editorContent.items) ? editorContent.items : defaults.items) as ServiceItem[];
-        const updateItem = (index: number, nextItem: Partial<ServiceItem>) => {
-          updateContent((current) => {
-            const currentItems = (Array.isArray(current.items) ? current.items : defaults.items) as ServiceItem[];
-            return {
-              ...current,
-              items: currentItems.map((item, itemIndex) => (itemIndex === index ? { ...item, ...nextItem } : item)),
-            };
-          });
-        };
+        const displayItems = defaults.items as ServiceItem[];
 
         return (
       <section className="analysis-services">
         <div className="analysis-services__inner">
           <div className="analysis-services__copy">
-            {items.map((item, index) => (
-              <details className="analysis-service" name="analysis-services" open={index === 0} key={item.title}>
+            {displayItems.map((item, index) => (
+              <details className="analysis-service" name="analysis-services" key={index}>
                 <summary>
-                  <EditableText
-                    isEditing={isEditing}
-                    value={item.title}
-                    onChange={(title) => updateItem(index, { title })}
-                  />
+                  <EditableContent as="span" plain contentId={`analysis.services.item${index}.title`} fallback={item.title} fallbackAr={defaultsAr.items[index]?.title} />
                   <span className="analysis-service__mark" aria-hidden="true" />
                 </summary>
-                <EditableHtml
-                  className="analysis-service__content"
-                  isEditing={isEditing}
-                  value={item.html}
-                  onChange={(html) => updateItem(index, { html })}
+                <EditableContent
+                  as="div"
+                  defaultClass="analysis-service__content"
+                  contentId={`analysis.services.item${index}.html`}
+                  fallback={item.html}
+                  fallbackAr={defaultsAr.items[index]?.html}
                 />
               </details>
             ))}
@@ -131,6 +88,7 @@ export default function AnalysisServices({ editable = false }: { editable?: bool
               sizes="240px"
               isEditing={isEditing}
               onChange={(imageUrl) => updateContent({ imageUrl })}
+              imageStyle={editorContent.imageStyle as ImageStyleData | undefined}
             />
           </div>
         </div>

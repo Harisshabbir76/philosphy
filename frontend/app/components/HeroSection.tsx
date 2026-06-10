@@ -5,6 +5,8 @@ import Link from "next/link";
 import bannerImage from "../Images/Banner.png";
 import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
 import { usePageComponentContent } from "../lib/pageContent";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 import "../Styles/HeroSection.css";
 
 const defaults = {
@@ -17,6 +19,8 @@ const defaults = {
 
 const HeroSection: React.FC<{ editable?: boolean }> = ({ editable = false }) => {
   const { content, saveContent, isSaving, error } = usePageComponentContent("home", "hero", defaults);
+  const { language } = useLanguage();
+  const t = translations[language].hero;
 
   return (
     <AdminEditableSection
@@ -27,7 +31,9 @@ const HeroSection: React.FC<{ editable?: boolean }> = ({ editable = false }) => 
       title="Home hero"
       onSave={saveContent}
     >
-      {({ content: editorContent, isEditing, updateContent }) => (
+      {({ content: editorContent, isEditing, updateContent }) => {
+        const isAr = language === "ar" && !isEditing;
+        return (
         <section id="hero" className="hero-section">
           <div className="hero-section__image">
             <EditableImage
@@ -46,33 +52,34 @@ const HeroSection: React.FC<{ editable?: boolean }> = ({ editable = false }) => 
               as="h1"
               className="hero-heading"
               isEditing={isEditing}
-              value={String(editorContent.title)}
+              value={isAr ? t.title : String(editorContent.title)}
               onChange={(title) => updateContent({ title })}
             />
             <EditableText
               as="h2"
               className="hero-script"
               isEditing={isEditing}
-              value={String(editorContent.subtitle)}
+              value={isAr ? t.subtitle : String(editorContent.subtitle)}
               onChange={(subtitle) => updateContent({ subtitle })}
             />
             <EditableText
               as="p"
               className="hero-paragraph"
               isEditing={isEditing}
-              value={String(editorContent.text)}
+              value={isAr ? t.text : String(editorContent.text)}
               onChange={(text) => updateContent({ text })}
             />
             <Link href="/shop" className="hero-cta">
               <EditableText
                 isEditing={isEditing}
-                value={String(editorContent.buttonText)}
+                value={isAr ? t.buttonText : String(editorContent.buttonText)}
                 onChange={(buttonText) => updateContent({ buttonText })}
               />
             </Link>
           </div>
         </section>
-      )}
+        );
+      }}
     </AdminEditableSection>
   );
 };

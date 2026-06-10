@@ -31,3 +31,16 @@
     transform: translateX(-50%);
   }
 }
+
+@keyframes philosophy-marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+:root[dir="rtl"] .style-marquee__track {
+  animation: philosophy-marquee-rtl 28s linear infinite;
+}

@@ -1,0 +1,453 @@
+/* ─── CMS Right Sidebar ─────────────────────────────────────────────── */
+
+.cms-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 320px;
+  background: #ffffff;
+  border-left: 1px solid #e5e7eb;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-sf-pro), system-ui, sans-serif;
+  font-size: 13px;
+  color: #1f2937;
+  animation: cms-slide-in 0.2s ease;
+}
+
+@keyframes cms-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Header */
+.cms-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.cms-sidebar__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cms-sidebar__close {
+  padding: 4px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cms-sidebar__close:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Device Switcher */
+.cms-sidebar__device-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px;
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cms-sidebar__device-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cms-sidebar__device-btn:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.cms-sidebar__device-btn.active {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+/* Body */
+.cms-sidebar__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Section */
+.cms-sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cms-sidebar__section-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Toggle */
+.cms-sidebar__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.cms-sidebar__toggle input[type="checkbox"] {
+  accent-color: #2563eb;
+  width: 14px;
+  height: 14px;
+}
+
+/* Grid of inputs */
+.cms-sidebar__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Single field */
+.cms-sidebar__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Full-width field spans both grid columns */
+.cms-sidebar__field--full {
+  grid-column: 1 / -1;
+}
+
+.cms-sidebar__field label {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.cms-sidebar__field input[type="text"],
+.cms-sidebar__field select {
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.cms-sidebar__field input[type="text"]:focus,
+.cms-sidebar__field select:focus {
+  border-color: #2563eb;
+  background: #fff;
+}
+
+.cms-sidebar__field input[type="color"] {
+  width: 100%;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 2px;
+  background: #f9fafb;
+}
+
+/* TipTap Editor */
+.cms-tiptap-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.cms-tiptap-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cms-tiptap-btn:hover,
+.cms-tiptap-btn.active {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.cms-tiptap-divider {
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+  margin: 0 2px;
+}
+
+.cms-tiptap-editor {
+  border: 1px solid #e5e7eb;
+  border-radius: 0 0 6px 6px;
+  background: #fff;
+  min-height: 120px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #1f2937;
+  outline: none;
+}
+
+.cms-tiptap-editor .ProseMirror {
+  outline: none;
+  min-height: 100px;
+}
+
+.cms-tiptap-editor .ProseMirror p {
+  margin: 0 0 4px;
+}
+
+/* Restore list markers inside the editor (Tailwind preflight removes them) */
+.cms-tiptap-editor .ProseMirror ul {
+  list-style: disc;
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 4px 0;
+}
+
+.cms-tiptap-editor .ProseMirror ol {
+  list-style: decimal;
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 4px 0;
+}
+
+.cms-tiptap-editor .ProseMirror li {
+  margin: 2px 0;
+}
+
+.cms-tiptap-editor .ProseMirror li > p {
+  margin: 0;
+  display: inline;
+}
+
+.cms-tiptap-editor .ProseMirror li::marker {
+  color: inherit;
+}
+
+/* Keep the editor background white and use a normal selection highlight so an
+   applied text color is never mistaken for a background change. */
+.cms-tiptap-editor,
+.cms-tiptap-editor .ProseMirror {
+  background: #fff;
+}
+
+.cms-tiptap-editor .ProseMirror ::selection {
+  background: #b4d5fe;
+}
+
+/* ── Sidebar helper bits ── */
+.cms-sidebar__hint {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #1e3a8a;
+}
+
+.cms-sidebar__color-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cms-sidebar__color-row input[type="color"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.cms-sidebar__mini {
+  padding: 4px 8px;
+  font-size: 11px;
+  color: #4b5563;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cms-sidebar__mini:hover {
+  background: #e5e7eb;
+}
+
+/* ── Second toolbar row: color + size + family ── */
+.cms-tiptap-toolbar--row2 {
+  border-top: none;
+  border-radius: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.cms-tiptap-color {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cms-tiptap-color__swatch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cms-tiptap-color input[type="color"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.cms-tiptap-select {
+  height: 26px;
+  padding: 0 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 12px;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.cms-tiptap-select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Footer */
+.cms-sidebar__footer {
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.cms-sidebar__save-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cms-sidebar__save-btn:hover {
+  background: #1d4ed8;
+}
+
+.cms-sidebar__save-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* Editable content hover overlay */
+.cms-editable-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.cms-edit-badge {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.cms-edit-badge:hover {
+  background: #374151;
+}
+
+.cms-editable-active-ring {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

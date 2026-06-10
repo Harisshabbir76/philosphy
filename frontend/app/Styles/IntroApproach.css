@@ -61,6 +61,7 @@
 .intro-approach__copy p {
   font-family: var(--font-sf-pro), sans-serif;
   font-weight: 100;
+  font-size: 12px;
   letter-spacing: 0.84px;
   line-height: 1.4;
   color: #1F150F;
@@ -627,4 +628,11 @@
 .intro-approach__bottom h2,
 .intro-approach__bottom p {
   transition: all 0.2s ease;
+}
+
+
+
+
+.intro-approach__bottom p{
+  font-size: 10.5px;
 }

@@ -77,14 +77,10 @@
 }
 
 .why-choose__divider {
-  width: 100vw;
+  width: 100%;
   height: 1px;
   background-color: rgba(61, 48, 41, 0.26);
   margin: 32px 0 0;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  transform: translateX(-50%);
 }
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */
@@ -482,4 +478,8 @@
 .why-choose__text h4,
 .why-choose__mark {
   transition: all 0.2s ease;
+}
+
+.why-choose__text h2{
+  font-size: 25px;
 }

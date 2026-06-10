@@ -5,12 +5,16 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../Images/logo.png";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 import "../Styles/Navbar.css";
 
 export default function Navbar() {
   usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language].navbar;
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,7 +29,6 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -38,31 +41,24 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/our-story", label: "Our Story" },
-    { href: "/analysis", label: "Analysis" },
-    { href: "/wardrobe", label: "Wardrobe" },
-    { href: "/personal-shopping", label: "Personal Shopping" },
-    { href: "/bridal", label: "Bridal" },
+    { href: "/", label: t.home },
+    { href: "/our-story", label: t.ourStory },
+    { href: "/analysis", label: t.analysis },
+    { href: "/wardrobe", label: t.wardrobe },
+    { href: "/personal-shopping", label: t.personalShopping },
+    { href: "/bridal", label: t.bridal },
   ];
 
   return (
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          {/* Left Side - Logo */}
           <div className="nav-left">
             <Link href="/" className="logo-link">
-              <Image
-                src={logo}
-                alt="Philosophy"
-                className="nav-logo-img"
-                priority
-              />
+              <Image src={logo} alt="Philosophy" className="nav-logo-img" priority />
             </Link>
           </div>
 
-          {/* Right Side - Desktop Navigation */}
           {!isMobile && (
             <div className="nav-right">
               <div className="nav-links-right">
@@ -72,34 +68,23 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <Link href="/booking" className="nav-tab nav-tab--book">
-                  Book Now
+                  {t.bookNow}
                 </Link>
               </div>
             </div>
           )}
 
-          {/* Mobile Right Side - Book Now Button + Hamburger */}
           {isMobile && (
             <div className="mobile-actions">
               <Link href="/booking" className="mobile-book-btn">
-                Book Now
+                {t.bookNow}
               </Link>
               <button
                 className="hamburger-btn"
                 onClick={() => setIsMobileMenuOpen(true)}
                 aria-label="Menu"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="3" y1="12" x2="21" y2="12" />
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <line x1="3" y1="18" x2="21" y2="18" />
@@ -110,31 +95,10 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Sidebar - Opens from Right */}
-      <div
-        className={`mobile-sidebar ${isMobileMenuOpen ? "mobile-sidebar--open" : ""}`}
-        onClick={() => setIsMobileMenuOpen(false)}
-      >
-        <div
-          className="mobile-sidebar__content"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button
-            className="mobile-sidebar__close"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-label="Close menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+      <div className={`mobile-sidebar ${isMobileMenuOpen ? "mobile-sidebar--open" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
+        <div className="mobile-sidebar__content" onClick={(e) => e.stopPropagation()}>
+          <button className="mobile-sidebar__close" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
@@ -142,16 +106,10 @@ export default function Navbar() {
 
           <div className="mobile-sidebar__nav">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="mobile-sidebar__link"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link key={link.href} href={link.href} className="mobile-sidebar__link" onClick={() => setIsMobileMenuOpen(false)}>
                 {link.label}
               </Link>
             ))}
-            {/* Book Now is intentionally NOT included here - it's in the header */}
           </div>
         </div>
       </div>

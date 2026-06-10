@@ -4,6 +4,8 @@ import { useState } from "react";
 import "../Styles/BookingPage.css";
 import { API_BASE_URL } from "../lib/api";
 import Modal from "../components/Modal";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 
 const formatTime = (time24: string) => {
   if (!time24) return "";
@@ -25,6 +27,10 @@ const servicesList = [
 ];
 
 export default function BookingPage() {
+  const { language } = useLanguage();
+  const t = translations[language].booking;
+  // Keep the saved value in English (the canonical service list) regardless of UI language.
+  const serviceLabels = (t.services as string[]) || servicesList;
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -64,8 +70,8 @@ export default function BookingPage() {
       setIsSuccess(true);
       setLoading(false);
     } catch (err) {
-      setModalTitle("Booking Failed");
-      setModalMessage("Booking failed. Please try again later.");
+      setModalTitle(t.failTitle);
+      setModalMessage(t.failMessage);
       setModalOpen(true);
       setLoading(false);
     }
@@ -75,36 +81,36 @@ export default function BookingPage() {
     return (
       <div className="booking-success-wrapper">
         <div className="booking-success-card">
-          <h1 className="booking-success-title">Thank You</h1>
-          <p className="booking-success-subtitle">Booking Confirmed</p>
+          <h1 className="booking-success-title">{t.thankYou}</h1>
+          <p className="booking-success-subtitle">{t.confirmed}</p>
           <div className="booking-success-details">
             <div className="booking-detail-row">
-              <span className="booking-detail-label">Client</span>
+              <span className="booking-detail-label">{t.client}</span>
               <span className="booking-detail-value">{bookingDetails?.fullName || fullName}</span>
             </div>
             <div className="booking-detail-row">
-              <span className="booking-detail-label">Email</span>
+              <span className="booking-detail-label">{t.email}</span>
               <span className="booking-detail-value">{bookingDetails?.email || email}</span>
             </div>
             <div className="booking-detail-row">
-              <span className="booking-detail-label">Phone</span>
+              <span className="booking-detail-label">{t.phone}</span>
               <span className="booking-detail-value">{bookingDetails?.phone || phone}</span>
             </div>
             <div className="booking-detail-row">
-              <span className="booking-detail-label">Service</span>
+              <span className="booking-detail-label">{t.service}</span>
               <span className="booking-detail-value">{bookingDetails?.service || service}</span>
             </div>
             <div className="booking-detail-row">
-              <span className="booking-detail-label">Date</span>
+              <span className="booking-detail-label">{t.date}</span>
               <span className="booking-detail-value">{bookingDetails?.date ? new Date(bookingDetails.date).toLocaleDateString() : date}</span>
             </div>
             <div className="booking-detail-row">
-              <span className="booking-detail-label">Time</span>
+              <span className="booking-detail-label">{t.time}</span>
               <span className="booking-detail-value">{formatTime(bookingDetails?.time || time)}</span>
             </div>
           </div>
           <button onClick={() => window.location.href = "/"} className="booking-success-btn">
-            Return to Home
+            {t.returnHome}
           </button>
         </div>
       </div>
@@ -115,64 +121,64 @@ export default function BookingPage() {
     <div className="booking-page">
       <div className="booking-container">
         <div className="booking-header">
-          <h1>Book an Appointment</h1>
-          <p>Select a service, date, and time.</p>
+          <h1>{t.title}</h1>
+          <p>{t.subtitle}</p>
         </div>
-        
+
         <form onSubmit={handleBooking} className="booking-form">
           <div className="form-group">
-            <label htmlFor="fullName">Full Name</label>
+            <label htmlFor="fullName">{t.fullName}</label>
             <input
               type="text"
               id="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               required
-              placeholder="Enter your full name"
+              placeholder={t.fullNamePlaceholder}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t.email}</label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="your@email.com"
+              placeholder={t.emailPlaceholder}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor="phone">{t.phone}</label>
             <input
               type="tel"
               id="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
-              placeholder="+1234567890"
+              placeholder={t.phonePlaceholder}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="service">Service</label>
+            <label htmlFor="service">{t.service}</label>
             <select
               id="service"
               value={service}
               onChange={(e) => setService(e.target.value)}
               required
             >
-              {servicesList.map((srv) => (
-                <option key={srv} value={srv}>{srv}</option>
+              {servicesList.map((srv, i) => (
+                <option key={srv} value={srv}>{serviceLabels[i] || srv}</option>
               ))}
             </select>
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="date">Date</label>
+              <label htmlFor="date">{t.date}</label>
               <input
                 type="date"
                 id="date"
@@ -183,7 +189,7 @@ export default function BookingPage() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="time">Time</label>
+              <label htmlFor="time">{t.time}</label>
               <input
                 type="time"
                 id="time"
@@ -195,7 +201,7 @@ export default function BookingPage() {
           </div>
 
           <button type="submit" disabled={loading} className="booking-submit-btn">
-            {loading ? "Processing..." : "Book Now"}
+            {loading ? t.processing : t.bookNow}
           </button>
         </form>
       </div>

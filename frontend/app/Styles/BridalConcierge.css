@@ -12,7 +12,8 @@
 
 .bridal-concierge__eyebrow,
 .bridal-concierge h3,
-.bridal-concierge p {
+.bridal-concierge p,
+.bridal-concierge div {
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
   letter-spacing: 1.3px;
@@ -44,7 +45,8 @@
   color: #291C13;
 }
 
-.bridal-concierge p {
+.bridal-concierge p,
+.bridal-concierge div {
   margin: 0 auto 14px;
   font-weight: 100;
   line-height: 1.45;

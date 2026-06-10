@@ -7,10 +7,10 @@
 }
 
 .wardrobe-analysis__inner {
-  width: min(675px, 100%);
+  width: min(775px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 338px 240px;
+  grid-template-columns: 1fr 240px;
   gap: 80px;
   align-items: start;
 }
@@ -48,6 +48,7 @@
   font-weight: 100;
   line-height: 1;
   letter-spacing: 1px;
+  margin-bottom: -14px;
   color: #1F150F;
 }
 
@@ -87,7 +88,20 @@
   padding: 15px 0 18px;
 }
 
+.wardrobe-analysis__content b,
+.wardrobe-analysis__content strong {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.25;
+  color: #1F150F;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
 .wardrobe-analysis__content p,
+.wardrobe-analysis__content div,
 .wardrobe-analysis__content li {
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
@@ -98,11 +112,17 @@
 }
 
 .wardrobe-analysis__content p {
-  max-width: 400px;
+  max-width: 500px;
 }
 
-.wardrobe-analysis__content h3 {
-  margin-top: 15px;
+/* Reset ALL heading margins */
+.wardrobe-analysis__content h1,
+.wardrobe-analysis__content h2,
+.wardrobe-analysis__content h3,
+.wardrobe-analysis__content h4,
+.wardrobe-analysis__content h5,
+.wardrobe-analysis__content h6 {
+  margin-top: 6px;
   margin-bottom: 3px;
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
@@ -112,6 +132,12 @@
   color: #1F150F;
 }
 
+.wardrobe-analysis__content p,
+.wardrobe-analysis__content div {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+
 .wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) {
   margin: 8px 0 12px;
   padding-left: 16px;
@@ -119,7 +145,7 @@
 }
 
 .wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) li {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) li::marker {
@@ -153,6 +179,7 @@
   width: 240px;
   height: 438px;
   overflow: hidden;
+  margin-top: 28px;
 }
 
 .wardrobe-analysis__image img {
@@ -182,6 +209,7 @@
 
   .wardrobe-analysis__item summary span:first-child,
   .wardrobe-analysis__content p,
+.wardrobe-analysis__content div,
   .wardrobe-analysis__content li,
   .wardrobe-analysis__content h3,
   .wardrobe-analysis__button {

@@ -2,26 +2,14 @@
 
 import AdminEditableSection, { EditableText } from "./AdminEditableSection";
 import { usePageComponentContent } from "../lib/pageContent";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 import "../Styles/StyleMarquee.css";
 
 const words = [
-  "Timeless",
-  "Refined",
-  "Intentional",
-  "Elegant",
-  "Minimal",
-  "Sophisticated",
-  "Elevated",
-  "Curated",
-  "Thoughtful",
-  "Effortless",
-  "Balanced",
-  "Polished",
-  "Classic",
-  "Modern",
-  "Understated",
-  "Graceful",
-  "Harmonious",
+  "Timeless", "Refined", "Intentional", "Elegant", "Minimal", "Sophisticated",
+  "Elevated", "Curated", "Thoughtful", "Effortless", "Balanced", "Polished",
+  "Classic", "Modern", "Understated", "Graceful", "Harmonious",
 ];
 
 const defaults = {
@@ -30,6 +18,9 @@ const defaults = {
 
 export default function StyleMarquee({ editable = false, page = "shared" }: { editable?: boolean; page?: string }) {
   const { content, saveContent, isSaving, error } = usePageComponentContent(page, "styleMarquee", defaults);
+  const { language } = useLanguage();
+  const t = translations[language].marquee;
+
   return (
     <AdminEditableSection
       content={content}
@@ -40,7 +31,9 @@ export default function StyleMarquee({ editable = false, page = "shared" }: { ed
       onSave={saveContent}
     >
       {({ content: editorContent, isEditing, updateContent }) => {
-        const editorWords = String(editorContent.wordsText || defaults.wordsText)
+        const isAr = language === "ar" && !isEditing;
+        const sourceText = isAr ? String(t.words) : String(editorContent.wordsText || defaults.wordsText);
+        const editorWords = sourceText
           .split(",")
           .map((word) => word.trim())
           .filter(Boolean);

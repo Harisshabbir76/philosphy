@@ -1,3 +1,5 @@
+/* ─── Section wrapper ─────────────────────────────────────────────────────── */
+
 .admin-editable-section {
   position: relative;
 }
@@ -7,6 +9,7 @@
   outline-offset: -1px;
 }
 
+/* Edit button (pencil icon, shown when not editing) */
 .admin-editable-section__button {
   position: absolute;
   top: 16px;
@@ -29,6 +32,7 @@
   fill: currentColor;
 }
 
+/* Save / Cancel toolbar */
 .admin-editable-section__toolbar {
   position: sticky;
   top: 12px;
@@ -45,6 +49,8 @@
   color: #1f150f;
   padding: 8px 13px;
   cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font-sf-pro), sans-serif;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
@@ -65,6 +71,8 @@
   font-size: 12px;
 }
 
+/* ─── Contenteditable focus ring ─────────────────────────────────────────── */
+
 .admin-editable-section [contenteditable="true"] {
   cursor: text;
   outline: 1px dashed rgba(31, 21, 15, 0.38);
@@ -76,6 +84,202 @@
   background: rgba(255, 253, 247, 0.36);
 }
 
+/* ─── EditableHtml wrapper ───────────────────────────────────────────────── */
+
+.editable-html-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── Rich-text toolbar ──────────────────────────────────────────────────── */
+
+.editable-html-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  background: #f5f0e8;
+  border: 1px solid rgba(31, 21, 15, 0.18);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Each row */
+.editable-html-toolbar__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Button group (visually grouped controls) */
+.editable-html-toolbar__group {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  padding-right: 6px;
+  margin-right: 2px;
+  border-right: 1px solid rgba(31, 21, 15, 0.15);
+}
+
+.editable-html-toolbar__group:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+/* All toolbar buttons */
+.editable-html-toolbar button {
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.22);
+  background: #ffffff;
+  color: #1f150f;
+  cursor: pointer;
+  line-height: 1.4;
+  border-radius: 2px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.editable-html-toolbar button:hover {
+  background: #1f150f;
+  color: #fff;
+}
+
+/* Accent button (Insert Button) */
+.editable-html-toolbar__btn-accent {
+  background: #1f150f !important;
+  color: #ffffff !important;
+  border-color: #1f150f !important;
+  font-weight: 500 !important;
+}
+
+.editable-html-toolbar__btn-accent:hover {
+  opacity: 0.8;
+}
+
+/* Bold / italic / underline visual hints */
+.editable-html-tb-b  { font-weight: 700 !important; }
+.editable-html-tb-i  { font-style: italic !important; }
+.editable-html-tb-u  { text-decoration: underline !important; }
+
+/* Block format select */
+.editable-html-toolbar__select {
+  padding: 4px 6px;
+  font-size: 11px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.22);
+  background: #ffffff;
+  color: #1f150f;
+  cursor: pointer;
+  border-radius: 2px;
+  height: 26px;
+  min-width: 110px;
+  margin-right: 4px;
+}
+
+/* Typography field: label + number input + unit + apply */
+.editable-html-toolbar__field {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding-right: 8px;
+  margin-right: 2px;
+  border-right: 1px solid rgba(31, 21, 15, 0.15);
+}
+
+.editable-html-toolbar__field:last-of-type {
+  border-right: none;
+}
+
+.editable-html-toolbar__field-label {
+  font-size: 10px;
+  font-family: var(--font-sf-pro), sans-serif;
+  color: rgba(31, 21, 15, 0.65);
+  white-space: nowrap;
+}
+
+.editable-html-toolbar__num {
+  width: 44px;
+  padding: 3px 4px;
+  font-size: 11px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.22);
+  background: #ffffff;
+  color: #1f150f;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.editable-html-toolbar__num::-webkit-inner-spin-button,
+.editable-html-toolbar__num::-webkit-outer-spin-button {
+  opacity: 0.4;
+}
+
+.editable-html-toolbar__unit {
+  font-size: 10px;
+  font-family: var(--font-sf-pro), sans-serif;
+  color: rgba(31, 21, 15, 0.5);
+}
+
+.editable-html-toolbar__apply {
+  padding: 3px 7px !important;
+  font-size: 11px !important;
+  background: #e8e0d2 !important;
+  border-color: rgba(31,21,15,0.2) !important;
+  color: #1f150f !important;
+  font-weight: 600 !important;
+}
+
+.editable-html-toolbar__apply:hover {
+  background: #1f150f !important;
+  color: #fff !important;
+}
+
+/* Button insert dialog */
+.editable-html-toolbar__dialog {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 10px;
+  margin-top: 2px;
+  background: #fff8ee;
+  border: 1px solid rgba(31, 21, 15, 0.2);
+  border-radius: 0 0 3px 3px;
+}
+
+.editable-html-toolbar__dialog-title {
+  font-size: 11px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-weight: 600;
+  color: #1f150f;
+  white-space: nowrap;
+}
+
+.editable-html-toolbar__dialog input {
+  padding: 5px 8px;
+  font-size: 11px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.25);
+  background: #ffffff;
+  color: #1f150f;
+  border-radius: 2px;
+  width: 160px;
+}
+
+.editable-html-toolbar__dialog input:focus {
+  outline: 1px solid #1f150f;
+}
+
+/* ─── EditableImage ────────────────────────────────────────────────────────── */
+
 .admin-editable-image {
   display: block;
 }
@@ -84,7 +288,7 @@
   cursor: pointer;
 }
 
-.admin-editable-image input {
+.admin-editable-image input[type="file"] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -101,6 +305,279 @@
   background: #fffdf7;
   color: #1f150f;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+  pointer-events: none;
+}
+
+/* ⚙ Image style button – sits next to the image container */
+.admin-editable-image__style-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 5px 10px;
+  font-size: 10px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.3);
+  background: #f5f0e8;
+  color: #1f150f;
+  cursor: pointer;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+
+.admin-editable-image__style-btn:hover {
+  background: #1f150f;
+  color: #fff;
+}
+
+/* ─── Image style panel (fixed bottom sheet) ─────────────────────────────── */
+
+.editable-image-panel {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: min(640px, 100vw);
+  background: #fffdf7;
+  border: 1px solid rgba(31, 21, 15, 0.25);
+  border-bottom: none;
+  box-shadow: 0 -6px 30px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sf-pro), sans-serif;
+}
+
+.editable-image-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(31, 21, 15, 0.12);
+  background: #f5f0e8;
+}
+
+.editable-image-panel__header span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f150f;
+}
+
+.editable-image-panel__header button {
+  padding: 4px 8px;
+  font-size: 12px;
+  border: none;
+  background: transparent;
+  color: rgba(31, 21, 15, 0.6);
+  cursor: pointer;
+}
+
+.editable-image-panel__header button:hover {
+  color: #1f150f;
+}
+
+.editable-image-panel__body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.editable-image-panel__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editable-image-panel__section-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(31, 21, 15, 0.5);
+  margin: 0;
+}
+
+.editable-image-panel__row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Single labeled input */
+.editable-image-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 100px;
+  flex: 1;
+}
+
+.editable-image-panel__field--wide {
+  flex: 2;
+}
+
+.editable-image-panel__field > span {
+  font-size: 10px;
+  color: rgba(31, 21, 15, 0.55);
+}
+
+.editable-image-panel__field input {
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.22);
+  background: #fff;
+  color: #1f150f;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.editable-image-panel__field input:focus {
+  outline: 1px solid #1f150f;
+}
+
+.editable-image-panel__field > button {
+  align-self: flex-start;
+  font-size: 9px;
+  padding: 2px 5px;
+  border: 1px solid rgba(31,21,15,0.2);
+  background: transparent;
+  color: rgba(31,21,15,0.5);
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+/* Margin grid 2×2 */
+.editable-image-panel__margin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+/* Object-position presets */
+.editable-image-panel__presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.editable-image-panel__presets button {
+  padding: 4px 8px;
+  font-size: 10px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.2);
+  background: #fff;
+  color: #1f150f;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.1s;
+}
+
+.editable-image-panel__presets button:hover,
+.editable-image-panel__presets button.active {
+  background: #1f150f;
+  color: #fff;
+}
+
+.editable-image-panel__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(31, 21, 15, 0.12);
+  background: #f5f0e8;
+}
+
+.editable-image-panel__footer button {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-family: var(--font-sf-pro), sans-serif;
+  border: 1px solid rgba(31, 21, 15, 0.28);
+  background: #fff;
+  color: #1f150f;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.12s;
+}
+
+.editable-image-panel__apply-btn {
+  background: #1f150f !important;
+  color: #fff !important;
+  border-color: #1f150f !important;
+  font-weight: 600 !important;
+}
+
+.editable-image-panel__footer button:hover {
+  opacity: 0.8;
+}
+
+/* ─── Display mode: transparent wrapper ─────────────────────────────────────
+   When NOT in edit mode the wrapper div has no contenteditable attribute.
+   Setting display:contents makes it invisible to CSS so every component's
+   own rules (.wardrobe-analysis__content p, .bridal-concierge p, etc.)
+   reach the inner headings / paragraphs directly without any specificity
+   fight or inheritance break.                                               */
+
+.editable-html-content:not([contenteditable]) {
+  display: contents;
+}
+
+/* ─── Edit mode: heading/paragraph resets ───────────────────────────────────
+   Browser UA stylesheet gives h1-h6 large top/bottom margins (up to 0.67em).
+   Reset them in the contenteditable so users can control spacing manually.  */
+
+.editable-html-content[contenteditable] h1,
+.editable-html-content[contenteditable] h2,
+.editable-html-content[contenteditable] h3,
+.editable-html-content[contenteditable] h4,
+.editable-html-content[contenteditable] h5,
+.editable-html-content[contenteditable] h6 {
+  margin-top: 6px;
+  margin-bottom: 3px;
+}
+
+.editable-html-content[contenteditable] p,
+.editable-html-content[contenteditable] div {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+
+.editable-html-content[contenteditable] ul,
+.editable-html-content[contenteditable] ol {
+  margin-top: 4px;
+  margin-bottom: 6px;
+  padding-left: 18px;
+}
+
+/* ─── Responsive tweaks ────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .editable-html-toolbar__row {
+    gap: 3px;
+  }
+
+  .editable-html-toolbar__select {
+    min-width: 85px;
+    font-size: 10px;
+  }
+
+  .editable-html-toolbar button {
+    padding: 3px 5px;
+    font-size: 10px;
+  }
+
+  .editable-html-toolbar__num {
+    width: 36px;
+  }
+
+  .editable-image-panel__margin-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }

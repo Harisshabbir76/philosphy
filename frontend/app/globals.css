@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./Styles/rtl-overrides.css";
 
 @theme {
   --font-pinyon: "Pinyon Script", cursive;
@@ -38,6 +39,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Home page: unify every paragraph's typography to match
+   `.intro-approach__bottom p` (thin, refined). Desktop only, so the
+   per-section responsive sizes still apply on tablet/mobile. Colour and
+   alignment are left to each section. */
+@media (min-width: 1024px) {
+  .home-page p {
+    font-size: 10px !important;
+    font-weight: 50 !important;
+    line-height: 1.42 !important;
+    letter-spacing: 0.84px !important;
+  }
+}
+p not .story-hero__content p{
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0.84px !important;
+
+}
+
 img,
 video,
 canvas,
@@ -50,4 +71,29 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+/* ===== RTL / Arabic support ===== */
+html[dir="rtl"] {
+  font-family: var(--font-sf-pro), "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+html[dir="rtl"] .back-to-top {
+  right: auto;
+  left: 154px;
+}
+
+html[dir="rtl"] .lang-selector__dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .mobile-sidebar__content {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+html[dir="rtl"] .mobile-sidebar--open .mobile-sidebar__content {
+  transform: translateX(0);
 }

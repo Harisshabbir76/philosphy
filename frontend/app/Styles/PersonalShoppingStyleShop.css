@@ -17,8 +17,10 @@
 
 .ps-style-shop__copy h2,
 .ps-style-shop__copy p,
+.ps-style-shop__copy div,
 .ps-style-shop__item summary span:first-child,
-.ps-style-shop__content p {
+.ps-style-shop__content p,
+.ps-style-shop__content div {
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 9px;
   letter-spacing: 1px;
@@ -32,7 +34,9 @@
 }
 
 .ps-style-shop__copy p,
-.ps-style-shop__content p {
+.ps-style-shop__copy div,
+.ps-style-shop__content p,
+.ps-style-shop__content div {
   max-width: 390px;
   margin-bottom: 16px;
   font-weight: 100;
@@ -128,7 +132,7 @@
 .ps-style-shop__image {
   position: relative;
   width: 270px;
-  height: 328px;
+  height: 380px;
   margin-top: 14px;
   overflow: hidden;
 }

@@ -1,0 +1,716 @@
+/* ============================================================
+   RTL (Arabic) font-size overrides — +2px on all text
+   Every rule here mirrors the LTR breakpoint structure and
+   adds exactly 2px. English (LTR) is never touched.
+   ============================================================ */
+
+/* ── HeroSection ─────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 44px; }
+  :root[dir="rtl"] .hero-script    { font-size: 30px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 14px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 38px; }
+  :root[dir="rtl"] .hero-script    { font-size: 27px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 13px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 34px; }
+  :root[dir="rtl"] .hero-script    { font-size: 26px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 12px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 30px; }
+  :root[dir="rtl"] .hero-script    { font-size: 22px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 12px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 26px; }
+  :root[dir="rtl"] .hero-script    { font-size: 19px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 11px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 22px; }
+  :root[dir="rtl"] .hero-script    { font-size: 16px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 9px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 20px; }
+  :root[dir="rtl"] .hero-script    { font-size: 15px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 18px; }
+  :root[dir="rtl"] .hero-script    { font-size: 14px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 8px; }
+}
+@media (max-height: 600px) and (min-width: 375px) {
+  :root[dir="rtl"] .hero-heading { font-size: clamp(18px, 4vh, 30px); }
+  :root[dir="rtl"] .hero-script  { font-size: clamp(16px, 3vh, 24px); }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :root[dir="rtl"] .hero-heading { font-size: 22px; }
+  :root[dir="rtl"] .hero-script  { font-size: 18px; }
+}
+
+/* ── IntroApproach ───────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 30px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 14px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 34px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 14px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 13px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 24px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 30px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 22px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 11px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 28px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 26px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 28px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 24px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 11px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 26px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 11px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 22px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 10px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 24px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 10px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 20px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 9.5px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 22px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 9.5px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 18px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 9px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 20px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 9px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 9px; }
+}
+
+/* ── ServicesSection ─────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 34px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 14px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 13px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 30px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 12px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 11px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 28px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 11px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 10px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 28px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 11px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 10px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 30px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 11px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 26px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 10px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 9.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 24px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 9.5px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 22px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 9px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 8.5px; }
+}
+
+/* ── WhyChooseUs ─────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 38px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 34px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 16px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 14px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 32px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 30px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 14px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 30px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 28px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 13px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 11.5px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 28px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 26px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 13px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 26px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 24px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 12px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 24px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 22px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 11px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 22px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 20px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 10.5px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 20px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 19px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 10px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 9px; }
+}
+
+/* ── GettingStarted ──────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 14px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 14px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 32px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 13px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 34px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 28px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 14px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 13px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 27px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 30px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 24px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 24px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 28px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 22px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 22px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 26px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 23px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 20px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 10px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 24px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 21px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 10px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 10px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 18px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 9.5px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 22px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 19px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 8px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 9.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 9.5px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 14px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 9.5px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 20px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 17px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 9px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 9px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 18px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 9px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 15px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 16px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 8px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 8.5px; }
+}
+
+/* ── StoryHero ───────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 50px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 34px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 40px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 28px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 36px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 26px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 32px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 24px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 28px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 22px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 26px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 20px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 24px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 18px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 22px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 16px; }
+}
+@media (max-height: 700px) and (min-width: 375px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: clamp(22px, 5vh, 32px); }
+  :root[dir="rtl"] .story-hero__content p  { font-size: clamp(16px, 3vh, 24px); }
+}
+@media (max-height: 600px) and (min-width: 375px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: clamp(20px, 4vh, 28px); }
+  :root[dir="rtl"] .story-hero__content p  { font-size: clamp(14px, 2.5vh, 20px); }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 24px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 18px; }
+}
+
+/* ── StoryFoundation ─────────────────────────────────────── */
+:root[dir="rtl"] .story-foundation__kicker   { font-size: 11px; }
+:root[dir="rtl"] .story-foundation__copy h2  { font-size: 22px; }
+:root[dir="rtl"] .story-foundation__body     { font-size: 12px; }
+
+/* ── StoryFounder ────────────────────────────────────────── */
+:root[dir="rtl"] .story-founder__kicker                              { font-size: 11px; }
+:root[dir="rtl"] .story-founder__copy h2                             { font-size: 22px; }
+:root[dir="rtl"] .story-founder__copy p:not(.story-founder__kicker) { font-size: 12px; }
+
+/* ── StoryPhilosophy ─────────────────────────────────────── */
+:root[dir="rtl"] .story-philosophy__copy h2 { font-size: 22px; }
+:root[dir="rtl"] .story-philosophy__copy p  { font-size: 12px; }
+
+/* ── AnalysisHero ────────────────────────────────────────── */
+:root[dir="rtl"] .analysis-hero h1 { font-size: 37px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .analysis-hero h1 { font-size: 25px; }
+}
+
+/* ── AnalysisServices ────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 15px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 14px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 14px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 14px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 13px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 13px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 12px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 11px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 10px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 10px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 10.5px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 9.5px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 9.5px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 10px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 9px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 9px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 9px; }
+}
+
+/* ── WardrobeHero ────────────────────────────────────────── */
+:root[dir="rtl"] .wardrobe-hero h1 { font-size: 37px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .wardrobe-hero h1 { font-size: 25px; }
+}
+
+/* ── WardrobeServices ────────────────────────────────────── */
+:root[dir="rtl"] .wardrobe-analysis__item summary span:first-child { font-size: 12px; }
+:root[dir="rtl"] .wardrobe-analysis__content p,
+:root[dir="rtl"] .wardrobe-analysis__content div,
+:root[dir="rtl"] .wardrobe-analysis__content li                    { font-size: 12px; }
+:root[dir="rtl"] .wardrobe-analysis__content h3                    { font-size: 12px; }
+@media (max-width: 760px) {
+  :root[dir="rtl"] .wardrobe-analysis__item summary span:first-child { font-size: 11px; }
+  :root[dir="rtl"] .wardrobe-analysis__content p,
+:root[dir="rtl"] .wardrobe-analysis__content div,
+  :root[dir="rtl"] .wardrobe-analysis__content li                    { font-size: 11px; }
+  :root[dir="rtl"] .wardrobe-analysis__content h3                    { font-size: 11px; }
+}
+
+/* ── PersonalShoppingHero ────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 60px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 50px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 44px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 38px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 32px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 22px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 19px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 15px; }
+}
+@media (max-height: 700px) and (min-width: 375px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: clamp(22px, 5vh, 50px); }
+}
+@media (max-height: 600px) and (min-width: 375px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: clamp(20px, 4vh, 44px); }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 30px; }
+}
+
+/* ── PersonalShoppingInPerson ────────────────────────────── */
+:root[dir="rtl"] .ps-in-person__copy h2,
+:root[dir="rtl"] .ps-in-person__copy h3,
+:root[dir="rtl"] .ps-in-person__copy p,
+:root[dir="rtl"] .ps-in-person__copy li { font-size: 11px; }
+
+/* ── PersonalShoppingRemote ──────────────────────────────── */
+:root[dir="rtl"] .ps-remote h2           { font-size: 17px; }
+:root[dir="rtl"] .ps-remote__tabs span   { font-size: 11px; }
+:root[dir="rtl"] .ps-remote p,
+:root[dir="rtl"] .ps-remote li           { font-size: 11px; }
+:root[dir="rtl"] .ps-remote__details p   { font-size: 11px; }
+:root[dir="rtl"] .ps-remote__details ul  { font-size: 11px; }
+
+/* ── PersonalShoppingStyleShop ───────────────────────────── */
+:root[dir="rtl"] .ps-style-shop__copy h2,
+:root[dir="rtl"] .ps-style-shop__copy p,
+:root[dir="rtl"] .ps-style-shop__item summary span:first-child,
+:root[dir="rtl"] .ps-style-shop__content p { font-size: 11px; }
+
+/* ── BridalHero ──────────────────────────────────────────── */
+:root[dir="rtl"] .bridal-hero h1 { font-size: 37px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .bridal-hero h1 { font-size: 27px; }
+}
+
+/* ── BridalCompleteLook ──────────────────────────────────── */
+:root[dir="rtl"] .bridal-complete__eyebrow,
+:root[dir="rtl"] .bridal-complete h3,
+:root[dir="rtl"] .bridal-complete p,
+:root[dir="rtl"] .bridal-complete li { font-size: 12px; }
+:root[dir="rtl"] .bridal-complete h2 { font-size: 27px; }
+
+/* ── BridalConcierge ─────────────────────────────────────── */
+:root[dir="rtl"] .bridal-concierge__eyebrow,
+:root[dir="rtl"] .bridal-concierge h3,
+:root[dir="rtl"] .bridal-concierge p  { font-size: 12px; }
+:root[dir="rtl"] .bridal-concierge h2 { font-size: 27px; }
+
+/* ── BridalEducation ─────────────────────────────────────── */
+:root[dir="rtl"] .bridal-education__panel h2,
+:root[dir="rtl"] .bridal-education__panel h3,
+:root[dir="rtl"] .bridal-education__panel p,
+:root[dir="rtl"] .bridal-education__panel li { font-size: 12px; }
+
+/* ── BridalZahab ─────────────────────────────────────────── */
+:root[dir="rtl"] .bridal-zahab__copy h2,
+:root[dir="rtl"] .bridal-zahab__copy p,
+:root[dir="rtl"] .bridal-zahab__item summary span:first-child,
+:root[dir="rtl"] .bridal-zahab__content p { font-size: 12px; }
+
+/* ── ContactHero ─────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 54px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 34px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 13px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 44px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 30px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 38px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 26px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 34px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 26px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 30px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 24px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 26px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 22px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 24px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 20px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 22px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 18px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 9px; }
+}
+@media (max-height: 700px) and (min-width: 375px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: clamp(22px, 5vh, 44px); }
+}
+
+/* ── ContactGettingStarted ───────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 40px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 14px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 14px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 14px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 14px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 26px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 13px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 34px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 13px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 13px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 13px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 22px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 30px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 30px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 22px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 19px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 10.5px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 10.5px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 10.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 19px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 10.5px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 19px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 10px; }
+}
+
+/* ── FaqHero ─────────────────────────────────────────────── */
+:root[dir="rtl"] .faq-hero h1 { font-size: 27px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .faq-hero h1 { font-size: 24px; }
+}
+
+/* ── FaqQuestions ────────────────────────────────────────── */
+:root[dir="rtl"] .faq-questions h2     { font-size: 58px; }
+:root[dir="rtl"] .faq-questions__link  { font-size: 11px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .faq-questions h2    { font-size: 40px; }
+  :root[dir="rtl"] .faq-questions__link { font-size: 10px; }
+}
+
+/* ── FaqQuestionsAnswers ──────────────────────────────────── */
+:root[dir="rtl"] .faq-answer__trigger span:first-child { font-size: 12px; }
+:root[dir="rtl"] .faq-answer__panel p                  { font-size: 12px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .faq-answer__trigger span:first-child { font-size: 11px; }
+  :root[dir="rtl"] .faq-answer__panel p                  { font-size: 11px; }
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 34px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 14px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 14px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 13px; }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 30px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 12px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 12px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 11px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 28px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 12px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 26px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 11px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 11px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 10px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 24px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 10.5px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 10px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 10px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 22px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 10px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 9.5px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 9.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 20px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 9.5px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 9px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 18px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 9px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 8.5px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 8.5px; }
+}
+
+/* ── LegalPage ───────────────────────────────────────────── */
+:root[dir="rtl"] .legal-page__title                                  { font-size: 38px; }
+:root[dir="rtl"] .legal-accordion summary span:first-child           { font-size: 15px; }
+:root[dir="rtl"] .legal-accordion__content p,
+:root[dir="rtl"] .legal-accordion__content li                        { font-size: 12px; }
+:root[dir="rtl"] .legal-accordion__content h3                        { font-size: 12px; }

@@ -11,7 +11,7 @@
 }
 
 .bridal-complete__intro {
-  width: min(700px, 100%);
+  width: min(780px, 100%);
   margin: 0 auto;
   text-align: center;
 }
@@ -20,6 +20,7 @@
 .bridal-complete h2,
 .bridal-complete h3,
 .bridal-complete p,
+.bridal-complete div,
 .bridal-complete li {
   color: #fffdf7;
   letter-spacing: 1px;
@@ -60,7 +61,8 @@
   line-height: 1.38;
 }
 
-.bridal-complete__intro p {
+.bridal-complete__intro p,
+.bridal-complete__intro div {
   margin-bottom: 14px;
 }
 
@@ -104,7 +106,8 @@
   list-style: none;
 }
 
-.bridal-complete__column p {
+.bridal-complete__column p,
+.bridal-complete__column div {
   margin-bottom: 12px;
 }
 

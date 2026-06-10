@@ -14,7 +14,7 @@
 .getting-started__hero {
   min-height: 550px;
   background: linear-gradient(rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.14)),
-    url("../Images/banner 2.png") center top / cover no-repeat;
+  url("../Images/banner 2.png") center top / cover no-repeat;
   padding-top: 58px;
 }
 
@@ -35,10 +35,11 @@
   gap: 26px;
   padding: 0 24px;
   flex-wrap: wrap;
+  margin-bottom: 100px;
 }
 
 .getting-started__card {
-  width: 220px;
+  width: 250px;
   min-height: 250px;
   background: #fffdf7;
   color: #342922;
@@ -74,8 +75,8 @@
 .getting-started__lower {
   min-height: 520px;
   padding: 0 24px 78px;
-  margin-top: -130px;
-  margin-bottom: -95px;
+  margin-top: -100px;
+  margin-bottom: -70px;
 }
 
 .getting-started__store {
@@ -84,6 +85,7 @@
   height: 170px;
   margin: 64px auto 82px;
   overflow: hidden;
+  margin-top: -10px;
 }
 
 .getting-started__store img {
@@ -100,7 +102,7 @@
 }
 
 .getting-started__lower h3 {
-  margin-top: 27px;
+  margin-top: 15px;
   font-family: var(--font-freight), serif;
   font-weight: 300;
   line-height: 1;
@@ -108,7 +110,7 @@
 }
 
 .getting-started__lower p {
-  max-width: 450px;
+  max-width: 480px;
   margin: 51px auto 43px;
   font-family: var(--font-sf-pro), sans-serif;
   font-weight: 100;

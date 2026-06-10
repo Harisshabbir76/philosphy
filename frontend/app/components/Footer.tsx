@@ -1,33 +1,46 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 import footerImg from "../Images/footerimg.png";
 import { API_BASE_URL } from "../lib/api";
+import { useLanguage } from "../lib/LanguageContext";
+import { translations } from "../lib/translations";
 
 import "../Styles/Footer.css";
 
 const Footer = () => {
   const [businessWhatsappNumber, setBusinessWhatsappNumber] = useState("");
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
+  const { language, setLanguage, isArabic } = useLanguage();
+  const t = translations[language].footer;
 
   useEffect(() => {
     const loadSettings = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/settings/public`);
-
         if (!response.ok) return;
-
         const data = await response.json();
         setBusinessWhatsappNumber(data.businessWhatsappNumber || "");
       } catch {
         setBusinessWhatsappNumber("");
       }
     };
-
     loadSettings();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const whatsappHref = useMemo(() => {
@@ -37,11 +50,7 @@ const Footer = () => {
 
   const scrollToTop = () => {
     if (typeof window === "undefined") return;
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -49,67 +58,72 @@ const Footer = () => {
       <div className="footer-main">
         <div className="footer-cta">
           <Image src={footerImg} alt="" className="footer-cta__icon" />
-
-          <h2>READY TO WORK WITH US?</h2>
-
-          <p>
-            If you're ready to refine your style with intention and ease, we're
-            here to guide you. Let's create something that feels effortless,
-            elevated, and truly aligned with you.
-          </p>
-
+          <h2>{t.ctaHeading}</h2>
+          <p>{t.ctaText}</p>
           <Link href="/booking" className="footer-consultation-link">
-            BOOK YOUR CONSULTATION NOW
+            {t.ctaButton}
           </Link>
         </div>
       </div>
 
-      <button
-        className="back-to-top"
-        onClick={scrollToTop}
-        type="button"
-      >
+      <button className="back-to-top" onClick={scrollToTop} type="button">
         <span className="up-arrow" aria-hidden="true"></span>
-        <span>BACK TO TOP</span>
+        <span>{t.backToTop}</span>
       </button>
 
       <div className="footer-bottom">
         <div className="footer-links">
-          <Link href="/">HOME</Link>
-          <Link href="/our-story">OUR STORY</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/contact-us">CONTACT US</Link>
-          <Link href="/legal">LEGAL</Link>
+          <Link href="/">{t.home}</Link>
+          <Link href="/our-story">{t.ourStory}</Link>
+          <Link href="/faq">{t.faq}</Link>
+          <Link href="/contact-us">{t.contactUs}</Link>
+          <Link href="/legal">{t.legal}</Link>
         </div>
 
         <div className="footer-info">
-          <span>© 2026 PHILOSOPHY</span>
+          <span>{t.copyright}</span>
 
           <div className="social-links">
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <FaInstagram className="social-icon" />
             </a>
-
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-            >
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <FaWhatsapp className="social-icon" />
             </a>
           </div>
 
-          {/*
-          <div className="lang-selector">
-            ENG <span className="lang-arrow" aria-hidden="true">⌵</span>
+          <div className="lang-selector" ref={langRef}>
+            <button
+              className="lang-selector__trigger"
+              onClick={() => setLangOpen((o) => !o)}
+              aria-haspopup="listbox"
+              aria-expanded={langOpen}
+              type="button"
+            >
+              {isArabic ? "عربي" : "ENG"}
+              <span className="lang-arrow" aria-hidden="true">⌵</span>
+            </button>
+            {langOpen && (
+              <ul className="lang-selector__dropdown" role="listbox">
+                <li
+                  role="option"
+                  aria-selected={!isArabic}
+                  className={`lang-selector__option${!isArabic ? " lang-selector__option--active" : ""}`}
+                  onClick={() => { setLanguage("en"); setLangOpen(false); }}
+                >
+                  ENG
+                </li>
+                <li
+                  role="option"
+                  aria-selected={isArabic}
+                  className={`lang-selector__option${isArabic ? " lang-selector__option--active" : ""}`}
+                  onClick={() => { setLanguage("ar"); setLangOpen(false); }}
+                >
+                  عربي
+                </li>
+              </ul>
+            )}
           </div>
-          */}
         </div>
       </div>
     </footer>
