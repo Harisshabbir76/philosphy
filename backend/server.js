@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const frontendOrigin = process.env.FRONTEND_ORIGIN
   ? process.env.FRONTEND_ORIGIN.split(",").map((origin) => origin.trim())
-  : ["http://127.0.0.1:3000", "http://localhost:3000"];
+  : ["http://127.0.0.1:3000", "http://localhost:3000", "https://philosphy-weld.vercel.app"];
 
 app.use(cors({ origin: frontendOrigin }));
 app.use(express.json({ limit: "1mb" }));
