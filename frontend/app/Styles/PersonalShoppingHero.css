@@ -42,11 +42,11 @@ p {
 /* Large Desktop (1400px and above) */
 @media (min-width: 1400px) {
   .personal-shopping-hero {
-    min-height: 650px;
+    min-height: 540px;
   }
 
   .personal-shopping-hero h1 {
-    font-size: 48px;
+    font-size: 35px;
     letter-spacing: 1.5px;
     margin-top: 5px;
   }
@@ -55,11 +55,11 @@ p {
 /* Standard Desktop (1024px - 1399px) */
 @media (min-width: 1024px) and (max-width: 1399px) {
   .personal-shopping-hero {
-    min-height: 650px;
+    min-height: 540px;
   }
-  
+
   .personal-shopping-hero h1 {
-    font-size: 48px;
+    font-size: 35px;
     letter-spacing: 1.5px;
   }
 }
@@ -71,7 +71,7 @@ p {
   }
   
   .personal-shopping-hero h1 {
-    font-size: 42px;
+    font-size: 35px;
     letter-spacing: 1.2px;
   }
 }
@@ -83,7 +83,7 @@ p {
   }
   
   .personal-shopping-hero h1 {
-    font-size: 36px;
+    font-size: 35px;
     letter-spacing: 1px;
     padding: 0 20px;
   }
