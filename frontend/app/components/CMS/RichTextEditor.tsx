@@ -13,7 +13,7 @@ import {
   LineHeight,
   BackgroundColor,
 } from "@tiptap/extension-text-style";
-import { ExtraTextStyle, BlockStyle } from "./cmsEditorExtensions";
+import { ExtraTextStyle, BlockStyle, BulletListStyle, BULLET_STYLES } from "./cmsEditorExtensions";
 import { useEffect } from "react";
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough,
@@ -58,6 +58,7 @@ export function RichTextEditor({ value, onChange, onEditor, onFocus }: RichTextE
       BackgroundColor,
       ExtraTextStyle,
       BlockStyle,
+      BulletListStyle,
     ],
     content: value,
     onUpdate: ({ editor }) => {
@@ -99,6 +100,20 @@ export function RichTextEditor({ value, onChange, onEditor, onFocus }: RichTextE
   const currentColor = textStyle.color || "#1f150f";
   const currentSize = textStyle.fontSize ? String(parseInt(textStyle.fontSize, 10)) : "";
   const currentFamily = textStyle.fontFamily || "";
+
+  // Current bullet-list marker style (so the picker reflects the selection)
+  const currentBulletStyle =
+    (editor.getAttributes("bulletList").listStyle as string) || "disc";
+
+  // Apply a marker style: make sure we're in a bullet list, then set the attr.
+  // The toggle runs as its own transaction so the follow-up command sees the
+  // freshly-created list when converting plain paragraphs into a bullet list.
+  const setBulletStyle = (style: string) => {
+    if (!editor.isActive("bulletList")) {
+      editor.chain().focus().toggleBulletList().run();
+    }
+    editor.chain().focus().setBulletListStyle(style).run();
+  };
 
   const btn = (label: React.ReactNode, active: boolean, onClick: () => void, title?: string) => (
     <button
@@ -145,6 +160,18 @@ export function RichTextEditor({ value, onChange, onEditor, onFocus }: RichTextE
 
         {/* Lists + link */}
         {btn(<List size={14} />, editor.isActive("bulletList"), () => editor.chain().focus().toggleBulletList().run(), "Bullet List")}
+        <select
+          className="cms-tiptap-select cms-tiptap-select--bullet"
+          title="Bullet marker style"
+          value={editor.isActive("bulletList") ? currentBulletStyle : ""}
+          onMouseDown={(e) => e.stopPropagation()}
+          onChange={(e) => setBulletStyle(e.target.value)}
+        >
+          <option value="" disabled>Bullet</option>
+          {BULLET_STYLES.map((b) => (
+            <option key={b.value} value={b.value}>{b.label}</option>
+          ))}
+        </select>
         {btn(<ListOrdered size={14} />, editor.isActive("orderedList"), () => editor.chain().focus().toggleOrderedList().run(), "Numbered List")}
         {btn(<LinkIcon size={14} />, editor.isActive("link"), toggleLink, "Link")}
       </div>

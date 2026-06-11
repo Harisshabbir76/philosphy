@@ -283,6 +283,17 @@
   color: inherit;
 }
 
+/* Bullet marker styles inside the editor (mirror EditableContent.css) */
+.cms-tiptap-editor .ProseMirror ul[data-list-style="disc"]   { list-style-type: disc !important; }
+.cms-tiptap-editor .ProseMirror ul[data-list-style="circle"] { list-style-type: circle !important; }
+.cms-tiptap-editor .ProseMirror ul[data-list-style="square"] { list-style-type: square !important; }
+.cms-tiptap-editor .ProseMirror ul[data-list-style="dash"],
+.cms-tiptap-editor .ProseMirror ul[data-list-style="arrow"],
+.cms-tiptap-editor .ProseMirror ul[data-list-style="check"] { list-style-type: none !important; }
+.cms-tiptap-editor .ProseMirror ul[data-list-style="dash"]  > li::before { content: "\2013"; margin-right: 0.5em; }
+.cms-tiptap-editor .ProseMirror ul[data-list-style="arrow"] > li::before { content: "\2192"; margin-right: 0.5em; }
+.cms-tiptap-editor .ProseMirror ul[data-list-style="check"] > li::before { content: "\2713"; margin-right: 0.5em; }
+
 /* Keep the editor background white and use a normal selection highlight so an
    applied text color is never mistaken for a background change. */
 .cms-tiptap-editor,
@@ -382,6 +393,13 @@
 .cms-tiptap-select:focus {
   outline: none;
   border-color: #2563eb;
+}
+
+/* Compact bullet-marker picker that sits next to the bullet-list button */
+.cms-tiptap-select--bullet {
+  height: 24px;
+  margin: 2px 0;
+  font-size: 11px;
 }
 
 /* Footer */

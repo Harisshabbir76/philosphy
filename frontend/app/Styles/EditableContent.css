@@ -73,6 +73,24 @@
   color: inherit;
 }
 
+/* ── Bullet marker styles (chosen in the editor's bullet picker) ──
+   The <ul> carries data-list-style; native types use list-style-type, custom
+   ones (dash / arrow / check) drop the native marker and draw it with ::before
+   so they travel inline beside the text and inherit the list item's color. */
+/* !important so a CMS marker choice wins over whatever host component the
+   content sits in (e.g. .analysis-service__content forces `list-style: disc`
+   on every ul at the same specificity — without this the native disc would
+   show alongside our custom marker). */
+.cms-ec ul[data-list-style="disc"]   { list-style-type: disc !important; }
+.cms-ec ul[data-list-style="circle"] { list-style-type: circle !important; }
+.cms-ec ul[data-list-style="square"] { list-style-type: square !important; }
+.cms-ec ul[data-list-style="dash"],
+.cms-ec ul[data-list-style="arrow"],
+.cms-ec ul[data-list-style="check"] { list-style-type: none !important; }
+.cms-ec ul[data-list-style="dash"]  > li::before { content: "\2013"; margin-right: 0.5em; }
+.cms-ec ul[data-list-style="arrow"] > li::before { content: "\2192"; margin-right: 0.5em; }
+.cms-ec ul[data-list-style="check"] > li::before { content: "\2713"; margin-right: 0.5em; }
+
 /* ── Admin-only editing affordances ── */
 .cms-ec--editable {
   position: relative;

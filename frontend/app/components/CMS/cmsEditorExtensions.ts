@@ -137,4 +137,73 @@ export const BlockStyle = Extension.create({
   },
 });
 
+/* ── BulletListStyle: choose the marker style of a bullet list ────────────────
+   Adds a `listStyle` attribute to the bulletList node, rendered as a
+   `data-list-style` attribute on the <ul>. CSS (CMSSidebar.css for the editor,
+   EditableContent.css for the public site) turns each value into a marker —
+   including the dash ("–") style from the design.                              */
+
+export const BULLET_STYLES = [
+  { value: "disc", label: "• Disc" },
+  { value: "circle", label: "○ Circle" },
+  { value: "square", label: "▪ Square" },
+  { value: "dash", label: "– Dash" },
+  { value: "arrow", label: "→ Arrow" },
+  { value: "check", label: "✓ Check" },
+] as const;
+
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    bulletListStyle: {
+      /** Set the marker style on the bullet list wrapping the selection. */
+      setBulletListStyle: (style: string) => ReturnType;
+    };
+  }
+}
+
+export const BulletListStyle = Extension.create({
+  name: "bulletListStyle",
+  addGlobalAttributes() {
+    return [
+      {
+        types: ["bulletList"],
+        attributes: {
+          listStyle: {
+            default: null,
+            parseHTML: (el) =>
+              (el as HTMLElement).getAttribute("data-list-style") || null,
+            renderHTML: (attrs) =>
+              attrs.listStyle ? { "data-list-style": attrs.listStyle } : {},
+          },
+        },
+      },
+    ];
+  },
+
+  addCommands() {
+    return {
+      setBulletListStyle:
+        (style) =>
+        ({ state, tr, dispatch }) => {
+          // Walk up from every selection endpoint to the nearest bulletList
+          // ancestor and set its marker style. Targeting the ancestor directly
+          // is reliable even when the cursor sits deep inside a list item.
+          const positions = new Set<number>();
+          state.selection.ranges.forEach(({ $from }) => {
+            for (let depth = $from.depth; depth > 0; depth--) {
+              if ($from.node(depth).type.name === "bulletList") {
+                positions.add($from.before(depth));
+                break;
+              }
+            }
+          });
+          if (positions.size === 0) return false;
+          positions.forEach((pos) => tr.setNodeAttribute(pos, "listStyle", style));
+          if (dispatch) dispatch(tr);
+          return true;
+        },
+    };
+  },
+});
+
 export { parseStyleString, stringifyStyle };
