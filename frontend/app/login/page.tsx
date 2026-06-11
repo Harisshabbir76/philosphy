@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { API_BASE_URL } from "../lib/api";
 import "../Styles/ContactForm.css"; // Reuse styling for simplicity, or we can use global
 
 export default function LoginPage() {
@@ -15,7 +16,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

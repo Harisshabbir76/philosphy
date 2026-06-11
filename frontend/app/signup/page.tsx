@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import "../Styles/ContactForm.css"; 
+import { API_BASE_URL } from "../lib/api";
+import "../Styles/ContactForm.css";
 
 export default function SignupPage() {
   const [fullName, setFullName] = useState("");
@@ -16,7 +17,7 @@ export default function SignupPage() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullName, email, password }),

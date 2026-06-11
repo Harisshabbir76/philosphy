@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import NotFoundScreen from "./NotFoundScreen";
 import AdminPanelShell from "./AdminPanelShell";
+import { API_BASE_URL } from "../../../lib/api";
 
 type StoredUser = {
   isAdmin?: boolean;
@@ -28,7 +29,7 @@ export default function AdminPanelLayout({ children }: { children: ReactNode }) 
           return;
         }
 
-        const response = await fetch("http://localhost:5000/api/auth/me", {
+        const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },

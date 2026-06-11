@@ -61,6 +61,30 @@
   background: rgba(255, 253, 247, 0.08);
 }
 
+/* Logout button — sits at the bottom of the nav, visually separated. */
+.admin-panel-sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: transparent;
+  color: #fffdf7;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-align: left;
+  border: 1px solid rgba(255, 253, 247, 0.28);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-panel-sidebar__logout:hover {
+  border-color: rgba(214, 120, 110, 0.7);
+  background: rgba(159, 29, 29, 0.18);
+}
+
 .admin-panel-content {
   min-width: 0;
 }

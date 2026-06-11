@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { API_BASE_URL } from "./api";
 
 type ContentStyles = {
   desktop?: React.CSSProperties;
@@ -47,8 +48,8 @@ export function CMSProvider({
   const [activeElement, setActiveElement] = useState<ActiveEditElement | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Use the same backend origin logic as the rest of the app, or hardcode for MVP if no env exists
-  const backendUrl = "http://localhost:5000/api/cms";
+  // Use the shared API base so this works in both local dev and on Vercel.
+  const backendUrl = `${API_BASE_URL}/api/cms`;
 
   useEffect(() => {
     const fetchAllContent = async () => {

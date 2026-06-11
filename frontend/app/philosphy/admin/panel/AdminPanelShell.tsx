@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiLogOut } from "react-icons/fi";
 import "./admin-panel.css";
 import "../../../Styles/CMSSidebar.css";
 import { CMSProvider } from "../../../lib/CMSProvider";
@@ -22,8 +22,14 @@ const links = [
 
 export default function AdminPanelShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,6 +93,10 @@ export default function AdminPanelShell({ children }: { children: ReactNode }) {
                   </Link>
                 );
               })}
+              <button type="button" className="admin-panel-sidebar__logout" onClick={handleLogout}>
+                <FiLogOut size={16} />
+                Logout
+              </button>
             </nav>
           </aside>
         )}
@@ -126,6 +136,17 @@ export default function AdminPanelShell({ children }: { children: ReactNode }) {
                     </Link>
                   );
                 })}
+                <button
+                  type="button"
+                  className="admin-panel-sidebar__logout"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    handleLogout();
+                  }}
+                >
+                  <FiLogOut size={16} />
+                  Logout
+                </button>
               </nav>
             </aside>
           </>

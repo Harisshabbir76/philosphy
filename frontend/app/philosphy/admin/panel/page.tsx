@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { FaEye, FaWhatsapp, FaTimes, FaTrash } from "react-icons/fa";
+import { API_BASE_URL } from "../../../lib/api";
 
 type Booking = {
   _id: string;
@@ -51,7 +52,7 @@ export default function AdminPanelPage() {
       const storedUser = localStorage.getItem("user");
       const user = storedUser ? (JSON.parse(storedUser) as StoredUser) : null;
 
-      const response = await fetch(`http://localhost:5000/api/booking/${booking._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/booking/${booking._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user?.token || ""}` },
       });
@@ -92,7 +93,7 @@ export default function AdminPanelPage() {
         const storedUser = localStorage.getItem("user");
         const user = storedUser ? (JSON.parse(storedUser) as StoredUser) : null;
 
-        const response = await fetch("http://localhost:5000/api/booking/admin", {
+        const response = await fetch(`${API_BASE_URL}/api/booking/admin`, {
           headers: {
             Authorization: `Bearer ${user?.token || ""}`,
           },
