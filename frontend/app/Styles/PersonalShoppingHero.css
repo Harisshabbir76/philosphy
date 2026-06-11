@@ -42,7 +42,8 @@ p {
 /* Large Desktop (1400px and above) */
 @media (min-width: 1400px) {
   .personal-shopping-hero {
-    min-height: 540px;
+    min-height: 0;
+    aspect-ratio: 1828 / 725;
   }
 
   .personal-shopping-hero h1 {
@@ -55,7 +56,8 @@ p {
 /* Standard Desktop (1024px - 1399px) */
 @media (min-width: 1024px) and (max-width: 1399px) {
   .personal-shopping-hero {
-    min-height: 540px;
+    min-height: 0;
+    aspect-ratio: 1828 / 725;
   }
 
   .personal-shopping-hero h1 {
