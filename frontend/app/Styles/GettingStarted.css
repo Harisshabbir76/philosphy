@@ -76,7 +76,7 @@
   min-height: 520px;
   padding: 0 24px 78px;
   margin-top: -100px;
-  margin-bottom: -70px;
+  margin-bottom: -100px;
 }
 
 .getting-started__store {
@@ -186,7 +186,10 @@ p {
   .getting-started__store {
     width: 420px;
     height: 220px;
-    margin: 80px auto 100px;
+    margin: 0px auto 100px;
+  }
+  .getting-started__lower {
+    margin-bottom:-30px;
   }
   
   .getting-started__lower h2 {
@@ -200,8 +203,9 @@ p {
   }
   
   .getting-started__lower p {
-    font-size: 12px;
+    font-size: 10px;
     max-width: 550px;
+    font-weight: 50;
     margin: 35px auto 25px;
   }
   

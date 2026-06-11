@@ -244,6 +244,11 @@ export function EditableImage({
     <>
       <label
         ref={labelRef}
+        // Browser extensions (image-saver / reverse-image-search / Pinterest, etc.)
+        // inject an overlay <div> onto images before React hydrates, which trips a
+        // hydration mismatch warning here. We don't control that DOM, so tell React
+        // to tolerate third-party tweaks to this element's content.
+        suppressHydrationWarning
         className={isEditing ? "admin-editable-image admin-editable-image--editing" : "admin-editable-image"}
         style={fill ? { position: "absolute", inset: 0 } : undefined}
       >

@@ -77,10 +77,11 @@
   
   .story-hero__content p,
 .story-hero__content div {
-    font-size: 32px;
+    font-size: 35px;
     margin-top: 20px;
     letter-spacing: 1.5px;
   }
+  
 }
 
 /* Standard Desktop (1024px - 1399px) */
@@ -316,3 +317,6 @@
   transition: font-size 0.2s ease-out;
 }
 
+.story-hero__content p{
+    font-size: 35px;
+  }

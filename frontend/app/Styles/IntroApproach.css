@@ -106,7 +106,7 @@
 
 .intro-approach__bottom p {
   font-family: var(--font-sf-pro), sans-serif;
-  font-weight: 150;
+  font-weight: 50;
   line-height: 1.42;
   letter-spacing: 0.84px;
   color: #1F150F;
@@ -184,7 +184,7 @@ p {
   }
   
   .intro-approach__copy p {
-    font-size: 12px;
+    font-size: 10px;
   }
   
   .button {
@@ -201,8 +201,11 @@ p {
   }
   
   .intro-approach__bottom p {
-    font-size: 11px;
+    font-size: 10px;
     max-width: 650px;
+    font-weight: 50;
+    line-height: 1.42;
+    letter-spacing: 0.84px;
   }
   
   .intro-approach__image--woman {

@@ -40,9 +40,11 @@
   text-align: center;
   font-weight: lighter;
   color: #1F150F;
-  letter-spacing: 1.6px;
+  letter-spacing: 0.84px;
   margin-top: 30px;
-  line-height: 1.35;
+  line-height: 1.42;
+  font-size: 10px;
+  font-weight: 50;
 }
 
 .why-choose__text h2 + p {
@@ -120,10 +122,12 @@ p {
   }
   
   .why-choose__text h4 {
-    font-size: 12px;
+    font-size: 10px;
     max-width: 780px;
     margin-top: 35px;
-    letter-spacing: 1.8px;
+    line-height: 1.42;
+    font-weight: 50;
+    letter-spacing: 0.84px;
   }
   
   .why-choose__image {
@@ -135,6 +139,7 @@ p {
   .why-choose__divider {
     margin: 40px 0 0;
   }
+ 
 }
 
 /* Standard Desktop (1024px - 1399px) */

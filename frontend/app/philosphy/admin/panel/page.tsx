@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { FaEye, FaWhatsapp, FaTimes, FaTrash } from "react-icons/fa";
 import { API_BASE_URL } from "../../../lib/api";
+
+type QuickFilter = "all" | "today" | "yesterday" | "last3";
 
 type Booking = {
   _id: string;
@@ -38,6 +40,29 @@ const formatTime = (time24: string) => {
   return `${hour}:${minute} ${ampm}`;
 };
 
+/** Normalise any date string to a local "YYYY-MM-DD" key for comparison. */
+const toDayKey = (value?: string) => {
+  if (!value) return "";
+  const iso = value.match(/^(\d{4}-\d{2}-\d{2})/);
+  if (iso) return iso[1];
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+  const y = d.getFullYear();
+  const mo = String(d.getMonth() + 1).padStart(2, "0");
+  const da = String(d.getDate()).padStart(2, "0");
+  return `${y}-${mo}-${da}`;
+};
+
+/** Today's day key shifted by `offset` days (e.g. -1 = yesterday). */
+const dayKeyOffset = (offset: number) => {
+  const d = new Date();
+  d.setDate(d.getDate() + offset);
+  const y = d.getFullYear();
+  const mo = String(d.getMonth() + 1).padStart(2, "0");
+  const da = String(d.getDate()).padStart(2, "0");
+  return `${y}-${mo}-${da}`;
+};
+
 export default function AdminPanelPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -45,6 +70,41 @@ export default function AdminPanelPage() {
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<Booking | null>(null);
+
+  // ── Date filters (operate on each booking's appointment `date`) ──────────────
+  const [quickFilter, setQuickFilter] = useState<QuickFilter>("all");
+  const [specificDate, setSpecificDate] = useState("");
+  const [rangeFrom, setRangeFrom] = useState("");
+  const [rangeTo, setRangeTo] = useState("");
+
+  // Selecting one kind of filter clears the others so they never conflict.
+  const applyQuick = (q: QuickFilter) => {
+    setQuickFilter(q);
+    setSpecificDate("");
+    setRangeFrom("");
+    setRangeTo("");
+  };
+  const applySpecific = (value: string) => {
+    setSpecificDate(value);
+    setQuickFilter("all");
+    setRangeFrom("");
+    setRangeTo("");
+  };
+  const applyRange = (which: "from" | "to", value: string) => {
+    if (which === "from") setRangeFrom(value);
+    else setRangeTo(value);
+    setQuickFilter("all");
+    setSpecificDate("");
+  };
+  const clearFilters = () => {
+    setQuickFilter("all");
+    setSpecificDate("");
+    setRangeFrom("");
+    setRangeTo("");
+  };
+
+  const isFiltered =
+    quickFilter !== "all" || Boolean(specificDate) || Boolean(rangeFrom) || Boolean(rangeTo);
 
   const handleDelete = async (booking: Booking) => {
     setDeletingId(booking._id);
@@ -120,6 +180,28 @@ export default function AdminPanelPage() {
     return bookings.filter((booking) => booking.paymentStatus === "paid").length;
   }, [bookings]);
 
+  const filteredBookings = useMemo(() => {
+    if (!isFiltered) return bookings;
+    const hasRange = Boolean(rangeFrom || rangeTo);
+    const todayKey = dayKeyOffset(0);
+    const yesterdayKey = dayKeyOffset(-1);
+    const last3Key = dayKeyOffset(-2); // today + 2 previous days
+    return bookings.filter((booking) => {
+      const key = toDayKey(booking.date);
+      if (!key) return false;
+      if (hasRange) {
+        if (rangeFrom && key < rangeFrom) return false;
+        if (rangeTo && key > rangeTo) return false;
+        return true;
+      }
+      if (specificDate) return key === specificDate;
+      if (quickFilter === "today") return key === todayKey;
+      if (quickFilter === "yesterday") return key === yesterdayKey;
+      if (quickFilter === "last3") return key >= last3Key && key <= todayKey;
+      return true;
+    });
+  }, [bookings, isFiltered, quickFilter, specificDate, rangeFrom, rangeTo]);
+
   return (
     <main style={{ minHeight: "100vh", background: "#fffdf7", color: "#350008", padding: "32px" }}>
       <section style={{ maxWidth: "1180px", margin: "0 auto" }}>
@@ -140,10 +222,56 @@ export default function AdminPanelPage() {
               Bookings
             </h1>
           </div>
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Stat label="Total" value={bookings.length} />
+            {isFiltered && <Stat label="Showing" value={filteredBookings.length} />}
           </div>
         </header>
+
+        {!isLoading && !error && (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-end",
+              gap: "16px",
+              marginBottom: "20px",
+            }}
+          >
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+              {([
+                ["all", "All"],
+                ["today", "Today"],
+                ["yesterday", "Yesterday"],
+                ["last3", "Last 3 days"],
+              ] as [QuickFilter, string][]).map(([key, label]) => (
+                <button key={key} onClick={() => applyQuick(key)} style={filterBtnStyle(quickFilter === key)}>
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <label style={fieldLabelStyle}>
+              On date
+              <input type="date" value={specificDate} onChange={(e) => applySpecific(e.target.value)} style={dateInputStyle} />
+            </label>
+
+            <label style={fieldLabelStyle}>
+              From
+              <input type="date" value={rangeFrom} max={rangeTo || undefined} onChange={(e) => applyRange("from", e.target.value)} style={dateInputStyle} />
+            </label>
+            <label style={fieldLabelStyle}>
+              To
+              <input type="date" value={rangeTo} min={rangeFrom || undefined} onChange={(e) => applyRange("to", e.target.value)} style={dateInputStyle} />
+            </label>
+
+            {isFiltered && (
+              <button onClick={clearFilters} style={{ ...filterBtnStyle(false), borderColor: "#9f1d1d", color: "#9f1d1d" }}>
+                Clear
+              </button>
+            )}
+          </div>
+        )}
 
         {isLoading && <p>Loading bookings...</p>}
         {error && <p style={{ color: "#9f1d1d" }}>{error}</p>}
@@ -161,14 +289,14 @@ export default function AdminPanelPage() {
                 </tr>
               </thead>
               <tbody>
-                {bookings.length === 0 ? (
+                {filteredBookings.length === 0 ? (
                   <tr>
                     <td colSpan={7} style={{ padding: "28px", textAlign: "center" }}>
-                      No bookings yet.
+                      {isFiltered ? "No bookings for the selected dates." : "No bookings yet."}
                     </td>
                   </tr>
                 ) : (
-                  bookings.map((booking) => (
+                  filteredBookings.map((booking) => (
                     <tr key={booking._id} style={{ borderTop: "1px solid #eadfd6" }}>
                       <td style={{ padding: "14px" }}>{booking.fullName}</td>
                       <td style={{ padding: "14px" }}>{booking.email}</td>
@@ -278,11 +406,40 @@ export default function AdminPanelPage() {
   );
 }
 
+const filterBtnStyle = (active: boolean): CSSProperties => ({
+  padding: "9px 16px",
+  fontSize: "0.8rem",
+  letterSpacing: "0.04em",
+  cursor: "pointer",
+  border: "1px solid #350008",
+  background: active ? "#350008" : "transparent",
+  color: active ? "#fffdf7" : "#350008",
+  transition: "background 0.15s ease, color 0.15s ease",
+});
+
+const fieldLabelStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "4px",
+  fontSize: "0.68rem",
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+  color: "#5b4a40",
+};
+
+const dateInputStyle: CSSProperties = {
+  padding: "8px 10px",
+  border: "1px solid #eadfd6",
+  background: "#ffffff",
+  color: "#350008",
+  fontSize: "0.85rem",
+};
+
 function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <div style={{ minWidth: "112px", border: "1px solid #eadfd6", background: "#ffffff", padding: "14px 18px" }}>
-      <p style={{ fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>{label}</p>
-      <p style={{ marginTop: "6px", fontSize: "1.7rem", fontWeight: 600 }}>{value}</p>
+    <div style={{ display: "flex", alignItems: "baseline", gap: "12px", border: "1px solid #eadfd6", background: "#ffffff", padding: "12px 18px" }}>
+      <p style={{ margin: 0, fontSize: "16px", fontWeight: 500, letterSpacing: "2px", textTransform: "uppercase" }}>{label}</p>
+      <p style={{ margin: 0, fontSize: "16px", fontWeight: 500, letterSpacing: "2px", lineHeight: 1 }}>{value}</p>
     </div>
   );
 }

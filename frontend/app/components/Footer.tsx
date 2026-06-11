@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { AiOutlineInstagram, AiOutlineWhatsApp } from "react-icons/ai";
 
 import footerImg from "../Images/footerimg.png";
 import { API_BASE_URL } from "../lib/api";
@@ -85,10 +85,10 @@ const Footer = () => {
 
           <div className="social-links">
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram className="social-icon" />
+              <AiOutlineInstagram className="social-icon" />
             </a>
             <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <FaWhatsapp className="social-icon" />
+              <AiOutlineWhatsApp className="social-icon" />
             </a>
           </div>
 

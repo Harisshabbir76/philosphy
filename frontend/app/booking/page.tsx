@@ -213,6 +213,7 @@ export default function BookingPage() {
         message={modalMessage}
         type="error"
       />
+      
     </div>
   );
 }
