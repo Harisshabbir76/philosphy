@@ -2,6 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { useRef, useEffect, useState, type ReactNode, type CSSProperties } from "react";
+import { API_BASE_URL, getStoredUser } from "../lib/api";
 import "../Styles/AdminEditableSection.css";
 
 export type AdminInlineEditor<T extends Record<string, unknown>> = {
@@ -191,6 +192,7 @@ export function EditableImage({
   src,
 }: EditableImageProps) {
   const labelRef = useRef<HTMLLabelElement>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   // Apply saved styles to parent container element (works without touching parent JSX)
   useEffect(() => {
@@ -205,15 +207,34 @@ export function EditableImage({
     if (imageStyle.marginLeft !== undefined) parent.style.marginLeft = imageStyle.marginLeft;
   }, [imageStyle]);
 
-  const readFile = (file: File) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === "string") onChange(reader.result);
-    };
-    reader.readAsDataURL(file);
+  // Upload the chosen file to Cloudinary (via our backend) and store the URL.
+  const uploadFile = async (file: File) => {
+    setIsUploading(true);
+    try {
+      const user = getStoredUser();
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await fetch(`${API_BASE_URL}/api/upload`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${user?.token || ""}` },
+        body: formData,
+      });
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.url) {
+        throw new Error(data.error || "Image upload failed");
+      }
+      onChange(data.url);
+    } catch (err) {
+      window.alert(err instanceof Error ? err.message : "Image upload failed");
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const imageObj = src;
+  const isRemote = typeof imageObj === "string" && (imageObj.startsWith("data:") || imageObj.startsWith("http"));
   const imgStyle: CSSProperties = {};
   if (imageStyle?.objectPosition) {
     imgStyle.objectPosition = imageStyle.objectPosition;
@@ -232,19 +253,20 @@ export function EditableImage({
           alt={alt}
           fill={fill}
           priority={priority}
-          unoptimized={typeof imageObj === "string" && imageObj.startsWith("data:")}
+          unoptimized={isRemote}
           sizes={sizes}
           style={Object.keys(imgStyle).length ? imgStyle : undefined}
         />
         {isEditing && (
           <>
-            <span className="admin-editable-image__hint">Replace image</span>
+            <span className="admin-editable-image__hint">{isUploading ? "Uploading…" : "Replace image"}</span>
             <input
               type="file"
               accept="image/*"
+              disabled={isUploading}
               onChange={(event) => {
                 const file = event.currentTarget.files?.[0];
-                if (file) readFile(file);
+                if (file) uploadFile(file);
                 event.currentTarget.value = "";
               }}
             />

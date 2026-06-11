@@ -18,7 +18,6 @@ const links = [
   { href: "/philosphy/admin/panel/wardrobe", label: "Wardrobe" },
   { href: "/philosphy/admin/panel/personal-shopping", label: "Personal Shopping" },
   { href: "/philosphy/admin/panel/bridal", label: "Bridal" },
-  { href: "/philosphy/admin/panel/cms-demo", label: "CMS Demo" },
 ];
 
 export default function AdminPanelShell({ children }: { children: ReactNode }) {

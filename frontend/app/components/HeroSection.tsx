@@ -69,7 +69,7 @@ const HeroSection: React.FC<{ editable?: boolean }> = ({ editable = false }) => 
               value={isAr ? t.text : String(editorContent.text)}
               onChange={(text) => updateContent({ text })}
             />
-            <Link href="/shop" className="hero-cta">
+            <Link href="/our-story" className="hero-cta">
               <EditableText
                 isEditing={isEditing}
                 value={isAr ? t.buttonText : String(editorContent.buttonText)}

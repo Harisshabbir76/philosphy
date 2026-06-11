@@ -9,6 +9,7 @@ const bookingRoutes = require("./src/routes/booking.routes");
 const contentRoutes = require("./src/routes/content.routes");
 const settingsRoutes = require("./src/routes/settings.routes");
 const cmsRoutes = require("./src/routes/contentRoutes");
+const uploadRoutes = require("./src/routes/upload.routes");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ app.use("/api/booking", bookingRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/settings", settingsRoutes);
 app.use("/api/cms", cmsRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.get("/health", (_request, response) => {
   response.json({ ok: true });

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { FaEye, FaWhatsapp, FaTimes } from "react-icons/fa";
+import { FaEye, FaWhatsapp, FaTimes, FaTrash } from "react-icons/fa";
 
 type Booking = {
   _id: string;
@@ -42,6 +42,34 @@ export default function AdminPanelPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState<Booking | null>(null);
+
+  const handleDelete = async (booking: Booking) => {
+    setDeletingId(booking._id);
+    try {
+      const storedUser = localStorage.getItem("user");
+      const user = storedUser ? (JSON.parse(storedUser) as StoredUser) : null;
+
+      const response = await fetch(`http://localhost:5000/api/booking/${booking._id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${user?.token || ""}` },
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Unable to delete booking");
+      }
+
+      setBookings((prev) => prev.filter((b) => b._id !== booking._id));
+      setSelectedBooking((current) => (current && current._id === booking._id ? null : current));
+      setConfirmDelete(null);
+    } catch (err) {
+      window.alert(err instanceof Error ? err.message : "Unable to delete booking");
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   const handleWhatsApp = (booking: Booking) => {
     const message = `Hello ${booking.fullName}, this is a message from Philosophy.\n\nWe are reaching out to confirm your booking for ${booking.service} on ${formatDate(booking.date)} at ${formatTime(booking.time)}.\n\nThank you for choosing us!`;
@@ -148,9 +176,19 @@ export default function AdminPanelPage() {
                       <td style={{ padding: "14px" }}>{formatDate(booking.date)}</td>
                       <td style={{ padding: "14px" }}>{formatTime(booking.time)}</td>
                       <td style={{ padding: "14px" }}>
-                        <button onClick={() => setSelectedBooking(booking)} style={{ background: "transparent", border: "none", cursor: "pointer", color: "#350008" }} title="View Details">
-                          <FaEye size={20} />
-                        </button>
+                        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                          <button onClick={() => setSelectedBooking(booking)} style={{ background: "transparent", border: "none", cursor: "pointer", color: "#350008" }} title="View Details">
+                            <FaEye size={20} />
+                          </button>
+                          <button
+                            onClick={() => setConfirmDelete(booking)}
+                            disabled={deletingId === booking._id}
+                            style={{ background: "transparent", border: "none", cursor: deletingId === booking._id ? "wait" : "pointer", color: "#9f1d1d", opacity: deletingId === booking._id ? 0.5 : 1 }}
+                            title="Delete Booking"
+                          >
+                            <FaTrash size={17} />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))
@@ -194,9 +232,43 @@ export default function AdminPanelPage() {
               </div>
 
               <button onClick={() => handleWhatsApp(selectedBooking)} className="admin-modal-whatsapp-btn">
-                <FaWhatsapp size={20} className="admin-modal-whatsapp-icon" /> 
+                <FaWhatsapp size={20} className="admin-modal-whatsapp-icon" />
                 Confirm via WhatsApp
               </button>
+            </div>
+          </div>
+        )}
+
+        {confirmDelete && (
+          <div className="admin-modal-overlay" onClick={() => deletingId ? null : setConfirmDelete(null)}>
+            <div className="admin-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button onClick={() => setConfirmDelete(null)} className="admin-modal-close" disabled={!!deletingId}>
+                <FaTimes />
+              </button>
+
+              <p className="admin-modal-subtitle">Delete Booking</p>
+              <h2 className="admin-modal-title">{confirmDelete.fullName}</h2>
+
+              <p style={{ margin: "12px 0 26px", fontSize: "0.9rem", lineHeight: 1.5, color: "#5b4a40" }}>
+                Are you sure you want to delete this booking? This action cannot be undone.
+              </p>
+
+              <div style={{ display: "flex", gap: "12px" }}>
+                <button
+                  onClick={() => setConfirmDelete(null)}
+                  disabled={!!deletingId}
+                  style={{ flex: 1, padding: "12px", background: "transparent", border: "1px solid #350008", color: "#350008", cursor: "pointer", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.8rem" }}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => handleDelete(confirmDelete)}
+                  disabled={!!deletingId}
+                  style={{ flex: 1, padding: "12px", background: "#9f1d1d", border: "1px solid #9f1d1d", color: "#ffffff", cursor: deletingId ? "wait" : "pointer", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.8rem", opacity: deletingId ? 0.7 : 1 }}
+                >
+                  {deletingId ? "Deleting…" : "Delete"}
+                </button>
+              </div>
             </div>
           </div>
         )}

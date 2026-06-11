@@ -231,4 +231,16 @@ const getAdminBookings = async (req, res) => {
   }
 };
 
-module.exports = { createBooking, getAdminBookings };
+const deleteBooking = async (req, res) => {
+  try {
+    const deleted = await Booking.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ error: "Booking not found" });
+    }
+    res.status(200).json({ success: true, id: req.params.id });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { createBooking, getAdminBookings, deleteBooking };
