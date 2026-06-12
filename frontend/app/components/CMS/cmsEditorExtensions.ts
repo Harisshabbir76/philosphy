@@ -1,4 +1,4 @@
-import { Extension } from "@tiptap/core";
+import { Extension, Mark, mergeAttributes } from "@tiptap/core";
 
 /* ── helpers ──────────────────────────────────────────────────────────────── */
 
@@ -202,6 +202,111 @@ export const BulletListStyle = Extension.create({
           if (dispatch) dispatch(tr);
           return true;
         },
+    };
+  },
+});
+
+/* ── Button: turn the selected text into a styled link/button ──────────────────
+   Wraps the selection in an <a class="cms-button" data-cms-button> that carries
+   its own href + inline padding / background / text-color, so the saved HTML is
+   self-contained and renders identically in the editor and on the public site.
+   `excludes: "link"` (plus higher parse priority) keeps it from coexisting with
+   the plain Link mark, so a button anchor never nests inside a link anchor.     */
+
+export type ButtonAttrs = {
+  href?: string | null;
+  bg?: string | null;
+  color?: string | null;
+  padding?: string | null;
+};
+
+/** Fallback button look, applied inline so it never relies on external CSS. */
+export const BUTTON_DEFAULTS = { bg: "#1F150F", color: "#FFFFFF", padding: "10px 24px" };
+
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    button: {
+      /** Turn the current selection into a button (optionally with attrs). */
+      setButton: (attrs?: ButtonAttrs) => ReturnType;
+      /** Merge attrs into the button mark covering the selection. */
+      updateButton: (attrs: ButtonAttrs) => ReturnType;
+      /** Remove the button mark from the selection. */
+      unsetButton: () => ReturnType;
+    };
+  }
+}
+
+export const Button = Mark.create({
+  name: "button",
+  inclusive: false,
+  priority: 1000,
+  excludes: "link",
+
+  addAttributes() {
+    return {
+      href: {
+        default: null,
+        parseHTML: (el) => (el as HTMLElement).getAttribute("href"),
+        renderHTML: (attrs) => (attrs.href ? { href: attrs.href } : {}),
+      },
+      // bg / color / padding always render (falling back to the defaults) so the
+      // saved <a> is fully self-contained — the text stays visible even where the
+      // .cms-button class CSS is not present (e.g. an older deployed bundle).
+      bg: {
+        default: null,
+        parseHTML: (el) => (el as HTMLElement).style.backgroundColor || null,
+        renderHTML: (attrs) => ({ style: `background-color: ${attrs.bg || BUTTON_DEFAULTS.bg}` }),
+      },
+      color: {
+        default: null,
+        parseHTML: (el) => (el as HTMLElement).style.color || null,
+        renderHTML: (attrs) => ({ style: `color: ${attrs.color || BUTTON_DEFAULTS.color}` }),
+      },
+      padding: {
+        default: null,
+        parseHTML: (el) => (el as HTMLElement).style.padding || null,
+        renderHTML: (attrs) => ({ style: `padding: ${attrs.padding || BUTTON_DEFAULTS.padding}` }),
+      },
+    };
+  },
+
+  parseHTML() {
+    return [{ tag: "a[data-cms-button]" }];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "a",
+      mergeAttributes(
+        {
+          "data-cms-button": "true",
+          class: "cms-button",
+          rel: "noopener",
+          // Structural styles that make an inline <a> look/behave like a button.
+          // Kept inline so it never depends on the stylesheet being loaded.
+          style:
+            "display:inline-block;text-decoration:none;border-radius:2px;line-height:1.1;font-weight:400;cursor:pointer",
+        },
+        HTMLAttributes
+      ),
+      0,
+    ];
+  },
+
+  addCommands() {
+    return {
+      setButton:
+        (attrs = {}) =>
+        ({ chain }) =>
+          chain().setMark("button", attrs).run(),
+      updateButton:
+        (attrs) =>
+        ({ chain }) =>
+          chain().extendMarkRange("button").updateAttributes("button", attrs).run(),
+      unsetButton:
+        () =>
+        ({ chain }) =>
+          chain().extendMarkRange("button").unsetMark("button").run(),
     };
   },
 });

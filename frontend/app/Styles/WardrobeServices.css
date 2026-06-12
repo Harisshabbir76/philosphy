@@ -91,6 +91,7 @@
 .wardrobe-analysis__content b,
 .wardrobe-analysis__content strong {
   font-family: var(--font-sf-pro), sans-serif;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 1.25;

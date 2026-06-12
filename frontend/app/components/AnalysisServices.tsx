@@ -14,7 +14,15 @@ const defaults = {
   items: [
     {
       title: "COLOR SEASON ANALYSIS",
-      html: `<p>A personalized in-home experience designed to identify the colors that naturally enhance your features.</p><p class="analysis-service__price">PRICE: 1880 AED</p><a href='/booking' class="analysis-service__button">BOOK YOUR CONSULTATION NOW</a>`,
+      html: `<p>A personalized in-home experience designed to identify the colors that naturally enhance your features. Through a guided session, we analyze how different tones interact with your skin, hair, and overall presence to define your undertone and color season—giving you clarity and confidence in your styling choices.</p>
+<strong>Before the session:</strong>
+<ul><li>Scheduled appointment (date &amp; time agreed in advance)</li><li>Home visit (external location can be arranged if needed, venue cost covered by client)</li></ul>
+<strong>During the session:</strong>
+<ul><li>Full color analysis using professional tools (mirror, drape, lighting, color kit)</li><li>Observation of how colors interact with your natural features</li><li>Comparison of shades and their effect on your skin</li><li>Exploration of suitable hair color options</li><li>Identification of:<ul class="analysis-service__dash-list"><li>Undertone</li><li>Most harmonious color palette</li><li>Your color season</li></ul></li></ul>
+<strong>After the session:</strong>
+<ul><li>Personal color fan with your best shades (provided immediately)</li><li>Detailed PDF report (within 10–15 working days), including:<ul class="analysis-service__dash-list"><li>Understanding your color season</li><li>How to dress based on your season and contrast</li><li>Color coordination principles</li><li>Suitable fabric colors</li><li>Guidance for traditional wear (e.g. mukhawar), if relevant</li><li>Jewelry selection and color pairing</li><li>Recommended hair color options</li></ul></li></ul>
+<p class="analysis-service__price">PRICE: 1880 AED</p>
+<a href="/booking" class="analysis-service__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
     {
       title: "BODY, FACE & STYLE ANALYSIS",
@@ -31,7 +39,15 @@ const defaultsAr = {
   items: [
     {
       title: "تحليل فصل الألوان",
-      html: `<p>تجربة منزلية شخصية مصمّمة لتحديد الألوان التي تُبرز ملامحك بشكل طبيعي.</p><p class="analysis-service__price">السعر: 1880 درهم</p><a href='/booking' class="analysis-service__button">احجزي استشارتك الآن</a>`,
+      html: `<p>تجربة منزلية شخصية مصمّمة لتحديد الألوان التي تُبرز ملامحك بشكل طبيعي. من خلال جلسة موجَّهة، نحلّل كيف تتفاعل الدرجات المختلفة مع بشرتك وشعرك وحضورك العام لتحديد درجة لونك الأساسية وفصلك اللوني—ما يمنحك وضوحاً وثقة في خياراتك التنسيقية.</p>
+<strong>قبل الجلسة:</strong>
+<ul><li>موعد محدد (يُتفق على التاريخ والوقت مسبقاً)</li><li>زيارة منزلية (يمكن ترتيب موقع خارجي عند الحاجة، مع تحمّل العميلة لتكلفة المكان)</li></ul>
+<strong>أثناء الجلسة:</strong>
+<ul><li>تحليل لوني كامل باستخدام أدوات احترافية (مرآة، أقمشة، إضاءة، عدة ألوان)</li><li>ملاحظة كيفية تفاعل الألوان مع ملامحك الطبيعية</li><li>مقارنة الدرجات وتأثيرها على بشرتك</li><li>استكشاف خيارات ألوان الشعر المناسبة</li><li>تحديد:<ul class="analysis-service__dash-list"><li>درجة اللون الأساسية</li><li>أكثر لوحة ألوان تناسقاً</li><li>فصلك اللوني</li></ul></li></ul>
+<strong>بعد الجلسة:</strong>
+<ul><li>مروحة ألوان شخصية بأفضل درجاتك (تُقدَّم فوراً)</li><li>تقرير PDF مفصّل (خلال 10–15 يوم عمل)، يتضمّن:<ul class="analysis-service__dash-list"><li>فهم فصلك اللوني</li><li>كيفية اختيار ملابسك بناءً على فصلك ودرجة التباين</li><li>مبادئ تنسيق الألوان</li><li>ألوان الأقمشة المناسبة</li><li>إرشادات للزي التقليدي (مثل المخوّر) عند الحاجة</li><li>اختيار المجوهرات وتنسيق الألوان</li><li>خيارات ألوان الشعر الموصى بها</li></ul></li></ul>
+<p class="analysis-service__price">السعر: 1880 درهم</p>
+<a href="/booking" class="analysis-service__button">احجزي استشارتك الآن</a>`,
     },
     {
       title: "تحليل الجسم والوجه والأسلوب",

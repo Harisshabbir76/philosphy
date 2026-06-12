@@ -342,6 +342,34 @@
   background: #e5e7eb;
 }
 
+/* Full-width action button inside a sidebar section (e.g. Convert to button) */
+.cms-sidebar__btn-action {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: #1f150f;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.cms-sidebar__btn-action:hover {
+  opacity: 0.9;
+}
+
+.cms-sidebar__btn-action:disabled {
+  background: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.cms-sidebar__btn-action--danger {
+  background: #b91c1c;
+}
+
 /* ── Second toolbar row: color + size + family ── */
 .cms-tiptap-toolbar--row2 {
   border-top: none;
