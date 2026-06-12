@@ -40,11 +40,14 @@ const formatTime = (time24: string) => {
   return `${hour}:${minute} ${ampm}`;
 };
 
-/** Normalise any date string to a local "YYYY-MM-DD" key for comparison. */
-const toDayKey = (value?: string) => {
+/**
+ * Local day key ("YYYY-MM-DD") for a booking's `createdAt` timestamp
+ * ("2026-06-12T20:00:00.000Z"). All filters compare against the admin's local
+ * calendar day, so we read the day in local time too — otherwise a booking made
+ * late at night lands on the wrong day.
+ */
+const toLocalDayKey = (value?: string) => {
   if (!value) return "";
-  const iso = value.match(/^(\d{4}-\d{2}-\d{2})/);
-  if (iso) return iso[1];
   const d = new Date(value);
   if (Number.isNaN(d.getTime())) return "";
   const y = d.getFullYear();
@@ -71,7 +74,7 @@ export default function AdminPanelPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<Booking | null>(null);
 
-  // ── Date filters (operate on each booking's appointment `date`) ──────────────
+  // ── Date filters: all match when a booking was placed (createdAt) ────────────
   const [quickFilter, setQuickFilter] = useState<QuickFilter>("all");
   const [specificDate, setSpecificDate] = useState("");
   const [rangeFrom, setRangeFrom] = useState("");
@@ -187,17 +190,19 @@ export default function AdminPanelPage() {
     const yesterdayKey = dayKeyOffset(-1);
     const last3Key = dayKeyOffset(-2); // today + 2 previous days
     return bookings.filter((booking) => {
-      const key = toDayKey(booking.date);
-      if (!key) return false;
+      // Every filter matches when the booking was placed (createdAt): who booked
+      // today / yesterday / in the last 3 days, on a specific day, or within a range.
+      const placedKey = toLocalDayKey(booking.createdAt);
+      if (!placedKey) return false;
       if (hasRange) {
-        if (rangeFrom && key < rangeFrom) return false;
-        if (rangeTo && key > rangeTo) return false;
+        if (rangeFrom && placedKey < rangeFrom) return false;
+        if (rangeTo && placedKey > rangeTo) return false;
         return true;
       }
-      if (specificDate) return key === specificDate;
-      if (quickFilter === "today") return key === todayKey;
-      if (quickFilter === "yesterday") return key === yesterdayKey;
-      if (quickFilter === "last3") return key >= last3Key && key <= todayKey;
+      if (specificDate) return placedKey === specificDate;
+      if (quickFilter === "today") return placedKey === todayKey;
+      if (quickFilter === "yesterday") return placedKey === yesterdayKey;
+      if (quickFilter === "last3") return placedKey >= last3Key && placedKey <= todayKey;
       return true;
     });
   }, [bookings, isFiltered, quickFilter, specificDate, rangeFrom, rangeTo]);

@@ -1,9 +1,17 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image, { type StaticImageData, type ImageLoaderProps } from "next/image";
 import { useRef, useEffect, useState, type ReactNode, type CSSProperties } from "react";
 import { API_BASE_URL, getStoredUser } from "../lib/api";
 import "../Styles/AdminEditableSection.css";
+
+// Cloudinary serves our uploaded images. Inserting these transforms makes its CDN
+// return an auto-format (AVIF/WebP), correctly-sized image instead of the raw upload
+// (often 1–2 MB) — done at the edge, with no load on our own server.
+function cloudinaryLoader({ src, width, quality }: ImageLoaderProps) {
+  const transforms = `f_auto,q_${quality || "auto"},c_limit,w_${width}`;
+  return src.replace("/upload/", `/upload/${transforms}/`);
+}
 
 export type AdminInlineEditor<T extends Record<string, unknown>> = {
   content: T;
@@ -234,7 +242,10 @@ export function EditableImage({
   };
 
   const imageObj = src;
-  const isRemote = typeof imageObj === "string" && (imageObj.startsWith("data:") || imageObj.startsWith("http"));
+  const isCloudinary = typeof imageObj === "string" && imageObj.includes("res.cloudinary.com/") && imageObj.includes("/upload/");
+  // Optimize Cloudinary uploads via its CDN loader. Anything else remote (data: URIs
+  // used for live edit previews, or non-Cloudinary URLs) can't be optimized, so serve as-is.
+  const isUnoptimizable = typeof imageObj === "string" && !isCloudinary && (imageObj.startsWith("data:") || imageObj.startsWith("http"));
   const imgStyle: CSSProperties = {};
   if (imageStyle?.objectPosition) {
     imgStyle.objectPosition = imageStyle.objectPosition;
@@ -258,7 +269,8 @@ export function EditableImage({
           alt={alt}
           fill={fill}
           priority={priority}
-          unoptimized={isRemote}
+          loader={isCloudinary ? cloudinaryLoader : undefined}
+          unoptimized={isUnoptimizable}
           sizes={sizes}
           style={Object.keys(imgStyle).length ? imgStyle : undefined}
         />

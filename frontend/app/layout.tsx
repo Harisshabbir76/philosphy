@@ -10,9 +10,11 @@ const freightDisp = localFont({
   variable: "--font-freight",
   weight: "200",
   style: "normal",
+  display: "swap",
 });
 
 const sfPro = localFont({
+  display: "swap",
   src: [
     {
       path: "../fonts/sp-fonts/SF-Pro-Display-Thin.otf",
@@ -47,6 +49,7 @@ const pinyonScript = Pinyon_Script({
   variable: "--font-pinyon",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -64,19 +67,6 @@ export default function RootLayout({
       lang="en"
       className={`${freightDisp.variable} ${sfPro.variable} ${pinyonScript.variable}`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-
       <body>
         <CMSProvider>
           <LayoutShell>{children}</LayoutShell>

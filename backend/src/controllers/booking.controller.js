@@ -49,6 +49,13 @@ function buildTransporter() {
     throw new Error("Email credentials (EMAIL_USER and EMAIL_PASS) are required");
   }
 
+  // Timeouts so a slow/blocked SMTP server can never hang the request indefinitely.
+  const timeouts = {
+    connectionTimeout: 10000, // 10s to establish the TCP connection
+    greetingTimeout: 10000, // 10s to receive the SMTP greeting
+    socketTimeout: 15000, // 15s of inactivity on the socket
+  };
+
   if (smtpHost) {
     return nodemailer.createTransport({
       host: smtpHost,
@@ -58,6 +65,7 @@ function buildTransporter() {
         user: adminEmail,
         pass: adminPassword,
       },
+      ...timeouts,
     });
   }
 
@@ -67,7 +75,68 @@ function buildTransporter() {
       user: adminEmail,
       pass: adminPassword,
     },
+    ...timeouts,
   });
+}
+
+// Fire-and-forget: send confirmation emails without blocking the booking response.
+async function sendBookingEmails(booking) {
+  const adminEmail = process.env.EMAIL_USER || process.env.ADMIN_EMAIL || process.env.admin_email;
+  const toEmail = process.env.ADMIN_TO_EMAIL || adminEmail;
+
+  if (!adminEmail) return;
+
+  const formattedDateVal = formatDate(booking.date);
+  const formattedTimeVal = formatTime(booking.time);
+
+  const emailData = {
+    fullName: booking.fullName,
+    email: booking.email,
+    phone: booking.phone,
+    service: booking.service,
+    formattedDate: formattedDateVal,
+    formattedTime: formattedTimeVal,
+  };
+
+  try {
+    const transporter = buildTransporter();
+
+    // 1. Send email to admin
+    await transporter.sendMail({
+      from: `"Philosophy Booking" <${adminEmail}>`,
+      to: toEmail,
+      replyTo: booking.email,
+      subject: `New Booking Alert: ${booking.fullName} - ${booking.service}`,
+      html: buildBookingEmailHtml(emailData, true),
+      text: [
+        `New Booking Alert`,
+        `Client: ${booking.fullName}`,
+        `Email: ${booking.email}`,
+        `Phone: ${booking.phone}`,
+        `Service: ${booking.service}`,
+        `Date: ${formattedDateVal}`,
+        `Time: ${formattedTimeVal}`,
+      ].join("\n"),
+    });
+
+    // 2. Send email to user (client)
+    await transporter.sendMail({
+      from: `"Philosophy Booking" <${adminEmail}>`,
+      to: booking.email,
+      subject: `Booking Confirmed: ${booking.service}`,
+      html: buildBookingEmailHtml(emailData, false),
+      text: [
+        `Booking Confirmed`,
+        `Thank you for booking with us.`,
+        `Details:`,
+        `Service: ${booking.service}`,
+        `Date: ${formattedDateVal}`,
+        `Time: ${formattedTimeVal}`,
+      ].join("\n"),
+    });
+  } catch (mailError) {
+    console.error("Booking confirmation emails failed to send:", mailError);
+  }
 }
 
 function buildBookingEmailHtml(data, isForAdmin) {
@@ -84,30 +153,30 @@ function buildBookingEmailHtml(data, isForAdmin) {
     .map(
       ([label, value]) => `
         <tr>
-          <td style="padding:12px 16px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:12px;color:#3a2d26;text-transform:uppercase;letter-spacing:1px;">${escapeHtml(label)}</td>
-          <td style="padding:12px 16px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:13px;color:#3a2d26;">${escapeHtml(value)}</td>
+          <td style="width:38%;padding:12px 14px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:12px;color:#3a2d26;text-transform:uppercase;letter-spacing:1px;word-break:break-word;overflow-wrap:break-word;vertical-align:top;">${escapeHtml(label)}</td>
+          <td style="padding:12px 14px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:13px;color:#3a2d26;word-break:break-word;overflow-wrap:break-word;vertical-align:top;">${escapeHtml(value)}</td>
         </tr>
       `
     )
     .join("");
 
   const title = isForAdmin ? "New Booking Alert" : "Booking Confirmed";
-  const intro = isForAdmin 
+  const intro = isForAdmin
     ? "A new styling appointment has been booked. The details are below."
     : "Thank you for booking with us. We have received your booking request and look forward to styling you. Your details are below.";
 
   return `
-    <div style="margin:0;padding:34px;background:#fffdf7;color:#3a2d26;">
+    <div style="margin:0;padding:16px;background:#fffdf7;color:#3a2d26;">
       <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #eadfd6;">
-        <div style="padding:42px 34px;text-align:center;background:#2b170f;color:#fffdf7;">
-          <div style="font-family:Georgia,serif;font-size:30px;line-height:1.1;">${title}</div>
+        <div style="padding:32px 20px;text-align:center;background:#2b170f;color:#fffdf7;">
+          <div style="font-family:Georgia,serif;font-size:26px;line-height:1.15;">${title}</div>
           <div style="margin-top:12px;font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;">Philosophy Appointment</div>
         </div>
-        <div style="padding:32px 34px;">
+        <div style="padding:24px 20px;">
           <p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:13px;line-height:1.6;color:#3a2d26;">
             ${intro}
           </p>
-          <table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+          <table cellspacing="0" cellpadding="0" style="width:100%;table-layout:fixed;border-collapse:collapse;">
             ${detailRows}
           </table>
         </div>
@@ -130,65 +199,14 @@ const createBooking = async (req, res) => {
       time,
     });
 
-    // Send emails asynchronously
-    const adminEmail = process.env.EMAIL_USER || process.env.ADMIN_EMAIL || process.env.admin_email;
-    const toEmail = process.env.ADMIN_TO_EMAIL || adminEmail;
+    // Respond immediately — the booking is saved. Emails are a side effect and must
+    // never block (or fail) the user's confirmation. Send them in the background.
+    res.status(201).json(newBooking);
 
-    if (adminEmail) {
-      const formattedDateVal = formatDate(newBooking.date);
-      const formattedTimeVal = formatTime(newBooking.time);
-
-      const emailData = {
-        fullName: newBooking.fullName,
-        email: newBooking.email,
-        phone: newBooking.phone,
-        service: newBooking.service,
-        formattedDate: formattedDateVal,
-        formattedTime: formattedTimeVal,
-      };
-
-      try {
-        const transporter = buildTransporter();
-
-        // 1. Send email to admin
-        await transporter.sendMail({
-          from: `"Philosophy Booking" <${adminEmail}>`,
-          to: toEmail,
-          replyTo: newBooking.email,
-          subject: `New Booking Alert: ${newBooking.fullName} - ${newBooking.service}`,
-          html: buildBookingEmailHtml(emailData, true),
-          text: [
-            `New Booking Alert`,
-            `Client: ${newBooking.fullName}`,
-            `Email: ${newBooking.email}`,
-            `Phone: ${newBooking.phone}`,
-            `Service: ${newBooking.service}`,
-            `Date: ${formattedDateVal}`,
-            `Time: ${formattedTimeVal}`,
-          ].join("\n"),
-        });
-
-        // 2. Send email to user (client)
-        await transporter.sendMail({
-          from: `"Philosophy Booking" <${adminEmail}>`,
-          to: newBooking.email,
-          subject: `Booking Confirmed: ${newBooking.service}`,
-          html: buildBookingEmailHtml(emailData, false),
-          text: [
-            `Booking Confirmed`,
-            `Thank you for booking with us.`,
-            `Details:`,
-            `Service: ${newBooking.service}`,
-            `Date: ${formattedDateVal}`,
-            `Time: ${formattedTimeVal}`,
-          ].join("\n"),
-        });
-      } catch (mailError) {
-        console.error("Booking confirmation emails failed to send:", mailError);
-      }
-    }
-
-    return res.status(201).json(newBooking);
+    sendBookingEmails(newBooking).catch((err) =>
+      console.error("Booking confirmation emails failed to send:", err)
+    );
+    return;
   } catch (error) {
     console.error("Booking creation error:", error);
     res.status(500).json({ error: error.message });

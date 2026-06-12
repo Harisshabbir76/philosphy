@@ -85,30 +85,30 @@ function buildEmailHtml(data) {
     .map(
       ([label, value]) => `
         <tr>
-          <td style="padding:12px 16px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:12px;color:#3a2d26;text-transform:uppercase;letter-spacing:1px;">${escapeHtml(label)}</td>
-          <td style="padding:12px 16px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:13px;color:#3a2d26;">${escapeHtml(value)}</td>
+          <td style="width:38%;padding:12px 14px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:12px;color:#3a2d26;text-transform:uppercase;letter-spacing:1px;word-break:break-word;overflow-wrap:break-word;vertical-align:top;">${escapeHtml(label)}</td>
+          <td style="padding:12px 14px;border:1px solid #e7ded6;font-family:Arial,sans-serif;font-size:13px;color:#3a2d26;word-break:break-word;overflow-wrap:break-word;vertical-align:top;">${escapeHtml(value)}</td>
         </tr>
       `
     )
     .join("");
 
   return `
-    <div style="margin:0;padding:34px;background:#fffdf7;color:#3a2d26;">
+    <div style="margin:0;padding:16px;background:#fffdf7;color:#3a2d26;">
       <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #eadfd6;">
-        <div style="padding:42px 34px;text-align:center;background:#2b170f;color:#fffdf7;">
-          <div style="font-family:Georgia,serif;font-size:30px;line-height:1.1;">New Styling Inquiry</div>
+        <div style="padding:32px 20px;text-align:center;background:#2b170f;color:#fffdf7;">
+          <div style="font-family:Georgia,serif;font-size:26px;line-height:1.15;">New Styling Inquiry</div>
           <div style="margin-top:12px;font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;">Philosophy Contact Form</div>
         </div>
-        <div style="padding:32px 34px;">
+        <div style="padding:24px 20px;">
           <p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:13px;line-height:1.6;color:#3a2d26;">
             A new client has submitted the contact form. Their information is below.
           </p>
-          <table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;">
+          <table cellspacing="0" cellpadding="0" style="width:100%;table-layout:fixed;border-collapse:collapse;">
             ${detailRows}
           </table>
-          <div style="margin-top:26px;padding:22px;background:#fffdf7;border:1px solid #e7ded6;">
+          <div style="margin-top:26px;padding:20px;background:#fffdf7;border:1px solid #e7ded6;">
             <div style="margin-bottom:12px;font-family:Arial,sans-serif;font-size:12px;color:#3a2d26;text-transform:uppercase;letter-spacing:1px;">Styling Needs</div>
-            <div style="font-family:Arial,sans-serif;font-size:13px;line-height:1.7;color:#3a2d26;">${escapeHtml(data.stylingNeeds).replace(/\n/g, "<br />")}</div>
+            <div style="font-family:Arial,sans-serif;font-size:13px;line-height:1.7;color:#3a2d26;word-break:break-word;overflow-wrap:break-word;">${escapeHtml(data.stylingNeeds).replace(/\n/g, "<br />")}</div>
           </div>
         </div>
       </div>
