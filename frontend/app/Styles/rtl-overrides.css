@@ -5,12 +5,8 @@
    ============================================================ */
 
 /* ── HeroSection ─────────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .hero-heading   { font-size: 44px; }
-  :root[dir="rtl"] .hero-script    { font-size: 30px; }
-  :root[dir="rtl"] .hero-paragraph { font-size: 14px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .hero-heading   { font-size: 38px; }
   :root[dir="rtl"] .hero-script    { font-size: 27px; }
   :root[dir="rtl"] .hero-paragraph { font-size: 13px; }
@@ -55,14 +51,8 @@
 }
 
 /* ── IntroApproach ───────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 30px; }
-  :root[dir="rtl"] .intro-approach__copy p     { font-size: 14px; }
-  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 34px; }
-  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 14px; }
-  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 13px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .intro-approach__copy h2    { font-size: 24px; }
   :root[dir="rtl"] .intro-approach__copy p     { font-size: 12px; }
   :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 30px; }
@@ -113,12 +103,8 @@
 }
 
 /* ── ServicesSection ─────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .services-section__content h2  { font-size: 34px; }
-  :root[dir="rtl"] .services-section__content > p { font-size: 14px; }
-  :root[dir="rtl"] .services-section__row         { font-size: 13px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .services-section__content h2  { font-size: 30px; }
   :root[dir="rtl"] .services-section__content > p { font-size: 12px; }
   :root[dir="rtl"] .services-section__row         { font-size: 11px; }
@@ -155,13 +141,8 @@
 }
 
 /* ── WhyChooseUs ─────────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .why-choose__text h2  { font-size: 38px; }
-  :root[dir="rtl"] .why-choose__text h3  { font-size: 34px; }
-  :root[dir="rtl"] .why-choose__text > p { font-size: 16px; }
-  :root[dir="rtl"] .why-choose__text h4  { font-size: 14px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .why-choose__text h2  { font-size: 32px; }
   :root[dir="rtl"] .why-choose__text h3  { font-size: 30px; }
   :root[dir="rtl"] .why-choose__text > p { font-size: 14px; }
@@ -205,17 +186,8 @@
 }
 
 /* ── GettingStarted ──────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .section-kicker                { font-size: 14px; }
-  :root[dir="rtl"] .getting-started__card span    { font-size: 14px; }
-  :root[dir="rtl"] .getting-started__card h2      { font-size: 32px; }
-  :root[dir="rtl"] .getting-started__card p       { font-size: 13px; }
-  :root[dir="rtl"] .getting-started__lower h2     { font-size: 34px; }
-  :root[dir="rtl"] .getting-started__lower h3     { font-size: 28px; }
-  :root[dir="rtl"] .getting-started__lower p      { font-size: 14px; }
-  :root[dir="rtl"] .getting-started__lower a      { font-size: 13px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .section-kicker                { font-size: 12px; }
   :root[dir="rtl"] .getting-started__card span    { font-size: 12px; }
   :root[dir="rtl"] .getting-started__card h2      { font-size: 27px; }
@@ -287,11 +259,8 @@
 }
 
 /* ── StoryHero ───────────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .story-hero__content h1 { font-size: 50px; }
-  :root[dir="rtl"] .story-hero__content p  { font-size: 34px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .story-hero__content h1 { font-size: 40px; }
   :root[dir="rtl"] .story-hero__content p  { font-size: 28px; }
 }
@@ -353,15 +322,8 @@
 }
 
 /* ── AnalysisServices ────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 15px; }
-  :root[dir="rtl"] .analysis-service__content p,
-:root[dir="rtl"] .analysis-service__content div,
-  :root[dir="rtl"] .analysis-service__content li                     { font-size: 14px; }
-  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 14px; }
-  :root[dir="rtl"] .analysis-service__price                          { font-size: 14px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 13px; }
   :root[dir="rtl"] .analysis-service__content p,
 :root[dir="rtl"] .analysis-service__content div,
@@ -439,10 +401,8 @@
 }
 
 /* ── PersonalShoppingHero ────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 60px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 50px; }
 }
 @media (min-width: 900px) and (max-width: 1023px) {
@@ -525,12 +485,8 @@
 :root[dir="rtl"] .bridal-zahab__content p { font-size: 12px; }
 
 /* ── ContactHero ─────────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 54px; }
-  :root[dir="rtl"] .contact-card h2         { font-size: 34px; }
-  :root[dir="rtl"] .contact-card > p        { font-size: 13px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .contact-hero__banner h1 { font-size: 44px; }
   :root[dir="rtl"] .contact-card h2         { font-size: 30px; }
   :root[dir="rtl"] .contact-card > p        { font-size: 12px; }
@@ -570,16 +526,8 @@
 }
 
 /* ── ContactGettingStarted ───────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .contact-started__intro h2  { font-size: 40px; }
-  :root[dir="rtl"] .contact-started__intro p   { font-size: 14px; }
-  :root[dir="rtl"] .contact-started__intro a   { font-size: 14px; }
-  :root[dir="rtl"] .contact-started__kicker    { font-size: 14px; }
-  :root[dir="rtl"] .contact-started__card span { font-size: 14px; }
-  :root[dir="rtl"] .contact-started__card h3   { font-size: 26px; }
-  :root[dir="rtl"] .contact-started__card p    { font-size: 13px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .contact-started__intro h2  { font-size: 34px; }
   :root[dir="rtl"] .contact-started__intro p   { font-size: 13px; }
   :root[dir="rtl"] .contact-started__intro a   { font-size: 13px; }
@@ -653,14 +601,8 @@
 }
 
 /* ── Footer ──────────────────────────────────────────────── */
-@media (min-width: 1400px) {
-  :root[dir="rtl"] .footer-cta h2          { font-size: 34px; }
-  :root[dir="rtl"] .footer-cta p           { font-size: 14px; }
-  :root[dir="rtl"] .footer-links a,
-  :root[dir="rtl"] .footer-info span       { font-size: 14px; }
-  :root[dir="rtl"] .back-to-top            { font-size: 13px; }
-}
-@media (min-width: 1024px) and (max-width: 1399px) {
+
+@media (min-width: 1024px) {
   :root[dir="rtl"] .footer-cta h2          { font-size: 30px; }
   :root[dir="rtl"] .footer-cta p           { font-size: 12px; }
   :root[dir="rtl"] .footer-links a,

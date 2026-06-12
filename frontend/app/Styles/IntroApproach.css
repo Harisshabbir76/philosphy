@@ -166,61 +166,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .intro-approach__top {
-    max-width: 1300px;
-    gap: 80px;
-    padding: 80px 120px 60px;
-  }
-  
-  .intro-approach__copy {
-    max-width: 480px;
-  }
-  
-  .intro-approach__copy h2 {
-    font-size: 28px;
-    max-width: 320px;
-  }
-  
-  .intro-approach__copy p {
-    font-size: 10px;
-  }
-  
-  .button {
-    font-size: 9px;
-    padding: 6px 14px;
-  }
-  
-  .intro-approach__bottom h2 {
-    font-size: 32px;
-  }
-  
-  .intro-approach__bottom h4 {
-    font-size: 12px;
-  }
-  
-  .intro-approach__bottom p {
-    font-size: 10px;
-    max-width: 650px;
-    font-weight: 50;
-    line-height: 1.42;
-    letter-spacing: 0.84px;
-  }
-  
-  .intro-approach__image--woman {
-    width: 200px;
-    height: 290px;
-  }
-  
-  .intro-approach__image--newspaper {
-    width: 290px;
-    height: 370px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .intro-approach__copy h2 {
     font-size: 22px;
   }
@@ -636,9 +583,6 @@ p {
 .intro-approach__bottom p {
   transition: all 0.2s ease;
 }
-
-
-
 
 .intro-approach__bottom p{
   font-size: 10.5px;

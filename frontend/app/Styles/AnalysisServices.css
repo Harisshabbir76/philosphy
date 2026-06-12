@@ -232,59 +232,8 @@ p {
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .analysis-services {
-    padding: 90px 24px 50px;
-  }
-  
-  .analysis-services__inner {
-    width: min(1000px, 100%);
-    gap: 80px;
-    grid-template-columns: 1fr 280px;
-  }
-  
-  .analysis-services__copy {
-    padding-top: 40px;
-  }
-  
-  .analysis-service summary span:first-child {
-    font-size: 13px;
-    letter-spacing: 1.5px;
-  }
-  
-  .analysis-service__content p,
-.analysis-service__content div,
-  .analysis-service__content li {
-    font-size: 12px;
-    letter-spacing: 1.2px;
-  }
-  
-  .analysis-service__content h3 {
-    font-size: 12px;
-    margin-top: 18px;
-    letter-spacing: 1.2px;
-  }
-  
-  .analysis-service__price {
-    font-size: 12px;
-    margin-top: 18px;
-  }
-  
-  .analysis-service__button {
-    font-size: 10px;
-    padding: 12px 35px;
-    min-width: 140px;
-  }
-  
-  .analysis-services__image {
-    width: 280px;
-    height: 510px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .analysis-services__inner {
     width: min(850px, 100%);
     gap: 50px;

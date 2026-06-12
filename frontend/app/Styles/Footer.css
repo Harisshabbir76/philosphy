@@ -225,72 +225,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .footer-main {
-    padding: 80px 24px 90px;
-  }
-  
-  .footer-cta__icon {
-    width: 90px;
-    margin-bottom: 35px;
-  }
-  
-  .footer-cta h2 {
-    font-size: 32px;
-  }
-  
-  .footer-cta p {
-    font-size: 10px;
-    max-width: 550px;
-    margin: 40px auto 38px;
-    font-weight: 50;
-    letter-spacing: 0.84px;
-  }
-  
-  .footer-consultation-link {
-    font-size: 9px;
-    padding: 6px 14px;
-    letter-spacing: 2px;
-  }
-  
-  .back-to-top {
-    right: 180px;
-    bottom: 80px;
-    font-size: 11px;
-    gap: 8px;
-  }
-  
-  .up-arrow {
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 6px solid #3a2d26;
-  }
-  
-  .footer-bottom {
-    padding: 0 180px;
-    min-height: 55px;
-  }
-  
-  .footer-links {
-    gap: 45px;
-  }
-  
-  .footer-links a,
-  .footer-info span {
-    font-size: 12px;
-    letter-spacing: 2.5px;
-  }
-  
-  .social-icon {
-    width: 22px;
-    height: 22px;
-  }
-
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .footer-cta h2 {
     font-size: 28px;
   }

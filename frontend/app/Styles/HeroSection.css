@@ -108,38 +108,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* Responsive Font Sizes - Desktop First Approach */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .hero-content {
-    margin-top: 330px;
-    max-width: 1000px;
-  }
-  
-  .hero-heading {
-    font-size: 42px;
-  }
-  
-  .hero-script {
-    font-size: 28px;
-    margin-top: 28px;
-  }
-  
-  .hero-paragraph {
-    font-size: 13px;
-    max-width: 500px;
-    margin-top: 60px;
-  }
-  
-  .hero-cta {
-    font-size: 11px;
-    min-width: 115px;
-    min-height: 32px;
-    margin-top: 35px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .hero-content {
     margin-top: 330px;
   }

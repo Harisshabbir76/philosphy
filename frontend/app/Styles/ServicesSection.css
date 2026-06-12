@@ -104,54 +104,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .services-section__inner {
-    max-width: 1400px;
-    padding: 100px 120px 90px;
-    gap: 140px;
-    grid-template-columns: minmax(450px, 1fr) 500px;
-  }
-  
-  .services-section__content h2 {
-    font-size: 32px;
-    margin-top: 30px;
-  }
-  
-  .services-section__content > p {
-    font-size: 10px;
-    max-width: 420px;
-    margin: 32px 0 28px;
-    letter-spacing: 0.84px;
-    line-height: 1.42;
-    font-weight: 50;
-  }
-  
-  .philosophy-button {
-    font-size: 9px;
-    padding: 6px 14px;
-    letter-spacing: 1.8px;
-  }
-  
-  .services-section__list {
-    margin-top: 110px;
-    max-width: 680px;
-  }
-  
-  .services-section__row {
-    font-size: 11px;
-    padding: 16px 0 15px;
-    letter-spacing: 1.8px;
-  }
-  
-  .services-section__image {
-    width: 500px;
-    height: 600px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .services-section__content h2 {
     font-size: 28px;
   }
@@ -480,7 +434,6 @@ p {
 .services-section__row {
   transition: all 0.2s ease;
 }
-
 
   .services-section__content > p {
     font-size: 10px;

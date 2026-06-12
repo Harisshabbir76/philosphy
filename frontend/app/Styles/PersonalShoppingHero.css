@@ -39,22 +39,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .personal-shopping-hero {
-    min-height: 0;
-    aspect-ratio: 1828 / 725;
-  }
-
-  .personal-shopping-hero h1 {
-    font-size: 35px;
-    letter-spacing: 1.5px;
-    margin-top: 5px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .personal-shopping-hero {
     min-height: 0;
     aspect-ratio: 1828 / 725;

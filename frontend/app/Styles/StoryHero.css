@@ -61,31 +61,8 @@
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .story-hero {
-    min-height: 750px;
-  }
-  
-  .story-hero__content {
-    margin-top: 30px;
-  }
-  
-  .story-hero__content h1 {
-    font-size: 48px;
-  }
-  
-  .story-hero__content p,
-.story-hero__content div {
-    font-size: 35px;
-    margin-top: 20px;
-    letter-spacing: 1.5px;
-  }
-  
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .story-hero {
     min-height: 650px;
   }

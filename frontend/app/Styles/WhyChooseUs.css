@@ -91,59 +91,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .why-choose {
-    padding: 80px 0 50px;
-  }
-  
-  .why-choose__text {
-    max-width: 900px;
-    margin-bottom: 70px;
-  }
-  
-  .why-choose__text h2 {
-    font-size: 36px;
-  }
-  
-  .why-choose__text > p {
-    font-size: 14px;
-    margin-top: 32px;
-    letter-spacing: 1.2px;
-  }
-  
-  .why-choose__mark {
-    width: 65px;
-    margin: 55px auto 48px;
-  }
-  
-  .why-choose__text h3 {
-    font-size: 32px;
-  }
-  
-  .why-choose__text h4 {
-    font-size: 10px;
-    max-width: 780px;
-    margin-top: 35px;
-    line-height: 1.42;
-    font-weight: 50;
-    letter-spacing: 0.84px;
-  }
-  
-  .why-choose__image {
-    width: calc(100% - 100px);
-    height: 380px;
-    margin-top: -40px;
-  }
-  
-  .why-choose__divider {
-    margin: 40px 0 0;
-  }
- 
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .why-choose__text h2 {
     font-size: 30px;
   }

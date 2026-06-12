@@ -142,81 +142,8 @@ p {
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .getting-started__hero {
-    min-height: 650px;
-    padding-top: 80px;
-  }
-  
-  .getting-started__hero .section-kicker {
-    margin-bottom: 70px;
-  }
-  
-  .section-kicker {
-    font-size: 12px;
-    letter-spacing: 1.5px;
-  }
-  
-  .getting-started__cards {
-    gap: 40px;
-  }
-  
-  .getting-started__card {
-    width: 280px;
-    min-height: 300px;
-    padding: 40px 32px 32px;
-  }
-  
-  .getting-started__card span {
-    font-size: 12px;
-  }
-  
-  .getting-started__card h2 {
-    font-size: 30px;
-    margin-top: 32px;
-  }
-  
-  .getting-started__card p {
-    font-size: 11px;
-    margin-top: 32px;
-    letter-spacing: 1.2px;
-  }
-  
-  .getting-started__store {
-    width: 420px;
-    height: 220px;
-    margin: 0px auto 100px;
-  }
-  .getting-started__lower {
-    margin-bottom:-30px;
-  }
-  
-  .getting-started__lower h2 {
-    font-size: 32px;
-    margin-top: -50px;
-  }
-  
-  .getting-started__lower h3 {
-    font-size: 26px;
-    margin-top: 32px;
-  }
-  
-  .getting-started__lower p {
-    font-size: 10px;
-    max-width: 550px;
-    font-weight: 50;
-    margin: 35px auto 25px;
-  }
-  
-  .getting-started__lower a {
-    font-size: 11px;
-    letter-spacing: 1.8px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .section-kicker {
     font-size: 10px;
   }

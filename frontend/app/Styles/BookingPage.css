@@ -243,56 +243,8 @@ p {
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 
-/* Large Desktop (1400px and above) */
-@media (min-width: 1400px) {
-  .booking-container {
-    max-width: 680px;
-    padding: 50px;
-  }
-  
-  .booking-header h1 {
-    font-size: 38px;
-  }
-  
-  .booking-header p {
-    font-size: 15px;
-  }
-  
-  .form-group label {
-    font-size: 11px;
-  }
-
-  .form-group input,
-  .form-group select {
-    height: 32px;
-    padding: 0 18px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-  }
-
-  .booking-submit-btn {
-    height: 32px;
-    padding: 0;
-    font-size: 10px;
-    letter-spacing: 1.8px;
-  }
-  
-  .booking-success-card {
-    max-width: 550px;
-    padding: 60px 50px;
-  }
-  
-  .booking-success-title {
-    font-size: 42px;
-  }
-  
-  .booking-success-subtitle {
-    font-size: 18px;
-  }
-}
-
-/* Standard Desktop (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
   .booking-container {
     padding: 40px;
   }
