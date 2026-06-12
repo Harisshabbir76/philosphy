@@ -22,8 +22,7 @@ const defaults = {
 <strong>After &amp; within the session:</strong>
 <ul><li>Review of suitable pieces that may need alterations</li><li>Suggestions on how to repair and adjust clothing for better use</li><li>Creation of new outfit combinations from existing pieces</li><li>List of missing items and wardrobe needs</li><li>Guidance on what to let go of</li><li>Support with decluttering (using bags or boxes)</li><li>Practical guidance on how to organize your wardrobe efficiently</li></ul>
 <p>Every wardrobe is unique, so the system is tailored specifically to your needs.</p>
-<p class="wardrobe-analysis__price">PRICE:<br />Abu Dhabi: 500 AED per hour<br />Other Emirates &amp; Cities: 650 AED per hour<br />Minimum booking: 3 hours</p>
-<a href="/booking" class="wardrobe-analysis__button">BOOK YOUR CONSULTATION NOW</a>`,
+<p class="wardrobe-analysis__price">PRICE:<br />Abu Dhabi: 500 AED per hour<br />Other Emirates &amp; Cities: 650 AED per hour<br />Minimum booking: 3 hours</p>`,
     },
     {
       title: "STYLING & OUTFIT CURATION",
