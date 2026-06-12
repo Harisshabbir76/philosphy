@@ -70,6 +70,25 @@ html[dir="rtl"] .nav-tab {
   text-underline-offset: 3px;
 }
 
+/* Logout button styled to sit beside Book Now */
+.nav-tab--logout {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mobile-sidebar__logout {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: inherit;
+  cursor: pointer;
+}
+
 /* Mobile Actions Container - Book Now button + Hamburger */
 .mobile-actions {
   display: flex;

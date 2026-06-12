@@ -8,6 +8,7 @@ export const translations = {
       personalShopping: "Personal Shopping",
       bridal: "Bridal",
       bookNow: "Book Now",
+      logout: "Logout",
     },
     footer: {
       ctaHeading: "READY TO WORK WITH US?",
@@ -389,6 +390,7 @@ export const translations = {
       personalShopping: "التسوق الشخصي",
       bridal: "الزفاف",
       bookNow: "احجزي الآن",
+      logout: "تسجيل الخروج",
     },
     footer: {
       ctaHeading: "هل أنتِ مستعدة للعمل معنا؟",

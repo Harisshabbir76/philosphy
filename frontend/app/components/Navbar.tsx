@@ -1,20 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../Images/logo.png";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
+import { getStoredUser } from "../lib/api";
 import "../Styles/Navbar.css";
 
 export default function Navbar() {
-  usePathname();
+  const pathname = usePathname();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { language } = useLanguage();
   const t = translations[language].navbar;
+
+  // Reflect auth state from localStorage; re-check on route changes and across tabs.
+  useEffect(() => {
+    const syncAuth = () => setIsLoggedIn(Boolean(getStoredUser()?.token));
+    syncAuth();
+    window.addEventListener("storage", syncAuth);
+    return () => window.removeEventListener("storage", syncAuth);
+  }, [pathname]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    setIsMobileMenuOpen(false);
+    router.push("/");
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -70,6 +88,11 @@ export default function Navbar() {
                 <Link href="/booking" className="nav-tab nav-tab--book">
                   {t.bookNow}
                 </Link>
+                {isLoggedIn && (
+                  <button type="button" className="nav-tab nav-tab--logout" onClick={handleLogout}>
+                    {t.logout}
+                  </button>
+                )}
               </div>
             </div>
           )}
@@ -110,6 +133,11 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {isLoggedIn && (
+              <button type="button" className="mobile-sidebar__link mobile-sidebar__logout" onClick={handleLogout}>
+                {t.logout}
+              </button>
+            )}
           </div>
         </div>
       </div>

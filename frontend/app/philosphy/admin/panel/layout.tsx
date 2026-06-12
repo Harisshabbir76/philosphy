@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import NotFoundScreen from "./NotFoundScreen";
+import { useRouter } from "next/navigation";
 import AdminPanelShell from "./AdminPanelShell";
 import { API_BASE_URL } from "../../../lib/api";
 
@@ -12,6 +12,7 @@ type StoredUser = {
 
 export default function AdminPanelLayout({ children }: { children: ReactNode }) {
   const [isAllowed, setIsAllowed] = useState<boolean | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const verifyAdmin = async () => {
@@ -19,8 +20,10 @@ export default function AdminPanelLayout({ children }: { children: ReactNode }) 
         const storedUser = localStorage.getItem("user");
         const user = storedUser ? (JSON.parse(storedUser) as StoredUser) : null;
 
+        // Not logged in -> send to the login page
         if (!user?.token) {
           setIsAllowed(false);
+          router.replace("/login");
           return;
         }
 
@@ -42,16 +45,23 @@ export default function AdminPanelLayout({ children }: { children: ReactNode }) 
           localStorage.setItem("user", JSON.stringify({ ...user, ...data, token: user.token }));
         }
 
-        setIsAllowed(nextIsAllowed);
+        if (nextIsAllowed) {
+          setIsAllowed(true);
+        } else {
+          setIsAllowed(false);
+          // Logged in but not an admin -> send to the home page
+          router.replace(response.ok ? "/" : "/login");
+        }
       } catch {
         setIsAllowed(false);
+        router.replace("/login");
       }
     };
 
     verifyAdmin();
-  }, []);
+  }, [router]);
 
-  if (isAllowed === null) {
+  if (isAllowed === null || isAllowed === false) {
     return (
       <main
         style={{
@@ -65,10 +75,6 @@ export default function AdminPanelLayout({ children }: { children: ReactNode }) 
         Loading...
       </main>
     );
-  }
-
-  if (!isAllowed) {
-    return <NotFoundScreen />;
   }
 
   return <AdminPanelShell>{children}</AdminPanelShell>;
