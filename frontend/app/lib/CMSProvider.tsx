@@ -22,6 +22,10 @@ export type ContentObject = {
 type ActiveEditElement = {
   contentId: string;
   type: string;
+  /** Current on-page default text (used to seed the editor when nothing is
+   *  saved in the CMS yet, so the sidebar shows the existing/hardcoded text). */
+  fallback?: string;
+  fallbackAr?: string;
 };
 
 type CMSContextType = {

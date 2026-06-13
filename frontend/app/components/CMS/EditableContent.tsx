@@ -84,7 +84,10 @@ export function EditableContent({
           ? (e: React.MouseEvent) => {
               e.stopPropagation();
               e.preventDefault();
-              setActiveElement({ contentId, type: "text" });
+              // Pass the current on-page defaults so the sidebar can seed its
+              // editors with the existing text even when nothing is saved yet
+              // (i.e. the text is still the hardcoded fallback).
+              setActiveElement({ contentId, type: "text", fallback, fallbackAr: fbAr });
             }
           : undefined
       }

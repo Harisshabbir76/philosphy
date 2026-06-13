@@ -60,6 +60,12 @@ export function RightSidebar() {
     customStyleEnabled: false,
   };
 
+  // Seed the editors with the element's current on-page text when nothing is
+  // saved in the CMS yet, so the sidebar always reflects what's on the page —
+  // including hardcoded defaults — instead of starting blank.
+  const enValue = contentObj.content || activeElement.fallback || "";
+  const arValue = contentObj.contentAr || activeElement.fallbackAr || "";
+
   // ── Current selection state ────────────────────────────────────────────────
   const ts = (editor?.getAttributes("textStyle") || {}) as Record<string, string | undefined>;
   const block = selectedBlockStyle(editor);
@@ -83,27 +89,6 @@ export function RightSidebar() {
   const setBlock = (prop: string, value: string) => {
     editor?.chain().updateBlockStyle({ [prop]: value }).run();
   };
-
-  // ── Button (selection) helpers ──────────────────────────────────────────────
-  const btnAttrs = (editor?.getAttributes("button") || {}) as {
-    href?: string;
-    bg?: string;
-    color?: string;
-    padding?: string;
-  };
-  const isButton = editor?.isActive("button") ?? false;
-  const selectionEmpty = editor?.state.selection.empty ?? true;
-  // Preserve an existing link's href (e.g. /booking) when turning text into a button.
-  const makeButton = () => {
-    const existingHref =
-      (editor?.getAttributes("link")?.href as string) ||
-      (editor?.getAttributes("button")?.href as string) ||
-      "";
-    editor?.chain().setButton({ href: existingHref }).run();
-  };
-  const removeButton = () => editor?.chain().unsetButton().run();
-  const updateButton = (attrs: { href?: string; bg?: string | null; color?: string | null; padding?: string }) =>
-    editor?.chain().updateButton(attrs).run();
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -133,7 +118,7 @@ export function RightSidebar() {
         <div className="cms-sidebar__section">
           <p className="cms-sidebar__section-title">Content (English)</p>
           <RichTextEditor
-            value={contentObj.content || ""}
+            value={enValue}
             onChange={(html) => updateContentState(contentId, { content: html })}
             onEditor={setEnEditor}
             onFocus={() => setActiveLang("en")}
@@ -145,7 +130,7 @@ export function RightSidebar() {
           <p className="cms-sidebar__section-title">المحتوى بالعربية · Content (Arabic)</p>
           <div dir="rtl">
             <RichTextEditor
-              value={contentObj.contentAr || ""}
+              value={arValue}
               onChange={(html) => updateContentState(contentId, { contentAr: html })}
               onEditor={setArEditor}
               onFocus={() => setActiveLang("ar")}
@@ -232,85 +217,6 @@ export function RightSidebar() {
                 <button type="button" className="cms-sidebar__mini" onClick={() => setBlock("color", "")}>Reset</button>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Button — turn the selection into a styled link button */}
-        <div className="cms-sidebar__section">
-          <p className="cms-sidebar__section-title">Button (selected text)</p>
-          <p className="cms-sidebar__hint">
-            Select text, click “Convert to button”, then set its link, padding and colors.
-          </p>
-          <div className="cms-sidebar__grid">
-            <div className="cms-sidebar__field cms-sidebar__field--full">
-              {!isButton ? (
-                <button
-                  type="button"
-                  className="cms-sidebar__btn-action"
-                  disabled={selectionEmpty}
-                  onClick={makeButton}
-                >
-                  Convert selection to button
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="cms-sidebar__btn-action cms-sidebar__btn-action--danger"
-                  onClick={removeButton}
-                >
-                  Remove button
-                </button>
-              )}
-            </div>
-
-            {isButton && (
-              <>
-                <div className="cms-sidebar__field cms-sidebar__field--full">
-                  <label>Link URL</label>
-                  <input
-                    type="text"
-                    placeholder="https://…  or  /booking"
-                    value={btnAttrs.href || ""}
-                    onChange={(e) => updateButton({ href: e.target.value })}
-                  />
-                </div>
-                <div className="cms-sidebar__field cms-sidebar__field--full">
-                  <label>Padding</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. 10px 24px"
-                    value={btnAttrs.padding || ""}
-                    onChange={(e) => updateButton({ padding: e.target.value })}
-                  />
-                </div>
-                <div className="cms-sidebar__field">
-                  <label>Background</label>
-                  <div className="cms-sidebar__color-row">
-                    <input
-                      type="color"
-                      value={btnAttrs.bg || "#1f150f"}
-                      onChange={(e) => updateButton({ bg: e.target.value })}
-                    />
-                    <button type="button" className="cms-sidebar__mini" onClick={() => updateButton({ bg: null })}>
-                      Reset
-                    </button>
-                  </div>
-                </div>
-                <div className="cms-sidebar__field">
-                  <label>Text Color</label>
-                  <div className="cms-sidebar__color-row">
-                    <input
-                      type="color"
-                      value={btnAttrs.color || "#ffffff"}
-                      onChange={(e) => updateButton({ color: e.target.value })}
-                    />
-                    <button type="button" className="cms-sidebar__mini" onClick={() => updateButton({ color: null })}>
-                      Reset
-                    </button>
-                  </div>
-                </div>
-              </>
-            )}
           </div>
         </div>
 

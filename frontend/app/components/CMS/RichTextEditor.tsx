@@ -13,7 +13,7 @@ import {
   LineHeight,
   BackgroundColor,
 } from "@tiptap/extension-text-style";
-import { ExtraTextStyle, BlockStyle, BulletListStyle, Button, BULLET_STYLES } from "./cmsEditorExtensions";
+import { ExtraTextStyle, BlockStyle, BulletListStyle, BULLET_STYLES } from "./cmsEditorExtensions";
 import { useEffect } from "react";
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough,
@@ -59,7 +59,6 @@ export function RichTextEditor({ value, onChange, onEditor, onFocus }: RichTextE
       ExtraTextStyle,
       BlockStyle,
       BulletListStyle,
-      Button,
     ],
     content: value,
     onUpdate: ({ editor }) => {
@@ -82,17 +81,6 @@ export function RichTextEditor({ value, onChange, onEditor, onFocus }: RichTextE
   if (!editor) return null;
 
   const toggleLink = () => {
-    // If the selection is a CMS button, the link icon edits the button's own
-    // href (one <a>) instead of layering a separate link mark on top — that
-    // overlap is what produced the broken "little boxes".
-    if (editor.isActive("button")) {
-      const prevHref = (editor.getAttributes("button").href as string) || "";
-      const url = window.prompt("Button link URL", prevHref);
-      if (url === null) return;
-      editor.chain().focus().updateButton({ href: url }).run();
-      return;
-    }
-
     const prev = editor.getAttributes("link").href;
     const url = window.prompt("URL", prev);
     if (url === null) return;
