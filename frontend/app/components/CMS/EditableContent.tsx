@@ -75,6 +75,12 @@ export function EditableContent({
     'href="$1"'
   );
 
+  // Remove target="_blank"/rel that the editor's Link extension baked into
+  // older saved content, so internal links open in the same tab.
+  html = html
+    .replace(/\s+target="_blank"/g, "")
+    .replace(/\s+rel="[^"]*"/g, "");
+
 
   const Tag = (as || "div") as React.ElementType;
   const className = ["cms-ec", defaultClass, plain ? "cms-ec--plain" : "",

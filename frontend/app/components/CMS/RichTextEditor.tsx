@@ -48,7 +48,9 @@ export function RichTextEditor({ value, onChange, onEditor, onFocus }: RichTextE
     extensions: [
       StarterKit,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
-      Link.configure({ openOnClick: false }),
+      // Default Link extension renders target="_blank"; force same-tab so
+      // internal links (e.g. /booking) open in place like every other button.
+      Link.configure({ openOnClick: false, HTMLAttributes: { target: null, rel: null } }),
       Underline,
       TextStyle,
       Color,
