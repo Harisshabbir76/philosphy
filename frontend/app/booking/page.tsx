@@ -36,7 +36,8 @@ export default function BookingPage() {
   const [phone, setPhone] = useState("");
   const [service, setService] = useState(servicesList[0]);
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<any>(null);
@@ -60,18 +61,37 @@ export default function BookingPage() {
       const res = await fetch(`${API_BASE_URL}/api/booking/create`, {
         method: "POST",
         headers,
-        body: JSON.stringify({ fullName, email, phone, service, date, time }),
+        body: JSON.stringify({ fullName, email, phone, service, date, startTime, endTime }),
       });
       
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to create booking");
+      if (!res.ok) {
+        if (data.code === "OVERLAP") {
+          const formattedStart = formatTime(data.existingStart);
+          const formattedEnd = formatTime(data.existingEnd);
+          const localizedMsg = t.overlapMessage
+            ? t.overlapMessage.replace("{start}", formattedStart).replace("{end}", formattedEnd)
+            : `This time slot overlaps with an existing booking from ${formattedStart} to ${formattedEnd}.`;
+          setModalTitle(t.overlapTitle || "Time Slot Already Booked");
+          setModalMessage(localizedMsg);
+          setModalOpen(true);
+          setLoading(false);
+          return;
+        }
+        throw new Error(data.error || "Failed to create booking");
+      }
 
       setBookingDetails(data);
       setIsSuccess(true);
       setLoading(false);
-    } catch (err) {
-      setModalTitle(t.failTitle);
-      setModalMessage(t.failMessage);
+    } catch (err: any) {
+      if (err.message && err.message !== "Failed to create booking") {
+        setModalTitle(t.failTitle);
+        setModalMessage(err.message);
+      } else {
+        setModalTitle(t.failTitle);
+        setModalMessage(t.failMessage);
+      }
       setModalOpen(true);
       setLoading(false);
     }
@@ -106,7 +126,11 @@ export default function BookingPage() {
             </div>
             <div className="booking-detail-row">
               <span className="booking-detail-label">{t.time}</span>
-              <span className="booking-detail-value">{formatTime(bookingDetails?.time || time)}</span>
+              <span className="booking-detail-value">
+                {bookingDetails?.startTime && bookingDetails?.endTime
+                  ? `${formatTime(bookingDetails.startTime)} - ${formatTime(bookingDetails.endTime)}`
+                  : formatTime(bookingDetails?.time || startTime)}
+              </span>
             </div>
           </div>
           <button onClick={() => window.location.href = "/"} className="booking-success-btn">
@@ -176,25 +200,36 @@ export default function BookingPage() {
             </select>
           </div>
 
+          <div className="form-group">
+            <label htmlFor="date">{t.date}</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+              min={new Date().toISOString().split('T')[0]}
+            />
+          </div>
+
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="date">{t.date}</label>
+              <label htmlFor="startTime">{t.startTime || "Start Time"}</label>
               <input
-                type="date"
-                id="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                type="time"
+                id="startTime"
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
                 required
-                min={new Date().toISOString().split('T')[0]}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="time">{t.time}</label>
+              <label htmlFor="endTime">{t.endTime || "End Time"}</label>
               <input
                 type="time"
-                id="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+                id="endTime"
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
                 required
               />
             </div>

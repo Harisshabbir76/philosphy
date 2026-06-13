@@ -28,6 +28,14 @@ const bookingSchema = new mongoose.Schema({
   },
   time: {
     type: String,
+    required: false,
+  },
+  startTime: {
+    type: String,
+    required: true,
+  },
+  endTime: {
+    type: String,
     required: true,
   },
 }, { timestamps: true });

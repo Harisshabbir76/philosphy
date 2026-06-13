@@ -14,6 +14,8 @@ type Booking = {
   service: string;
   date: string;
   time: string;
+  startTime?: string;
+  endTime?: string;
   paymentStatus: string;
   createdAt?: string;
 };
@@ -136,7 +138,10 @@ export default function AdminPanelPage() {
   };
 
   const handleWhatsApp = (booking: Booking) => {
-    const message = `Hello ${booking.fullName}, this is a message from Philosophy.\n\nWe are reaching out to confirm your booking for ${booking.service} on ${formatDate(booking.date)} at ${formatTime(booking.time)}.\n\nThank you for choosing us!`;
+    const timeStr = booking.startTime && booking.endTime
+      ? `${formatTime(booking.startTime)} to ${formatTime(booking.endTime)}`
+      : formatTime(booking.time);
+    const message = `Hello ${booking.fullName}, this is a message from Philosophy.\n\nWe are reaching out to confirm your booking for ${booking.service} on ${formatDate(booking.date)} from ${timeStr}.\n\nThank you for choosing us!`;
     let cleanPhone = booking.phone.replace(/[^0-9+]/g, '');
     
     if (cleanPhone.startsWith('0')) {
@@ -308,7 +313,11 @@ export default function AdminPanelPage() {
                       <td style={{ padding: "14px" }}>{booking.phone}</td>
                       <td style={{ padding: "14px" }}>{booking.service}</td>
                       <td style={{ padding: "14px" }}>{formatDate(booking.date)}</td>
-                      <td style={{ padding: "14px" }}>{formatTime(booking.time)}</td>
+                      <td style={{ padding: "14px" }}>
+                        {booking.startTime && booking.endTime
+                          ? `${formatTime(booking.startTime)} - ${formatTime(booking.endTime)}`
+                          : formatTime(booking.time)}
+                      </td>
                       <td style={{ padding: "14px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                           <button onClick={() => setSelectedBooking(booking)} style={{ background: "transparent", border: "none", cursor: "pointer", color: "#350008" }} title="View Details">
@@ -361,7 +370,11 @@ export default function AdminPanelPage() {
                 </div>
                 <div className="admin-modal-row">
                   <span className="admin-modal-label">Time</span>
-                  <span className="admin-modal-value">{formatTime(selectedBooking.time)}</span>
+                  <span className="admin-modal-value">
+                    {selectedBooking.startTime && selectedBooking.endTime
+                      ? `${formatTime(selectedBooking.startTime)} - ${formatTime(selectedBooking.endTime)}`
+                      : formatTime(selectedBooking.time)}
+                  </span>
                 </div>
               </div>
 

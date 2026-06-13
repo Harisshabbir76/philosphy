@@ -199,13 +199,14 @@ export function EditableImage({
   sizes,
   src,
 }: EditableImageProps) {
-  const labelRef = useRef<HTMLLabelElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
 
   // Apply saved styles to parent container element (works without touching parent JSX)
   useEffect(() => {
     if (!imageStyle) return;
-    const parent = labelRef.current?.parentElement;
+    const parent = containerRef.current?.parentElement;
     if (!parent) return;
     if (imageStyle.width) parent.style.width = imageStyle.width;
     if (imageStyle.height) parent.style.height = imageStyle.height;
@@ -241,10 +242,14 @@ export function EditableImage({
     }
   };
 
+  const handleContainerClick = () => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.click();
+    }
+  };
+
   const imageObj = src;
   const isCloudinary = typeof imageObj === "string" && imageObj.includes("res.cloudinary.com/") && imageObj.includes("/upload/");
-  // Optimize Cloudinary uploads via its CDN loader. Anything else remote (data: URIs
-  // used for live edit previews, or non-Cloudinary URLs) can't be optimized, so serve as-is.
   const isUnoptimizable = typeof imageObj === "string" && !isCloudinary && (imageObj.startsWith("data:") || imageObj.startsWith("http"));
   const imgStyle: CSSProperties = {};
   if (imageStyle?.objectPosition) {
@@ -253,15 +258,16 @@ export function EditableImage({
 
   return (
     <>
-      <label
-        ref={labelRef}
+      <div
+        ref={containerRef}
         // Browser extensions (image-saver / reverse-image-search / Pinterest, etc.)
-        // inject an overlay <div> onto images before React hydrates, which trips a
-        // hydration mismatch warning here. We don't control that DOM, so tell React
-        // to tolerate third-party tweaks to this element's content.
+        // inject an overlay <div> onto images before React hydrates. Using a div
+        // instead of label ensures valid HTML nesting (div inside div), which lets
+        // suppressHydrationWarning cleanly silence mismatches without crash.
         suppressHydrationWarning
         className={isEditing ? "admin-editable-image admin-editable-image--editing" : "admin-editable-image"}
         style={fill ? { position: "absolute", inset: 0 } : undefined}
+        onClick={handleContainerClick}
       >
         <Image
           className={className}
@@ -278,6 +284,7 @@ export function EditableImage({
           <>
             <span className="admin-editable-image__hint">{isUploading ? "Uploading…" : "Replace image"}</span>
             <input
+              ref={inputRef}
               type="file"
               accept="image/*"
               disabled={isUploading}
@@ -286,10 +293,11 @@ export function EditableImage({
                 if (file) uploadFile(file);
                 event.currentTarget.value = "";
               }}
+              style={{ position: "absolute", width: "1px", height: "1px", opacity: 0, pointerEvents: "none" }}
             />
           </>
         )}
-      </label>
+      </div>
     </>
   );
 }

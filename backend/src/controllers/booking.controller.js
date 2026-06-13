@@ -37,6 +37,13 @@ function formatDate(dateVal) {
   });
 }
 
+function timeToMinutes(timeStr) {
+  if (!timeStr) return 0;
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  return hours * 60 + (minutes || 0);
+}
+
+
 function buildTransporter() {
   const adminEmail = process.env.EMAIL_USER || process.env.ADMIN_EMAIL || process.env.admin_email;
   const adminPassword = process.env.EMAIL_PASS || process.env.ADMIN_PASSWORD || process.env.password;
@@ -87,7 +94,9 @@ async function sendBookingEmails(booking) {
   if (!adminEmail) return;
 
   const formattedDateVal = formatDate(booking.date);
-  const formattedTimeVal = formatTime(booking.time);
+  const formattedTimeVal = booking.startTime && booking.endTime
+    ? `${formatTime(booking.startTime)} - ${formatTime(booking.endTime)}`
+    : formatTime(booking.time);
 
   const emailData = {
     fullName: booking.fullName,
@@ -186,17 +195,75 @@ function buildBookingEmailHtml(data, isForAdmin) {
 }
 
 const createBooking = async (req, res) => {
-  const { fullName, email, phone, service, date, time } = req.body;
+  const { fullName, email, phone, service, date, time, startTime, endTime } = req.body;
 
   try {
+    // 1. Fallback logic for backward compatibility
+    let finalStartTime = startTime;
+    let finalEndTime = endTime;
+
+    if (!finalStartTime && time) {
+      finalStartTime = time;
+    }
+    if (!finalEndTime) {
+      finalEndTime = finalStartTime;
+    }
+
+    if (!finalStartTime || !finalEndTime) {
+      return res.status(400).json({ error: "Start time and end time are required" });
+    }
+
+    // 2. Validate start & end time order
+    const reqStart = timeToMinutes(finalStartTime);
+    const reqEnd = timeToMinutes(finalEndTime);
+
+    if (reqStart >= reqEnd) {
+      return res.status(400).json({ error: "End time must be after start time" });
+    }
+
+    // 3. Query bookings for the same calendar day
+    const bookingDate = new Date(date);
+    if (isNaN(bookingDate.getTime())) {
+      return res.status(400).json({ error: "Invalid date provided" });
+    }
+
+    const startOfDay = new Date(bookingDate);
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date(bookingDate);
+    endOfDay.setHours(23, 59, 59, 999);
+
+    const existingBookings = await Booking.find({
+      date: { $gte: startOfDay, $lte: endOfDay }
+    });
+
+    // 4. Check for overlaps
+    const overlappingBooking = existingBookings.find(b => {
+      const bStart = timeToMinutes(b.startTime || b.time);
+      const bEnd = timeToMinutes(b.endTime || b.time || b.startTime);
+      const finalBEnd = b.endTime ? bEnd : bStart + 60; // if legacy single-time booking without endTime, assume 1hr duration
+      return reqStart < finalBEnd && bStart < reqEnd;
+    });
+
+    if (overlappingBooking) {
+      return res.status(400).json({
+        code: "OVERLAP",
+        error: "Selected time slot overlaps with an existing booking.",
+        existingStart: overlappingBooking.startTime || overlappingBooking.time,
+        existingEnd: overlappingBooking.endTime || overlappingBooking.time,
+      });
+    }
+
+    // 5. Create new booking
     const newBooking = await Booking.create({
       userId: req.user ? req.user._id.toString() : null,
       fullName,
       email,
       phone,
       service,
-      date: new Date(date),
-      time,
+      date: bookingDate,
+      time: finalStartTime, // backward compatibility
+      startTime: finalStartTime,
+      endTime: finalEndTime,
     });
 
     // Respond immediately — the booking is saved. Emails are a side effect and must

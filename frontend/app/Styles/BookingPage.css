@@ -259,6 +259,30 @@ p {
   .booking-container {
     padding: 35px;
   }
+  
+  .booking-header h1 {
+    font-size: 28px;
+  }
+  
+  .booking-header p {
+    font-size: 9px;
+  }
+  
+  .form-group label {
+    font-size: 9px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    height: 26px;
+    padding: 0 12px;
+    font-size: 9px;
+  }
+  
+  .booking-submit-btn {
+    height: 26px;
+    font-size: 9px;
+  }
 }
 
 /* Tablet (600px - 899px) */
@@ -272,7 +296,27 @@ p {
   }
   
   .booking-header h1 {
-    font-size: 30px;
+    font-size: 26px;
+  }
+  
+  .booking-header p {
+    font-size: 9px;
+  }
+  
+  .form-group label {
+    font-size: 9px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    height: 26px;
+    padding: 0 12px;
+    font-size: 9px;
+  }
+  
+  .booking-submit-btn {
+    height: 26px;
+    font-size: 9px;
   }
 }
 
@@ -287,22 +331,27 @@ p {
   }
   
   .booking-header h1 {
-    font-size: 28px;
+    font-size: 22px;
   }
   
   .booking-header p {
-    font-size: 13px;
+    font-size: 8.5px;
+  }
+  
+  .form-group label {
+    font-size: 9px;
   }
   
   .form-group input,
   .form-group select {
-    padding: 10px 14px;
-    font-size: 13px;
+    height: 26px;
+    padding: 0 10px;
+    font-size: 9px;
   }
   
   .booking-submit-btn {
-    padding: 12px;
-    font-size: 13px;
+    height: 26px;
+    font-size: 8px;
   }
   
   .booking-success-card {
@@ -325,21 +374,22 @@ p {
   }
   
   .booking-header h1 {
-    font-size: 24px;
+    font-size: 20px;
   }
   
   .booking-header p {
-    font-size: 12px;
+    font-size: 8px;
   }
   
   .form-group label {
-    font-size: 12px;
+    font-size: 8px;
   }
   
   .form-group input,
   .form-group select {
-    padding: 10px 12px;
-    font-size: 13px;
+    height: 24px;
+    padding: 0 8px;
+    font-size: 8px;
   }
   
   .form-row {
@@ -348,8 +398,9 @@ p {
   }
   
   .booking-submit-btn {
-    padding: 12px;
-    font-size: 12px;
+    height: 24px;
+    font-size: 7.5px;
+    margin-top: 11px;
   }
   
   .booking-success-card {
@@ -385,21 +436,22 @@ p {
   }
   
   .booking-header h1 {
-    font-size: 22px;
+    font-size: 18px;
   }
   
   .booking-header p {
-    font-size: 11px;
+    font-size: 7.5px;
   }
   
   .form-group label {
-    font-size: 11px;
+    font-size: 7.5px;
   }
   
   .form-group input,
   .form-group select {
-    padding: 8px 10px;
-    font-size: 12px;
+    height: 22px;
+    padding: 0 6px;
+    font-size: 7.5px;
   }
   
   .form-row {
@@ -408,8 +460,9 @@ p {
   }
   
   .booking-submit-btn {
-    padding: 10px;
-    font-size: 11px;
+    height: 22px;
+    font-size: 7px;
+    margin-top: 11px;
   }
   
   .booking-success-card {
@@ -450,21 +503,22 @@ p {
   }
   
   .booking-header h1 {
-    font-size: 20px;
+    font-size: 16px;
   }
   
   .booking-header p {
-    font-size: 10px;
+    font-size: 7px;
   }
   
   .form-group label {
-    font-size: 10px;
+    font-size: 7px;
   }
   
   .form-group input,
   .form-group select {
-    padding: 7px 8px;
-    font-size: 11px;
+    height: 20px;
+    padding: 0 5px;
+    font-size: 7px;
   }
   
   .form-row {
@@ -473,8 +527,9 @@ p {
   }
   
   .booking-submit-btn {
-    padding: 9px;
-    font-size: 10px;
+    height: 20px;
+    font-size: 6.5px;
+    margin-top: 11px;
   }
   
   .booking-success-card {
@@ -523,11 +578,6 @@ p {
   
   .booking-submit-btn:active:not(:disabled) {
     background: #1f120c;
-  }
-  
-  .form-group input,
-  .form-group select {
-    font-size: 16px;
   }
 }
 
