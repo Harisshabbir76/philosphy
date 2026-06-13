@@ -89,14 +89,25 @@ export function CMSProvider({
     });
   }, []);
 
+  // Strip any hardcoded origin from href attributes before persisting so that
+  // links edited locally (http://localhost:3000/booking) stay portable across
+  // environments (Vercel, staging, production).
+  const sanitizeLinks = (html: string) =>
+    html.replace(/href="https?:\/\/[^/"]+(\/[^"]*)"/g, 'href="$1"');
+
   const saveContent = useCallback(async (contentId: string) => {
     const dataToSave = contentMap[contentId];
     if (!dataToSave) return;
+    const sanitized = {
+      ...dataToSave,
+      content: sanitizeLinks(dataToSave.content ?? ""),
+      contentAr: sanitizeLinks(dataToSave.contentAr ?? ""),
+    };
     try {
       await fetch(`${backendUrl}/${contentId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSave),
+        body: JSON.stringify(sanitized),
       });
     } catch (err) {
       console.error(`CMSProvider: Failed to save content ${contentId}`, err);

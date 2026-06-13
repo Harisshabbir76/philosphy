@@ -68,6 +68,14 @@ export function EditableContent({
     html = !isLoading && savedEn ? savedEn : fallback;
   }
 
+  // Strip any hardcoded origin (e.g. http://localhost:3000 or https://xyz.vercel.app)
+  // from internal hrefs saved by the CMS editor so links always work on any domain.
+  html = html.replace(
+    /href="https?:\/\/[^/"]+(\/[^"]*)"/g,
+    'href="$1"'
+  );
+
+
   const Tag = (as || "div") as React.ElementType;
   const className = ["cms-ec", defaultClass, plain ? "cms-ec--plain" : "",
     editingEnabled ? "cms-ec--editable" : "", isActive ? "cms-ec--active" : ""]
