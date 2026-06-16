@@ -1,6 +1,6 @@
 const getAdminDashboardEmail = () => {
   return (
-    process.env.ADMIN_EMAIL_dashboard ||
+    process.env.ADMIN_EMAIL_DASHBOARD ||
     process.env.ADMIN_EMAIL_DASHBOARD ||
     process.env.ADMIN_EMAIL ||
     process.env.EMAIL_USER ||

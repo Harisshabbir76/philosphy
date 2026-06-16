@@ -24,8 +24,10 @@ export default function ContactForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
-    const endpoint =
-      process.env.NEXT_PUBLIC_CONTACT_API_URL || "http://127.0.0.1:5000/api/contact";
+    
+    // Fallback to localhost if the base environment variable is not defined
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+    const endpoint = `${baseUrl}/api/contact`;
 
     try {
       const response = await fetch(endpoint, {

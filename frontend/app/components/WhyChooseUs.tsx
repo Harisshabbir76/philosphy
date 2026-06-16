@@ -3,9 +3,9 @@
 import Image from "next/image";
 import chooseUs from "../Images/choose-us.svg";
 import bannerSmall from "../Images/banner small.png";
-import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
+import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
+import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
-import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/WhyChooseUs.css";
 
@@ -20,8 +20,6 @@ const defaults = {
 
 export default function WhyChooseUs({ editable = false }: { editable?: boolean }) {
   const { content, saveContent, isSaving, error } = usePageComponentContent("home", "whyChooseUs", defaults);
-  const { language } = useLanguage();
-  const t = translations[language].whyChooseUs;
 
   return (
     <AdminEditableSection
@@ -32,16 +30,14 @@ export default function WhyChooseUs({ editable = false }: { editable?: boolean }
       title="Why choose us"
       onSave={saveContent}
     >
-      {({ content: editorContent, isEditing, updateContent }) => {
-       const isAr = language === "ar" && !isEditing;
-       return (
+      {({ content: editorContent, isEditing, updateContent }) => (
     <section className="why-choose">
       <div className="why-choose__text">
-        <EditableText as="h2" isEditing={isEditing} value={isAr ? t.title : String(editorContent.title)} onChange={(title) => updateContent({ title })} />
-        <EditableText as="p" isEditing={isEditing} value={isAr ? t.subtitle : String(editorContent.subtitle)} onChange={(subtitle) => updateContent({ subtitle })} />
+        <EditableContent as="h2" plain contentId="home.whyChooseUs.title" fallback={String(editorContent.title)} fallbackAr={translations.ar.whyChooseUs.title} />
+        <EditableContent as="p" plain contentId="home.whyChooseUs.subtitle" fallback={String(editorContent.subtitle)} fallbackAr={translations.ar.whyChooseUs.subtitle} />
         <Image src={chooseUs} alt="" className="why-choose__mark" />
-        <EditableText as="h3" isEditing={isEditing} value={isAr ? t.heading : String(editorContent.heading)} onChange={(heading) => updateContent({ heading })} />
-        <EditableText as="h4" isEditing={isEditing} value={isAr ? t.text : String(editorContent.text)} onChange={(text) => updateContent({ text })} />
+        <EditableContent as="h3" plain contentId="home.whyChooseUs.heading" fallback={String(editorContent.heading)} fallbackAr={translations.ar.whyChooseUs.heading} />
+        <EditableContent as="h4" plain contentId="home.whyChooseUs.text" fallback={String(editorContent.text)} fallbackAr={translations.ar.whyChooseUs.text} />
         <div className="why-choose__divider"></div>
       </div>
 
@@ -56,8 +52,7 @@ export default function WhyChooseUs({ editable = false }: { editable?: boolean }
         />
       </div>
     </section>
-       );
-      }}
+      )}
     </AdminEditableSection>
   );
 }

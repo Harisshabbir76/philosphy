@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import servicesWoman from "../Images/services-woman.jpg";
-import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
+import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
+import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
-import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/ServicesSection.css";
 
@@ -21,8 +21,6 @@ const defaults = {
 
 export default function ServicesSection({ editable = false }: { editable?: boolean }) {
   const { content, saveContent, isSaving, error } = usePageComponentContent("home", "services", defaults);
-  const { language } = useLanguage();
-  const t = translations[language].services;
 
   return (
     <AdminEditableSection
@@ -34,31 +32,24 @@ export default function ServicesSection({ editable = false }: { editable?: boole
       onSave={saveContent}
     >
       {({ content: editorContent, isEditing, updateContent }) => {
-        const isAr = language === "ar" && !isEditing;
         const serviceItems = (Array.isArray(editorContent.services) ? editorContent.services : services) as string[];
-        const displayServices = isAr ? ((t.services as string[]) || serviceItems) : serviceItems;
-        const updateService = (index: number, value: string) => {
-          updateContent((current) => {
-            const currentServices = (Array.isArray(current.services) ? current.services : services) as string[];
-            return { ...current, services: currentServices.map((item, itemIndex) => (itemIndex === index ? value : item)) };
-          });
-        };
+        const arServices = (translations.ar.services.services as string[]) || services;
 
         return (
     <section className="services-section">
       <div className="services-section__inner">
         <div className="services-section__content">
-          <EditableText as="h2" isEditing={isEditing} value={isAr ? t.title : String(editorContent.title)} onChange={(title) => updateContent({ title })} />
-          <EditableText as="p" isEditing={isEditing} value={isAr ? t.text : String(editorContent.text)} onChange={(text) => updateContent({ text })} />
+          <EditableContent as="h2" plain contentId="home.services.title" fallback={String(editorContent.title)} fallbackAr={translations.ar.services.title} />
+          <EditableContent as="p" plain contentId="home.services.text" fallback={String(editorContent.text)} fallbackAr={translations.ar.services.text} />
           <Link href="/booking" className="philosophy-button philosophy-button--light">
-            <EditableText isEditing={isEditing} value={isAr ? t.buttonText : String(editorContent.buttonText)} onChange={(buttonText) => updateContent({ buttonText })} />
+            <EditableContent as="span" plain contentId="home.services.buttonText" fallback={String(editorContent.buttonText)} fallbackAr={translations.ar.services.buttonText} />
           </Link>
 
           <div className="services-section__list">
-            {displayServices.map((service, index) => (
+            {serviceItems.map((service, index) => (
               <div className="services-section__row" key={index}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <EditableText isEditing={isEditing} value={service} onChange={(value) => updateService(index, value)} />
+                <EditableContent as="span" plain contentId={`home.services.item${index}`} fallback={service} fallbackAr={arServices[index]} />
               </div>
             ))}
           </div>

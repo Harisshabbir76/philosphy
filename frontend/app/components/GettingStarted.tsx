@@ -1,9 +1,9 @@
 "use client";
 
 import store from "../Images/store.png";
-import AdminEditableSection, { EditableImage, EditableText } from "./AdminEditableSection";
+import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
+import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
-import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/GettingStarted.css";
 
@@ -40,8 +40,6 @@ type Step = {
 
 export default function GettingStarted({ editable = false }: { editable?: boolean }) {
   const { content, saveContent, isSaving, error } = usePageComponentContent("home", "gettingStarted", defaults);
-  const { language } = useLanguage();
-  const t = translations[language].gettingStarted;
 
   return (
     <AdminEditableSection
@@ -53,29 +51,20 @@ export default function GettingStarted({ editable = false }: { editable?: boolea
       onSave={saveContent}
     >
       {({ content: editorContent, isEditing, updateContent }) => {
-        const isAr = language === "ar" && !isEditing;
         const stepItems = (Array.isArray(editorContent.steps) ? editorContent.steps : steps) as Step[];
-        const displaySteps = isAr ? (t.steps as Step[]) : stepItems;
-        const updateStep = (index: number, nextStep: Partial<Step>) => {
-          updateContent((current) => {
-            const currentSteps = (Array.isArray(current.steps) ? current.steps : steps) as Step[];
-            return {
-              ...current,
-              steps: currentSteps.map((step, stepIndex) => (stepIndex === index ? { ...step, ...nextStep } : step)),
-            };
-          });
-        };
+        const arGs = translations.ar.gettingStarted;
+        const arSteps = arGs.steps as Step[];
 
         return (
     <section className="getting-started">
       <div className="getting-started__hero">
-        <EditableText as="p" className="section-kicker" isEditing={isEditing} value={isAr ? t.kicker : String(editorContent.kicker)} onChange={(kicker) => updateContent({ kicker })} />
+        <EditableContent as="p" plain defaultClass="section-kicker" contentId="home.gettingStarted.kicker" fallback={String(editorContent.kicker)} fallbackAr={arGs.kicker} />
         <div className="getting-started__cards">
-          {displaySteps.map((step, index) => (
+          {stepItems.map((step, index) => (
             <article className="getting-started__card" key={index}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <EditableText as="h2" isEditing={isEditing} value={step.title} onChange={(title) => updateStep(index, { title })} />
-              <EditableText as="p" isEditing={isEditing} value={step.text} onChange={(text) => updateStep(index, { text })} />
+              <EditableContent as="h2" plain contentId={`home.gettingStarted.step${index}.title`} fallback={step.title} fallbackAr={arSteps[index]?.title} />
+              <EditableContent as="p" plain contentId={`home.gettingStarted.step${index}.text`} fallback={step.text} fallbackAr={arSteps[index]?.text} />
             </article>
           ))}
         </div>
@@ -91,11 +80,11 @@ export default function GettingStarted({ editable = false }: { editable?: boolea
             onChange={(imageUrl) => updateContent({ imageUrl })}
           />
         </div>
-        <EditableText as="h2" isEditing={isEditing} value={isAr ? t.title : String(editorContent.title)} onChange={(title) => updateContent({ title })} />
-        <EditableText as="h3" isEditing={isEditing} value={isAr ? t.subtitle : String(editorContent.subtitle)} onChange={(subtitle) => updateContent({ subtitle })} />
-        <EditableText as="p" isEditing={isEditing} value={isAr ? t.text : String(editorContent.text)} onChange={(text) => updateContent({ text })} />
+        <EditableContent as="h2" plain contentId="home.gettingStarted.title" fallback={String(editorContent.title)} fallbackAr={arGs.title} />
+        <EditableContent as="h3" plain contentId="home.gettingStarted.subtitle" fallback={String(editorContent.subtitle)} fallbackAr={arGs.subtitle} />
+        <EditableContent as="p" plain contentId="home.gettingStarted.text" fallback={String(editorContent.text)} fallbackAr={arGs.text} />
         <a href="/contact-us">
-          <EditableText isEditing={isEditing} value={isAr ? t.buttonText : String(editorContent.buttonText)} onChange={(buttonText) => updateContent({ buttonText })} />
+          <EditableContent as="span" plain contentId="home.gettingStarted.buttonText" fallback={String(editorContent.buttonText)} fallbackAr={arGs.buttonText} />
         </a>
       </div>
     </section>
