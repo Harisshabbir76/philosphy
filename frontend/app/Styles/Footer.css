@@ -219,7 +219,7 @@
   pointer-events: none;
 }
 p {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 50 !important;
   line-height: 1.42 !important;
   letter-spacing: 0.84px !important; }
@@ -232,7 +232,7 @@ p {
   }
   
   .footer-cta p {
-    font-size: 10px;
+    font-size: 12px;
   }
   
   .footer-consultation-link {
@@ -245,7 +245,7 @@ p {
   
   .footer-links a,
   .footer-info span {
-    font-size: 10px;
+    font-size: 11px !important;
   }
 }
 

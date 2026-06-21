@@ -44,13 +44,15 @@ const CMSContext = createContext<CMSContextType | undefined>(undefined);
 export function CMSProvider({
   children,
   editingEnabled = false,
+  initialContentMap = {},
 }: {
   children: React.ReactNode;
   editingEnabled?: boolean;
+  initialContentMap?: Record<string, ContentObject>;
 }) {
-  const [contentMap, setContentMap] = useState<Record<string, ContentObject>>({});
+  const [contentMap, setContentMap] = useState<Record<string, ContentObject>>(initialContentMap);
   const [activeElement, setActiveElement] = useState<ActiveEditElement | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(Object.keys(initialContentMap).length === 0);
 
   // Use the shared API base so this works in both local dev and on Vercel.
   const backendUrl = `${API_BASE_URL}/api/cms`;

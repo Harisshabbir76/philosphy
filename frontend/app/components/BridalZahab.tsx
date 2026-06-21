@@ -53,7 +53,7 @@ export default function BridalZahab({ editable = false }: { editable?: boolean }
                     <span className="bridal-zahab__mark" aria-hidden="true" />
                   </summary>
                   <div className="bridal-zahab__content">
-                    <EditableContent as="p" plain contentId={`bridal.zahab.package${index}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
+                    <EditableContent as="div" contentId={`bridal.zahab.package${index}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
                   </div>
                 </details>
               ))}

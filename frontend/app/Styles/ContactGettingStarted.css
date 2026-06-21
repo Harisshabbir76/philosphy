@@ -81,17 +81,18 @@
 .contact-started__cards {
   display: flex;
   justify-content: center;
-  gap: 22px;
+  gap: 26px;
   flex-wrap: wrap;
 }
 
 .contact-started__card {
-  width: 200px;
-  min-height: 260px;
-  padding: 25px 17px 20px;
+  width: 250px;
+  min-height: 250px;
+  padding: 33px 28px 28px;
   background: #fffdf7;
   color: #1F150F;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .contact-started__card:hover {
@@ -105,21 +106,21 @@
 }
 
 .contact-started__card h3 {
-  margin-top: 22px;
+  margin-top: 27px;
   font-family: var(--font-freight), serif;
   font-weight: 300;
-  line-height: 1.08;
+  line-height: 1;
 }
 
 .contact-started__card p {
-  margin-top: 24px;
+  margin-top: 28px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-weight: 200;
+  font-weight: lighter;
   letter-spacing: 1px;
-  line-height: 1.33;
+  line-height: 1.28;
 }
 p {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 50 !important;
   line-height: 1.42 !important;
   letter-spacing: 0.84px !important; }
@@ -130,29 +131,29 @@ p {
   .contact-started__intro h2 {
     font-size: 32px;
   }
-  
+
   .contact-started__intro p {
-    font-size: 11px;
+    font-size: 12px !important;
   }
-  
+
   .contact-started__intro a {
     font-size: 11px;
   }
-  
+
   .contact-started__kicker {
     font-size: 11px;
   }
-  
+
   .contact-started__card span {
     font-size: 10px;
   }
-  
+
   .contact-started__card h3 {
     font-size: 20px;
   }
-  
+
   .contact-started__card p {
-    font-size: 10px;
+    font-size: 12px !important;
   }
 }
 
@@ -172,7 +173,7 @@ p {
   }
   
   .contact-started__intro p {
-    font-size: 10px;
+    font-size: 12px;
   }
   
   .contact-started__intro a {
@@ -184,13 +185,13 @@ p {
   }
   
   .contact-started__cards {
-    gap: 18px;
+    gap: 22px;
   }
-  
+
   .contact-started__card {
-    width: 180px;
+    width: 220px;
     min-height: 240px;
-    padding: 22px 15px 18px;
+    padding: 28px 22px 22px;
   }
   
   .contact-started__card h3 {

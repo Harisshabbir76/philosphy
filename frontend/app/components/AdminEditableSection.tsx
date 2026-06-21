@@ -279,6 +279,7 @@ export function EditableImage({
           unoptimized={isUnoptimizable}
           sizes={sizes}
           style={Object.keys(imgStyle).length ? imgStyle : undefined}
+          data-pin-nopin="true"
         />
         {isEditing && (
           <>

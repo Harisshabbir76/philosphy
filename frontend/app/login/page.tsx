@@ -323,14 +323,7 @@ export default function LoginPage() {
           </form>
         )}
 
-        {mode === "login" && (
-          <div style={{ marginTop: "20px", textAlign: "center" }}>
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" style={{ textDecoration: "underline" }}>
-              Sign Up
-            </Link>
-          </div>
-        )}
+        {mode === "login" }
       </div>
     </div>
   );

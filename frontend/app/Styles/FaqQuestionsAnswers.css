@@ -40,7 +40,7 @@
 
 .faq-answer__trigger span:first-child {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 100;
   line-height: 1.2;
   letter-spacing: 1.3px;
@@ -68,14 +68,14 @@
 .faq-answer__panel p {
   max-width: 630px;
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
+  font-size: 12px !important;
   font-weight: 100;
   line-height: 1.45;
   letter-spacing: 1.3px;
   color: #1F150F;
 }
 p {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 50 !important;
   line-height: 1.42 !important;
   letter-spacing: 0.84px !important; }

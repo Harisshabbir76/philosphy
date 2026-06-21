@@ -67,7 +67,7 @@
 
 .form-group label {
   font-family: var(--font-sf-pro), sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 200;
   color: #1F150F;
   letter-spacing: 1.3px;
@@ -254,7 +254,7 @@
   color: #ffffff;
 }
 p {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 50 !important;
   line-height: 1.42 !important;
   letter-spacing: 0.84px !important; }
@@ -283,7 +283,7 @@ p {
   }
   
   .booking-header p {
-    font-size: 9px;
+    font-size: 12px;
   }
   
   .form-group label {

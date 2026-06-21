@@ -174,6 +174,7 @@
   line-height: 1;
   text-decoration: none;
   transition: all 0.3s ease;
+  text-shadow: -1px 0px 0px rgba(0, 195, 255, 0.8), 1px 0px 0px rgba(255, 165, 0, 0.8);
 }
 
 .analysis-service__button:hover {

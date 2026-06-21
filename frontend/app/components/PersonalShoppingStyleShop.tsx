@@ -53,7 +53,7 @@ export default function PersonalShoppingStyleShop({ editable = false }: { editab
                     <span className="ps-style-shop__mark" aria-hidden="true" />
                   </summary>
                   <div className="ps-style-shop__content">
-                    <EditableContent as="p" plain contentId={`personal-shopping.styleShop.package${index}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
+                    <EditableContent as="div" contentId={`personal-shopping.styleShop.package${index}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
                   </div>
                 </details>
               ))}

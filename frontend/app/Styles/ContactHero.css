@@ -57,6 +57,7 @@
   max-width: 450px;
   margin: 20px auto 0;
   font-family: var(--font-sf-pro), sans-serif;
+  font-size: 12px !important;
   font-weight: 100;
   line-height: 1.45;
   letter-spacing: 1px;
@@ -72,7 +73,7 @@ p {
 /* Desktop (1024px and above) */
 @media (min-width: 1024px) {
   .contact-hero__banner h1 {
-    font-size: 42px;
+    font-size: 40px;
   }
   
   .contact-card h2 {
@@ -95,7 +96,7 @@ p {
   }
   
   .contact-hero__banner h1 {
-    font-size: 36px;
+    font-size: 40px;
     margin-top: -80px;
   }
   

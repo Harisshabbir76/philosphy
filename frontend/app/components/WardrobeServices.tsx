@@ -22,11 +22,12 @@ const defaults = {
 <strong>After &amp; within the session:</strong>
 <ul><li>Review of suitable pieces that may need alterations</li><li>Suggestions on how to repair and adjust clothing for better use</li><li>Creation of new outfit combinations from existing pieces</li><li>List of missing items and wardrobe needs</li><li>Guidance on what to let go of</li><li>Support with decluttering (using bags or boxes)</li><li>Practical guidance on how to organize your wardrobe efficiently</li></ul>
 <p>Every wardrobe is unique, so the system is tailored specifically to your needs.</p>
-<p class="wardrobe-analysis__price">PRICE:<br />Abu Dhabi: 500 AED per hour<br />Other Emirates &amp; Cities: 650 AED per hour<br />Minimum booking: 3 hours</p>`,
+<p class="wardrobe-analysis__price">PRICE:<br />Abu Dhabi: 500 AED per hour<br />Other Emirates &amp; Cities: 650 AED per hour<br />Minimum booking: 3 hours</p>
+<a href="/booking" class="wardrobe-analysis__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
     {
       title: "STYLING & OUTFIT CURATION",
-      html: `<p>A styling session focused on building complete outfits from your wardrobe.</p>`,
+      html: `<p>A styling session focused on building complete outfits from your wardrobe.</p>\n<a href="/booking" class="wardrobe-analysis__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
   ],
 };
@@ -48,7 +49,7 @@ const defaultsAr = {
     },
     {
       title: "تنسيق الإطلالات",
-      html: `<p>جلسة تنسيق تركّز على بناء إطلالات كاملة من خزانة ملابسك.</p>`,
+      html: `<p>جلسة تنسيق تركّز على بناء إطلالات كاملة من خزانة ملابسك.</p>\n<a href="/booking" class="wardrobe-analysis__button">احجزي استشارتك الآن</a>`,
     },
   ],
 };
@@ -78,13 +79,17 @@ export default function WardrobeAnalysis({ editable = false }: { editable?: bool
                   <EditableContent as="span" plain contentId={`wardrobe.services.item${index}.title`} fallback={item.title} fallbackAr={defaultsAr.items[index]?.title} />
                   <span className="wardrobe-analysis__mark" aria-hidden="true" />
                 </summary>
-                <EditableContent
-                  as="div"
-                  defaultClass="wardrobe-analysis__content"
-                  contentId={`wardrobe.services.item${index}.html`}
-                  fallback={item.html}
-                  fallbackAr={defaultsAr.items[index]?.html}
-                />
+                <div className="wardrobe-analysis__content">
+                  <EditableContent
+                    as="div"
+                    contentId={`wardrobe.services.item${index}.html`}
+                    fallback={item.html}
+                    fallbackAr={defaultsAr.items[index]?.html}
+                  />
+                  <a href="/booking" className="wardrobe-analysis__button">
+                    {language === "en" ? "BOOK YOUR CONSULTATION NOW" : "احجزي استشارتك الآن"}
+                  </a>
+                </div>
               </details>
             ))}
           </div>

@@ -24,7 +24,7 @@
   z-index: 2; /* ✨ High index layer keeps typography text on top of everything */
   margin-top: 3px;
   font-family: var(--font-freight), serif;
-  font-size: 25px;
+  font-size: 40px;
   font-weight: 100;
   letter-spacing: 1.5px;
   line-height: 1;

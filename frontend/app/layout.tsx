@@ -52,23 +52,36 @@ const pinyonScript = Pinyon_Script({
   display: "swap",
 });
 
+import { API_BASE_URL } from "./lib/api";
+
 export const metadata: Metadata = {
   title: "Philosophy",
   description: "Philosophy - intentional personal styling and fashion consulting.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let initialContentMap = {};
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/cms/all`, { next: { revalidate: 60 } });
+    const data = await res.json();
+    if (data.success && data.data) {
+      initialContentMap = data.data;
+    }
+  } catch (err) {
+    console.error("Failed to fetch initial CMS content:", err);
+  }
+
   return (
     <html
       lang="en"
       className={`${freightDisp.variable} ${sfPro.variable} ${pinyonScript.variable}`}
     >
       <body>
-        <CMSProvider>
+        <CMSProvider initialContentMap={initialContentMap}>
           <LayoutShell>{children}</LayoutShell>
         </CMSProvider>
       </body>

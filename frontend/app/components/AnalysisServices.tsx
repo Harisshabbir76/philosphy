@@ -26,11 +26,11 @@ const defaults = {
     },
     {
       title: "BODY, FACE & STYLE ANALYSIS",
-      html: `<p>A thoughtful study of your proportions, features, and style direction to help you choose silhouettes, details, and outfits with ease.</p>`,
+      html: `<p>A thoughtful study of your proportions, features, and style direction to help you choose silhouettes, details, and outfits with ease.</p>\n<a href="/booking" class="analysis-service__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
     {
       title: "PERSONAL IMAGE ANALYSIS (COMBINED SERVICE)",
-      html: `<p>A complete analysis experience combining color, body, face, and personal style guidance for a more refined image direction.</p>`,
+      html: `<p>A complete analysis experience combining color, body, face, and personal style guidance for a more refined image direction.</p>\n<a href="/booking" class="analysis-service__button">BOOK YOUR CONSULTATION NOW</a>`,
     },
   ],
 };
@@ -51,11 +51,11 @@ const defaultsAr = {
     },
     {
       title: "تحليل الجسم والوجه والأسلوب",
-      html: `<p>دراسة مدروسة لتناسبات جسمك وملامحك واتجاه أسلوبك لمساعدتك على اختيار الصور الظلية والتفاصيل والإطلالات بسهولة.</p>`,
+      html: `<p>دراسة مدروسة لتناسبات جسمك وملامحك واتجاه أسلوبك لمساعدتك على اختيار الصور الظلية والتفاصيل والإطلالات بسهولة.</p>\n<a href="/booking" class="analysis-service__button">احجزي استشارتك الآن</a>`,
     },
     {
       title: "تحليل الصورة الشخصية (خدمة مدمجة)",
-      html: `<p>تجربة تحليل كاملة تجمع بين توجيه الألوان والجسم والوجه والأسلوب الشخصي للحصول على اتجاه أكثر رقياً لصورتك.</p>`,
+      html: `<p>تجربة تحليل كاملة تجمع بين توجيه الألوان والجسم والوجه والأسلوب الشخصي للحصول على اتجاه أكثر رقياً لصورتك.</p>\n<a href="/booking" class="analysis-service__button">احجزي استشارتك الآن</a>`,
     },
   ],
 };
@@ -85,13 +85,17 @@ export default function AnalysisServices({ editable = false }: { editable?: bool
                   <EditableContent as="span" plain contentId={`analysis.services.item${index}.title`} fallback={item.title} fallbackAr={defaultsAr.items[index]?.title} />
                   <span className="analysis-service__mark" aria-hidden="true" />
                 </summary>
-                <EditableContent
-                  as="div"
-                  defaultClass="analysis-service__content"
-                  contentId={`analysis.services.item${index}.html`}
-                  fallback={item.html}
-                  fallbackAr={defaultsAr.items[index]?.html}
-                />
+                <div className="analysis-service__content">
+                  <EditableContent
+                    as="div"
+                    contentId={`analysis.services.item${index}.html`}
+                    fallback={item.html}
+                    fallbackAr={defaultsAr.items[index]?.html}
+                  />
+                  <a href="/booking" className="analysis-service__button">
+                    {language === "en" ? "BOOK YOUR CONSULTATION NOW" : "احجزي استشارتك الآن"}
+                  </a>
+                </div>
               </details>
             ))}
           </div>
