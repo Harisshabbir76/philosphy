@@ -16,7 +16,7 @@ const defaults = {
 <p>A professional personal shopping experience designed for brides who want to build their trousseau in a refined, intentional, and fully structured way. The service focuses on selecting every piece with purpose, ensuring the entire zhab feels cohesive, elegant, and aligned with the bride's personal style and lifestyle.</p>
 <p>Before any shopping begins, the experience is built around understanding the bride through seasonal color analysis, body shape analysis, and facial feature assessment to ensure every styling decision feels harmonious and flattering.</p>
 <a href="/booking" class="bridal-zahab__button">BOOK YOUR CONSULTATION NOW</a>`,
-  packageItems: ["SERVICE PROCESS", "BASIC FOUNDATION PACKAGE", "ESSENTIAL ZHAB PACKAGE", "COMPLETE BRIDAL ZHAB PACKAGE"],
+  packageItems: ["ESSENTIAL ZHAB PACKAGE"],
   packageDescription: "A structured bridal shopping path tailored to the bride's preparation needs.",
 };
 
@@ -26,7 +26,7 @@ const defaultsAr = {
 <p>تجربة تسوّق شخصية احترافية مصمّمة للعرائس اللواتي يرغبن في بناء جهازهن بطريقة راقية ومدروسة ومنظّمة بالكامل. تركّز الخدمة على اختيار كل قطعة بهدف، لضمان أن يكون الزهاب بأكمله متناسقاً وأنيقاً ومتوافقاً مع أسلوب العروس الشخصي ونمط حياتها.</p>
 <p>قبل بدء أي تسوّق، تُبنى التجربة على فهم العروس من خلال تحليل فصول الألوان وتحليل شكل الجسم وتقييم ملامح الوجه لضمان أن يكون كل قرار تنسيقي متناغماً ومُطرياً.</p>
 <a href="/booking" class="bridal-zahab__button">احجزي استشارتك الآن</a>`,
-  packageItems: ["خطوات الخدمة", "الباقة الأساسية", "باقة زهاب الأساسية", "باقة زهاب العروس الكاملة"],
+  packageItems: ["باقة زهاب الأساسية"],
   packageDescription: "مسار تسوّق منظّم للعروس مصمّم وفق احتياجات تحضيرها.",
 };
 
@@ -49,11 +49,11 @@ export default function BridalZahab({ editable = false }: { editable?: boolean }
               {defaults.packageItems.map((item, index) => (
                 <details className="bridal-zahab__item" name="bridal-zahab" key={index}>
                   <summary>
-                    <EditableContent as="span" plain contentId={`bridal.zahab.package${index}.title`} fallback={item} fallbackAr={defaultsAr.packageItems[index]} />
+                    <EditableContent as="span" plain contentId={`bridal.zahab.package${index + 2}.title`} fallback={item} fallbackAr={defaultsAr.packageItems[index]} />
                     <span className="bridal-zahab__mark" aria-hidden="true" />
                   </summary>
                   <div className="bridal-zahab__content">
-                    <EditableContent as="div" contentId={`bridal.zahab.package${index}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
+                    <EditableContent as="div" contentId={`bridal.zahab.package${index + 2}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
                   </div>
                 </details>
               ))}

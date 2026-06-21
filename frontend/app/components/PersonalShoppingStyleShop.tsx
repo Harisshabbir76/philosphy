@@ -16,7 +16,7 @@ const defaults = {
 <p>A professional personal shopping experience designed for brides who want to build their trousseau in a refined, intentional, and fully structured way. The service begins with a complete understanding of the bride's personal image through seasonal color analysis, body shape analysis, and facial feature assessment before any shopping takes place.</p>
 <p>The goal is to carefully curate every piece in a cohesive way that reflects the bride's personal style, lifestyle, and overall aesthetic direction.</p>
 <a href="/booking" class="ps-style-shop__button">BOOK YOUR CONSULTATION NOW</a>`,
-  packageItems: ["SERVICE PROCESS", "BASIC FOUNDATION PACKAGE", "ESSENTIAL STYLE & SHOP PACKAGE", "COMPLETE STYLE & SHOP PACKAGE"],
+  packageItems: ["BASIC FOUNDATION PACKAGE", "ESSENTIAL STYLE & SHOP PACKAGE", "COMPLETE STYLE & SHOP PACKAGE"],
   packageDescription: "A refined consultation path created around your wardrobe needs, occasion plans, and styling direction.",
 };
 
@@ -26,7 +26,7 @@ const defaultsAr = {
 <p>تجربة تسوّق شخصية احترافية مصمّمة للعرائس اللواتي يرغبن في بناء جهازهن بطريقة راقية ومدروسة ومنظّمة بالكامل. تبدأ الخدمة بفهم كامل لصورة العروس الشخصية من خلال تحليل فصول الألوان وتحليل شكل الجسم وتقييم ملامح الوجه قبل بدء أي تسوّق.</p>
 <p>الهدف هو تنسيق كل قطعة بعناية بطريقة متناسقة تعكس أسلوب العروس الشخصي ونمط حياتها واتجاهها الجمالي العام.</p>
 <a href="/booking" class="ps-style-shop__button">احجزي استشارتك الآن</a>`,
-  packageItems: ["خطوات الخدمة", "الباقة الأساسية", "باقة التنسيق والتسوّق الأساسية", "باقة التنسيق والتسوّق الكاملة"],
+  packageItems: ["الباقة الأساسية", "باقة التنسيق والتسوّق الأساسية", "باقة التنسيق والتسوّق الكاملة"],
   packageDescription: "مسار استشاري راقٍ مصمّم حول احتياجات خزانتك وخطط مناسباتك واتجاه تنسيقك.",
 };
 
@@ -49,11 +49,11 @@ export default function PersonalShoppingStyleShop({ editable = false }: { editab
               {defaults.packageItems.map((item, index) => (
                 <details className="ps-style-shop__item" name="ps-style-shop" key={index}>
                   <summary>
-                    <EditableContent as="span" plain contentId={`personal-shopping.styleShop.package${index}.title`} fallback={item} fallbackAr={defaultsAr.packageItems[index]} />
+                    <EditableContent as="span" plain contentId={`personal-shopping.styleShop.package${index + 1}.title`} fallback={item} fallbackAr={defaultsAr.packageItems[index]} />
                     <span className="ps-style-shop__mark" aria-hidden="true" />
                   </summary>
                   <div className="ps-style-shop__content">
-                    <EditableContent as="div" contentId={`personal-shopping.styleShop.package${index}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
+                    <EditableContent as="div" contentId={`personal-shopping.styleShop.package${index + 1}.description`} fallback={defaults.packageDescription} fallbackAr={defaultsAr.packageDescription} />
                   </div>
                 </details>
               ))}
