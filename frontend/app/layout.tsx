@@ -45,10 +45,41 @@ const sfPro = localFont({
   variable: "--font-sf-pro",
 });
 
+
+
 const pinyonScript = Pinyon_Script({
   variable: "--font-pinyon",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
+});
+
+const formaDJRArabic = localFont({
+  src: "../fonts/FormaDJRArabicDisplay-Regular-Testing.otf",
+  variable: "--font-forma-ar",
+  weight: "400",
+  style: "normal",
+  display: "swap",
+});
+
+const massimo = localFont({
+  src: [
+    { path: "../fonts/Massimo/Massimo-UltraLight.ttf", weight: "100", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-UltraLightitalic.ttf", weight: "100", style: "italic" },
+    { path: "../fonts/Massimo/Massimo-ExtraLight.ttf", weight: "200", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-ExtraLightitalic.ttf", weight: "200", style: "italic" },
+    { path: "../fonts/Massimo/Massimo-Light.ttf", weight: "300", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-Lightitalic.ttf", weight: "300", style: "italic" },
+    { path: "../fonts/Massimo/Massimo-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-Italic.ttf", weight: "400", style: "italic" },
+    { path: "../fonts/Massimo/Massimo-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-Mediumitalic.ttf", weight: "500", style: "italic" },
+    { path: "../fonts/Massimo/Massimo-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-SemiBolditalic.ttf", weight: "600", style: "italic" },
+    { path: "../fonts/Massimo/Massimo-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../fonts/Massimo/Massimo-Bolditalic.ttf", weight: "700", style: "italic" },
+  ],
+  variable: "--font-massimo",
   display: "swap",
 });
 
@@ -78,7 +109,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${freightDisp.variable} ${sfPro.variable} ${pinyonScript.variable}`}
+      className={`${freightDisp.variable} ${sfPro.variable} ${pinyonScript.variable} ${formaDJRArabic.variable} ${massimo.variable}`}
     >
       <body>
         <CMSProvider initialContentMap={initialContentMap}>

@@ -1,4 +1,4 @@
-.legal-page {
+﻿.legal-page {
   background: #fffdf7;
   color: #1F150F;
   padding: 100px 24px 80px;
@@ -128,7 +128,7 @@
 p {
   font-size: 12px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 @media (max-width: 760px) {
   .legal-page {

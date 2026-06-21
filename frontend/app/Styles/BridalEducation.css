@@ -1,4 +1,4 @@
-.bridal-education {
+﻿.bridal-education {
   background: #fffdf7;
   color: #1f150f;
   padding: 0 24px 42px;
@@ -100,7 +100,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 
 @media (max-width: 768px) {

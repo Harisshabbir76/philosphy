@@ -277,6 +277,10 @@ export function RightSidebar() {
               <label>Width</label>
               <input type="text" placeholder="e.g. 100%" value={block["width"] || ""} onChange={(e) => setBlock("width", e.target.value)} />
             </div>
+            <div className="cms-sidebar__field">
+              <label>Min Height</label>
+              <input type="text" placeholder="e.g. 120px" value={block["min-height"] || ""} onChange={(e) => setBlock("min-height", e.target.value)} />
+            </div>
             <div className="cms-sidebar__field cms-sidebar__field--full">
               <label>Max Width</label>
               <input type="text" placeholder="e.g. 800px" value={block["max-width"] || ""} onChange={(e) => setBlock("max-width", e.target.value)} />

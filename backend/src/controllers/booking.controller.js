@@ -1,5 +1,20 @@
 const Booking = require("../models/Booking");
+const OffDay = require("../models/OffDay");
 const nodemailer = require("nodemailer");
+
+// Local "YYYY-MM-DD" key for an off-day lookup. The booking form sends `date`
+// as a date-input string ("2026-07-15"); fall back to the calendar day of a
+// full timestamp if anything else comes through.
+function toDayKey(dateVal) {
+  if (typeof dateVal === "string" && /^\d{4}-\d{2}-\d{2}/.test(dateVal)) {
+    return dateVal.slice(0, 10);
+  }
+  const d = new Date(dateVal);
+  if (isNaN(d.getTime())) return "";
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+    d.getDate()
+  ).padStart(2, "0")}`;
+}
 
 function clean(value) {
   return String(value || "").trim();
@@ -225,6 +240,28 @@ const createBooking = async (req, res) => {
     const bookingDate = new Date(date);
     if (isNaN(bookingDate.getTime())) {
       return res.status(400).json({ error: "Invalid date provided" });
+    }
+
+    // 3b. Block dates the admin has marked as off — either the whole day or a
+    // specific window that overlaps the requested time.
+    const offDay = await OffDay.findOne({ date: toDayKey(date) });
+    if (offDay) {
+      if (offDay.fullDay) {
+        return res.status(400).json({
+          code: "OFF_DAY",
+          error: "The selected date is unavailable for booking.",
+        });
+      }
+      const offStart = timeToMinutes(offDay.startTime);
+      const offEnd = timeToMinutes(offDay.endTime);
+      if (reqStart < offEnd && offStart < reqEnd) {
+        return res.status(400).json({
+          code: "OFF_DAY_TIME",
+          error: "The selected time is unavailable for booking.",
+          offStart: offDay.startTime,
+          offEnd: offDay.endTime,
+        });
+      }
     }
 
     const startOfDay = new Date(bookingDate);

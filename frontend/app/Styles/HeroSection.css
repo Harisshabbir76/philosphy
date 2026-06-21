@@ -1,4 +1,4 @@
-.hero-section {
+﻿.hero-section {
   width: 100%;
   min-height: 100vh;
   padding: 70px 0 0;
@@ -104,7 +104,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 /* Responsive Font Sizes - Desktop First Approach */
 

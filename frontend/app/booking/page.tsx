@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "../Styles/BookingPage.css";
 import { API_BASE_URL } from "../lib/api";
 import Modal from "../components/Modal";
@@ -14,6 +14,20 @@ const formatTime = (time24: string) => {
   const ampm = hour >= 12 ? "PM" : "AM";
   hour = hour % 12 || 12;
   return `${hour}:${minute} ${ampm}`;
+};
+
+const timeToMinutes = (time24: string) => {
+  if (!time24) return 0;
+  const [h, m] = time24.split(":").map(Number);
+  return h * 60 + (m || 0);
+};
+
+type OffDay = {
+  _id: string;
+  date: string; // "YYYY-MM-DD"
+  fullDay: boolean;
+  startTime: string; // "HH:MM" 24h ("" when full day)
+  endTime: string;
 };
 
 const servicesList = [
@@ -44,9 +58,79 @@ export default function BookingPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalMessage, setModalMessage] = useState("");
+  const [offDays, setOffDays] = useState<OffDay[]>([]);
+
+  // Load the admin-defined off days so we can show them and block bookings.
+  useEffect(() => {
+    const loadOffDays = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/off-days/public`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (Array.isArray(data)) setOffDays(data);
+      } catch {
+        // Non-critical: the form still works without the off-days panel.
+      }
+    };
+    loadOffDays();
+  }, []);
+
+  const locale = language === "ar" ? "ar" : "en";
+
+  // Off days for the month of the currently selected date, ordered by date.
+  const monthOffDays = useMemo(() => {
+    if (!date) return [];
+    const monthPrefix = date.slice(0, 7); // "YYYY-MM"
+    return offDays
+      .filter((d) => d.date.startsWith(monthPrefix))
+      .sort((a, b) => a.date.localeCompare(b.date));
+  }, [offDays, date]);
+
+  const formatOffDayDate = (key: string) => {
+    const [y, m, d] = key.split("-").map(Number);
+    return new Intl.DateTimeFormat(locale, {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    }).format(new Date(y, m - 1, d));
+  };
+
+  // Returns a localized message if the chosen date/time is unavailable, else null.
+  const getUnavailableMessage = () => {
+    const off = offDays.find((d) => d.date === date);
+    if (!off) return null;
+    const dateLabel = formatOffDayDate(off.date);
+    if (off.fullDay) {
+      return (t.unavailableFullDay || "We are closed on {date}.").replace("{date}", dateLabel);
+    }
+    // Time-window off day: block when the requested slot overlaps the closed window.
+    if (startTime && endTime) {
+      const reqStart = timeToMinutes(startTime);
+      const reqEnd = timeToMinutes(endTime);
+      const offStart = timeToMinutes(off.startTime);
+      const offEnd = timeToMinutes(off.endTime);
+      if (reqStart < offEnd && offStart < reqEnd) {
+        return (t.unavailableTime || "We are unavailable on {date} from {start} to {end}.")
+          .replace("{date}", dateLabel)
+          .replace("{start}", formatTime(off.startTime))
+          .replace("{end}", formatTime(off.endTime));
+      }
+    }
+    return null;
+  };
 
   const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Block off days before sending anything to the server.
+    const unavailableMsg = getUnavailableMessage();
+    if (unavailableMsg) {
+      setModalTitle(t.unavailableTitle || "Date Unavailable");
+      setModalMessage(unavailableMsg);
+      setModalOpen(true);
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -66,6 +150,20 @@ export default function BookingPage() {
       
       const data = await res.json();
       if (!res.ok) {
+        if (data.code === "OFF_DAY" || data.code === "OFF_DAY_TIME") {
+          const dateLabel = date ? formatOffDayDate(date) : "";
+          const msg = data.code === "OFF_DAY_TIME"
+            ? (t.unavailableTime || "We are unavailable on {date} from {start} to {end}.")
+                .replace("{date}", dateLabel)
+                .replace("{start}", formatTime(data.offStart))
+                .replace("{end}", formatTime(data.offEnd))
+            : (t.unavailableFullDay || "We are closed on {date}.").replace("{date}", dateLabel);
+          setModalTitle(t.unavailableTitle || "Date Unavailable");
+          setModalMessage(msg);
+          setModalOpen(true);
+          setLoading(false);
+          return;
+        }
         if (data.code === "OVERLAP") {
           const formattedStart = formatTime(data.existingStart);
           const formattedEnd = formatTime(data.existingEnd);
@@ -143,6 +241,7 @@ export default function BookingPage() {
 
   return (
     <div className="booking-page">
+      <div className="booking-layout">
       <div className="booking-container">
         <div className="booking-header">
           <h1>{t.title}</h1>
@@ -239,6 +338,33 @@ export default function BookingPage() {
             {loading ? t.processing : t.bookNow}
           </button>
         </form>
+      </div>
+
+      {date && (
+        <aside className="booking-offdays">
+          <div className="booking-offdays-header">
+            <h2>{t.offDaysTitle}</h2>
+            <p>{t.offDaysHint}</p>
+          </div>
+
+          {monthOffDays.length === 0 ? (
+            <div className="booking-offdays-empty">{t.offDaysEmpty}</div>
+          ) : (
+            <ul className="booking-offdays-list">
+              {monthOffDays.map((d) => (
+                <li key={d._id} className="booking-offday">
+                  <span className="booking-offday-date">{formatOffDayDate(d.date)}</span>
+                  <span className="booking-offday-time">
+                    {d.fullDay
+                      ? t.offDayAllDay
+                      : `${t.offDayClosed} ${formatTime(d.startTime)} – ${formatTime(d.endTime)}`}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </aside>
+      )}
       </div>
 
       <Modal

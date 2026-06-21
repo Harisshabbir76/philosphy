@@ -1,4 +1,4 @@
-.why-choose {
+﻿.why-choose {
   background: #fffdf7;
   color: #6c625b;
   padding: 66px 0 32px;
@@ -87,7 +87,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 

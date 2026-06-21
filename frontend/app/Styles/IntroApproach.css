@@ -1,4 +1,4 @@
-.philosophy-button {
+﻿.philosophy-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@
 .intro-approach__copy h2 {
   font-family: var(--font-freight), serif;
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 1.1;
   max-width: 250px;
   color: #1F150F;
 }
@@ -162,7 +162,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 

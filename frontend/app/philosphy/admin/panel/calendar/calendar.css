@@ -1,0 +1,373 @@
+/* Admin Calendar / Off Days page */
+.cal-page {
+  min-height: 100vh;
+  background: #fffdf7;
+  color: #1f150f;
+  padding: 32px;
+}
+
+.cal-page__header {
+  max-width: 1180px;
+  margin: 0 auto 28px;
+}
+
+.cal-page__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5b4a40;
+}
+
+.cal-page__title {
+  margin-top: 8px;
+  font-family: Georgia, serif;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.cal-page__subtitle {
+  margin-top: 12px;
+  font-size: 0.92rem;
+  color: #5b4a40;
+  max-width: 640px;
+}
+
+.cal-status {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.cal-status--error {
+  color: #9f1d1d;
+}
+
+.cal-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* ── Calendar (left) ─────────────────────────────────────────────────────── */
+.cal-calendar {
+  background: #ffffff;
+  border: 1px solid #eadfd6;
+  padding: 22px;
+}
+
+.cal-calendar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.cal-calendar__nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid #eadfd6;
+  color: #1f150f;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cal-calendar__nav button:hover {
+  background: #1f150f;
+  color: #fffdf7;
+}
+
+.cal-calendar__month {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+}
+
+.cal-calendar__weekdays,
+.cal-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-calendar__weekdays {
+  margin-bottom: 8px;
+}
+.cal-calendar__weekdays span {
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9a8b80;
+}
+
+.cal-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fffdf7;
+  border: 1px solid #eadfd6;
+  color: #1f150f;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cal-cell:hover:not(.cal-cell--empty) {
+  border-color: #b8975a;
+}
+.cal-cell--empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+.cal-cell--today {
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px #b8975a;
+}
+/* Unsaved selection */
+.cal-cell--selected {
+  background: #e7d4a8;
+  border-color: #b8975a;
+  color: #1f150f;
+}
+/* Saved off day takes precedence over plain selection */
+.cal-cell--saved {
+  background: #1f150f;
+  border-color: #1f150f;
+  color: #fffdf7;
+}
+
+.cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+  font-size: 0.74rem;
+  color: #5b4a40;
+}
+.cal-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.cal-dot {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border: 1px solid #b8975a;
+}
+.cal-dot--saved {
+  background: #1f150f;
+  border-color: #1f150f;
+}
+.cal-dot--draft {
+  background: #e7d4a8;
+}
+
+/* ── Off days (right) ────────────────────────────────────────────────────── */
+.cal-offdays {
+  background: #ffffff;
+  border: 1px solid #eadfd6;
+  padding: 22px;
+  min-height: 320px;
+}
+
+.cal-offdays__heading {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.cal-offdays__month {
+  margin-top: 6px;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a8b80;
+}
+
+.cal-offdays__empty {
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px dashed #eadfd6;
+  text-align: center;
+  font-size: 0.88rem;
+  color: #9a8b80;
+}
+
+.cal-offdays__list {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cal-offday {
+  border: 1px solid #eadfd6;
+  padding: 16px;
+  background: #fffdf7;
+}
+.cal-offday--draft {
+  border-color: #b8975a;
+  background: #fdf7e9;
+}
+
+.cal-offday__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cal-offday__date {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.cal-offday__badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: #b8975a;
+  color: #fffdf7;
+  padding: 3px 8px;
+}
+
+.cal-offday__fullday {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #3a2d26;
+  cursor: pointer;
+}
+.cal-offday__fullday input {
+  width: 16px;
+  height: 16px;
+  accent-color: #1f150f;
+  cursor: pointer;
+}
+
+.cal-offday__times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.cal-time__label {
+  display: block;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a8b80;
+  margin-bottom: 6px;
+}
+.cal-time__selects {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cal-time__selects select {
+  padding: 7px 8px;
+  border: 1px solid #eadfd6;
+  background: #ffffff;
+  color: #1f150f;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.cal-time__colon {
+  color: #9a8b80;
+}
+
+.cal-offday__summary {
+  margin-top: 12px;
+  font-size: 0.84rem;
+  color: #5b4a40;
+}
+
+.cal-offday__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cal-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cal-action:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.cal-action--save {
+  background: #1f150f;
+  color: #fffdf7;
+  border-color: #1f150f;
+}
+.cal-action--save:hover:not(:disabled) {
+  background: #2b1f18;
+}
+.cal-action--discard {
+  background: transparent;
+  color: #5b4a40;
+  border-color: #d7c9bd;
+}
+.cal-action--discard:hover:not(:disabled) {
+  border-color: #1f150f;
+  color: #1f150f;
+}
+.cal-action--delete {
+  background: transparent;
+  color: #9f1d1d;
+  border-color: #e6c9c2;
+  margin-left: auto;
+}
+.cal-action--delete:hover:not(:disabled) {
+  background: #9f1d1d;
+  color: #ffffff;
+  border-color: #9f1d1d;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cal-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .cal-page {
+    padding: 20px 16px;
+  }
+  .cal-page__title {
+    font-size: 2.1rem;
+  }
+  .cal-calendar,
+  .cal-offdays {
+    padding: 16px;
+  }
+  .cal-calendar__grid,
+  .cal-calendar__weekdays {
+    gap: 4px;
+  }
+  .cal-cell {
+    font-size: 0.8rem;
+  }
+  .cal-offday__times {
+    gap: 12px;
+  }
+}

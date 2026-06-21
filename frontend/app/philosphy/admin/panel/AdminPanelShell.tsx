@@ -12,6 +12,7 @@ import { RightSidebar } from "../../../components/CMS/RightSidebar";
 
 const links = [
   { href: "/philosphy/admin/panel", label: "Booking" },
+  { href: "/philosphy/admin/panel/calendar", label: "Calendar" },
   { href: "/philosphy/admin/panel/home", label: "Home" },
   { href: "/philosphy/admin/panel/our-story", label: "Our Story" },
   { href: "/philosphy/admin/panel/analysis", label: "Analysis" },

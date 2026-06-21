@@ -1,4 +1,4 @@
-.bridal-zahab {
+﻿.bridal-zahab {
   background: #291C13;
   color: #FFFFFF;
   padding: 56px 24px 60px;
@@ -144,7 +144,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 @media (max-width: 900px) {
   .bridal-zahab {

@@ -1,4 +1,4 @@
-/* Booking Page Styles */
+﻿/* Booking Page Styles */
 .booking-page {
   min-height: 100vh;
   padding: 100px 24px 80px;
@@ -8,15 +8,106 @@
   justify-content: center;
 }
 
+.booking-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 .booking-container {
   max-width: 600px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   background: #ffffff;
   border: 1px solid #eadfd6;
   border-radius: 4px;
   padding: 40px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Off days panel (right of the form) */
+.booking-offdays {
+  width: 336px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #eadfd6;
+  border-radius: 4px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.booking-offdays-header {
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #eadfd6;
+}
+
+.booking-offdays-header h2 {
+  font-family: var(--font-freight), Georgia, serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: #1f150f;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.booking-offdays-header p {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.5;
+}
+
+.booking-offdays-empty {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #999;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  padding: 8px 0;
+}
+
+.booking-offdays-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.booking-offday {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: #fffdf7;
+  border: 1px solid #f0e8e2;
+  border-left: 2px solid #b8975a;
+  border-radius: 2px;
+}
+
+.booking-offday-date {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f150f;
+  letter-spacing: 0.5px;
+}
+
+.booking-offday-time {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8c7a6b;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
 }
 
 .booking-header {
@@ -256,10 +347,23 @@
 p {
   font-size: 12px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Stack the off-days panel under the form on narrower screens */
+@media (max-width: 900px) {
+  .booking-layout {
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+  }
+
+  .booking-offdays {
+    width: 100%;
+  }
+}
 
 /* Desktop (1024px and above) */
 @media (min-width: 1024px) {

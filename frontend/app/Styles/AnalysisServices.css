@@ -1,4 +1,4 @@
-.analysis-services {
+﻿.analysis-services {
   background: #fffdf7;
   color: #1F150F;
   padding: 75px 24px 38px;
@@ -229,7 +229,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 
 /* ========== RESPONSIVE BREAKPOINTS ========== */

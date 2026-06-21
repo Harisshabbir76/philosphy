@@ -84,7 +84,7 @@ const Footer = () => {
           <span>{t.copyright}</span>
 
           <div className="social-links">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/zuhourphilosophy.ae/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <AiOutlineInstagram className="social-icon" />
             </a>
             <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">

@@ -1,4 +1,4 @@
-.ps-style-shop {
+﻿.ps-style-shop {
   background: #3d1d10;
   color: #fffdf7;
   padding: 42px 24px 54px;
@@ -144,7 +144,7 @@
 p {
   font-size: 10px !important;
   font-weight: 50 !important;
-  line-height: 1.42 !important;
+  line-height: 1.42;
   letter-spacing: 0.84px !important; }
 @media (max-width: 760px) {
   .ps-style-shop {
