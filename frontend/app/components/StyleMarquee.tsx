@@ -41,13 +41,15 @@ export default function StyleMarquee({ editable = false, page = "shared" }: { ed
 
         return (
     <section className="style-marquee" aria-label="Style values">
-      <div className="style-marquee__track">
+      <div className="style-marquee__track" dir="ltr">
         <EditableText
           isEditing={isEditing}
           value={editorLine}
           onChange={(value) => updateContent({ wordsText: value.replaceAll("//", ",").replace(/,+/g, ",").replace(/^,\s*|\s*,$/g, "") })}
         />
         <span>{editorLine}</span>
+        <span aria-hidden="true">{editorLine}</span>
+        <span aria-hidden="true">{editorLine}</span>
       </div>
     </section>
         );

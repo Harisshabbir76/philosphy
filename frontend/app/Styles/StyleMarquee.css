@@ -32,7 +32,7 @@ p {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-25%);
   }
 }
 
@@ -41,10 +41,16 @@ p {
     transform: translateX(0);
   }
   to {
-    transform: translateX(50%);
+    transform: translateX(-25%);
   }
 }
 
-:root[dir="rtl"] .style-marquee__track {
+html[dir="rtl"] .style-marquee__track {
   animation: philosophy-marquee-rtl 28s linear infinite;
+}
+
+html[dir="rtl"] .style-marquee__track span,
+html[dir="rtl"] .style-marquee__track > * {
+  font-family: var(--font-xb-niloofar), sans-serif !important;
+  font-size: 12px !important;
 }

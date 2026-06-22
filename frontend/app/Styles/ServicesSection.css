@@ -60,7 +60,7 @@
   font-family: var(--font-sf-pro), sans-serif;
   font-size: 10px;
   font-weight: 50;
-  line-height: 1.42;
+  line-height: 1.5 !important;
   letter-spacing: 0.84px;
   color: #ffffff;
   margin: 26px 0 24px;

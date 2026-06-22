@@ -443,7 +443,7 @@ p {
   
   .back-to-top {
     position: static;
-    margin: -30px auto 24px;
+    margin: -50px auto 24px;
     flex-direction: column;
     gap: 5px;
     font-size: 7.5px;
@@ -521,7 +521,7 @@ p {
   
   .back-to-top {
     position: static;
-    margin: -28px auto 22px;
+    margin: -48px auto 22px;
     flex-direction: column;
     gap: 5px;
     font-size: 7px;
@@ -599,7 +599,7 @@ p {
   
   .back-to-top {
     position: static;
-    margin: -25px auto 20px;
+    margin: -45px auto 20px;
     flex-direction: column;
     gap: 4px;
     font-size: 6.5px;
@@ -691,5 +691,42 @@ p {
     font-size: 8px;
     letter-spacing: 1px;
     font-weight:0;
-    
+
   }
+
+/* ── Arabic (RTL) footer font overrides — English unchanged ── */
+html[dir="rtl"] .footer-cta h2 {
+  font-family: var(--font-xb-shafigh), sans-serif;
+  font-size: 24px;
+}
+
+html[dir="rtl"] .footer-cta p {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px !important;
+}
+
+html[dir="rtl"] .footer-consultation-link {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px !important;
+}
+
+html[dir="rtl"] .back-to-top {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px !important;
+}
+
+html[dir="rtl"] .footer-links a {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px !important;
+}
+
+html[dir="rtl"] .footer-info span {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px !important;
+}
+
+html[dir="rtl"] .lang-selector__trigger,
+html[dir="rtl"] .lang-selector__option {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px !important;
+}

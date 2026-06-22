@@ -83,6 +83,28 @@ const massimo = localFont({
   display: "swap",
 });
 
+const xbNiloofar = localFont({
+  src: [
+    { path: "../fonts/Niloofar/XB Niloofar.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/Niloofar/XB NiloofarIt.ttf", weight: "400", style: "italic" },
+    { path: "../fonts/Niloofar/XB NiloofarBd.ttf", weight: "700", style: "normal" },
+    { path: "../fonts/Niloofar/XB NiloofarBdIt.ttf", weight: "700", style: "italic" },
+  ],
+  variable: "--font-xb-niloofar",
+  display: "swap",
+});
+
+const xbShafigh = localFont({
+  src: [
+    { path: "../fonts/XB-Shafigh-Font-Family-UrduFonts.com_/XB Shafigh Uzbek Regular - [UrduFonts.com].ttf", weight: "400", style: "normal" },
+    { path: "../fonts/XB-Shafigh-Font-Family-UrduFonts.com_/XB Shafigh Italic - [UrduFonts.com].ttf", weight: "400", style: "italic" },
+    { path: "../fonts/XB-Shafigh-Font-Family-UrduFonts.com_/XB Shafigh Kurd Bold - [UrduFonts.com].ttf", weight: "700", style: "normal" },
+    { path: "../fonts/XB-Shafigh-Font-Family-UrduFonts.com_/XB Shafigh Bold Italic - [UrduFonts.com].ttf", weight: "700", style: "italic" },
+  ],
+  variable: "--font-xb-shafigh",
+  display: "swap",
+});
+
 import { API_BASE_URL } from "./lib/api";
 
 export const metadata: Metadata = {
@@ -109,7 +131,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${freightDisp.variable} ${sfPro.variable} ${pinyonScript.variable} ${formaDJRArabic.variable} ${massimo.variable}`}
+      className={`${freightDisp.variable} ${sfPro.variable} ${pinyonScript.variable} ${formaDJRArabic.variable} ${massimo.variable} ${xbNiloofar.variable} ${xbShafigh.variable}`}
     >
       <body>
         <CMSProvider initialContentMap={initialContentMap}>

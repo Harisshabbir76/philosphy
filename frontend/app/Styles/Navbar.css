@@ -62,6 +62,7 @@
 /* Arabic: enlarge the right-side nav links by 2px for better legibility. */
 html[dir="rtl"] .nav-links-right,
 html[dir="rtl"] .nav-tab {
+  font-family: var(--font-xb-niloofar), sans-serif;
   font-size: 12px;
 }
 

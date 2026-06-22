@@ -38,6 +38,8 @@ const FONT_FAMILIES: { label: string; value: string }[] = [
   { label: "Freight", value: "var(--font-freight), serif" },
   { label: "Massimo", value: "var(--font-massimo), sans-serif" },
   { label: "Forma AR", value: "var(--font-forma-ar), sans-serif" },
+  { label: "XB Niloofar", value: "var(--font-xb-niloofar), sans-serif" },
+  { label: "XB Shafigh", value: "var(--font-xb-shafigh), sans-serif" },
   { label: "Inter", value: "Inter, sans-serif" },
   { label: "Georgia", value: "Georgia, serif" },
   { label: "Arial", value: "Arial, sans-serif" },
