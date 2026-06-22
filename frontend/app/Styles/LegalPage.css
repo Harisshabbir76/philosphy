@@ -124,6 +124,8 @@
 
 .legal-accordion__content ul li {
   margin-bottom: 6px;
+  /* Indent bullets: left margin in English (LTR), right margin in Arabic (RTL). */
+  margin-inline-start: 50px;
 }
 p {
   font-size: 12px !important;
