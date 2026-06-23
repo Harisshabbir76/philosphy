@@ -403,7 +403,7 @@ export const translations = {
       analysis: "التحليل",
       wardrobe: "الخزانة",
       personalShopping: "التسوق الشخصي",
-      bridal: "الزفاف",
+      bridal: "العرائس",
       bookNow: "احجزي الآن",
       logout: "تسجيل الخروج",
     },

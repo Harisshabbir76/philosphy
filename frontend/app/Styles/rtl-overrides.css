@@ -465,6 +465,10 @@
 :root[dir="rtl"] .bridal-complete p,
 :root[dir="rtl"] .bridal-complete li { font-size: 12px; }
 :root[dir="rtl"] .bridal-complete h2 { font-size: 27px; }
+/* Keep both detail columns right-aligned in Arabic at every breakpoint
+   (the base CSS forces the left column to text-align:left below 760px). */
+:root[dir="rtl"] .bridal-complete__column,
+:root[dir="rtl"] .bridal-complete__column--right { text-align: right; }
 
 /* ── BridalConcierge ─────────────────────────────────────── */
 :root[dir="rtl"] .bridal-concierge__eyebrow,
@@ -485,10 +489,13 @@
 :root[dir="rtl"] .bridal-zahab__content p { font-size: 12px; }
 
 /* ── ContactHero ─────────────────────────────────────────── */
+:root[dir="rtl"] .contact-hero__banner h1 { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-card h2         { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-card > p        { font-family: var(--font-xb-niloofar), sans-serif; }
 
 @media (min-width: 1024px) {
-  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 44px; }
-  :root[dir="rtl"] .contact-card h2         { font-size: 30px; }
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 40px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 24px; }
   :root[dir="rtl"] .contact-card > p        { font-size: 12px; }
 }
 @media (min-width: 900px) and (max-width: 1023px) {
@@ -525,15 +532,34 @@
   :root[dir="rtl"] .contact-hero__banner h1 { font-size: clamp(22px, 5vh, 44px); }
 }
 
+/* ── ContactForm ─────────────────────────────────────────── */
+:root[dir="rtl"] .contact-form input,
+:root[dir="rtl"] .contact-form select,
+:root[dir="rtl"] .contact-form textarea,
+:root[dir="rtl"] .contact-form__label,
+:root[dir="rtl"] .contact-form button,
+:root[dir="rtl"] .contact-form__status {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px;
+}
+
 /* ── ContactGettingStarted ───────────────────────────────── */
+:root[dir="rtl"] .contact-started__intro h2             { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-started__intro h2.wanna-learn { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-started__intro p              { font-family: var(--font-xb-niloofar), sans-serif; }
+:root[dir="rtl"] .contact-started__intro a              { font-family: var(--font-xb-niloofar), sans-serif; }
+:root[dir="rtl"] .contact-started__kicker               { font-family: var(--font-xb-niloofar), sans-serif; }
+:root[dir="rtl"] .contact-started__card h3              { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-started__card p               { font-family: var(--font-xb-niloofar), sans-serif; }
 
 @media (min-width: 1024px) {
-  :root[dir="rtl"] .contact-started__intro h2  { font-size: 34px; }
-  :root[dir="rtl"] .contact-started__intro p   { font-size: 13px; }
-  :root[dir="rtl"] .contact-started__intro a   { font-size: 13px; }
-  :root[dir="rtl"] .contact-started__kicker    { font-size: 13px; }
+  :root[dir="rtl"] .contact-started__intro h2             { font-size: 24px; }
+  :root[dir="rtl"] .contact-started__intro h2.wanna-learn { font-size: 32px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 12px; }
   :root[dir="rtl"] .contact-started__card span { font-size: 12px; }
-  :root[dir="rtl"] .contact-started__card h3   { font-size: 22px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
   :root[dir="rtl"] .contact-started__card p    { font-size: 12px; }
 }
 @media (min-width: 900px) and (max-width: 1023px) {
@@ -579,22 +605,22 @@
 }
 
 /* ── FaqHero ─────────────────────────────────────────────── */
-:root[dir="rtl"] .faq-hero h1 { font-size: 27px; }
+:root[dir="rtl"] .faq-hero h1 { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
 @media (max-width: 768px) {
   :root[dir="rtl"] .faq-hero h1 { font-size: 24px; }
 }
 
 /* ── FaqQuestions ────────────────────────────────────────── */
-:root[dir="rtl"] .faq-questions h2     { font-size: 58px; }
-:root[dir="rtl"] .faq-questions__link  { font-size: 11px; }
+:root[dir="rtl"] .faq-questions h2     { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+:root[dir="rtl"] .faq-questions__link  { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
 @media (max-width: 768px) {
   :root[dir="rtl"] .faq-questions h2    { font-size: 40px; }
   :root[dir="rtl"] .faq-questions__link { font-size: 10px; }
 }
 
 /* ── FaqQuestionsAnswers ──────────────────────────────────── */
-:root[dir="rtl"] .faq-answer__trigger span:first-child { font-size: 12px; }
-:root[dir="rtl"] .faq-answer__panel p                  { font-size: 12px; }
+:root[dir="rtl"] .faq-answer__trigger span:first-child { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
+:root[dir="rtl"] .faq-answer__panel p                  { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
 @media (max-width: 768px) {
   :root[dir="rtl"] .faq-answer__trigger span:first-child { font-size: 11px; }
   :root[dir="rtl"] .faq-answer__panel p                  { font-size: 11px; }
@@ -651,8 +677,77 @@
 }
 
 /* ── LegalPage ───────────────────────────────────────────── */
-:root[dir="rtl"] .legal-page__title                                  { font-size: 38px; }
-:root[dir="rtl"] .legal-accordion summary span:first-child           { font-size: 15px; }
+:root[dir="rtl"] .legal-page__title                        { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+:root[dir="rtl"] .legal-accordion summary span:first-child { font-family: var(--font-xb-niloofar), sans-serif; font-size: 14px; }
 :root[dir="rtl"] .legal-accordion__content p,
-:root[dir="rtl"] .legal-accordion__content li                        { font-size: 12px; }
-:root[dir="rtl"] .legal-accordion__content h3                        { font-size: 12px; }
+:root[dir="rtl"] .legal-accordion__content li              { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px !important; }
+:root[dir="rtl"] .legal-accordion__content h3              { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
+
+/* ── BookingPage ─────────────────────────────────────────── */
+:root[dir="rtl"] .booking-header h1 { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+:root[dir="rtl"] .booking-header p,
+:root[dir="rtl"] .booking-error,
+:root[dir="rtl"] .form-group label,
+:root[dir="rtl"] .form-group input,
+:root[dir="rtl"] .form-group select,
+:root[dir="rtl"] .booking-submit-btn,
+:root[dir="rtl"] .booking-offdays-header h2,
+:root[dir="rtl"] .booking-offdays-header p,
+:root[dir="rtl"] .booking-offdays-empty,
+:root[dir="rtl"] .booking-offday-date,
+:root[dir="rtl"] .booking-offday-time {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px;
+}
+/* Right-align LTR-content fields (phone / date / time) in Arabic.
+   Date & time also get their chevron moved to the left so it doesn't
+   overlap the now right-aligned placeholder. */
+:root[dir="rtl"] .form-group input[type="tel"] {
+  text-align: right;
+}
+:root[dir="rtl"] .form-group input[type="date"],
+:root[dir="rtl"] .form-group input[type="time"] {
+  direction: rtl;
+  text-align: right;
+  background-position: left 12px center;
+  padding-right: 15px;
+  padding-left: 32px;
+}
+/* Keep the mm/dd/yyyy and --:-- segments reading left-to-right while the
+   whole field block is pushed to the right by direction: rtl above. */
+:root[dir="rtl"] .form-group input[type="date"]::-webkit-datetime-edit,
+:root[dir="rtl"] .form-group input[type="time"]::-webkit-datetime-edit {
+  direction: ltr;
+  text-align: right;
+}
+
+/* ── Hero main headings: 18px on mobile & small devices (Arabic only) ──
+   Placed last so it overrides the per-page mobile sizes above.
+   !important is required because the CMS applies its size as an inline
+   style (which falls back to the 40px desktop value on mobile). */
+@media (max-width: 768px) {
+  :root[dir="rtl"] .analysis-hero h1,
+  :root[dir="rtl"] .analysis-hero h1 *,
+  :root[dir="rtl"] .wardrobe-hero h1,
+  :root[dir="rtl"] .wardrobe-hero h1 *,
+  :root[dir="rtl"] .personal-shopping-hero h1,
+  :root[dir="rtl"] .personal-shopping-hero h1 *,
+  :root[dir="rtl"] .bridal-hero h1,
+  :root[dir="rtl"] .bridal-hero h1 *,
+  :root[dir="rtl"] .faq-hero h1,
+  :root[dir="rtl"] .faq-hero h1 *,
+  :root[dir="rtl"] .contact-hero__banner h1,
+  :root[dir="rtl"] .contact-hero__banner h1 *,
+  :root[dir="rtl"] .legal-page__title,
+  :root[dir="rtl"] .legal-page__title * {
+    font-size: 18px !important;
+  }
+}
+
+/* ── Navbar: keep the brand logo clear of the right edge in Arabic ──
+   In RTL the logo sits on the right, where the absolute navbar's width:100%
+   overlaps the page's vertical scrollbar and clips it. A small inline-start
+   margin pulls the logo back into view. */
+:root[dir="rtl"] .nav-left {
+  margin-inline-start: 22px;
+}

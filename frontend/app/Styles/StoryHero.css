@@ -143,6 +143,15 @@
   }
 }
 
+/* Force CSS sizes on mobile — override CMS inline styles on inner spans */
+@media (max-width: 479px) {
+  .story-hero__content h1 span,
+  .story-hero__content p span,
+  .story-hero__content div span {
+    font-size: inherit !important;
+  }
+}
+
 /* Mobile Portrait (375px - 479px) */
 @media (min-width: 375px) and (max-width: 479px) {
   .story-hero {
@@ -155,12 +164,12 @@
   }
   
   .story-hero__content h1 {
-    font-size: 24px;
+    font-size: 24px !important;
   }
-  
+
   .story-hero__content p,
-.story-hero__content div {
-    font-size: 18px;
+  .story-hero__content div {
+    font-size: 18px !important;
     margin-top: 12px;
     letter-spacing: 0.6px;
   }
@@ -171,19 +180,19 @@
   .story-hero {
     min-height: 380px;
   }
-  
+
   .story-hero__content {
     margin-top: 5px;
     padding: 0 14px;
   }
-  
+
   .story-hero__content h1 {
-    font-size: 22px;
+    font-size: 22px !important;
   }
-  
+
   .story-hero__content p,
-.story-hero__content div {
-    font-size: 16px;
+  .story-hero__content div {
+    font-size: 16px !important;
     margin-top: 10px;
     letter-spacing: 0.5px;
   }
@@ -201,12 +210,12 @@
   }
   
   .story-hero__content h1 {
-    font-size: 20px;
+    font-size: 20px !important;
   }
-  
+
   .story-hero__content p,
-.story-hero__content div {
-    font-size: 14px;
+  .story-hero__content div {
+    font-size: 14px !important;
     margin-top: 10px;
     letter-spacing: 0.4px;
   }

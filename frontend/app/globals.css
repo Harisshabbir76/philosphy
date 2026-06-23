@@ -31,6 +31,14 @@
   padding: 0;
 }
 
+html,
+body {
+  max-width: 100%;
+  /* Prevent the whole site from scrolling horizontally when a section
+     is slightly wider than the viewport. */
+  overflow-x: hidden;
+}
+
 body {
   background: #FFFDF7;
   color: #350008;

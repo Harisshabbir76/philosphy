@@ -66,6 +66,12 @@ html[dir="rtl"] .nav-tab {
   font-size: 12px;
 }
 
+/* English: pull the right-side nav (…Book Now) clear of the page's vertical
+   scrollbar, which the absolute navbar's width:100% overlaps and clips. */
+html[dir="ltr"] .nav-right {
+  margin-inline-end: 22px;
+}
+
 .nav-tab--book {
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -132,6 +138,9 @@ html[dir="rtl"] .nav-tab {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
+  /* Clip the closed drawer (parked off-screen) so it can't add horizontal
+     scroll on mobile/tablet. Works with the absolute __content below. */
+  overflow: hidden;
 }
 
 .mobile-sidebar--open {
@@ -140,7 +149,7 @@ html[dir="rtl"] .nav-tab {
 }
 
 .mobile-sidebar__content {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: min(310px, 84vw);

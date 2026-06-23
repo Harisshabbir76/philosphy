@@ -134,7 +134,7 @@ p {
   letter-spacing: 0.84px !important; }
 @media (max-width: 760px) {
   .legal-page {
-    padding: 60px 20px 40px;
+    padding: 90px 20px 40px;
   }
   .legal-page__title {
     font-size: 28px;

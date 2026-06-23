@@ -243,16 +243,23 @@ p {
 /* Tablet (600px - 899px) */
 @media (min-width: 600px) and (max-width: 899px) {
   .intro-approach__top {
+    grid-template-columns: 1fr;
     gap: 40px;
     padding: 52px 32px;
   }
-  
+
   .intro-approach__copy {
+    justify-self: start;
     margin-right: 0;
     margin-top: 0;
     max-width: 100%;
+    text-align: center;
   }
-  
+
+  .intro-approach__images {
+    justify-content: center;
+  }
+
   .intro-approach__copy h2 {
     font-size: 24px;
     max-width: 100%;

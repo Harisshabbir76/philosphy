@@ -9,8 +9,10 @@
   width: min(1090px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 540px 385px;
-  gap: 112px;
+  /* Flexible copy column + fixed 385px image so the layout never overflows
+     between 901px and 1085px (fixed 540px used to push past the container). */
+  grid-template-columns: minmax(0, 1fr) 385px;
+  gap: clamp(48px, 9vw, 112px);
   align-items: start;
 }
 

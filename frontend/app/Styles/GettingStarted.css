@@ -388,8 +388,11 @@ p {
     margin: 40px auto 60px;
   }
   
+  .getting-started__lower h2 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h2 {
-    font-size: 22px;
+    font-size: 22px !important;
     white-space: normal;
     max-width: 90%;
     margin-left: auto;
@@ -397,8 +400,11 @@ p {
     margin-top: -30px;
   }
   
+  .getting-started__lower h3 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h3 {
-    font-size: 19px;
+    font-size: 19px !important;
     margin-top: 22px;
   }
   
@@ -476,8 +482,11 @@ p {
     margin: 35px auto 55px;
   }
   
+  .getting-started__lower h2 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h2 {
-    font-size: 20px;
+    font-size: 20px !important;
     white-space: normal;
     max-width: 95%;
     margin-left: auto;
@@ -485,8 +494,11 @@ p {
     margin-top: -25px;
   }
   
+  .getting-started__lower h3 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h3 {
-    font-size: 17px;
+    font-size: 17px !important;
     margin-top: 20px;
   }
   
@@ -562,15 +574,21 @@ p {
     margin: 30px auto 50px;
   }
   
+  .getting-started__lower h2 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h2 {
-    font-size: 18px;
+    font-size: 18px !important;
     white-space: normal;
     max-width: 100%;
     margin-top: -20px;
   }
   
+  .getting-started__lower h3 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h3 {
-    font-size: 15px;
+    font-size: 15px !important;
     margin-top: 18px;
   }
   
@@ -645,15 +663,21 @@ p {
     margin: 25px auto 45px;
   }
   
+  .getting-started__lower h2 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h2 {
-    font-size: 13px;
+    font-size: 13px !important;
     white-space: normal;
     max-width: 100%;
     margin-top: -15px;
   }
   
+  .getting-started__lower h3 span {
+    font-size: inherit !important;
+  }
   .getting-started__lower h3 {
-    font-size: 14px;
+    font-size: 14px !important;
     margin-top: 16px;
   }
   
