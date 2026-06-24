@@ -43,8 +43,9 @@ p {
     background-position: center top;
   }
 
-  .bridal-hero h1 {
-    font-size: 25px;
+  .bridal-hero h1,
+  .bridal-hero h1 * {
+    font-size: 24px !important;
     text-align: center;
   }
 }

@@ -31,7 +31,7 @@
 .analysis-service summary {
   min-height: 20px;
   margin-top: 5px;
-  padding: 0 12px 0 0;
+  padding: 6px 12px 6px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,7 +47,7 @@
 .analysis-service summary span:first-child {
   font-family: var(--font-sf-pro), sans-serif;
   font-weight: 100;
-  line-height: 0;
+  line-height: 1.4;
   letter-spacing: 1px;
   color: #1F150F;
 }
@@ -663,4 +663,13 @@ p {
 .analysis-service__content div,
 .analysis-service__content li {
   transition: all 0.2s ease;
+}
+
+/* On mobile, cap the accordion title width so a long title breaks after
+   "...ANALYSIS", keeping "(COMBINED SERVICE)" together on the second line.
+   Shorter titles stay on one line since they don't reach the cap. */
+@media (max-width: 520px) {
+  .analysis-service summary span:first-child {
+    max-width: 265px;
+  }
 }

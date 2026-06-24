@@ -42,7 +42,8 @@ p {
     min-height: 285px;
   }
 
-  .analysis-hero h1 {
-    font-size: 23px;
+  .analysis-hero h1,
+  .analysis-hero h1 * {
+    font-size: 24px !important;
   }
 }

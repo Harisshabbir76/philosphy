@@ -546,6 +546,35 @@
   font-family: var(--font-xb-niloofar), sans-serif;
   font-size: 12px;
 }
+/* Service <select>: native arrow already flips to the left in RTL, but the
+   selected/placeholder text stays left-aligned — force it to the right so it
+   matches the other fields. */
+:root[dir="rtl"] .contact-form select {
+  direction: rtl;
+  text-align: right;
+}
+:root[dir="rtl"] .contact-form select option {
+  direction: rtl;
+  text-align: right;
+}
+/* Date / time fields: push the value to the right (native picker icon flips
+   to the left), keeping the mm/dd/yyyy and --:-- segments left-to-right. */
+:root[dir="rtl"] .contact-form input[type="date"],
+:root[dir="rtl"] .contact-form input[type="time"] {
+  direction: rtl;
+  text-align: right;
+}
+:root[dir="rtl"] .contact-form input[type="date"]::-webkit-datetime-edit,
+:root[dir="rtl"] .contact-form input[type="time"]::-webkit-datetime-edit {
+  direction: ltr;
+  text-align: right;
+}
+/* Phone field: tel inputs default to left alignment — right-align it (and its
+   placeholder) so it matches the other Arabic fields. */
+:root[dir="rtl"] .contact-form input[type="tel"] {
+  text-align: right;
+}
+
 
 /* ── ContactGettingStarted ───────────────────────────────── */
 :root[dir="rtl"] .contact-started__intro h2             { font-family: var(--font-xb-shafigh), serif; }

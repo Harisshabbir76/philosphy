@@ -183,3 +183,12 @@ p {
 .personal-shopping-hero h1 {
   transition: font-size 0.2s ease-out;
 }
+
+/* Mobile & small devices: force the hero heading to 24px, overriding any
+   site-wide font size set via the CMS (applied as an inline style). */
+@media (max-width: 768px) {
+  .personal-shopping-hero h1,
+  .personal-shopping-hero h1 * {
+    font-size: 24px !important;
+  }
+}

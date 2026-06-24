@@ -42,7 +42,8 @@ p {
     min-height: 285px;
   }
 
-  .wardrobe-hero h1 {
-    font-size: 23px;
+  .wardrobe-hero h1,
+  .wardrobe-hero h1 * {
+    font-size: 24px !important;
   }
 }
