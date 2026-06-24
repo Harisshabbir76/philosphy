@@ -465,10 +465,14 @@
 :root[dir="rtl"] .bridal-complete p,
 :root[dir="rtl"] .bridal-complete li { font-size: 12px; }
 :root[dir="rtl"] .bridal-complete h2 { font-size: 27px; }
-/* Keep both detail columns right-aligned in Arabic at every breakpoint
-   (the base CSS forces the left column to text-align:left below 760px). */
+/* Keep both detail columns right-aligned in Arabic at every breakpoint.
+   The base CSS forces the left column to text-align:left below 760px, and the
+   CMS can bake inline alignment into child elements — so target children too
+   and use !important to win in every case. */
 :root[dir="rtl"] .bridal-complete__column,
-:root[dir="rtl"] .bridal-complete__column--right { text-align: right; }
+:root[dir="rtl"] .bridal-complete__column *,
+:root[dir="rtl"] .bridal-complete__column--right,
+:root[dir="rtl"] .bridal-complete__column--right * { text-align: right !important; }
 
 /* ── BridalConcierge ─────────────────────────────────────── */
 :root[dir="rtl"] .bridal-concierge__eyebrow,
@@ -719,6 +723,16 @@
 :root[dir="rtl"] .form-group input[type="time"]::-webkit-datetime-edit {
   direction: ltr;
   text-align: right;
+}
+/* Service <select>: in Arabic the option text is right-aligned, so move the
+   dropdown chevron to the left and pad the text away from it (otherwise the
+   chevron overlaps the text). */
+:root[dir="rtl"] .form-group select {
+  direction: rtl;
+  text-align: right;
+  background-position: left 12px center;
+  padding-right: 15px;
+  padding-left: 32px;
 }
 
 /* ── Hero main headings: 18px on mobile & small devices (Arabic only) ──
