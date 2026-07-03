@@ -14,7 +14,7 @@
 .getting-started__hero {
   min-height: 550px;
   background: linear-gradient(rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.14)),
-  url("../Images/banner 2.png") center top / cover no-repeat;
+  url("../Images/banner 2.webp") center top / cover no-repeat;
   padding-top: 58px;
 }
 

@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* ðŸª“ REMOVED: background: #2f251f url("../Images/faq-hero.png") center center / cover no-repeat; */
+  /* ðŸª“ REMOVED: background: #2f251f url("../Images/faq-hero.webp") center center / cover no-repeat; */
   background-color: #2f251f; /* Fast fallback background color */
   color: #fffdf7;
 }

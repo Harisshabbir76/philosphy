@@ -1,6 +1,6 @@
 "use client";
 
-import remoteImage from "../Images/ps3.jpeg";
+import remoteImage from "../Images/ps3.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

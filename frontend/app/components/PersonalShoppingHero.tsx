@@ -6,7 +6,7 @@ import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
-import personalShoppingHero from "../Images/ps-hero.png";
+import personalShoppingHero from "../Images/ps-hero.webp";
 import "../Styles/PersonalShoppingHero.css";
 
 const defaults = {

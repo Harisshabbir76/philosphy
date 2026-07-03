@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import chooseUs from "../Images/choose-us.svg";
-import bannerSmall from "../Images/banner small.png";
+import bannerSmall from "../Images/banner small.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

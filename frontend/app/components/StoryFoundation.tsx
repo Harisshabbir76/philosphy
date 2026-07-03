@@ -1,6 +1,6 @@
 "use client";
 
-import storyRoom from "../Images/story-room.png";
+import storyRoom from "../Images/story-room.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

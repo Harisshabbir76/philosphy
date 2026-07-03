@@ -1,6 +1,6 @@
 "use client";
 
-import bridalCompleteImage from "../Images/bridal2.png";
+import bridalCompleteImage from "../Images/bridal2.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

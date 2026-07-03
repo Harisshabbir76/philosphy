@@ -1,6 +1,6 @@
 "use client";
 
-import storyHeroImage from "../Images/storyhero.png";
+import storyHeroImage from "../Images/storyhero.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

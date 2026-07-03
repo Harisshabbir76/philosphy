@@ -394,6 +394,9 @@ export const translations = {
         },
       ],
     },
+    whatsapp: {
+      chatWithUs: "Chat with us",
+    },
   },
 
   ar: {
@@ -790,6 +793,9 @@ export const translations = {
           ],
         },
       ],
+    },
+    whatsapp: {
+      chatWithUs: "تواصل معنا",
     },
   },
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import woman from "../Images/woman.png";
+import woman from "../Images/woman.webp";
 import newspaper from "../Images/newspaper.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";

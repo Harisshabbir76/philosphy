@@ -1,6 +1,6 @@
 "use client";
 
-import store from "../Images/store.png";
+import store from "../Images/store.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import store from "../Images/store.png";
+import store from "../Images/store.webp";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/ContactGettingStarted.css";

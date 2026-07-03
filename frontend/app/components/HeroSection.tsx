@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import bannerImage from "../Images/Banner.png";
+import bannerImage from "../Images/Banner.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

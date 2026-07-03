@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "../Images/logo.png";
+import logo from "../Images/logo.webp";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/Navbar.css";

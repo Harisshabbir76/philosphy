@@ -6,7 +6,7 @@ import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
-import wardrobeHero from "../Images/wardrobe-hero.png";
+import wardrobeHero from "../Images/wardrobe-hero.webp";
 import "../Styles/WardrobeHero.css";
 
 const defaults = {

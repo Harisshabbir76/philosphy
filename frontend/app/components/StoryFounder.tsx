@@ -1,6 +1,6 @@
 "use client";
 
-import brownWoman from "../Images/brown-woman.jpeg";
+import brownWoman from "../Images/brown-woman.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

@@ -1,6 +1,6 @@
 "use client";
 
-import womensImage from "../Images/ps-womens.png";
+import womensImage from "../Images/ps-womens.webp";
 import AdminEditableSection, { EditableImage, type ImageStyleData } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

@@ -6,7 +6,7 @@ import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
-import bridalHero from "../Images/Bridal-hero.png";
+import bridalHero from "../Images/Bridal-hero.webp";
 import "../Styles/BridalHero.css";
 
 const defaults = {

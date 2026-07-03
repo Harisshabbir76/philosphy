@@ -1,6 +1,6 @@
 "use client";
 
-import bridalZahabImage from "../Images/bridal3.jpeg";
+import bridalZahabImage from "../Images/bridal3.webp";
 import AdminEditableSection, { EditableImage, type ImageStyleData } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

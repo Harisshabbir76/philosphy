@@ -6,7 +6,7 @@ import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
-import analysisHero from "../Images/Analysis-hero.png";
+import analysisHero from "../Images/Analysis-hero.webp";
 import "../Styles/AnalysisHero.css";
 
 const defaults = {

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineInstagram, AiOutlineWhatsApp } from "react-icons/ai";
 
-import footerImg from "../Images/footerimg.png";
+import footerImg from "../Images/footerimg.webp";
 import { API_BASE_URL } from "../lib/api";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";

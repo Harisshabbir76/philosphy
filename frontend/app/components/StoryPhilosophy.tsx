@@ -1,6 +1,6 @@
 "use client";
 
-import storyWardrobe from "../Images/story-wardrobe.jpg";
+import storyWardrobe from "../Images/story-wardrobe.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

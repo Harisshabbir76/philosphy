@@ -1,7 +1,7 @@
 "use client";
 
-import analysisOne from "../Images/ps-analysis1.png";
-import analysisTwo from "../Images/ps-analysis2.png";
+import analysisOne from "../Images/ps-analysis1.webp";
+import analysisTwo from "../Images/ps-analysis2.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

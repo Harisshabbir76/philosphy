@@ -1,6 +1,6 @@
 "use client";
 
-import wardrobeImage from "../Images/wardrobe2.png";
+import wardrobeImage from "../Images/wardrobe2.webp";
 import AdminEditableSection, { EditableImage, type ImageStyleData } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";

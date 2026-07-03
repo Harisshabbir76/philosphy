@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import faqImage from "../Images/faq2.jpg";
+import faqImage from "../Images/faq2.webp";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/FaqQuestions.css";

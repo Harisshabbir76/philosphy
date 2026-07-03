@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import faqHeroBanner from "../Images/faq-hero.png";
+import faqHeroBanner from "../Images/faq-hero.webp";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";
 import "../Styles/FaqHero.css";

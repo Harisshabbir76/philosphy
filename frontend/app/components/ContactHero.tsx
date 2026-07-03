@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import contactBanner from "../Images/contact-banner.png";
+import contactBanner from "../Images/contact-banner.webp";
 import ContactForm from "./ContactForm";
 import { useLanguage } from "../lib/LanguageContext";
 import { translations } from "../lib/translations";

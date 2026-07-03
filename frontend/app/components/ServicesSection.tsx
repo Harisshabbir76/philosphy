@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import servicesWoman from "../Images/services-woman.jpg";
+import servicesWoman from "../Images/services-woman.webp";
 import AdminEditableSection, { EditableImage } from "./AdminEditableSection";
 import { EditableContent } from "./CMS";
 import { usePageComponentContent } from "../lib/pageContent";
