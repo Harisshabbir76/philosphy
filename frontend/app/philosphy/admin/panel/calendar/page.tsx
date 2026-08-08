@@ -14,6 +14,7 @@ type OffDayItem = {
   fullDay: boolean;
   startTime: string; // 24h "HH:MM" ("" when full day)
   endTime: string;
+  source: "admin" | "booking"; // 'booking' = auto-created when a booking was confirmed
 };
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -100,6 +101,7 @@ export default function AdminCalendarPage() {
           fullDay: d.fullDay,
           startTime: d.startTime || "",
           endTime: d.endTime || "",
+          source: d.source || "admin",
         }));
         setServerItems(mapped);
         setItems(mapped);
@@ -139,24 +141,26 @@ export default function AdminCalendarPage() {
     () => new Set(items.filter((it) => it._id).map((it) => it.date)),
     [items]
   );
+  const bookingDates = useMemo(
+    () => new Set(items.filter((it) => it.source === "booking").map((it) => it.date)),
+    [items]
+  );
 
   const goPrevMonth = () => {
-    setViewMonth((m) => {
-      if (m === 0) {
-        setViewYear((y) => y - 1);
-        return 11;
-      }
-      return m - 1;
-    });
+    if (viewMonth === 0) {
+      setViewYear((y) => y - 1);
+      setViewMonth(11);
+    } else {
+      setViewMonth((m) => m - 1);
+    }
   };
   const goNextMonth = () => {
-    setViewMonth((m) => {
-      if (m === 11) {
-        setViewYear((y) => y + 1);
-        return 0;
-      }
-      return m + 1;
-    });
+    if (viewMonth === 11) {
+      setViewYear((y) => y + 1);
+      setViewMonth(0);
+    } else {
+      setViewMonth((m) => m + 1);
+    }
   };
 
   // Clicking a day: add a draft if none, remove the draft if it is unsaved
@@ -173,7 +177,7 @@ export default function AdminCalendarPage() {
     }
     setItems((prev) => [
       ...prev,
-      { _id: null, date: key, fullDay: true, startTime: DEFAULT_START, endTime: DEFAULT_END },
+      { _id: null, date: key, fullDay: true, startTime: DEFAULT_START, endTime: DEFAULT_END, source: "admin" },
     ]);
   };
 
@@ -308,6 +312,7 @@ export default function AdminCalendarPage() {
                 const key = dateKey(viewYear, viewMonth, day);
                 const isSelected = selectedDates.has(key);
                 const isSaved = savedDates.has(key);
+                const isBooking = bookingDates.has(key);
                 const isToday = key === todayKey;
                 return (
                   <button
@@ -316,8 +321,9 @@ export default function AdminCalendarPage() {
                     onClick={() => toggleDate(day)}
                     className={[
                       "cal-cell",
-                      isSelected ? "cal-cell--selected" : "",
-                      isSaved ? "cal-cell--saved" : "",
+                      isSelected && !isBooking ? "cal-cell--selected" : "",
+                      isSaved && !isBooking ? "cal-cell--saved" : "",
+                      isBooking ? "cal-cell--booking" : "",
                       isToday ? "cal-cell--today" : "",
                     ].join(" ").trim()}
                   >
@@ -328,7 +334,8 @@ export default function AdminCalendarPage() {
             </div>
 
             <div className="cal-legend">
-              <span><i className="cal-dot cal-dot--saved" /> Saved off day</span>
+              <span><i className="cal-dot cal-dot--saved" /> Off day (admin)</span>
+              <span><i className="cal-dot cal-dot--booking" /> Booked</span>
               <span><i className="cal-dot cal-dot--draft" /> Unsaved selection</span>
             </div>
           </section>
@@ -350,6 +357,34 @@ export default function AdminCalendarPage() {
                   const dirty = isDirty(item);
                   const saving = savingDate === item.date;
                   const deleting = item._id !== null && deletingId === item._id;
+
+                  const isBookingSource = item.source === "booking";
+
+                  // Booking-sourced off days: read-only card, just show info + delete.
+                  if (isBookingSource) {
+                    return (
+                      <li key={item.date} className="cal-offday cal-offday--booking">
+                        <div className="cal-offday__top">
+                          <span className="cal-offday__date">{formatDateLabel(item.date)}</span>
+                          <span className="cal-offday__badge cal-offday__badge--booking">Booked</span>
+                        </div>
+                        <p className="cal-offday__summary">Fully booked — no further appointments</p>
+                        <div className="cal-offday__actions">
+                          {item._id && (
+                            <button
+                              type="button"
+                              className="cal-action cal-action--delete"
+                              title="Remove booking block"
+                              disabled={deleting}
+                              onClick={() => handleDelete(item)}
+                            >
+                              <FiTrash2 size={17} />
+                            </button>
+                          )}
+                        </div>
+                      </li>
+                    );
+                  }
 
                   return (
                     <li

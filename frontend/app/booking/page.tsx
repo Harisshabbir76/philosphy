@@ -37,7 +37,6 @@ const servicesList = [
   "Wardrobe Audit",
   "Personal Shopping",
   "Bridal Styling",
-  "Complete Makeover",
 ];
 
 export default function BookingPage() {
@@ -60,7 +59,7 @@ export default function BookingPage() {
   const [modalMessage, setModalMessage] = useState("");
   const [offDays, setOffDays] = useState<OffDay[]>([]);
 
-  // Load the admin-defined off days so we can show them and block bookings.
+  // Load off days (includes admin-marked days + auto-created booking days).
   useEffect(() => {
     const loadOffDays = async () => {
       try {
@@ -122,7 +121,7 @@ export default function BookingPage() {
   const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Block off days before sending anything to the server.
+    // Block admin-defined off days.
     const unavailableMsg = getUnavailableMessage();
     if (unavailableMsg) {
       setModalTitle(t.unavailableTitle || "Date Unavailable");
@@ -131,7 +130,7 @@ export default function BookingPage() {
       return;
     }
 
-    setLoading(true);
+setLoading(true);
 
     try {
       const userStr = localStorage.getItem("user");
@@ -164,14 +163,13 @@ export default function BookingPage() {
           setLoading(false);
           return;
         }
-        if (data.code === "OVERLAP") {
-          const formattedStart = formatTime(data.existingStart);
-          const formattedEnd = formatTime(data.existingEnd);
-          const localizedMsg = t.overlapMessage
-            ? t.overlapMessage.replace("{start}", formattedStart).replace("{end}", formattedEnd)
-            : `This time slot overlaps with an existing booking from ${formattedStart} to ${formattedEnd}.`;
-          setModalTitle(t.overlapTitle || "Time Slot Already Booked");
-          setModalMessage(localizedMsg);
+        if (data.code === "DAY_BOOKED" || data.code === "OVERLAP") {
+          const dateLabel = date ? formatOffDayDate(date) : "";
+          setModalTitle((t as any).dayBookedTitle || "Date Unavailable");
+          setModalMessage(
+            ((t as any).dayBookedMessage || "We are unavailable on {date}. This date is already fully booked. Please choose another date.")
+              .replace("{date}", dateLabel)
+          );
           setModalOpen(true);
           setLoading(false);
           return;
@@ -309,6 +307,11 @@ export default function BookingPage() {
               required
               min={new Date().toISOString().split('T')[0]}
             />
+            {date && getUnavailableMessage() && (
+              <p style={{ color: "#c0392b", fontSize: "0.85rem", marginTop: "6px" }}>
+                {getUnavailableMessage()}
+              </p>
+            )}
           </div>
 
           <div className="form-row">

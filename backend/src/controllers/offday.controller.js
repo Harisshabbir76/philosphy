@@ -52,7 +52,7 @@ const saveOffDay = async (req, res) => {
 
     const offDay = await OffDay.findOneAndUpdate(
       { date },
-      { date, fullDay: isFullDay, startTime, endTime },
+      { date, fullDay: isFullDay, startTime, endTime, source: "admin" },
       { new: true, upsert: true, setDefaultsOnInsert: true }
     );
 

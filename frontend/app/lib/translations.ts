@@ -268,6 +268,8 @@ export const translations = {
       unavailableTitle: "Date Unavailable",
       unavailableFullDay: "We are closed on {date}. Please choose another date.",
       unavailableTime: "We are unavailable on {date} from {start} to {end}. Please choose a different time.",
+      dayBookedTitle: "Date Unavailable",
+      dayBookedMessage: "We are unavailable on {date}. This date is already fully booked. Please choose another date.",
       bookNow: "Book Now",
       processing: "Processing...",
       services: [
@@ -277,7 +279,6 @@ export const translations = {
         "Wardrobe Audit",
         "Personal Shopping",
         "Bridal Styling",
-        "Complete Makeover",
       ],
       thankYou: "Thank You",
       confirmed: "Booking Confirmed",
@@ -668,6 +669,8 @@ export const translations = {
       unavailableTitle: "التاريخ غير متاح",
       unavailableFullDay: "نحن مغلقون في {date}. يُرجى اختيار تاريخ آخر.",
       unavailableTime: "نحن غير متاحين في {date} من {start} إلى {end}. يُرجى اختيار وقت مختلف.",
+      dayBookedTitle: "التاريخ غير متاح",
+      dayBookedMessage: "نحن غير متاحين في {date}. هذا اليوم محجوز بالكامل. يُرجى اختيار تاريخ آخر.",
       bookNow: "احجزي الآن",
       processing: "جارٍ المعالجة...",
       services: [
@@ -677,7 +680,6 @@ export const translations = {
         "مراجعة الخزانة",
         "التسوّق الشخصي",
         "تنسيق العرائس",
-        "تحوّل كامل",
       ],
       thankYou: "شكراً لكِ",
       confirmed: "تم تأكيد الحجز",

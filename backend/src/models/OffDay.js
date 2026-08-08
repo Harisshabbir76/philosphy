@@ -28,6 +28,12 @@ const offDaySchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    // 'admin' = manually marked by admin; 'booking' = auto-created when a booking was confirmed.
+    source: {
+      type: String,
+      enum: ["admin", "booking"],
+      default: "admin",
+    },
   },
   { timestamps: true }
 );

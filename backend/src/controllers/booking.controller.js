@@ -273,20 +273,11 @@ const createBooking = async (req, res) => {
       date: { $gte: startOfDay, $lte: endOfDay }
     });
 
-    // 4. Check for overlaps
-    const overlappingBooking = existingBookings.find(b => {
-      const bStart = timeToMinutes(b.startTime || b.time);
-      const bEnd = timeToMinutes(b.endTime || b.time || b.startTime);
-      const finalBEnd = b.endTime ? bEnd : bStart + 60; // if legacy single-time booking without endTime, assume 1hr duration
-      return reqStart < finalBEnd && bStart < reqEnd;
-    });
-
-    if (overlappingBooking) {
+    // 4. One booking per day: if any booking already exists on this date, reject.
+    if (existingBookings.length > 0) {
       return res.status(400).json({
-        code: "OVERLAP",
-        error: "Selected time slot overlaps with an existing booking.",
-        existingStart: overlappingBooking.startTime || overlappingBooking.time,
-        existingEnd: overlappingBooking.endTime || overlappingBooking.time,
+        code: "DAY_BOOKED",
+        error: "This date already has a booking. Only one booking per day is allowed.",
       });
     }
 
@@ -302,6 +293,15 @@ const createBooking = async (req, res) => {
       startTime: finalStartTime,
       endTime: finalEndTime,
     });
+
+    // Auto-mark this date as a booking off-day so the calendar and booking page
+    // reflect it instantly. Only inserts when no off-day exists for the date;
+    // admin-marked days are left completely unchanged.
+    OffDay.findOneAndUpdate(
+      { date: toDayKey(date) },
+      { $setOnInsert: { date: toDayKey(date), fullDay: true, startTime: "", endTime: "", source: "booking" } },
+      { upsert: true }
+    ).catch((err) => console.error("Failed to auto-mark booking date as off day:", err));
 
     // Respond immediately — the booking is saved. Emails are a side effect and must
     // never block (or fail) the user's confirmation. Send them in the background.
@@ -359,10 +359,37 @@ const deleteBooking = async (req, res) => {
     if (!deleted) {
       return res.status(404).json({ error: "Booking not found" });
     }
+
+    // Derive the same "YYYY-MM-DD" key used when the off-day was auto-created.
+    // Bookings are stored as midnight UTC (new Date("YYYY-MM-DD")), so slicing
+    // the ISO string always gives the correct calendar date regardless of timezone.
+    const dateKey = new Date(deleted.date).toISOString().slice(0, 10);
+    const dayStart = new Date(dateKey + "T00:00:00.000Z");
+    const dayEnd   = new Date(dateKey + "T23:59:59.999Z");
+
+    const remaining = await Booking.countDocuments({ date: { $gte: dayStart, $lte: dayEnd } });
+
+    if (remaining === 0) {
+      await OffDay.deleteOne({ date: dateKey });
+    }
+
     res.status(200).json({ success: true, id: req.params.id });
+  } catch (error) {
+    console.error("[deleteBooking] error:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getBookedDates = async (req, res) => {
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const bookings = await Booking.find({ date: { $gte: today } }, { date: 1 });
+    const bookedDates = [...new Set(bookings.map((b) => toDayKey(b.date)))];
+    res.status(200).json(bookedDates);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-module.exports = { createBooking, getAdminBookings, deleteBooking };
+module.exports = { createBooking, getAdminBookings, deleteBooking, getBookedDates };

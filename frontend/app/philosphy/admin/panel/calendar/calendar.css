@@ -139,6 +139,12 @@
   border-color: #1f150f;
   color: #fffdf7;
 }
+/* Booking-sourced off day — terracotta to distinguish from admin off days */
+.cal-cell--booking {
+  background: #9b3a2a;
+  border-color: #9b3a2a;
+  color: #fffdf7;
+}
 
 .cal-legend {
   display: flex;
@@ -162,6 +168,10 @@
 .cal-dot--saved {
   background: #1f150f;
   border-color: #1f150f;
+}
+.cal-dot--booking {
+  background: #9b3a2a;
+  border-color: #9b3a2a;
 }
 .cal-dot--draft {
   background: #e7d4a8;
@@ -215,6 +225,13 @@
 .cal-offday--draft {
   border-color: #b8975a;
   background: #fdf7e9;
+}
+.cal-offday--booking {
+  border-color: #9b3a2a;
+  background: #fdf2ef;
+}
+.cal-offday__badge--booking {
+  background: #9b3a2a;
 }
 
 .cal-offday__top {
