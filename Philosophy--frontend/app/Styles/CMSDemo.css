@@ -1,0 +1,97 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   CMS DEMO — represents a component's OWN CSS file.
+
+   This is the "foundation" styling. <EditableContent defaultClass="..."> puts
+   this class on the WRAPPER element and applies any custom overrides as inline
+   styles on that SAME wrapper. So the cascade is:
+
+       wrapper class rules   (component CSS — the default)
+              ↓
+       wrapper inline style  (custom CMS overrides — win, because inline)
+
+   The inner text tags (h1/p/li) are set to `inherit` so they take font / color
+   / alignment from the wrapper. That's what lets a custom font-size actually
+   override the foundation: the child has no competing rule of its own.
+   Turning off "Enable Custom Styling" drops the inline styles and the block
+   snaps back to exactly these class rules.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.cms-demo {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.cms-demo__intro {
+  margin-bottom: 28px;
+  padding: 16px 18px;
+  background: #f4f1ec;
+  border: 1px solid #e3ddd2;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4b4034;
+}
+
+.cms-demo__intro strong {
+  color: #1f150f;
+}
+
+.cms-demo__label {
+  display: block;
+  margin: 28px 0 8px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #9a8f80;
+}
+
+/* Inner text tags inherit everything from the wrapper so custom overrides win */
+.cms-demo-hero-title h1,
+.cms-demo-hero-title h2,
+.cms-demo-hero-title h3,
+.cms-demo-hero-title p,
+.cms-demo-body p,
+.cms-demo-body li {
+  margin: 0 0 12px;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+/* Make the editable wrappers full-width blocks (override .cms-editable-wrap's
+   inline-block) so alignment + width behave for these content blocks. */
+.cms-editable-wrap.cms-demo-hero-title,
+.cms-editable-wrap.cms-demo-body {
+  display: block;
+  width: 100%;
+}
+
+/* ── Foundation: editable hero title ─────────────────────────────────────── */
+.cms-demo-hero-title {
+  font-family: var(--font-freight), Georgia, serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  color: #1f150f;
+}
+
+/* ── Foundation: editable body copy ──────────────────────────────────────── */
+.cms-demo-body {
+  font-family: var(--font-sf-pro), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+  color: #3a3027;
+}
+
+.cms-demo-body ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  list-style: disc;
+}

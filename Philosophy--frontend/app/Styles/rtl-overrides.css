@@ -1,0 +1,796 @@
+/* ============================================================
+   RTL (Arabic) font-size overrides — +2px on all text
+   Every rule here mirrors the LTR breakpoint structure and
+   adds exactly 2px. English (LTR) is never touched.
+   ============================================================ */
+
+/* ── HeroSection ─────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 38px; }
+  :root[dir="rtl"] .hero-script    { font-size: 27px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 13px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 34px; }
+  :root[dir="rtl"] .hero-script    { font-size: 26px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 12px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 30px; }
+  :root[dir="rtl"] .hero-script    { font-size: 22px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 12px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 26px; }
+  :root[dir="rtl"] .hero-script    { font-size: 19px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 11px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 22px; }
+  :root[dir="rtl"] .hero-script    { font-size: 16px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 9px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 20px; }
+  :root[dir="rtl"] .hero-script    { font-size: 15px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .hero-heading   { font-size: 18px; }
+  :root[dir="rtl"] .hero-script    { font-size: 14px; }
+  :root[dir="rtl"] .hero-paragraph { font-size: 8px; }
+}
+@media (max-height: 600px) and (min-width: 375px) {
+  :root[dir="rtl"] .hero-heading { font-size: clamp(18px, 4vh, 30px); }
+  :root[dir="rtl"] .hero-script  { font-size: clamp(16px, 3vh, 24px); }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :root[dir="rtl"] .hero-heading { font-size: 22px; }
+  :root[dir="rtl"] .hero-script  { font-size: 18px; }
+}
+
+/* ── IntroApproach ───────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 24px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 30px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 22px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 11px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 28px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 26px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 28px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 12px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 24px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 11px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 26px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 11px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 22px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 10px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 24px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 10px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 20px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 9.5px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 22px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 9.5px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .intro-approach__copy h2    { font-size: 18px; }
+  :root[dir="rtl"] .intro-approach__copy p     { font-size: 9px; }
+  :root[dir="rtl"] .intro-approach__bottom h2  { font-size: 20px; }
+  :root[dir="rtl"] .intro-approach__bottom h4  { font-size: 9px; }
+  :root[dir="rtl"] .intro-approach__bottom p   { font-size: 9px; }
+}
+
+/* ── ServicesSection ─────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 30px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 12px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 11px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 28px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 11px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 10px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 28px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 11px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 10px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 30px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 11px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 26px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 10px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 9.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 24px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 9.5px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .services-section__content h2  { font-size: 22px; }
+  :root[dir="rtl"] .services-section__content > p { font-size: 9px; }
+  :root[dir="rtl"] .services-section__row         { font-size: 8.5px; }
+}
+
+/* ── WhyChooseUs ─────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 32px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 30px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 14px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 30px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 28px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 13px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 11.5px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 28px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 26px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 13px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 26px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 24px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 12px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 24px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 22px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 11px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 22px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 20px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 10.5px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .why-choose__text h2  { font-size: 20px; }
+  :root[dir="rtl"] .why-choose__text h3  { font-size: 19px; }
+  :root[dir="rtl"] .why-choose__text > p { font-size: 10px; }
+  :root[dir="rtl"] .why-choose__text h4  { font-size: 9px; }
+}
+
+/* ── GettingStarted ──────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 27px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 30px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 24px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 24px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 28px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 22px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 22px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 26px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 23px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 12px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 20px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 10px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 24px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 21px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 10px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 10px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 18px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 9.5px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 22px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 19px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 8px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 9.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 9.5px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 14px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 9.5px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 20px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 17px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 9px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .section-kicker                { font-size: 11px; }
+  :root[dir="rtl"] .getting-started__card span    { font-size: 9px; }
+  :root[dir="rtl"] .getting-started__card h2      { font-size: 18px; }
+  :root[dir="rtl"] .getting-started__card p       { font-size: 9px; }
+  :root[dir="rtl"] .getting-started__lower h2     { font-size: 15px; }
+  :root[dir="rtl"] .getting-started__lower h3     { font-size: 16px; }
+  :root[dir="rtl"] .getting-started__lower p      { font-size: 8px; }
+  :root[dir="rtl"] .getting-started__lower a      { font-size: 8.5px; }
+}
+
+/* ── StoryHero ───────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 40px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 28px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 36px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 26px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 32px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 24px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 28px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 22px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 26px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 20px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 24px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 18px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 22px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 16px; }
+}
+@media (max-height: 700px) and (min-width: 375px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: clamp(22px, 5vh, 32px); }
+  :root[dir="rtl"] .story-hero__content p  { font-size: clamp(16px, 3vh, 24px); }
+}
+@media (max-height: 600px) and (min-width: 375px) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: clamp(20px, 4vh, 28px); }
+  :root[dir="rtl"] .story-hero__content p  { font-size: clamp(14px, 2.5vh, 20px); }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :root[dir="rtl"] .story-hero__content h1 { font-size: 24px; }
+  :root[dir="rtl"] .story-hero__content p  { font-size: 18px; }
+}
+
+/* ── StoryFoundation ─────────────────────────────────────── */
+:root[dir="rtl"] .story-foundation__kicker   { font-size: 11px; }
+:root[dir="rtl"] .story-foundation__copy h2  { font-size: 22px; }
+:root[dir="rtl"] .story-foundation__body     { font-size: 12px; }
+
+/* ── StoryFounder ────────────────────────────────────────── */
+:root[dir="rtl"] .story-founder__kicker                              { font-size: 11px; }
+:root[dir="rtl"] .story-founder__copy h2                             { font-size: 22px; }
+:root[dir="rtl"] .story-founder__copy p:not(.story-founder__kicker) { font-size: 12px; }
+
+/* ── StoryPhilosophy ─────────────────────────────────────── */
+:root[dir="rtl"] .story-philosophy__copy h2 { font-size: 22px; }
+:root[dir="rtl"] .story-philosophy__copy p  { font-size: 12px; }
+
+/* ── AnalysisHero ────────────────────────────────────────── */
+:root[dir="rtl"] .analysis-hero h1 { font-size: 37px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .analysis-hero h1 { font-size: 25px; }
+}
+
+/* ── AnalysisServices ────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 13px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 13px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 12px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 12px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 11px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 11px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 10px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 10px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 10.5px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 9.5px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 9.5px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .analysis-service summary span:first-child        { font-size: 10px; }
+  :root[dir="rtl"] .analysis-service__content p,
+:root[dir="rtl"] .analysis-service__content div,
+  :root[dir="rtl"] .analysis-service__content li                     { font-size: 9px; }
+  :root[dir="rtl"] .analysis-service__content h3                     { font-size: 9px; }
+  :root[dir="rtl"] .analysis-service__price                          { font-size: 9px; }
+}
+
+/* ── WardrobeHero ────────────────────────────────────────── */
+:root[dir="rtl"] .wardrobe-hero h1 { font-size: 37px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .wardrobe-hero h1 { font-size: 25px; }
+}
+
+/* ── WardrobeServices ────────────────────────────────────── */
+:root[dir="rtl"] .wardrobe-analysis__item summary span:first-child { font-size: 12px; }
+:root[dir="rtl"] .wardrobe-analysis__content p,
+:root[dir="rtl"] .wardrobe-analysis__content div,
+:root[dir="rtl"] .wardrobe-analysis__content li                    { font-size: 12px; }
+:root[dir="rtl"] .wardrobe-analysis__content h3                    { font-size: 12px; }
+@media (max-width: 760px) {
+  :root[dir="rtl"] .wardrobe-analysis__item summary span:first-child { font-size: 11px; }
+  :root[dir="rtl"] .wardrobe-analysis__content p,
+:root[dir="rtl"] .wardrobe-analysis__content div,
+  :root[dir="rtl"] .wardrobe-analysis__content li                    { font-size: 11px; }
+  :root[dir="rtl"] .wardrobe-analysis__content h3                    { font-size: 11px; }
+}
+
+/* ── PersonalShoppingHero ────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 50px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 44px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 38px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 32px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 22px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 19px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 15px; }
+}
+@media (max-height: 700px) and (min-width: 375px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: clamp(22px, 5vh, 50px); }
+}
+@media (max-height: 600px) and (min-width: 375px) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: clamp(20px, 4vh, 44px); }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  :root[dir="rtl"] .personal-shopping-hero h1 { font-size: 30px; }
+}
+
+/* ── PersonalShoppingInPerson ────────────────────────────── */
+:root[dir="rtl"] .ps-in-person__copy h2,
+:root[dir="rtl"] .ps-in-person__copy h3,
+:root[dir="rtl"] .ps-in-person__copy p,
+:root[dir="rtl"] .ps-in-person__copy li { font-size: 11px; }
+
+/* ── PersonalShoppingRemote ──────────────────────────────── */
+:root[dir="rtl"] .ps-remote h2           { font-size: 17px; }
+:root[dir="rtl"] .ps-remote__tabs span   { font-size: 11px; }
+:root[dir="rtl"] .ps-remote p,
+:root[dir="rtl"] .ps-remote li           { font-size: 11px; }
+:root[dir="rtl"] .ps-remote__details p   { font-size: 11px; }
+:root[dir="rtl"] .ps-remote__details ul  { font-size: 11px; }
+
+/* ── PersonalShoppingStyleShop ───────────────────────────── */
+:root[dir="rtl"] .ps-style-shop__copy h2,
+:root[dir="rtl"] .ps-style-shop__copy p,
+:root[dir="rtl"] .ps-style-shop__item summary span:first-child,
+:root[dir="rtl"] .ps-style-shop__content p { font-size: 11px; }
+
+/* ── BridalHero ──────────────────────────────────────────── */
+:root[dir="rtl"] .bridal-hero h1 { font-size: 37px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .bridal-hero h1 { font-size: 27px; }
+}
+
+/* ── BridalCompleteLook ──────────────────────────────────── */
+:root[dir="rtl"] .bridal-complete__eyebrow,
+:root[dir="rtl"] .bridal-complete h3,
+:root[dir="rtl"] .bridal-complete p,
+:root[dir="rtl"] .bridal-complete li { font-size: 12px; }
+:root[dir="rtl"] .bridal-complete h2 { font-size: 27px; }
+/* Keep both detail columns right-aligned in Arabic at every breakpoint.
+   The base CSS forces the left column to text-align:left below 760px, and the
+   CMS can bake inline alignment into child elements — so target children too
+   and use !important to win in every case. */
+:root[dir="rtl"] .bridal-complete__column,
+:root[dir="rtl"] .bridal-complete__column *,
+:root[dir="rtl"] .bridal-complete__column--right,
+:root[dir="rtl"] .bridal-complete__column--right * { text-align: right !important; }
+
+/* ── BridalConcierge ─────────────────────────────────────── */
+:root[dir="rtl"] .bridal-concierge__eyebrow,
+:root[dir="rtl"] .bridal-concierge h3,
+:root[dir="rtl"] .bridal-concierge p  { font-size: 12px; }
+:root[dir="rtl"] .bridal-concierge h2 { font-size: 27px; }
+
+/* ── BridalEducation ─────────────────────────────────────── */
+:root[dir="rtl"] .bridal-education__panel h2,
+:root[dir="rtl"] .bridal-education__panel h3,
+:root[dir="rtl"] .bridal-education__panel p,
+:root[dir="rtl"] .bridal-education__panel li { font-size: 12px; }
+
+/* ── BridalZahab ─────────────────────────────────────────── */
+:root[dir="rtl"] .bridal-zahab__copy h2,
+:root[dir="rtl"] .bridal-zahab__copy p,
+:root[dir="rtl"] .bridal-zahab__item summary span:first-child,
+:root[dir="rtl"] .bridal-zahab__content p { font-size: 12px; }
+
+/* ── ContactHero ─────────────────────────────────────────── */
+:root[dir="rtl"] .contact-hero__banner h1 { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-card h2         { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-card > p        { font-family: var(--font-xb-niloofar), sans-serif; }
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 40px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 24px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 38px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 26px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 34px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 26px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 30px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 24px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 26px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 22px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 10px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 24px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 20px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 9.5px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: 22px; }
+  :root[dir="rtl"] .contact-card h2         { font-size: 18px; }
+  :root[dir="rtl"] .contact-card > p        { font-size: 9px; }
+}
+@media (max-height: 700px) and (min-width: 375px) {
+  :root[dir="rtl"] .contact-hero__banner h1 { font-size: clamp(22px, 5vh, 44px); }
+}
+
+/* ── ContactForm ─────────────────────────────────────────── */
+:root[dir="rtl"] .contact-form input,
+:root[dir="rtl"] .contact-form select,
+:root[dir="rtl"] .contact-form textarea,
+:root[dir="rtl"] .contact-form__label,
+:root[dir="rtl"] .contact-form button,
+:root[dir="rtl"] .contact-form__status {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px;
+}
+/* Service <select>: native arrow already flips to the left in RTL, but the
+   selected/placeholder text stays left-aligned — force it to the right so it
+   matches the other fields. */
+:root[dir="rtl"] .contact-form select {
+  direction: rtl;
+  text-align: right;
+}
+:root[dir="rtl"] .contact-form select option {
+  direction: rtl;
+  text-align: right;
+}
+/* Date / time fields: push the value to the right (native picker icon flips
+   to the left), keeping the mm/dd/yyyy and --:-- segments left-to-right. */
+:root[dir="rtl"] .contact-form input[type="date"],
+:root[dir="rtl"] .contact-form input[type="time"] {
+  direction: rtl;
+  text-align: right;
+}
+:root[dir="rtl"] .contact-form input[type="date"]::-webkit-datetime-edit,
+:root[dir="rtl"] .contact-form input[type="time"]::-webkit-datetime-edit {
+  direction: ltr;
+  text-align: right;
+}
+/* Phone field: tel inputs default to left alignment — right-align it (and its
+   placeholder) so it matches the other Arabic fields. */
+:root[dir="rtl"] .contact-form input[type="tel"] {
+  text-align: right;
+}
+
+
+/* ── ContactGettingStarted ───────────────────────────────── */
+:root[dir="rtl"] .contact-started__intro h2             { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-started__intro h2.wanna-learn { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-started__intro p              { font-family: var(--font-xb-niloofar), sans-serif; }
+:root[dir="rtl"] .contact-started__intro a              { font-family: var(--font-xb-niloofar), sans-serif; }
+:root[dir="rtl"] .contact-started__kicker               { font-family: var(--font-xb-niloofar), sans-serif; }
+:root[dir="rtl"] .contact-started__card h3              { font-family: var(--font-xb-shafigh), serif; }
+:root[dir="rtl"] .contact-started__card p               { font-family: var(--font-xb-niloofar), sans-serif; }
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .contact-started__intro h2             { font-size: 24px; }
+  :root[dir="rtl"] .contact-started__intro h2.wanna-learn { font-size: 32px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 12px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 30px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 30px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 12px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 11px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 22px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 19px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 10.5px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 10.5px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 10.5px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 11px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 20px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 10.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .contact-started__intro h2  { font-size: 19px; }
+  :root[dir="rtl"] .contact-started__intro p   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__intro a   { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__kicker    { font-size: 10px; }
+  :root[dir="rtl"] .contact-started__card span { font-size: 10.5px; }
+  :root[dir="rtl"] .contact-started__card h3   { font-size: 19px; }
+  :root[dir="rtl"] .contact-started__card p    { font-size: 10px; }
+}
+
+/* ── FaqHero ─────────────────────────────────────────────── */
+:root[dir="rtl"] .faq-hero h1 { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .faq-hero h1 { font-size: 24px; }
+}
+
+/* ── FaqQuestions ────────────────────────────────────────── */
+:root[dir="rtl"] .faq-questions h2     { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+:root[dir="rtl"] .faq-questions__link  { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .faq-questions h2    { font-size: 40px; }
+  :root[dir="rtl"] .faq-questions__link { font-size: 10px; }
+}
+
+/* ── FaqQuestionsAnswers ──────────────────────────────────── */
+:root[dir="rtl"] .faq-answer__trigger span:first-child { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
+:root[dir="rtl"] .faq-answer__panel p                  { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
+@media (max-width: 768px) {
+  :root[dir="rtl"] .faq-answer__trigger span:first-child { font-size: 11px; }
+  :root[dir="rtl"] .faq-answer__panel p                  { font-size: 11px; }
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 30px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 12px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 12px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 11px; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 28px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 12px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 11px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 26px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 11px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 11px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 10px; }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 24px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 10.5px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 10px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 10px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 22px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 10px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 9.5px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 9.5px; }
+}
+@media (min-width: 320px) and (max-width: 374px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 20px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 9.5px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 9px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 9px; }
+}
+@media (max-width: 319px) {
+  :root[dir="rtl"] .footer-cta h2          { font-size: 18px; }
+  :root[dir="rtl"] .footer-cta p           { font-size: 9px; }
+  :root[dir="rtl"] .footer-links a,
+  :root[dir="rtl"] .footer-info span       { font-size: 8.5px; }
+  :root[dir="rtl"] .back-to-top            { font-size: 8.5px; }
+}
+
+/* ── LegalPage ───────────────────────────────────────────── */
+:root[dir="rtl"] .legal-page__title                        { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+:root[dir="rtl"] .legal-accordion summary span:first-child { font-family: var(--font-xb-niloofar), sans-serif; font-size: 14px; }
+:root[dir="rtl"] .legal-accordion__content p,
+:root[dir="rtl"] .legal-accordion__content li              { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px !important; }
+:root[dir="rtl"] .legal-accordion__content h3              { font-family: var(--font-xb-niloofar), sans-serif; font-size: 12px; }
+
+/* ── BookingPage ─────────────────────────────────────────── */
+:root[dir="rtl"] .booking-header h1 { font-family: var(--font-xb-shafigh), serif; font-size: 40px; }
+:root[dir="rtl"] .booking-header p,
+:root[dir="rtl"] .booking-error,
+:root[dir="rtl"] .form-group label,
+:root[dir="rtl"] .form-group input,
+:root[dir="rtl"] .form-group select,
+:root[dir="rtl"] .booking-submit-btn,
+:root[dir="rtl"] .booking-offdays-header h2,
+:root[dir="rtl"] .booking-offdays-header p,
+:root[dir="rtl"] .booking-offdays-empty,
+:root[dir="rtl"] .booking-offday-date,
+:root[dir="rtl"] .booking-offday-time {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px;
+}
+/* Right-align LTR-content fields (phone / date / time) in Arabic.
+   Date & time also get their chevron moved to the left so it doesn't
+   overlap the now right-aligned placeholder. */
+:root[dir="rtl"] .form-group input[type="tel"] {
+  text-align: right;
+}
+:root[dir="rtl"] .form-group input[type="date"],
+:root[dir="rtl"] .form-group input[type="time"] {
+  direction: rtl;
+  text-align: right;
+  background-position: left 12px center;
+  padding-right: 15px;
+  padding-left: 32px;
+}
+/* Keep the mm/dd/yyyy and --:-- segments reading left-to-right while the
+   whole field block is pushed to the right by direction: rtl above. */
+:root[dir="rtl"] .form-group input[type="date"]::-webkit-datetime-edit,
+:root[dir="rtl"] .form-group input[type="time"]::-webkit-datetime-edit {
+  direction: ltr;
+  text-align: right;
+}
+/* Service <select>: in Arabic the option text is right-aligned, so move the
+   dropdown chevron to the left and pad the text away from it (otherwise the
+   chevron overlaps the text). */
+:root[dir="rtl"] .form-group select {
+  direction: rtl;
+  text-align: right;
+  background-position: left 12px center;
+  padding-right: 15px;
+  padding-left: 32px;
+}
+
+/* ── Hero main headings: 18px on mobile & small devices (Arabic only) ──
+   Placed last so it overrides the per-page mobile sizes above.
+   !important is required because the CMS applies its size as an inline
+   style (which falls back to the 40px desktop value on mobile). */
+@media (max-width: 768px) {
+  :root[dir="rtl"] .analysis-hero h1,
+  :root[dir="rtl"] .analysis-hero h1 *,
+  :root[dir="rtl"] .wardrobe-hero h1,
+  :root[dir="rtl"] .wardrobe-hero h1 *,
+  :root[dir="rtl"] .personal-shopping-hero h1,
+  :root[dir="rtl"] .personal-shopping-hero h1 *,
+  :root[dir="rtl"] .bridal-hero h1,
+  :root[dir="rtl"] .bridal-hero h1 *,
+  :root[dir="rtl"] .faq-hero h1,
+  :root[dir="rtl"] .faq-hero h1 *,
+  :root[dir="rtl"] .contact-hero__banner h1,
+  :root[dir="rtl"] .contact-hero__banner h1 *,
+  :root[dir="rtl"] .legal-page__title,
+  :root[dir="rtl"] .legal-page__title * {
+    font-size: 18px !important;
+  }
+}
+
+/* ── Navbar: keep the brand logo clear of the right edge in Arabic ──
+   In RTL the logo sits on the right, where the absolute navbar's width:100%
+   overlaps the page's vertical scrollbar and clips it. A small inline-start
+   margin pulls the logo back into view. */
+:root[dir="rtl"] .nav-left {
+  margin-inline-start: 22px;
+}

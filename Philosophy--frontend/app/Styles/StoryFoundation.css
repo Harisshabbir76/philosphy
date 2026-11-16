@@ -1,0 +1,90 @@
+.story-foundation {
+  min-height: 361px;
+  background: #3a170d;
+  color: #fffdf7;
+  text-align: center;
+  padding: 42px 20px 20px;
+}
+
+.story-foundation__copy {
+  max-width: 740px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.story-foundation__kicker {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: -8px;
+}
+
+.story-foundation__copy h2 {
+  margin-top: 16px;
+  font-family: var(--font-freight), serif;
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 1.1;
+}
+
+.story-foundation__body {
+  margin: 26px auto 0;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
+  max-width: 680px;
+}
+
+.story-foundation__body--second {
+  margin-top: 18px;
+}
+
+.story-foundation__image {
+  position: relative;
+  width: 98%;
+  height: 300px;
+  margin: 30px auto 0;
+  overflow: hidden;
+}
+
+.story-foundation__image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 640px) {
+  .story-foundation {
+    min-height: 0;
+  }
+
+  .story-foundation__image {
+    height: 32vw;
+    min-height: 150px;
+  }
+}
+
+/* Force CSS h2 size on mobile — override CMS inline styles */
+@media (max-width: 479px) {
+  .story-foundation__copy h2 span {
+    font-size: inherit !important;
+  }
+  .story-foundation__copy h2 {
+    font-size: 22px !important;
+  }
+}
+@media (max-width: 374px) {
+  .story-foundation__copy h2 {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 319px) {
+  .story-foundation__copy h2 {
+    font-size: 18px !important;
+  }
+}

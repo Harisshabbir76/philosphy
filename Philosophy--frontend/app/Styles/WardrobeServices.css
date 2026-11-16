@@ -1,0 +1,264 @@
+﻿.wardrobe-analysis {
+  background: #fffdf7;
+  color: #1F150F;
+  padding: 75px 24px 38px;
+  border-top: 2px solid #2f251f;
+  border-bottom: 2px solid #2f251f;
+}
+
+.wardrobe-analysis__inner {
+  width: min(775px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 80px;
+  align-items: start;
+}
+
+.wardrobe-analysis__copy {
+  padding-top: 32px;
+}
+
+.wardrobe-analysis__item {
+  border-top: 1px solid rgba(51, 39, 32, 0.72);
+}
+
+.wardrobe-analysis__item:last-child {
+  border-bottom: 1px solid rgba(51, 39, 32, 0.72);
+}
+
+.wardrobe-analysis__item summary {
+  min-height: 26px;
+  padding: 8px 12px 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.wardrobe-analysis__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.wardrobe-analysis__item summary span:first-child {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  color: #1F150F;
+}
+
+.wardrobe-analysis__mark {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+}
+
+.wardrobe-analysis__mark::before,
+.wardrobe-analysis__mark::after {
+  content: "";
+  position: absolute;
+  background: #1F150F;
+}
+
+.wardrobe-analysis__mark::before {
+  top: 3px;
+  left: 1px;
+  width: 5px;
+  height: 1px;
+}
+
+.wardrobe-analysis__mark::after {
+  top: 1px;
+  left: 3px;
+  width: 1px;
+  height: 5px;
+}
+
+.wardrobe-analysis__item[open] .wardrobe-analysis__mark::after {
+  display: none;
+}
+
+.wardrobe-analysis__content {
+  padding: 15px 0 18px;
+}
+
+.wardrobe-analysis__content b,
+.wardrobe-analysis__content strong {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.25;
+  color: #1F150F;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
+.wardrobe-analysis__content p,
+.wardrobe-analysis__content div,
+.wardrobe-analysis__content li {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 100;
+  line-height: 1.35;
+  color: #1F150F;
+}
+
+.wardrobe-analysis__content p {
+  max-width: 500px;
+}
+
+/* Reset ALL heading margins */
+.wardrobe-analysis__content h1,
+.wardrobe-analysis__content h2,
+.wardrobe-analysis__content h3,
+.wardrobe-analysis__content h4,
+.wardrobe-analysis__content h5,
+.wardrobe-analysis__content h6 {
+  margin-top: 6px;
+  margin-bottom: 3px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1F150F;
+}
+
+.wardrobe-analysis__content p,
+.wardrobe-analysis__content div {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+
+.wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) li {
+  margin-bottom: 2px;
+}
+
+.wardrobe-analysis__content ul:not(.wardrobe-analysis__dash-list) li::marker {
+  font-size: 0.75em;
+}
+
+.wardrobe-analysis__price {
+  margin-top: 14px;
+}
+
+.wardrobe-analysis__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 16px;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: #1F150F;
+  color: #FFFFFF;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 200;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: -1px 0px 0px rgba(0, 195, 255, 0.8), 1px 0px 0px rgba(255, 165, 0, 0.8);
+}
+
+.wardrobe-analysis__image {
+  position: relative;
+  width: 240px;
+  height: 438px;
+  overflow: hidden;
+  margin-top: 28px;
+}
+
+.wardrobe-analysis__image img {
+  object-fit: cover;
+  object-position: center;
+}
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42;
+  letter-spacing: 0.84px !important; }
+@media (max-width: 760px) {
+  .wardrobe-analysis {
+    padding: 42px 20px;
+  }
+
+  .wardrobe-analysis__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .wardrobe-analysis__copy {
+    padding-top: 0;
+  }
+
+  .wardrobe-analysis__image {
+    width: min(100%, 320px);
+    height: 470px;
+    margin: 0 auto;
+  }
+
+  .wardrobe-analysis__item summary span:first-child,
+  .wardrobe-analysis__content p,
+.wardrobe-analysis__content div,
+  .wardrobe-analysis__content li,
+  .wardrobe-analysis__content h3,
+  .wardrobe-analysis__button {
+    font-size: 9px;
+  }
+}
+
+.wardrobe-analysis__bullet-list {
+  margin: 8px 0 12px;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.wardrobe-analysis__bullet-list li {
+  margin-bottom: 4px;
+}
+
+.wardrobe-analysis__bullet-list li::marker {
+  font-size: 0.75em;
+}
+
+.wardrobe-analysis__dash-list {
+  margin: 0 0 12px 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.wardrobe-analysis__dash-list li {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+
+.wardrobe-analysis__dash-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+}
+
+/* On mobile, cap the accordion title width so a long title breaks after
+   "...LOOKS", keeping "FROM YOUR WARDROBE" together on the second line. */
+@media (max-width: 520px) {
+  .wardrobe-analysis__item summary span:first-child {
+    max-width: 285px;
+  }
+}

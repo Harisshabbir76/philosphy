@@ -1,0 +1,321 @@
+﻿.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 70px;
+  background: #fffdf7;
+  border-top: 1px solid rgba(31, 21, 15, 0.18);
+  border-bottom: 1px solid rgba(31, 21, 15, 0.12);
+  color: #2f251f;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1450px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 122px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.nav-logo-img {
+  width: 132px;
+  height: auto;
+  display: block;
+}
+
+.nav-right,
+.nav-links-right {
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+}
+
+.nav-links-right {
+  gap: 39px;
+}
+
+.nav-tab {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 11px;
+  font-weight: 150;
+  line-height: 1;
+  color: #2f251f;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Arabic: enlarge the right-side nav links by 2px for better legibility. */
+html[dir="rtl"] .nav-links-right,
+html[dir="rtl"] .nav-tab {
+  font-family: var(--font-xb-niloofar), sans-serif;
+  font-size: 12px;
+}
+
+/* English: pull the right-side nav (…Book Now) clear of the page's vertical
+   scrollbar, which the absolute navbar's width:100% overlaps and clips. */
+html[dir="ltr"] .nav-right {
+  margin-inline-end: 22px;
+}
+
+.nav-tab--book {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Logout button styled to sit beside Book Now */
+.nav-tab--logout {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mobile-sidebar__logout {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+/* Mobile Actions Container - Book Now button + Hamburger */
+.mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobile-book-btn {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 11px;
+  font-weight: 150;
+  line-height: 1;
+  color: #2f251f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.hamburger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  color: #2f251f;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Mobile Sidebar - Right Side Drawer */
+.mobile-sidebar {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  /* Clip the closed drawer (parked off-screen) so it can't add horizontal
+     scroll on mobile/tablet. Works with the absolute __content below. */
+  overflow: hidden;
+}
+
+.mobile-sidebar--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-sidebar__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(310px, 84vw);
+  height: 100%;
+  padding: 24px;
+  background: #fffdf7;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.mobile-sidebar--open .mobile-sidebar__content {
+  transform: translateX(0);
+}
+
+.mobile-sidebar__close {
+  display: flex;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: #2f251f;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.mobile-sidebar__link {
+  font-family: var(--font-sf-pro), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #2f251f;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+p {
+  font-size: 10px !important;
+  font-weight: 50 !important;
+  line-height: 1.42;
+  letter-spacing: 0.84px !important; }
+/* Responsive Breakpoints */
+@media (max-width: 1180px) {
+  .navbar-container {
+    padding: 0 48px;
+  }
+
+  .nav-links-right {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-right {
+    display: none;
+  }
+  
+  .mobile-actions {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-actions {
+    display: none;
+  }
+  
+  .hamburger-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+  }
+
+  .navbar-container {
+    padding: 0 22px;
+  }
+
+  .nav-logo-img {
+    width: 112px;
+  }
+  
+  .mobile-book-btn {
+    font-size: 10px;
+  }
+  
+  .mobile-actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+  
+  .nav-logo-img {
+    width: 95px;
+  }
+  
+  .mobile-book-btn {
+    font-size: 9px;
+  }
+  
+  .mobile-actions {
+    gap: 10px;
+  }
+  
+  .hamburger-btn {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .mobile-sidebar__content {
+    padding: 20px;
+    width: min(280px, 84vw);
+  }
+  
+  .mobile-sidebar__nav {
+    gap: 18px;
+    margin-top: 28px;
+  }
+  
+  .mobile-sidebar__link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-book-btn {
+    font-size: 8px;
+  }
+  
+  .mobile-actions {
+    gap: 8px;
+  }
+  
+  .hamburger-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .mobile-sidebar__content {
+    padding: 16px;
+    width: min(260px, 84vw);
+  }
+  
+  .mobile-sidebar__nav {
+    gap: 16px;
+    margin-top: 24px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .nav-tab,
+  .mobile-book-btn,
+  .hamburger-btn,
+  .mobile-sidebar__link,
+  .mobile-sidebar__close {
+    cursor: default;
+  }
+}

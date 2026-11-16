@@ -1,0 +1,308 @@
+.story-hero {
+  position: relative;
+  min-height: 643px;
+  padding-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fffdf7;
+  background: #24150f;
+}
+
+.story-hero__image {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.story-hero__image img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.story-hero__overlay {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.story-hero__content {
+  position: relative;
+  z-index: 2;
+  margin-top: 18px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+/* Base font styles */
+.story-hero__content h1 {
+  font-family: var(--font-freight), serif;
+  font-weight: 200;
+  line-height: 1;
+  color: #fffdf7;
+}
+
+.story-hero__content p,
+.story-hero__content div {
+  margin-top: 16px;
+  font-family: var(--font-pinyon), "Brush Script MT", cursive;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: #fffdf7;
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
+  .story-hero {
+    min-height: 650px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 38px;
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    font-size: 26px;
+  }
+}
+
+/* Small Desktop / Large Tablet (900px - 1023px) */
+@media (min-width: 900px) and (max-width: 1023px) {
+  .story-hero {
+    min-height: 580px;
+  }
+  
+  .story-hero__content {
+    margin-top: 20px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 34px;
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    font-size: 24px;
+    margin-top: 18px;
+  }
+}
+
+/* Tablet (600px - 899px) */
+@media (min-width: 600px) and (max-width: 899px) {
+  .story-hero {
+    min-height: 500px;
+  }
+  
+  .story-hero__content {
+    margin-top: 15px;
+    padding: 0 20px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 30px;
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    font-size: 22px;
+    margin-top: 16px;
+  }
+}
+
+/* Mobile Landscape (480px - 599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+  .story-hero {
+    min-height: 450px;
+  }
+  
+  .story-hero__content {
+    margin-top: 10px;
+    padding: 0 20px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 26px;
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    font-size: 20px;
+    margin-top: 14px;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* Force CSS sizes on mobile — override CMS inline styles on inner spans */
+@media (max-width: 479px) {
+  .story-hero__content h1 span,
+  .story-hero__content p span,
+  .story-hero__content div span {
+    font-size: inherit !important;
+  }
+}
+
+/* Mobile Portrait (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  .story-hero {
+    min-height: 400px;
+  }
+  
+  .story-hero__content {
+    margin-top: 8px;
+    padding: 0 16px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 24px !important;
+  }
+
+  .story-hero__content p,
+  .story-hero__content div {
+    font-size: 18px !important;
+    margin-top: 12px;
+    letter-spacing: 0.6px;
+  }
+}
+
+/* Small Mobile (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+  .story-hero {
+    min-height: 380px;
+  }
+
+  .story-hero__content {
+    margin-top: 5px;
+    padding: 0 14px;
+  }
+
+  .story-hero__content h1 {
+    font-size: 22px !important;
+  }
+
+  .story-hero__content p,
+  .story-hero__content div {
+    font-size: 16px !important;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Extra Small (below 320px) */
+@media (max-width: 319px) {
+  .story-hero {
+    min-height: 350px;
+  }
+  
+  .story-hero__content {
+    margin-top: 5px;
+    padding: 0 12px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 20px !important;
+  }
+
+  .story-hero__content p,
+  .story-hero__content div {
+    font-size: 14px !important;
+    margin-top: 10px;
+    letter-spacing: 0.4px;
+  }
+}
+
+/* Height-based adjustments for better vertical fit */
+@media (max-height: 700px) and (min-width: 375px) {
+  .story-hero {
+    padding-bottom: 60px;
+  }
+  
+  .story-hero__content {
+    margin-top: 0;
+  }
+  
+  .story-hero__content h1 {
+    font-size: clamp(20px, 5vh, 30px);
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    margin-top: 10px;
+    font-size: clamp(14px, 3vh, 22px);
+  }
+}
+
+@media (max-height: 600px) and (min-width: 375px) {
+  .story-hero {
+    padding-bottom: 40px;
+  }
+  
+  .story-hero__content h1 {
+    font-size: clamp(18px, 4vh, 26px);
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    font-size: clamp(12px, 2.5vh, 18px);
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .story-hero {
+    padding-bottom: 30px;
+    padding-top: 70px;
+  }
+  
+  .story-hero__content {
+    margin-top: 0;
+  }
+  
+  .story-hero__content h1 {
+    font-size: 22px;
+  }
+  
+  .story-hero__content p,
+.story-hero__content div {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+}
+
+/* High DPI / Retina displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .story-hero__image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Touch device hover fix */
+@media (hover: none) and (pointer: coarse) {
+  .story-hero__content h1,
+  .story-hero__content p,
+.story-hero__content div {
+    cursor: default;
+  }
+}
+
+/* Smooth transitions for responsive changes */
+.story-hero__content h1,
+.story-hero__content p,
+.story-hero__content div {
+  transition: font-size 0.2s ease-out;
+}
+
+.story-hero__content p{
+    font-size: 35px;
+  }
